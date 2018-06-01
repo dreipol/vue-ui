@@ -1,6 +1,7 @@
 require('jsdom-global')();
 
 const Vue = require('vue');
+const Vuex = require('vuex');
 const VueOverlay = require('../dist');
 const noop = () => {};
 
@@ -13,5 +14,5 @@ global.store = new Vuex.Store({});
 Vue.config.devtools = false;
 Vue.config.productionTip = false;
 
-describe('vue-overlay', () => {
+describe('vue-ui', () => {
 });

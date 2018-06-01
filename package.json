@@ -1,5 +1,5 @@
 {
-  "name": "vue-overlay",
+  "name": "@dreipol/vue-ui",
   "version": "0.1.2",
   "description": "",
   "main": "dist/index.js",
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dreipol/vue-overlay.git"
+    "url": "git+https://github.com/dreipol/vue-ui.git"
   },
   "keywords": [
     "vue"
@@ -27,9 +27,9 @@
   "author": "Rouven Bühlmann <rouven.buehlmann@dreipol.ch> (http://dreipol.ch)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dreipol/vue-overlay/issues"
+    "url": "https://github.com/dreipol/vue-ui/issues"
   },
-  "homepage": "https://github.com/dreipol/vue-overlay#readme",
+  "homepage": "https://github.com/dreipol/vue-ui#readme",
   "devDependencies": {
     "@dreipol/eslint-config": "^3.0.0",
     "babel-eslint": "^8.0.1",
@@ -46,8 +46,8 @@
     "vuex": "^3.0.0"
   },
   "dependencies": {
-    "lodash.clonedeep": "^4.5.0",
-    "lodash.isNil": "^4.5.0",
-    "lodash.omitBy": "^4.5.0"
+    "lodash.clonedeep": "^4.0.0",
+    "lodash.isnil": "^4.0.0",
+    "lodash.omitby": "^4.0.0"
   }
 }

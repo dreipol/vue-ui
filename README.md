@@ -1,4 +1,4 @@
-# vue-overlay
+# vue-ui
 
 This npm package provides various helper methods to ease the pain of fetching, storing and reaccessing route based data
 with `vue`, `vuex` and `vue-router`.
@@ -17,13 +17,13 @@ However, these helpers might also come in handy for other environments and are n
 1.  Install the module
 
     ```bash
-    npm install -S vue-overlay 
+    npm install -S vue-ui 
     ```
 
 1.  Register the plugin to your Vue instance
 
     ```js
-    import VueFetchRoute from 'vue-overlay';
+    import VueFetchRoute from 'vue-ui';
     Vue.use(VueFetchRoute);
     ```
 
@@ -127,13 +127,13 @@ and won't be requested a second time. Using partials is completely optional.
 
 ## Vuex state
 
-Please note that the plugin's default vuex namespace is `vue-overlay`. 
+Please note that the plugin's default vuex namespace is `vue-ui`. 
 So to access the plugin store you need to load the getters like this:
 
 ```js
 const MyVueComponent = {
     computed: {
-        ...mapState('vue-overlay', [/* properties */]),
+        ...mapState('vue-ui', [/* properties */]),
     },
 };
 ```
@@ -156,7 +156,7 @@ When a fetch request is pending the plugin's vuex module flag `isLoading` is set
 <script>
     const MyVueComponent = {
         computed: {
-            ...mapState('vue-overlay', ['isLoading']),
+            ...mapState('vue-ui', ['isLoading']),
         },
     };
 </script>
@@ -176,7 +176,7 @@ For this purpose, you can use the special `partials` object:
 <script>
     const MyVueMenu = {
         computed: {
-            ...mapState('vue-overlay', ['partials']),
+            ...mapState('vue-ui', ['partials']),
         },
     };
 </script>
@@ -232,7 +232,7 @@ Default: `[]`
 
 The name that is used to register the vuex module to the store
 
-Default: `vue-overlay`
+Default: `vue-ui`
 
 ## API
 
@@ -286,10 +286,10 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 
 ## 
-[travis-image]: https://img.shields.io/travis/dreipol/vue-overlay.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dreipol/vue-overlay
+[travis-image]: https://img.shields.io/travis/dreipol/vue-ui.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dreipol/vue-ui
 [license-image]: http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square
 [license-url]: LICENSE
-[npm-version-image]: http://img.shields.io/npm/v/vue-overlay.svg?style=flat-square
-[npm-downloads-image]: http://img.shields.io/npm/dm/vue-overlay.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/vue-overlay
+[npm-version-image]: http://img.shields.io/npm/v/@dreipol/vue-ui.svg?style=flat-square
+[npm-downloads-image]: http://img.shields.io/npm/dm/@dreipol/vue-ui.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@dreipol/vue-ui

@@ -4,5 +4,5 @@ export const presets = Object.freeze({
      * @default
      * @type {string}
      */
-    vuexModule: 'vue-overlay',
+    vuexModule: 'vue-ui',
 });

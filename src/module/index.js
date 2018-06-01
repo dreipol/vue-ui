@@ -1,4 +1,6 @@
-import { cloneDeep, isNil, omitBy } from 'lodash';
+import cloneDeep from 'lodash.clonedeep';
+import isNil from 'lodash.isnil';
+import omitBy from 'lodash.omitby';
 import Vue from 'vue';
 
 import * as types from './mutation-types';
@@ -38,42 +40,30 @@ const mutations = {
         Vue.delete(state.overlays, id);
     },
     [types.OPEN_OVERLAY](state, payload) {
-        const mutation = Object.assign(
-            cloneDeep(DEFAULT_OPENING_STATE),
-            omitBy(payload, isNil),
-        );
+        const mutation = {
+            ...cloneDeep(DEFAULT_OPENING_STATE),
+            ...omitBy(payload, isNil),
+        };
 
         Vue.set(state.overlays, payload.id, mutation);
     },
     [types.PREPARE_CLOSE_OVERLAY](state, payload) {
         const overlay = state.overlays[payload.id];
-
-        if (!overlay) {
-            return;
-        }
-
-        const { transition, lockScroll } = Object.assign(
-            cloneDeep(DEFAULT_CLOSING_STATE),
-            omitBy(payload, isNil),
-        );
+        const { transition, lockScroll } = {
+            ...cloneDeep(DEFAULT_CLOSING_STATE),
+            ...omitBy(payload, isNil),
+        };
 
         Vue.set(overlay, 'transition', transition);
         Vue.set(overlay, 'lockScroll', lockScroll);
     },
     [types.CLOSE_OVERLAY](state, payload) {
         const overlay = state.overlays[payload.id];
-
-        if (!overlay) {
-            return;
-        }
-
-        const mutation = Object.assign(
-            cloneDeep(DEFAULT_CLOSING_STATE),
-            {
-                facet: overlay.facet,
-            },
-            omitBy(payload, isNil),
-        );
+        const mutation = {
+            ...cloneDeep(DEFAULT_CLOSING_STATE),
+            ...{ facet: overlay.facet },
+            ...omitBy(payload, isNil),
+        };
 
         Vue.set(state.overlays, payload.id, mutation);
     },
