@@ -10,9 +10,9 @@ import * as getters from './getters';
 
 const DEFAULT_OPENING_STATE = {
     isOpen: true,
-    facet: 'base',
+    facets: ['base'],
     transition: 'trs-overlay-fade',
-    lockScroll: true,
+    disableScroll: true,
     autoClose: false,
     component: null,
     props: {},
@@ -20,9 +20,9 @@ const DEFAULT_OPENING_STATE = {
 
 const DEFAULT_CLOSING_STATE = {
     isOpen: false,
-    facet: 'base',
+    facets: ['base'],
     transition: 'trs-overlay-fade',
-    lockScroll: false,
+    disableScroll: false,
     autoClose: false,
     component: null,
     props: {},
@@ -49,19 +49,24 @@ const mutations = {
     },
     [types.PREPARE_CLOSE_OVERLAY](state, payload) {
         const overlay = state.overlays[payload.id];
-        const { transition, lockScroll } = {
-            ...cloneDeep(DEFAULT_CLOSING_STATE),
-            ...omitBy(payload, isNil),
-        };
+
+        if (!overlay) {
+            return;
+        }
+
+        const { transition, disableScroll } = Object.assign(
+            cloneDeep(DEFAULT_CLOSING_STATE),
+            omitBy(payload, isNil),
+        );
 
         Vue.set(overlay, 'transition', transition);
-        Vue.set(overlay, 'lockScroll', lockScroll);
+        Vue.set(overlay, 'disableScroll', disableScroll);
     },
     [types.CLOSE_OVERLAY](state, payload) {
-        const overlay = state.overlays[payload.id];
+        const { facets } = state.overlays[payload.id];
         const mutation = {
             ...cloneDeep(DEFAULT_CLOSING_STATE),
-            ...{ facet: overlay.facet },
+            ...{ facets },
             ...omitBy(payload, isNil),
         };
 

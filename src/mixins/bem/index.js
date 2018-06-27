@@ -1,3 +1,12 @@
+const PROPS_CONFIG = {
+    facets: {
+        type: Array,
+        default() {
+            return [];
+        },
+    },
+};
+
 export const DEFAULT_OPTIONS = Object.freeze({
     defaultFacet: 'base',
     useProp: true,
@@ -7,25 +16,27 @@ export const DEFAULT_OPTIONS = Object.freeze({
 
 
 export default function bemMixin(bemRoot, config) {
-    const { defaultFacet, useProp, bemModifierMarker, bemElementMarker } = Object.assign(
-        {},
-        DEFAULT_OPTIONS,
-        config
-    );
+    const { defaultFacet, useProp, bemModifierMarker, bemElementMarker } = {
+        ...DEFAULT_OPTIONS,
+        ...config,
+    };
 
     return {
-        props: (useProp ? {
-            facet: {
-                type: String,
-            },
-        } : {}),
+        props: useProp ? PROPS_CONFIG : {},
         computed: {
             bemRoot() {
-                return `${ bemRoot }`;
+                return bemRoot;
             },
-            bemFacet() {
-                // NOTE: As `facet` can still be an empty string, we'll provide a base facet as a fallback
-                return this.bemAdd(this.facet || defaultFacet);
+            bemFacets() {
+                // Apply multiple facets by using an array
+                const facets = this.facets.map(facet => this.bemAdd(facet)).filter(Boolean);
+
+                // As `facet` can still be an empty string, we'll provide a base facet as a fallback
+                if (!facets.length) {
+                    facets.push(this.bemAdd(defaultFacet));
+                }
+
+                return facets;
             },
         },
         methods: {

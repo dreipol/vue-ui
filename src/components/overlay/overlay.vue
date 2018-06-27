@@ -14,7 +14,7 @@
                                     @click.prevent="closeOverlay({ id })"></div>
                             <div class="overlay--container">
                                 <div class="overlay--revealer">
-                                    <cmp-modal :facet="overlay.facet">
+                                    <cmp-modal :facets="overlay.facets">
                                         <component slot :is="overlay.component" v-bind="overlay.props"/>
                                     </cmp-modal>
                                 </div>
@@ -53,8 +53,10 @@
             ...mapState('overlay', ['overlays']),
             ...mapGetters('overlay', ['hasScrollLockingOverlays']),
             rootClasses() {
+                const facets = this.overlay.facets || [];
+
                 return [
-                    this.bemAdd(this.overlay.facet),
+                    ...facets.map(this.bemAdd),
                 ];
             },
             overlay() {

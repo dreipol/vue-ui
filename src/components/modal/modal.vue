@@ -1,5 +1,5 @@
 <template>
-    <div class="modal" :class="bemFacet">
+    <div class="modal" :class="bemFacets">
         <div class="modal--close-wrap">
             <div class="modal--close">
                 <button class="modal--close-button" @click.prevent="closeOverlay">
