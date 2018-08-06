@@ -1,3 +1,5 @@
+import { mapFacets, createBemClass, DEFAULT_OPTIONS } from './helpers';
+
 const PROPS_CONFIG = {
     facets: {
         type: Array,
@@ -7,43 +9,28 @@ const PROPS_CONFIG = {
     },
 };
 
-export const DEFAULT_OPTIONS = Object.freeze({
-    defaultFacet: 'base',
-    useProp: true,
-    bemModifierMarker: '__',
-    bemElementMarker: '--',
-});
-
 
 export default function bemMixin(bemRoot, config) {
-    const { defaultFacet, useProp, bemModifierMarker, bemElementMarker } = {
+    const options = {
         ...DEFAULT_OPTIONS,
+        useProp: true,
         ...config,
     };
 
     return {
-        props: useProp ? PROPS_CONFIG : {},
+        props: options.useProp ? PROPS_CONFIG : {},
         computed: {
             bemRoot() {
                 return bemRoot;
             },
             bemFacets() {
-                // Apply multiple facets by using an array
-                const facets = this.facets.map(facet => this.bemAdd(facet)).filter(Boolean);
-
-                // As `facet` can still be an empty string, we'll provide a base facet as a fallback
-                if (!facets.length) {
-                    facets.push(this.bemAdd(defaultFacet));
-                }
-
-                return facets;
+                return mapFacets(this.bemRoot, this.facets, options);
             },
         },
         methods: {
-            bemAdd(modifierName, elementName) {
-                const elementPart = elementName ? `${ bemElementMarker }${ elementName }` : '';
-                const modifierPart = modifierName ? `${ bemModifierMarker }${ modifierName }` : '';
-                return modifierPart ? `${ this.bemRoot }${ elementPart }${ modifierPart }` : '';
+            bemAdd(modifierName, elementName, rootName) {
+                const blockName = rootName || this.bemRoot;
+                return createBemClass({ blockName, modifierName, elementName, ...options });
             },
             bemIf(condition, trueModifier, falseModifier) {
                 return this.bemAdd(condition ? trueModifier : falseModifier);

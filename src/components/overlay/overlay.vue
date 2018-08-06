@@ -7,7 +7,7 @@
                 @afterLeave="onAfterLeaveHook">
             <div class="overlay--root" v-if="overlay.isOpen" :key="overlay.timestamp">
                 <div class="overlay--backdrop"></div>
-                <div class="overlay--display" :style="scrollLockStyles">
+                <div class="overlay--display">
                     <div class="overlay--wrap-outer">
                         <div class="overlay--wrap-inner">
                             <div class="overlay--backdrop-click-area"
@@ -29,8 +29,8 @@
 
 <script>
     import { mapActions, mapGetters, mapState } from 'vuex';
-    import bemMixin from 'framework/mixins/bem';
-    import scrollLockHelperMixin from 'framework/mixins/scroll-lock-helper';
+    import bemMixin from '../../mixins/bem';
+    import scrollLockHelperMixin from '../../mixins/scroll-lock-helper';
 
 
     export default {
@@ -53,11 +53,13 @@
             ...mapState('overlay', ['overlays']),
             ...mapGetters('overlay', ['hasScrollLockingOverlays']),
             rootClasses() {
-                const facets = this.overlay.facets || [];
+                const { facets } = this.overlay;
 
-                return [
-                    ...facets.map(this.bemAdd),
-                ];
+                if (!facets) {
+                    return [];
+                }
+
+                return facets.map(facet => this.bemAdd(facet));
             },
             overlay() {
                 return this.overlays[this.id] || {};

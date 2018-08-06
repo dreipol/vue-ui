@@ -3,7 +3,7 @@
         <div class="modal--close-wrap">
             <div class="modal--close">
                 <button class="modal--close-button" @click.prevent="closeOverlay">
-                    <cmp-icon symbol="close" size="large"></cmp-icon>
+                    <base-icon symbol="close" size="large"></base-icon>
                 </button>
             </div>
         </div>
@@ -22,7 +22,7 @@
 
 <script>
     import { mapActions } from 'vuex';
-    import bemMixin from 'framework/mixins/bem';
+    import bemMixin from '../../mixins/bem';
 
 
     export default {
