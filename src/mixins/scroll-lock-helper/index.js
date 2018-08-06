@@ -1,9 +1,7 @@
 import { mapState } from 'vuex';
 import { isIos } from 'util/detect/ios-detect';
 
-
 const SCROLL_LOCK_IOS_FIX_CLASS = 'u-scroll-lock-ios-fix';
-
 
 export default {
     data() {
@@ -39,7 +37,7 @@ export default {
         isLocked: {
             handler() {
                 // NOTE: After a scroll-lock, fixed elements must be forced to the right position on iOS
-                if (!isIos) {
+                if (!isIos || !this.$el) {
                     return;
                 }
 
