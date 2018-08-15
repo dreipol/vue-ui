@@ -66,7 +66,7 @@
             },
         },
         methods: {
-            ...mapActions('scroll', ['lockScroll']),
+            ...mapActions('scroll', ['disableScroll']),
             ...mapActions('overlay', ['closeOverlay']),
             setAutoClose() {
                 const { autoClose, id } = this.overlay;
@@ -82,7 +82,7 @@
                 }, autoClose.delay || 0);
             },
             onEnterHook() {
-                this.overlay.lockScroll && this.lockScroll({ isLocked: true });
+                this.overlay.disableScroll && this.disableScroll({ isLocked: true });
             },
             onAfterEnterHook() {
                 this.setAutoClose();
@@ -90,7 +90,7 @@
             onAfterLeaveHook() {
                 const { onAfterClose } = this.overlay;
                 onAfterClose && onAfterClose();
-                !this.hasScrollLockingOverlays && this.lockScroll({ isLocked: false });
+                !this.hasScrollLockingOverlays && this.disableScroll({ isLocked: false });
             },
         },
     };

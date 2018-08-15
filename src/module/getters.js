@@ -15,5 +15,5 @@ export const hasOpenOverlays = state => {
  */
 export const hasScrollLockingOverlays = state => {
     const overlays = Object.keys(state.overlays).map(key => state[key]);
-    return !!overlays.find(({ lockScroll }) => lockScroll);
+    return !!overlays.find(({ disableScroll }) => disableScroll);
 };
