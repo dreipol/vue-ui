@@ -40,5 +40,9 @@ jspm_packages
 /dist/index.js
 .reify-cache/
 
+# nyc test coverage
+.nyc_output
+reports
+
 # editor files
 .idea
