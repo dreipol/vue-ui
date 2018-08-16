@@ -1,7 +1,10 @@
 /* eslint-disable max-nested-callbacks */
 
 import { expect } from 'chai';
+import { spy } from 'sinon';
 import * as getters from './getters';
+import * as actions from './actions';
+import { MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
 import { DEFAULT_OPENING_STATE, state as initialState } from './index';
 
 function dummyOverlay(options = {}) {
@@ -75,6 +78,90 @@ describe('Overlay spec', () => {
                 const state = generateStateFromOverlaysList([dummyOverlay({ disableScroll: true }), dummyOverlay({ disableScroll: false }), dummyOverlay({ disableScroll: true })]);
 
                 expect(getters.hasScrollLockingOverlays(state)).to.be.equal(true);
+            });
+        });
+    });
+
+    describe('actions', () => {
+        describe('openOverlay', () => {
+            it('Opening a new overlay dispatches properly all the mutations', async function() {
+                const commit = spy();
+                const state = generateStateFromOverlaysList([]);
+                const newOverlay = dummyOverlay({ title: 'Hello' });
+
+                await actions.openOverlay({ commit, state }, newOverlay);
+
+                const [mountEventArgs, openEventArgs] = commit.args;
+                const [openEventMutationType, openEventOverlayData] = openEventArgs;
+
+                expect(mountEventArgs).to.be.deep.equal([MOUNT_OVERLAY, { id: newOverlay.id }]);
+                expect(openEventMutationType).to.be.equal(OPEN_OVERLAY);
+                expect(openEventOverlayData.title).to.be.equal(newOverlay.title, 'The payload was properly forwarded');
+            });
+
+            it('Opening twice the same overlay will not dispatch again the mounting mutation', async function() {
+                const commit = spy();
+                const overlayID = 'foo';
+                const initialOverlay = dummyOverlay({ title: 'Hello', id: overlayID });
+                const state = generateStateFromOverlaysList([initialOverlay]);
+                const newOverlay = dummyOverlay({ title: 'World', id: overlayID });
+
+                await actions.openOverlay({ commit, state }, newOverlay);
+
+                const [openEventMutationType, openEventOverlayData] = commit.args[0];
+
+                expect(commit.args).to.have.length(1);
+                expect(openEventMutationType).to.be.equal(OPEN_OVERLAY);
+                expect(openEventOverlayData.title).to.be.equal(newOverlay.title, 'The payload was properly forwarded');
+            });
+        });
+
+        describe('closeOverlay', () => {
+            it('Closing an overlay dispatches properly all the mutations', async function() {
+                const commit = spy();
+                const initialOverlay = dummyOverlay({ title: 'Hello' });
+                const state = generateStateFromOverlaysList([initialOverlay]);
+
+                await actions.closeOverlay({ commit, state }, { id: initialOverlay.id });
+
+                const [prepareCloseEvent, closeOverlaysEvent] = commit.args;
+                const [prepareCloseMutationType, prepareCloseData] = prepareCloseEvent;
+                const [closeEventMutationType, closeEventData] = closeOverlaysEvent;
+
+                expect(prepareCloseMutationType).to.be.equal(PREPARE_CLOSE_OVERLAY);
+                expect(prepareCloseData.id).to.be.equal(initialOverlay.id);
+
+                expect(closeEventMutationType).to.be.equal(CLOSE_OVERLAY);
+                expect(closeEventData.id).to.be.equal(initialOverlay.id);
+            });
+
+            it('Closing an overlay allows to asynchronously dispatch the unmount event', async function() {
+                const commit = spy();
+                const initialOverlay = dummyOverlay({ title: 'Hello' });
+                const state = generateStateFromOverlaysList([initialOverlay]);
+
+                await actions.closeOverlay({ commit, state }, { id: initialOverlay.id });
+
+                const [, closeOverlaysEvent] = commit.args;
+                const [, closeEventData] = closeOverlaysEvent;
+
+                // this can be called by vue components at any time
+                closeEventData.onAfterClose();
+
+                const [, , unmountOverlayEvent] = commit.args;
+                const [unmountEventMutationType, umountEventData] = unmountOverlayEvent;
+
+                expect(unmountEventMutationType).to.be.equal(UNMOUNT_OVERLAY);
+                expect(umountEventData.id).to.be.equal(initialOverlay.id);
+            });
+
+            it('Closing unknown overlays will not dispatch any event', async function() {
+                const commit = spy();
+                const state = generateStateFromOverlaysList([]);
+
+                await actions.closeOverlay({ commit, state }, { id: 'unknown' });
+
+                expect(commit.args).to.have.length(0);
             });
         });
     });

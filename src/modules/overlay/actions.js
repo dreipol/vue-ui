@@ -5,21 +5,26 @@ import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMO
  * Trigger close action for an overlay
  * @param {Object} context - A vuex action context
  * @param {Object} payload - A vuex action payload
+ * @return {Promise} promise resolved once the last overlay commit will be dispatched
  */
 export function openOverlay({ commit, state }, payload) {
-    const { id } = payload;
+    return new Promise(resolve => {
+        const { id } = payload;
 
-    if (!state.overlays[id]) {
-        commit(MOUNT_OVERLAY, { id });
-    }
+        if (!state.overlays[id]) {
+            commit(MOUNT_OVERLAY, { id });
+        }
 
-    const mutation = {
-        ...payload,
-        timestamp: Date.now(),
-    };
+        const mutation = {
+            ...payload,
+            timestamp: Date.now(),
+        };
 
-    Vue.nextTick(() => {
-        commit(OPEN_OVERLAY, mutation);
+        Vue.nextTick(() => {
+            commit(OPEN_OVERLAY, mutation);
+
+            resolve();
+        });
     });
 }
 
@@ -27,23 +32,29 @@ export function openOverlay({ commit, state }, payload) {
  * Trigger close action for an overlay
  * @param {Object} context - A vuex action context
  * @param {Object} payload - A vuex action payload
+ * @return {Promise} promise resolved once the last overlay commit will be dispatched
  */
 export function closeOverlay({ commit, state }, { id, transition } = {}) {
-    const mutation = {
-        id,
-        transition,
-        onAfterClose() {
-            commit(UNMOUNT_OVERLAY, { id });
-        },
-    };
+    return new Promise(resolve => {
+        const mutation = {
+            id,
+            transition,
+            onAfterClose() {
+                commit(UNMOUNT_OVERLAY, { id });
+            },
+        };
 
-    if (!state.overlays[id]) {
-        return;
-    }
+        if (!state.overlays[id]) {
+            resolve();
+            return;
+        }
 
-    commit(PREPARE_CLOSE_OVERLAY, { id, transition });
+        commit(PREPARE_CLOSE_OVERLAY, { id, transition });
 
-    Vue.nextTick(() => {
-        commit(CLOSE_OVERLAY, mutation);
+        Vue.nextTick(() => {
+            commit(CLOSE_OVERLAY, mutation);
+
+            resolve();
+        });
     });
 }
