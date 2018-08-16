@@ -8,22 +8,22 @@ import * as actions from './actions';
 import * as getters from './getters';
 
 
-const DEFAULT_OPENING_STATE = {
+export const DEFAULT_OPENING_STATE = {
     isOpen: true,
     facets: ['base'],
     transition: 'trs-overlay-fade',
     disableScroll: true,
-    autoClose: false,
+    autoClose: null,
     component: null,
     props: {},
 };
 
-const DEFAULT_CLOSING_STATE = {
+export const DEFAULT_CLOSING_STATE = {
     isOpen: false,
     facets: ['base'],
     transition: 'trs-overlay-fade',
     disableScroll: false,
-    autoClose: false,
+    autoClose: null,
     component: null,
     props: {},
 };
