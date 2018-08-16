@@ -4,12 +4,13 @@ import { expect } from 'chai';
 import { spy } from 'sinon';
 import * as getters from './getters';
 import * as actions from './actions';
-import { MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
-import { DEFAULT_OPENING_STATE, state as initialState } from './index';
+import cloneDeep from 'lodash.clonedeep';
+import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
+import overlayModule, { DEFAULT_OPENING_STATE, DEFAULT_CLOSING_STATE } from './index';
 
 function dummyOverlay(options = {}) {
     return {
-        ...DEFAULT_OPENING_STATE,
+        ...cloneDeep(DEFAULT_OPENING_STATE),
         id: `${ Math.random() }`,
         ...options,
     };
@@ -24,10 +25,20 @@ function generateStateFromOverlaysList(overlays) {
                 [overlay.id]: overlay,
             },
         };
-    }, { ...initialState });
+    }, cloneDeep(overlayModule.state));
 }
 
 describe('Overlay spec', () => {
+    describe('overlays default export', () => {
+        it('The overlay module exports properly all the vuex properties', () => {
+            const props = ['namespaced', 'mutations', 'actions', 'getters', 'state'];
+
+            props.forEach(prop => {
+                expect(overlayModule).to.have.property(prop);
+            });
+        });
+    });
+
     describe('getters', () => {
         describe('hasOpenOverlays', () => {
             it('No Overlays opened found', () => {
@@ -155,6 +166,25 @@ describe('Overlay spec', () => {
                 expect(umountEventData.id).to.be.equal(initialOverlay.id);
             });
 
+            it('Closing an overlay allows also custom transitions', async function() {
+                const commit = spy();
+                const initialOverlay = dummyOverlay({ title: 'Hello' });
+                const state = generateStateFromOverlaysList([initialOverlay]);
+                const customTransitionName = 'my-cool-transition';
+
+                await actions.closeOverlay({ commit, state }, {
+                    id: initialOverlay.id,
+                    transition: customTransitionName,
+                });
+
+                const [, closeOverlaysEvent] = commit.args;
+                const [, closeEventData] = closeOverlaysEvent;
+
+                closeEventData.onAfterClose();
+
+                expect(closeEventData.transition).to.be.equal(customTransitionName);
+            });
+
             it('Closing unknown overlays will not dispatch any event', async function() {
                 const commit = spy();
                 const state = generateStateFromOverlaysList([]);
@@ -163,6 +193,71 @@ describe('Overlay spec', () => {
 
                 expect(commit.args).to.have.length(0);
             });
+        });
+    });
+
+    describe('mutations', () => {
+        it('mount overlay', () => {
+            const state = generateStateFromOverlaysList([]);
+            const id = 'foo';
+
+            overlayModule.mutations[MOUNT_OVERLAY](state, { id });
+
+            expect(state.overlays[id]).to.be.deep.equal(DEFAULT_CLOSING_STATE);
+        });
+
+        it('unmount overlay', () => {
+            const overlayToRemove = dummyOverlay();
+            const state = generateStateFromOverlaysList([overlayToRemove]);
+
+            overlayModule.mutations[UNMOUNT_OVERLAY](state, { id: overlayToRemove.id });
+
+            expect(state.overlays).to.be.deep.equal({});
+        });
+
+        it('open overlay', () => {
+            const overlayToOpen = dummyOverlay();
+            const state = generateStateFromOverlaysList([overlayToOpen]);
+            const overlayTitle = 'Hello';
+
+            overlayModule.mutations[OPEN_OVERLAY](state, { id: overlayToOpen.id, title: overlayTitle });
+
+
+            expect(state.overlays[overlayToOpen.id].isOpen).to.be.equal(true);
+            expect(state.overlays[overlayToOpen.id].disableScroll).to.be.equal(true);
+            expect(state.overlays[overlayToOpen.id].title).to.be.equal(overlayTitle);
+        });
+
+        it('prepare closing overlay', () => {
+            const overlayToClose = dummyOverlay();
+            const state = generateStateFromOverlaysList([overlayToClose]);
+            const customTransitionName = 'my-cool-transition';
+
+            overlayModule.mutations[PREPARE_CLOSE_OVERLAY](state, { id: overlayToClose.id, transition: customTransitionName });
+
+            expect(state.overlays[overlayToClose.id].isOpen).to.be.equal(true);
+            expect(state.overlays[overlayToClose.id].disableScroll).to.be.equal(false);
+            expect(state.overlays[overlayToClose.id].transition).to.be.equal(customTransitionName);
+        });
+
+        it('prepare closing unknown overlay', () => {
+            const overlayToClose = dummyOverlay();
+            const state = generateStateFromOverlaysList([]);
+            const customTransitionName = 'my-cool-transition';
+
+            overlayModule.mutations[PREPARE_CLOSE_OVERLAY](state, { id: overlayToClose.id, transition: customTransitionName });
+
+            expect(state.overlays).to.be.deep.equal({});
+        });
+
+        it('close overlay', () => {
+            const overlayToClose = dummyOverlay();
+            const state = generateStateFromOverlaysList([overlayToClose]);
+
+            overlayModule.mutations[CLOSE_OVERLAY](state, { id: overlayToClose.id });
+
+            expect(state.overlays[overlayToClose.id].isOpen).to.be.equal(false);
+            expect(state.overlays[overlayToClose.id].disableScroll).to.be.equal(false);
         });
     });
 });

@@ -76,7 +76,7 @@ const mutations = {
 /**
  * The state of the module
  */
-export const state = {
+const state = {
     overlays: {},
 };
 
