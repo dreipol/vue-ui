@@ -3,6 +3,8 @@
 Intro
 
 [![Build Status][circleci-image]][circleci-url]
+[![Code quality][codeclimate-image]][codeclimate-url]
+[![Code coverage][coveralls-image]][coveralls-url]
 [![NPM version][npm-version-image]][npm-url]
 [![NPM downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
@@ -31,3 +33,7 @@ Purpose
 [npm-version-image]: http://img.shields.io/npm/v/@dreipol/vue-ui.svg?style=flat-square
 [npm-downloads-image]: http://img.shields.io/npm/dm/@dreipol/vue-ui.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/@dreipol/vue-ui
+[codeclimate-image]: https://api.codeclimate.com/v1/badges/fb8c4a8a6043d9e73f7f/maintainability
+[codeclimate-url]: https://codeclimate.com/github/dreipol/vue-ui/maintainability
+[coveralls-image]: https://coveralls.io/repos/github/dreipol/vue-ui/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/dreipol/vue-ui?branch=master
