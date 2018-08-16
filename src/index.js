@@ -1,5 +1,4 @@
 import { createConfig } from './create-config';
-import module from './module';
 
 // TODO: Avoid to export undefined globals, redefined somewhere else
 export let GlobalVue;

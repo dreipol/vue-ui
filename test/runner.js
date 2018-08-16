@@ -1,18 +1,9 @@
-require('jsdom-global')();
+import jsdomGlobal from 'jsdom-global';
+import chai from 'chai';
+import sinonChai from 'sinon-chai';
 
-const Vue = require('vue');
-const Vuex = require('vuex');
-const VueOverlay = require('../dist');
-const noop = () => {};
+// create a fake DOM
+jsdomGlobal();
 
-Vue.use(VueOverlay.default, { log: noop });
-
-global.assert = require('assert');
-global.Vue = require('vue');
-global.store = new Vuex.Store({});
-
-Vue.config.devtools = false;
-Vue.config.productionTip = false;
-
-describe('vue-ui', () => {
-});
+// extend chai with sinon
+chai.use(sinonChai);

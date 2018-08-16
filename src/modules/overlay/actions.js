@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import * as types from './mutation-types';
+import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
 
 /**
  * Trigger close action for an overlay
@@ -10,7 +10,7 @@ export function openOverlay({ commit, state }, payload) {
     const { id } = payload;
 
     if (!state.overlays[id]) {
-        commit(types.MOUNT_OVERLAY, { id });
+        commit(MOUNT_OVERLAY, { id });
     }
 
     const mutation = {
@@ -19,7 +19,7 @@ export function openOverlay({ commit, state }, payload) {
     };
 
     Vue.nextTick(() => {
-        commit(types.OPEN_OVERLAY, mutation);
+        commit(OPEN_OVERLAY, mutation);
     });
 }
 
@@ -33,7 +33,7 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
         id,
         transition,
         onAfterClose() {
-            commit(types.UNMOUNT_OVERLAY, { id });
+            commit(UNMOUNT_OVERLAY, { id });
         },
     };
 
@@ -41,9 +41,9 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
         return;
     }
 
-    commit(types.PREPARE_CLOSE_OVERLAY, { id, transition });
+    commit(PREPARE_CLOSE_OVERLAY, { id, transition });
 
     Vue.nextTick(() => {
-        commit(types.CLOSE_OVERLAY, mutation);
+        commit(CLOSE_OVERLAY, mutation);
     });
 }
