@@ -29,7 +29,7 @@ function generateStateFromOverlaysList(overlays) {
 }
 
 describe('Overlay spec', () => {
-    describe('overlays default export', () => {
+    describe('Overlays default export', () => {
         it('The overlay module exports properly all the vuex properties', () => {
             const props = ['namespaced', 'mutations', 'actions', 'getters', 'state'];
 
@@ -39,7 +39,7 @@ describe('Overlay spec', () => {
         });
     });
 
-    describe('getters', () => {
+    describe('Getters', () => {
         describe('hasOpenOverlays', () => {
             it('No Overlays opened found', () => {
                 const state = generateStateFromOverlaysList([dummyOverlay({ isOpen: false })]);
@@ -93,8 +93,8 @@ describe('Overlay spec', () => {
         });
     });
 
-    describe('actions', () => {
-        describe('openOverlay', () => {
+    describe('Actions', () => {
+        describe('OpenOverlay', () => {
             it('Opening a new overlay dispatches properly all the mutations', async function() {
                 const commit = spy();
                 const state = generateStateFromOverlaysList([]);
@@ -196,8 +196,8 @@ describe('Overlay spec', () => {
         });
     });
 
-    describe('mutations', () => {
-        it('mount overlay', () => {
+    describe('Mutations', () => {
+        it('Mount overlay', () => {
             const state = generateStateFromOverlaysList([]);
             const id = 'foo';
 
@@ -206,7 +206,7 @@ describe('Overlay spec', () => {
             expect(state.overlays[id]).to.be.deep.equal(DEFAULT_CLOSING_STATE);
         });
 
-        it('unmount overlay', () => {
+        it('Unmount overlay', () => {
             const overlayToRemove = dummyOverlay();
             const state = generateStateFromOverlaysList([overlayToRemove]);
 
@@ -215,7 +215,7 @@ describe('Overlay spec', () => {
             expect(state.overlays).to.be.deep.equal({});
         });
 
-        it('open overlay', () => {
+        it('Open overlay', () => {
             const overlayToOpen = dummyOverlay();
             const state = generateStateFromOverlaysList([overlayToOpen]);
             const overlayTitle = 'Hello';
@@ -228,7 +228,7 @@ describe('Overlay spec', () => {
             expect(state.overlays[overlayToOpen.id].title).to.be.equal(overlayTitle);
         });
 
-        it('prepare closing overlay', () => {
+        it('Prepare closing overlay', () => {
             const overlayToClose = dummyOverlay();
             const state = generateStateFromOverlaysList([overlayToClose]);
             const customTransitionName = 'my-cool-transition';
@@ -240,7 +240,7 @@ describe('Overlay spec', () => {
             expect(state.overlays[overlayToClose.id].transition).to.be.equal(customTransitionName);
         });
 
-        it('prepare closing unknown overlay', () => {
+        it('Prepare closing unknown overlay', () => {
             const overlayToClose = dummyOverlay();
             const state = generateStateFromOverlaysList([]);
             const customTransitionName = 'my-cool-transition';
@@ -250,7 +250,7 @@ describe('Overlay spec', () => {
             expect(state.overlays).to.be.deep.equal({});
         });
 
-        it('close overlay', () => {
+        it('Close overlay', () => {
             const overlayToClose = dummyOverlay();
             const state = generateStateFromOverlaysList([overlayToClose]);
 

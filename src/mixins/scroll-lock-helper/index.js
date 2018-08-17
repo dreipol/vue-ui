@@ -1,5 +1,5 @@
 import { mapGetters, mapState } from 'vuex';
-import { isIos } from 'util/detect/ios-detect';
+import { isIos } from '../../util/detect/ios-detect';
 
 const SCROLL_LOCK_IOS_FIX_CLASS = 'u-scroll-lock-ios-fix';
 
