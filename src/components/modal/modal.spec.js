@@ -11,21 +11,21 @@ const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
+function getDummyModalComponentOptions(customOptions = {}) {
+    const store = new Vuex.Store({
+        modules: {
+            overlay: cloneDeep(overalyModule),
+        },
+    });
+
+    return {
+        store,
+        localVue,
+        ...customOptions,
+    };
+}
+
 describe('Modal spec', () => {
-    function getDummyModalComponentOptions(customOptions = {}) {
-        const store = new Vuex.Store({
-            modules: {
-                overlay: cloneDeep(overalyModule),
-            },
-        });
-
-        return {
-            store,
-            localVue,
-            ...customOptions,
-        };
-    }
-
     it('The modal is an object', () => {
         expect(Modal).to.be.an('object');
         expect(Modal).to.be.not.empty;

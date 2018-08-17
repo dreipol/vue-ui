@@ -11,25 +11,24 @@ const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
+function getDummyOverlayComponentOptions(customOptions = {}) {
+    const store = new Vuex.Store({
+        modules: {
+            overlay: cloneDeep(overalyModule),
+        },
+    });
+
+    return {
+        store,
+        localVue,
+        propsData: {
+            id: 'foo',
+        },
+        ...customOptions,
+    };
+}
 
 describe('Overlay spec', () => {
-    function getDummyOverlayComponentOptions(customOptions = {}) {
-        const store = new Vuex.Store({
-            modules: {
-                overlay: cloneDeep(overalyModule),
-            },
-        });
-
-        return {
-            store,
-            localVue,
-            propsData: {
-                id: 'foo',
-            },
-            ...customOptions,
-        };
-    }
-
     it('The overlay is an object', () => {
         expect(Overlay).to.be.an('object');
         expect(Overlay).to.be.not.empty;
