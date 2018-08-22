@@ -30,6 +30,7 @@
 <script>
     import { mapActions, mapGetters, mapState } from 'vuex';
     import bemMixin from '../../mixins/bem';
+    import Modal from '../modal/modal.vue';
     import scrollLockHelperMixin from '../../mixins/scroll-lock-helper';
 
 
@@ -38,6 +39,9 @@
             bemMixin('overlay'),
             scrollLockHelperMixin,
         ],
+        components: {
+            'cmp-modal': Modal,
+        },
         props: {
             id: {
                 type: String,

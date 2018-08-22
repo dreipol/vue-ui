@@ -1,0 +1,11 @@
+engines:
+  eslint:
+    enabled: true
+
+exclude_patterns:
+  - test
+  - dist
+
+ratings:
+  paths:
+    - src

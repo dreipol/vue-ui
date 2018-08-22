@@ -1,5 +1,4 @@
 import { createConfig } from './create-config';
-import module from './module';
 
 // TODO: Avoid to export undefined globals, redefined somewhere else
 export let GlobalVue;
@@ -16,5 +15,8 @@ plugin.install = function(Vue, presets) {
 
     console.log('hello world');
 };
+
+export { default as Modal } from './components/modal/modal.vue';
+export { default as Overlay } from './components/overlay/overlay.vue';
 
 export default plugin;

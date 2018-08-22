@@ -4,13 +4,26 @@
   "extends": "@dreipol/eslint-config",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "globals": {
     "Vue": true,
     "globals": true
   },
   "rules": {
-    "camelcase": ["error", { "properties": "never" }],
-  }
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ]
+  },
+  "overrides": [{
+    "files": ["*.spec.js"],
+    "rules": {
+      "no-unused-expressions": "off",
+      "max-nested-callbacks": "off"
+    }
+  }]
 }
