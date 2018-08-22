@@ -1,5 +1,3 @@
-/* eslint-disable max-nested-callbacks */
-
 import { expect } from 'chai';
 import { createLocalVue } from '@vue/test-utils';
 import { DEFAULT_OPTIONS } from './helpers';

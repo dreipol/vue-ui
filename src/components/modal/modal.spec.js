@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions, max-nested-callbacks */
-
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import { expect } from 'chai';
 import { Modal } from '../../../';

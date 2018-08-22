@@ -18,5 +18,12 @@
         "properties": "never"
       }
     ]
-  }
+  },
+  "overrides": [{
+    "files": ["*.spec.js"],
+    "rules": {
+      "no-unused-expressions": "off",
+      "max-nested-callbacks": "off"
+    }
+  }]
 }

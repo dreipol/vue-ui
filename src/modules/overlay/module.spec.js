@@ -1,5 +1,3 @@
-/* eslint-disable max-nested-callbacks */
-
 import { expect } from 'chai';
 import { spy } from 'sinon';
 import * as getters from './getters';

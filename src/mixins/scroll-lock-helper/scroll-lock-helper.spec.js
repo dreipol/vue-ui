@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions, max-nested-callbacks */
-
 import { createLocalVue } from '@vue/test-utils';
 import { expect } from 'chai';
 import Vuex from 'vuex';
