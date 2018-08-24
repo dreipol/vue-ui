@@ -111,14 +111,14 @@ describe('Overlay spec', () => {
 
                 await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'bar' } });
 
-                const [mountEventArgs, openEventArgs] = commit.args;
-                const [openEventMutationType, openEventOverlayData] = openEventArgs;
+                const [mountOverlayEventArgs, openOverlayEventArgs] = commit.args;
+                const [openOverlayEventMutationType, openOverlayEventOverlayData] = openOverlayEventArgs;
 
-                expect(mountEventArgs).to.be.deep.equal([MOUNT_OVERLAY, { id: 'foo' }]);
-                expect(openEventMutationType).to.be.equal(OPEN_OVERLAY);
+                expect(mountOverlayEventArgs).to.be.deep.equal([MOUNT_OVERLAY, { id: 'foo' }]);
+                expect(openOverlayEventMutationType).to.be.equal(OPEN_OVERLAY);
 
-                expect(openEventOverlayData.props.title).to.to.not.be.undefined;
-                expect(openEventOverlayData.props.title).to.be.equal('bar', 'The payload was properly forwarded');
+                expect(openOverlayEventOverlayData.props.title).to.to.not.be.undefined;
+                expect(openOverlayEventOverlayData.props.title).to.be.equal('bar', 'The payload was properly forwarded');
             });
 
             it('Opening the same overlay twice will not dispatch the mounting mutation again', async function() {
@@ -131,12 +131,12 @@ describe('Overlay spec', () => {
 
                 await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'baz' } });
 
-                const [openEventMutationType, openEventOverlayData] = commit.args[0];
+                const [openOverlayEventMutationType, openOverlayEventOverlayData] = commit.args[0];
 
                 expect(commit.args).to.have.length(1);
-                expect(openEventMutationType).to.be.equal(OPEN_OVERLAY);
-                expect(openEventOverlayData.props.title).to.to.not.be.undefined;
-                expect(openEventOverlayData.props.title).to.be.equal('baz', 'The payload was properly forwarded');
+                expect(openOverlayEventMutationType).to.be.equal(OPEN_OVERLAY);
+                expect(openOverlayEventOverlayData.props.title).to.to.not.be.undefined;
+                expect(openOverlayEventOverlayData.props.title).to.be.equal('baz', 'The payload was properly forwarded');
             });
         });
 
@@ -179,10 +179,10 @@ describe('Overlay spec', () => {
                 closeEventData.onAfterClose();
 
                 const [, , unmountOverlayEvent] = commit.args;
-                const [unmountEventMutationType, umountEventData] = unmountOverlayEvent;
+                const [unmountOverlayEventMutationType, umountOverlayEventData] = unmountOverlayEvent;
 
-                expect(unmountEventMutationType).to.be.equal(UNMOUNT_OVERLAY);
-                expect(umountEventData.id).to.be.equal('foo');
+                expect(unmountOverlayEventMutationType).to.be.equal(UNMOUNT_OVERLAY);
+                expect(umountOverlayEventData.id).to.be.equal('foo');
             });
 
             it('Closing an overlay allows for custom transitions', async function() {
