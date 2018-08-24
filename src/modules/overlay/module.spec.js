@@ -108,9 +108,8 @@ describe('Overlay spec', () => {
             it('Opening a new overlay dispatches all mutations properly', async function() {
                 const commit = spy();
                 const state = { overlays: {} };
-                const newOverlay = { id: 'foo', props: { title: 'bar' } };
 
-                await actions.openOverlay({ commit, state }, newOverlay);
+                await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'bar' } });
 
                 const [mountEventArgs, openEventArgs] = commit.args;
                 const [openEventMutationType, openEventOverlayData] = openEventArgs;
@@ -124,14 +123,13 @@ describe('Overlay spec', () => {
 
             it('Opening the same overlay twice will not dispatch the mounting mutation again', async function() {
                 const commit = spy();
-                const newOverlay = { id: 'foo', props: { title: 'baz' } };
                 const state = {
                     overlays: {
                         foo: { props: { title: 'bar' } },
                     },
                 };
 
-                await actions.openOverlay({ commit, state }, newOverlay);
+                await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'baz' } });
 
                 const [openEventMutationType, openEventOverlayData] = commit.args[0];
 
@@ -195,10 +193,7 @@ describe('Overlay spec', () => {
                     },
                 };
 
-                await actions.closeOverlay({ commit, state }, {
-                    id: 'foo',
-                    transition: 'my-cool-transition',
-                });
+                await actions.closeOverlay({ commit, state }, { id: 'foo', transition: 'my-cool-transition' });
 
                 const [, closeOverlaysEvent] = commit.args;
                 const [, closeEventData] = closeOverlaysEvent;
