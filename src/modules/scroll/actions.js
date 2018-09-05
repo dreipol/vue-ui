@@ -1,7 +1,5 @@
+import { documentHeight, scrollbarWidth, scrollTop } from 'bianco.viewport';
 import clamp from 'lodash.clonedeep';
-import documentHeight from '../../util/dom/document-height';
-import scrollbarWidth from '../../util/dom/scrollbar-width';
-import { scrollTop } from '../../util/dom/scroll-position';
 import { DISABLE_SCROLL, SET_SCROLL } from '../mutation-types';
 
 /**

@@ -17,15 +17,10 @@ describe('Scroll spec', () => {
 
     describe('Actions', () => {
         describe('setScroll', () => {
-            it('', async function() {
+            it('', function() {
                 const commit = spy();
-                const state = {
-                    position: 1,
-                    progress: 0.5,
-                    scrollbarWidth: 15,
-                };
 
-                await actions.setScroll({ commit, state });
+                actions.setScroll({ commit });
 
                 const [setScrollEventArgs] = commit.args;
 
@@ -34,13 +29,13 @@ describe('Scroll spec', () => {
         });
 
         describe('disableScroll', () => {
-            it('', async function() {
+            it('', function() {
                 const commit = spy();
                 const state = {
                     isLocked: false,
                 };
 
-                await actions.disableScroll({ commit, state }, { isLocked: true });
+                actions.disableScroll({ commit, state }, { isLocked: true });
 
                 const [disableScrollEvent] = commit.args;
 
