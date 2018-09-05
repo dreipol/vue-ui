@@ -136,7 +136,6 @@ describe('Overlay spec', () => {
                 expect(commit.args).to.have.length(1);
                 expect(openOverlayEventMutationType).to.be.equal(OPEN_OVERLAY);
                 expect(openOverlayEventData.props.title).to.to.not.be.undefined;
-                expect(openOverlayEventData.props.props.title).to.to.not.be.undefined;
                 expect(openOverlayEventData.props.title).to.be.equal('baz', 'The payload was properly forwarded');
             });
         });
