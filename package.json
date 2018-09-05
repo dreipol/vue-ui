@@ -56,6 +56,8 @@
     "vuex": "^3.0.1"
   },
   "dependencies": {
+    "bianco.viewport": "0.0.5",
+    "lodash.clamp": "^4.0.3",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isnil": "^4.0.0",
     "lodash.omitby": "^4.6.0"

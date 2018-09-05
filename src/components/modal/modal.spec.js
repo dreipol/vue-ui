@@ -56,10 +56,4 @@ describe('Modal spec', () => {
         expect(wrapper.find('.modal--body').exists()).to.be.ok;
         expect(wrapper.find('.modal--footer').exists()).to.be.ok;
     });
-
-    it('It has the close method', () => {
-        const { vm } = shallowMount(Modal, getDummyModalComponentOptions());
-        expect(vm.closeOverlay).to.be.a('function');
-        expect(vm.closeOverlay()).to.not.throw;
-    });
 });

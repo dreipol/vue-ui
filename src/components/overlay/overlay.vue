@@ -10,13 +10,12 @@
                 <div class="overlay--display">
                     <div class="overlay--wrap-outer" :style="overlayScrollLockStyles">
                         <div class="overlay--wrap-inner">
-                            <div class="overlay--backdrop-click-area"
-                                    @click.prevent="closeOverlay({ id })"></div>
+                            <div class="overlay--backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
                             <div class="overlay--container">
                                 <div class="overlay--revealer">
-                                    <UiModal :facets="overlay.facets">
+                                    <ui-modal :facets="overlay.facets" @modal:close="closeOverlay({ id })">
                                         <component slot :is="overlay.component" v-bind="overlay.props"/>
-                                    </UiModal>
+                                    </ui-modal>
                                 </div>
                             </div>
                         </div>

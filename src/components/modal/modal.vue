@@ -2,20 +2,20 @@
     <div class="modal" :class="bemFacets">
         <div class="modal--close-wrap">
             <div class="modal--close">
-                <button class="modal--close-button" @click.prevent="closeOverlay">
+                <button class="modal--close-button" @click.prevent="onCloseRequested">
                     <!-- TODO: handle icons -->
                 </button>
             </div>
         </div>
 
         <header class="modal--header" v-if="!!$slots.header">
-            <slot name="header"></slot>
+            <slot name="header"/>
         </header>
         <main class="modal--body" v-if="!!$slots.default">
-            <slot></slot>
+            <slot/>
         </main>
         <footer class="modal--footer" v-if="!!$slots.footer">
-            <slot name="footer"></slot>
+            <slot name="footer"/>
         </footer>
     </div>
 </template>
@@ -29,7 +29,9 @@
             bemMixin('modal'),
         ],
         methods: {
-            ...mapActions('overlay', ['closeOverlay']),
+            onCloseRequested() {
+                this.$emit('modal:close');
+            },
         },
     };
 </script>
