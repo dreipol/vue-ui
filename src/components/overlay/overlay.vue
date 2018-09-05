@@ -10,11 +10,10 @@
                 <div class="overlay--display">
                     <div class="overlay--wrap-outer">
                         <div class="overlay--wrap-inner">
-                            <div class="overlay--backdrop-click-area"
-                                    @click.prevent="closeOverlay({ id })"></div>
+                            <div class="overlay--backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
                             <div class="overlay--container">
                                 <div class="overlay--revealer">
-                                    <cmp-modal :facets="overlay.facets">
+                                    <cmp-modal :facets="overlay.facets" @modal:close="closeOverlay({ id })">
                                         <component slot :is="overlay.component" v-bind="overlay.props"/>
                                     </cmp-modal>
                                 </div>
