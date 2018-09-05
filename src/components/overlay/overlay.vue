@@ -8,15 +8,14 @@
             <div class="overlay--root" v-if="overlay.isOpen" :key="overlay.timestamp">
                 <div class="overlay--backdrop"></div>
                 <div class="overlay--display">
-                    <div class="overlay--wrap-outer">
+                    <div class="overlay--wrap-outer" :style="overlayScrollLockStyles">
                         <div class="overlay--wrap-inner">
-                            <div class="overlay--backdrop-click-area"
-                                    @click.prevent="closeOverlay({ id })"></div>
+                            <div class="overlay--backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
                             <div class="overlay--container">
                                 <div class="overlay--revealer">
-                                    <cmp-modal :facets="overlay.facets">
+                                    <ui-modal :facets="overlay.facets" @modal:close="closeOverlay({ id })">
                                         <component slot :is="overlay.component" v-bind="overlay.props"/>
-                                    </cmp-modal>
+                                    </ui-modal>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +29,7 @@
 <script>
     import { mapActions, mapGetters, mapState } from 'vuex';
     import bemMixin from '../../mixins/bem';
-    import Modal from '../modal/modal.vue';
+    import UiModal from '../modal/modal.vue';
     import scrollLockHelperMixin from '../../mixins/scroll-lock-helper';
 
 
@@ -40,7 +39,7 @@
             scrollLockHelperMixin,
         ],
         components: {
-            'cmp-modal': Modal,
+            UiModal,
         },
         props: {
             id: {
@@ -50,6 +49,7 @@
         },
         data() {
             return {
+                hasDisabledScroll: null,
                 autoCloseTimeout: null,
             };
         },
@@ -67,6 +67,9 @@
             },
             overlay() {
                 return this.overlays[this.id] || {};
+            },
+            overlayScrollLockStyles() {
+                return this.hasDisabledScroll ? {} : this.scrollLockStyles;
             },
         },
         methods: {
@@ -86,6 +89,7 @@
                 }, autoClose.delay || 0);
             },
             onEnterHook() {
+                this.hasDisabledScroll = this.overlay.disableScroll;
                 this.overlay.disableScroll && this.disableScroll({ isLocked: true });
             },
             onAfterEnterHook() {

@@ -1,6 +1,6 @@
 export interface IOverlay {
     id: string;
-    transition: string;
+    transition?: string;
     isOpen?: boolean;
     facets?: string[];
     disableScroll?: boolean;

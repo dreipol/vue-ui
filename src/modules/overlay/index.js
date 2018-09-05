@@ -7,7 +7,6 @@ import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMO
 import * as actions from './actions';
 import * as getters from './getters';
 
-
 export const DEFAULT_OPENING_STATE = {
     isOpen: true,
     facets: ['base'],
@@ -79,7 +78,6 @@ const mutations = {
 const state = {
     overlays: {},
 };
-
 
 export default {
     namespaced: true,
