@@ -112,13 +112,13 @@ describe('Overlay spec', () => {
                 await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'bar' } });
 
                 const [mountOverlayEventArgs, openOverlayEventArgs] = commit.args;
-                const [openOverlayEventMutationType, openOverlayEventOverlayData] = openOverlayEventArgs;
+                const [openOverlayEventMutationType, openOverlayEventData] = openOverlayEventArgs;
 
                 expect(mountOverlayEventArgs).to.be.deep.equal([MOUNT_OVERLAY, { id: 'foo' }]);
                 expect(openOverlayEventMutationType).to.be.equal(OPEN_OVERLAY);
 
-                expect(openOverlayEventOverlayData.props.title).to.to.not.be.undefined;
-                expect(openOverlayEventOverlayData.props.title).to.be.equal('bar', 'The payload was properly forwarded');
+                expect(openOverlayEventData.props.title).to.to.not.be.undefined;
+                expect(openOverlayEventData.props.title).to.be.equal('bar', 'The payload was properly forwarded');
             });
 
             it('Opening the same overlay twice will not dispatch the mounting mutation again', async function() {
@@ -131,12 +131,12 @@ describe('Overlay spec', () => {
 
                 await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'baz' } });
 
-                const [openOverlayEventMutationType, openOverlayEventOverlayData] = commit.args[0];
+                const [openOverlayEventMutationType, openOverlayEventData] = commit.args[0];
 
                 expect(commit.args).to.have.length(1);
                 expect(openOverlayEventMutationType).to.be.equal(OPEN_OVERLAY);
-                expect(openOverlayEventOverlayData.props.title).to.to.not.be.undefined;
-                expect(openOverlayEventOverlayData.props.title).to.be.equal('baz', 'The payload was properly forwarded');
+                expect(openOverlayEventData.props.title).to.to.not.be.undefined;
+                expect(openOverlayEventData.props.title).to.be.equal('baz', 'The payload was properly forwarded');
             });
         });
 
