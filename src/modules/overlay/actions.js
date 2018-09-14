@@ -3,8 +3,8 @@ import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMO
 
 /**
  * Trigger close action for an overlay
- * @param {Object} context - A vuex action context
- * @param {Object} payload - A vuex action payload
+ * @param {object} context - A vuex action context
+ * @param {object} payload - A vuex action payload
  * @return {Promise} promise resolved once the last overlay commit will be dispatched
  */
 export function openOverlay({ commit, state }, payload) {
@@ -30,8 +30,8 @@ export function openOverlay({ commit, state }, payload) {
 
 /**
  * Trigger close action for an overlay
- * @param {Object} context - A vuex action context
- * @param {Object} payload - A vuex action payload
+ * @param {object} context - A vuex action context
+ * @param {object} payload - A vuex action payload
  * @return {Promise} promise resolved once the last overlay commit will be dispatched
  */
 export function closeOverlay({ commit, state }, { id, transition } = {}) {
