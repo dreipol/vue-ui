@@ -6,8 +6,8 @@
   "jsnext:main": "dist/index.esm.js",
   "scripts": {
     "prepare": "npm run build && npm test",
-    "lint": "eslint ./src test rollup.config.js",
-    "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit src test rollup.config.js > reports/eslint.xml",
+    "lint": "eslint ./src ./test rollup.config.js",
+    "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit ./src ./test rollup.config.js > reports/eslint.xml",
     "cov": "nyc report --reporter=text-lcov | coveralls",
     "cov-html": "nyc report --reporter html --report-dir reports/coverage",
     "build": "rollup -c",
