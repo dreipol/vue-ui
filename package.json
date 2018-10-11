@@ -6,8 +6,8 @@
   "jsnext:main": "dist/index.esm.js",
   "scripts": {
     "prepare": "npm run build && npm test",
-    "lint": "eslint src test rollup.config.js",
-    "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit src test rollup.config.js > reports/eslint.xml",
+    "lint": "eslint ./src ./test rollup.config.js",
+    "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit ./src ./test rollup.config.js > reports/eslint.xml",
     "cov": "nyc report --reporter=text-lcov | coveralls",
     "cov-html": "nyc report --reporter html --report-dir reports/coverage",
     "build": "rollup -c",
@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/dreipol/vue-ui#readme",
   "devDependencies": {
-    "@dreipol/eslint-config": "^4.1.0",
+    "@dreipol/eslint-config": "^5.0.0",
     "@vue/test-utils": "^1.0.0-beta.24",
     "babel-eslint": "^8.2.3",
     "chai": "^4.1.2",

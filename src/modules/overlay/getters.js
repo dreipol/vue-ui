@@ -1,7 +1,7 @@
 /**
  * Search an object by a search function
- * @param {Object[]} overlays - The list of overlays
- * @param {Function} fn - The search function
+ * @param {object[]} overlays - The list of overlays
+ * @param {function} fn - The search function
  * @return {boolean} The resulting flag
  */
 function some(overlays, fn) {
@@ -11,7 +11,7 @@ function some(overlays, fn) {
 
 /**
  * Check whether there are any open overlays
- * @param {Object} state - The vuex state object
+ * @param {object} state - The vuex state object
  * @return {boolean} The resulting flag
  */
 export const hasOpenOverlays = state => {
@@ -21,7 +21,7 @@ export const hasOpenOverlays = state => {
 
 /**
  * Check whether there are any overlays that lock global scrolling
- * @param {Object} state - The vuex state object
+ * @param {object} state - The vuex state object
  * @return {boolean} The resulting flag
  */
 export const hasScrollLockingOverlays = state => {
