@@ -1,5 +1,5 @@
 <template>
-    <div :class="bemRoot">
+    <div :class="elementClass">
         <slot/>
     </div>
 </template>
@@ -12,7 +12,7 @@
     export default {
         mixins: [bemMixin('')],
         props: {
-            bemRoot: {
+            elementClass: {
                 type: String,
                 required: true,
             },
@@ -21,13 +21,13 @@
         mounted() {
             const headroom = new Headroom(this.$el, {
                 classes: {
-                    initial: this.bemRoot,
-                    pinned: this.bemAdd('pinned', null, this.bemRoot),
-                    unpinned: this.bemAdd('unpinned', null, this.bemRoot),
-                    top: this.bemAdd('top', null, this.bemRoot),
-                    notTop: this.bemAdd('not-top', null, this.bemRoot),
-                    bottom: this.bemAdd('bottom', null, this.bemRoot),
-                    notBottom: this.bemAdd('not-bottom', null, this.bemRoot),
+                    initial: this.elementClass,
+                    pinned: this.bemAdd('pinned', null, this.elementClass),
+                    unpinned: this.bemAdd('unpinned', null, this.elementClass),
+                    top: this.bemAdd('top', null, this.elementClass),
+                    notTop: this.bemAdd('not-top', null, this.elementClass),
+                    bottom: this.bemAdd('bottom', null, this.elementClass),
+                    notBottom: this.bemAdd('not-bottom', null, this.elementClass),
                 },
             });
             headroom.init();

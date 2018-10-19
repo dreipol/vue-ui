@@ -36,7 +36,7 @@ You have to style them on your own!
 Example Usage
 
 ```html
-    <scroll-reveal bem-root="reduced-nav">
+    <scroll-reveal element-class="reduced-nav">
         <main-header />
     </scroll-reveal>
 ```
