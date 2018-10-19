@@ -8,7 +8,7 @@ export const DEFAULT_OPTIONS = Object.freeze({
  * Arraify facets in order to use single or multiple facets in a react component
  * @param {string} blockName - facet root class
  * @param {Array} facets - the facets we want to apply to the component
- * @param {Object} options - see the DEFAULT_OPTIONS above
+ * @param {object} options - see the DEFAULT_OPTIONS above
  * @return {Array} array of the facets to apply to the react node
  */
 export function mapFacets(blockName, facets, options = DEFAULT_OPTIONS) {
@@ -34,7 +34,7 @@ export function mapFacets(blockName, facets, options = DEFAULT_OPTIONS) {
  * @param {string} blockName - root class name
  * @param {string} modifierName - facet or modifier property
  * @param {string} elementName - optional child bem selector
- * @param {Object} options - see the DEFAULT_OPTIONS above
+ * @param {object} options - see the DEFAULT_OPTIONS above
  * @return {string} a valid BEM class
  */
 export function createBemClass({ blockName, modifierName, elementName, bemModifierMarker, bemElementMarker }) {

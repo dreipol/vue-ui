@@ -3,43 +3,41 @@ import isNil from 'lodash.isnil';
 import omitBy from 'lodash.omitby';
 import Vue from 'vue';
 
-import * as types from './mutation-types';
+import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
 import * as actions from './actions';
 import * as getters from './getters';
 
-
-const DEFAULT_OPENING_STATE = {
+export const DEFAULT_OPENING_STATE = {
     isOpen: true,
     facets: ['base'],
     transition: 'trs-overlay-fade',
     disableScroll: true,
-    autoClose: false,
+    autoClose: null,
     component: null,
     props: {},
 };
 
-const DEFAULT_CLOSING_STATE = {
+export const DEFAULT_CLOSING_STATE = {
     isOpen: false,
     facets: ['base'],
     transition: 'trs-overlay-fade',
     disableScroll: false,
-    autoClose: false,
+    autoClose: null,
     component: null,
     props: {},
 };
-
 
 /**
  * The mutations available in the module
  */
 const mutations = {
-    [types.MOUNT_OVERLAY](state, { id }) {
+    [MOUNT_OVERLAY](state, { id }) {
         Vue.set(state.overlays, id, cloneDeep(DEFAULT_CLOSING_STATE));
     },
-    [types.UNMOUNT_OVERLAY](state, { id }) {
+    [UNMOUNT_OVERLAY](state, { id }) {
         Vue.delete(state.overlays, id);
     },
-    [types.OPEN_OVERLAY](state, payload) {
+    [OPEN_OVERLAY](state, payload) {
         const mutation = {
             ...cloneDeep(DEFAULT_OPENING_STATE),
             ...omitBy(payload, isNil),
@@ -47,7 +45,7 @@ const mutations = {
 
         Vue.set(state.overlays, payload.id, mutation);
     },
-    [types.PREPARE_CLOSE_OVERLAY](state, payload) {
+    [PREPARE_CLOSE_OVERLAY](state, payload) {
         const overlay = state.overlays[payload.id];
 
         if (!overlay) {
@@ -62,7 +60,7 @@ const mutations = {
         Vue.set(overlay, 'transition', transition);
         Vue.set(overlay, 'disableScroll', disableScroll);
     },
-    [types.CLOSE_OVERLAY](state, payload) {
+    [CLOSE_OVERLAY](state, payload) {
         const { facets } = state.overlays[payload.id];
         const mutation = {
             ...cloneDeep(DEFAULT_CLOSING_STATE),
@@ -80,7 +78,6 @@ const mutations = {
 const state = {
     overlays: {},
 };
-
 
 export default {
     namespaced: true,

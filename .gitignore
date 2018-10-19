@@ -38,6 +38,12 @@ jspm_packages
 
 # generated files
 /dist/index.js
+/dist/index.esm.js
+.reify-cache/
+
+# nyc test coverage
+.nyc_output
+reports
 
 # editor files
 .idea

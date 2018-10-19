@@ -3,20 +3,19 @@
         <transition :name="overlay.transition"
                 mode="out-in"
                 @enter="onEnterHook"
-                @afterEnter="onAfterEnterHook"
-                @afterLeave="onAfterLeaveHook">
+                @after-enter="onAfterEnterHook"
+                @after-leave="onAfterLeaveHook">
             <div class="overlay--root" v-if="overlay.isOpen" :key="overlay.timestamp">
                 <div class="overlay--backdrop"></div>
                 <div class="overlay--display">
-                    <div class="overlay--wrap-outer">
+                    <div class="overlay--wrap-outer" :style="overlayScrollLockStyles">
                         <div class="overlay--wrap-inner">
-                            <div class="overlay--backdrop-click-area"
-                                    @click.prevent="closeOverlay({ id })"></div>
+                            <div class="overlay--backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
                             <div class="overlay--container">
                                 <div class="overlay--revealer">
-                                    <cmp-modal :facets="overlay.facets">
+                                    <ui-modal :facets="overlay.facets" @modal:close="closeOverlay({ id })">
                                         <component slot :is="overlay.component" v-bind="overlay.props"/>
-                                    </cmp-modal>
+                                    </ui-modal>
                                 </div>
                             </div>
                         </div>
@@ -30,6 +29,7 @@
 <script>
     import { mapActions, mapGetters, mapState } from 'vuex';
     import bemMixin from '../../mixins/bem';
+    import UiModal from '../modal/modal.vue';
     import scrollLockHelperMixin from '../../mixins/scroll-lock-helper';
 
 
@@ -38,6 +38,9 @@
             bemMixin('overlay'),
             scrollLockHelperMixin,
         ],
+        components: {
+            UiModal,
+        },
         props: {
             id: {
                 type: String,
@@ -46,6 +49,7 @@
         },
         data() {
             return {
+                hasDisabledScroll: null,
                 autoCloseTimeout: null,
             };
         },
@@ -64,10 +68,13 @@
             overlay() {
                 return this.overlays[this.id] || {};
             },
+            overlayScrollLockStyles() {
+                return this.hasDisabledScroll ? {} : this.scrollLockStyles;
+            },
         },
         methods: {
             ...mapActions('scroll', ['disableScroll']),
-            ...mapActions('overlay', ['closeOverlay']),
+            ...mapActions('overlay', ['closeOverlay', 'unmountOverlay']),
             setAutoClose() {
                 const { autoClose, id } = this.overlay;
 
@@ -82,15 +89,20 @@
                 }, autoClose.delay || 0);
             },
             onEnterHook() {
+                this.hasDisabledScroll = this.overlay.disableScroll;
                 this.overlay.disableScroll && this.disableScroll({ isLocked: true });
             },
             onAfterEnterHook() {
                 this.setAutoClose();
             },
             onAfterLeaveHook() {
-                const { onAfterClose } = this.overlay;
-                onAfterClose && onAfterClose();
-                !this.hasScrollLockingOverlays && this.disableScroll({ isLocked: false });
+                if (!this.overlay.isOpen) {
+                    this.unmountOverlay(this.overlay);
+                }
+
+                if (!this.hasScrollLockingOverlays) {
+                    this.disableScroll({ isLocked: false });
+                }
             },
         },
     };
