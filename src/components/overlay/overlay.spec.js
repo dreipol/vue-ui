@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import { expect } from 'chai';
-import { Overlay } from '../../../';
+import { Overlay } from './Overlay.vue';
 import Vuex from 'vuex';
 import cloneDeep from 'lodash.clonedeep';
 import overalyModule from '../../modules/overlay';
