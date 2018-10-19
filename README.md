@@ -19,28 +19,32 @@ Purpose
     ```bash
     npm install -S @dreipol/vue-ui
     ```
+    
 ## Components
 ### `scroll-reveal`
 Reveals the component passed by the slot while scrolling upwards and hides it when scrolling down.
 You have to set the `bemRoot` prop. This prop is bem root class. `scroll-reveal` will add interfaces such as 
 - `&__pinned`
 - `&__unpinned`
-- `&__on-top`
-- `&_not-on-top`
-- `&__on-bottom`
-- `&__not-on-bottom`
+- `&__top`
+- `&_not-top`
+- `&__bottom`
+- `&__not-bottom`
 
 You have to style them on your own!
 
 Example Usage
 
+```html
     <scroll-reveal bem-root="reduced-nav">
         <main-header />
     </scroll-reveal>
-    
+```
+   
 
 Example SCSS
 
+```scss
     & {
         position: fixed;
         top: -80px;
@@ -48,11 +52,11 @@ Example SCSS
         transition: top 200ms ease-in-out;
     }
     
-    &.reduced-nav__on-top {
+    &.reduced-nav__top {
         display: none;
     }
     
-    &.reduced-nav__not-on-top {
+    &.reduced-nav__not-top {
         display: block;
     }
 
@@ -65,7 +69,7 @@ Example SCSS
         top: -80px;
         opacity: 0;
     }
-
+```
 
 ## Plugin config
 

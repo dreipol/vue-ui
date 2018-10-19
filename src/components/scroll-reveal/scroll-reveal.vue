@@ -7,8 +7,10 @@
 <script>
 
     import Headroom from 'headroom.js';
+    import bemMixin from '../../mixins/bem';
 
     export default {
+        mixins: [bemMixin('')],
         props: {
             bemRoot: {
                 type: String,
@@ -19,13 +21,13 @@
         mounted() {
             const headroom = new Headroom(this.$el, {
                 classes: {
-                    initial: `${ this.bemRoot }`,
-                    pinned: `${ this.bemRoot }__pinned`,
-                    unpinned: `${ this.bemRoot }__unpinned`,
-                    top: `${ this.bemRoot }__on-top`,
-                    notTop: `${ this.bemRoot }__not-on-top`,
-                    bottom: `${ this.bemRoot }__on-bottom`,
-                    notBottom: `${ this.bemRoot }__not-on-bottom`,
+                    initial: this.bemRoot,
+                    pinned: this.bemAdd('pinned', null, this.bemRoot),
+                    unpinned: this.bemAdd('unpinned', null, this.bemRoot),
+                    top: this.bemAdd('top', null, this.bemRoot),
+                    notTop: this.bemAdd('not-top', null, this.bemRoot),
+                    bottom: this.bemAdd('bottom', null, this.bemRoot),
+                    notBottom: this.bemAdd('not-bottom', null, this.bemRoot),
                 },
             });
             headroom.init();
