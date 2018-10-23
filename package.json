@@ -6,8 +6,8 @@
   "jsnext:main": "dist/index.esm.js",
   "scripts": {
     "prepare": "npm run build && npm test",
-    "lint": "eslint ./src test rollup.config.js",
-    "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit src test rollup.config.js > reports/eslint.xml",
+    "lint": "eslint ./src ./test rollup.config.js",
+    "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit ./src ./test rollup.config.js > reports/eslint.xml",
     "cov": "nyc report --reporter=text-lcov | coveralls",
     "cov-html": "nyc report --reporter html --report-dir reports/coverage",
     "build": "rollup -c",
@@ -56,6 +56,7 @@
     "vuex": "^3.0.1"
   },
   "dependencies": {
+    "headroom.js": "^0.9.4",
     "bianco.viewport": "0.0.5",
     "lodash.clamp": "^4.0.3",
     "lodash.clonedeep": "^4.5.0",

@@ -171,12 +171,7 @@ describe('Overlay spec', () => {
                 };
 
                 await actions.closeOverlay({ commit, state }, { id: 'foo' });
-
-                const [, closeOverlaysEvent] = commit.args;
-                const [, closeEventData] = closeOverlaysEvent;
-
-                // This can be called by vue components at any time
-                closeEventData.onAfterClose();
+                actions.unmountOverlay({ commit, state }, { id: 'foo' });
 
                 const [, , unmountOverlayEvent] = commit.args;
                 const [unmountOverlayEventMutationType, umountOverlayEventData] = unmountOverlayEvent;
@@ -197,8 +192,6 @@ describe('Overlay spec', () => {
 
                 const [, closeOverlaysEvent] = commit.args;
                 const [, closeEventData] = closeOverlaysEvent;
-
-                closeEventData.onAfterClose();
 
                 expect(closeEventData.transition).to.be.equal('my-cool-transition');
             });
