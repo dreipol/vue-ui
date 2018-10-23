@@ -20,6 +20,7 @@
 
         mounted() {
             const headroom = new Headroom(this.$el, {
+                ...this.$attrs,
                 classes: {
                     initial: this.elementClass,
                     pinned: this.bemAdd('pinned', null, this.elementClass),
