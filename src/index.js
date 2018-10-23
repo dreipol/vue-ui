@@ -22,6 +22,4 @@ export { default as ScrollReveal } from './components/scroll-reveal/scroll-revea
 
 export { default as interactionObserverMixin } from './mixins/intersection-observer';
 
-export { default as interactionObserverMixin } from './mixins/intersection-observer';
-
 export default plugin;
