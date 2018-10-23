@@ -3,8 +3,8 @@
         <transition :name="overlay.transition"
                 mode="out-in"
                 @enter="onEnterHook"
-                @afterEnter="onAfterEnterHook"
-                @afterLeave="onAfterLeaveHook">
+                @after-enter="onAfterEnterHook"
+                @after-leave="onAfterLeaveHook">
             <div class="overlay--root" v-if="overlay.isOpen" :key="overlay.timestamp">
                 <div class="overlay--backdrop"></div>
                 <div class="overlay--display">
@@ -74,7 +74,7 @@
         },
         methods: {
             ...mapActions('scroll', ['disableScroll']),
-            ...mapActions('overlay', ['closeOverlay']),
+            ...mapActions('overlay', ['closeOverlay', 'unmountOverlay']),
             setAutoClose() {
                 const { autoClose, id } = this.overlay;
 
@@ -96,9 +96,13 @@
                 this.setAutoClose();
             },
             onAfterLeaveHook() {
-                const { onAfterClose } = this.overlay;
-                onAfterClose && onAfterClose();
-                !this.hasScrollLockingOverlays && this.disableScroll({ isLocked: false });
+                if (!this.overlay.isOpen) {
+                    this.unmountOverlay(this.overlay);
+                }
+
+                if (!this.hasScrollLockingOverlays) {
+                    this.disableScroll({ isLocked: false });
+                }
             },
         },
     };

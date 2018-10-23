@@ -39,9 +39,6 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
         const mutation = {
             id,
             transition,
-            onAfterClose() {
-                commit(UNMOUNT_OVERLAY, { id });
-            },
         };
 
         if (!state.overlays[id]) {
@@ -57,4 +54,8 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
             resolve();
         });
     });
+}
+
+export function unmountOverlay({ commit }, { id }) {
+    commit(UNMOUNT_OVERLAY, { id });
 }
