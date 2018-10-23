@@ -40,10 +40,8 @@ export default {
          * @param {number|null} thresholdMax - maximal threshold trigger
          * @param {IRegistrationOptions} config - Config options
          */
-        registerObserver(element, thresholdMin, thresholdMax = null, config = {}) {
-            this.observerOptions = Object.assign({}, {
-                rootMargin: '0px 0px 0px 0px',
-            }, config);
+        registerObserver(element, thresholdMin, thresholdMax = null, config = { rootMargin: '0px 0px 0px 0px' }) {
+            this.observerOptions = config;
 
             if (typeof thresholdMax === 'object') {
                 config = thresholdMax;
