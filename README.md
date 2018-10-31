@@ -89,12 +89,12 @@ export default {
 
 ## Components
 
-### `intersection-observer`
+### `IntersectionObserverComponent`
 A simple implementation of the `intersectionObserverMixin`. It's a simple component that will emit events
 
 __Usage__
 ```js
-    import { IntersectionObserver } from '@dreipol/vue-ui';
+    import { IntersectionObserverComponent } from '@dreipol/vue-ui';
 ```
 
 __Props__
