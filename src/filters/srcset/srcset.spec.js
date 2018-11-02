@@ -1,34 +1,25 @@
 import { expect } from 'chai';
 import srcsetFilter from './index';
 
-describe('srcset Filter', () => {
+describe('srcset filter', () => {
     it('srcset with one image', () => {
-        const urls = [
-            'http://via.placeholder.com/400x400',
-        ];
+        const urls = ['foo'];
         const srcset = srcsetFilter(urls);
 
-        expect(srcset).to.be.equal(``);
+        expect(srcset).to.be.equal('');
     });
 
     it('srcset with two images', () => {
-        const urls = [
-            'http://via.placeholder.com/400x400',
-            'http://via.placeholder.com/800x800',
-        ];
+        const urls = ['bar', 'baz'];
         const srcset = srcsetFilter(urls);
 
-        expect(srcset).to.be.equal(`${ urls[0] } 1x, ${ urls[1] } 2x`);
+        expect(srcset).to.be.equal('bar 1x, baz 2x');
     });
 
     it('srcset with three images', () => {
-        const urls = [
-            'http://via.placeholder.com/400x400',
-            'http://via.placeholder.com/800x800',
-            'http://via.placeholder.com/1600x1600',
-        ];
+        const urls = ['qux', 'quux', 'quuz'];
         const srcset = srcsetFilter(urls);
 
-        expect(srcset).to.be.equal(`${ urls[0] } 1x, ${ urls[1] } 2x, ${ urls[2] } 3x`);
+        expect(srcset).to.be.equal('qux 1x, quux 2x, quuz 3x');
     });
 });
