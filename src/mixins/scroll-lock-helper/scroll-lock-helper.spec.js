@@ -30,11 +30,9 @@ function getDummyComponentProps(customOptions = {}) { // eslint-disable-line
     };
 }
 
-describe('Scroll Lock Helper Mixin', () => {
+describe('Scroll lock helper mixin', () => {
     describe('Computed properties', () => {
         it('Can read the scroll overlay flag', () => {
-            // const vm = new localVue(getDummyComponentProps());
-
             expect(true).to.be.not.undefined;
         });
     });

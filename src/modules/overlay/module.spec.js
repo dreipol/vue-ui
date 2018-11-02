@@ -109,7 +109,11 @@ describe('Overlay spec', () => {
                 const commit = spy();
                 const state = { overlays: {} };
 
-                await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'bar' } });
+                await actions.openOverlay({ commit, state }, {
+                    id: 'foo',
+                    component: { render: () => null },
+                    props: { title: 'bar' },
+                });
 
                 const [mountOverlayEventArgs, openOverlayEventArgs] = commit.args;
                 const [openOverlayEventMutationType, openOverlayEventData] = openOverlayEventArgs;
@@ -129,7 +133,11 @@ describe('Overlay spec', () => {
                     },
                 };
 
-                await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'baz' } });
+                await actions.openOverlay({ commit, state }, {
+                    id: 'foo',
+                    component: { render: () => null },
+                    props: { title: 'baz' },
+                });
 
                 const [openOverlayEventMutationType, openOverlayEventData] = commit.args[0];
 
@@ -171,12 +179,7 @@ describe('Overlay spec', () => {
                 };
 
                 await actions.closeOverlay({ commit, state }, { id: 'foo' });
-
-                const [, closeOverlaysEvent] = commit.args;
-                const [, closeEventData] = closeOverlaysEvent;
-
-                // This can be called by vue components at any time
-                closeEventData.onAfterClose();
+                actions.unmountOverlay({ commit, state }, { id: 'foo' });
 
                 const [, , unmountOverlayEvent] = commit.args;
                 const [unmountOverlayEventMutationType, umountOverlayEventData] = unmountOverlayEvent;
@@ -197,8 +200,6 @@ describe('Overlay spec', () => {
 
                 const [, closeOverlaysEvent] = commit.args;
                 const [, closeEventData] = closeOverlaysEvent;
-
-                closeEventData.onAfterClose();
 
                 expect(closeEventData.transition).to.be.equal('my-cool-transition');
             });
