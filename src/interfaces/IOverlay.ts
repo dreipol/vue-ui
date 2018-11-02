@@ -1,10 +1,10 @@
 export interface IOverlay {
     id: string;
+    component: string|object;
     transition?: string;
     isOpen?: boolean;
     facets?: string[];
     disableScroll?: boolean;
     autoClose?: object;
-    component?: string;
     props?: object;
 }

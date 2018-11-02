@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
     import Headroom from 'headroom.js';
     import bemMixin from '../../mixins/bem';
 
@@ -17,7 +16,6 @@
                 required: true,
             },
         },
-
         mounted() {
             const headroom = new Headroom(this.$el, {
                 ...this.$attrs,

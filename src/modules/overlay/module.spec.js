@@ -109,7 +109,11 @@ describe('Overlay spec', () => {
                 const commit = spy();
                 const state = { overlays: {} };
 
-                await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'bar' } });
+                await actions.openOverlay({ commit, state }, {
+                    id: 'foo',
+                    component: { render: () => null },
+                    props: { title: 'bar' },
+                });
 
                 const [mountOverlayEventArgs, openOverlayEventArgs] = commit.args;
                 const [openOverlayEventMutationType, openOverlayEventData] = openOverlayEventArgs;
@@ -129,7 +133,11 @@ describe('Overlay spec', () => {
                     },
                 };
 
-                await actions.openOverlay({ commit, state }, { id: 'foo', props: { title: 'baz' } });
+                await actions.openOverlay({ commit, state }, {
+                    id: 'foo',
+                    component: { render: () => null },
+                    props: { title: 'baz' },
+                });
 
                 const [openOverlayEventMutationType, openOverlayEventData] = commit.args[0];
 
