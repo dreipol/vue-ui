@@ -1,3 +1,4 @@
+/* eslint-disable  max-lines-per-function */
 import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
 import * as getters from './getters';
 import * as actions from './actions';

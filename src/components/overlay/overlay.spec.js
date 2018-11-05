@@ -2,9 +2,10 @@ import Overlay from './overlay.vue';
 import Vuex from 'vuex';
 import cloneDeep from 'lodash.clonedeep';
 import overalyModule from '../../modules/overlay';
+import { expect } from 'chai';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 
-const { expect } = chai;
-const { createLocalVue, shallowMount } = VueTestUtils;
+
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
