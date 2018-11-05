@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+
 const TEST_FILES_PATH = '../src/**/*.spec.js';
 
 module.exports = function(config) {
