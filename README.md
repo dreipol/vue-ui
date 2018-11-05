@@ -19,7 +19,7 @@ Purpose
     ```bash
     npm install -S @dreipol/vue-ui
     ```
-    
+
 ## Mixins
 ### `intersectionObserverMixin`
 [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
@@ -33,13 +33,13 @@ Now you can start observing an element by
 This methods accepts 4 parameters
 
 ```js
-    
+
     /**
     * @param {Element} element - Dom element
     * @param {number} thresholdMin - minimal threshold trigger
     * @param {number} thresholdMax - maximal threshold trigger
     * @param {Object} config - Config options
-    */ 
+    */
     registerObserver(element, thresholdMin, thresholdMax = null, config = {})
 ```
 
@@ -74,11 +74,11 @@ export default {
             this.setNavVisibility({ isVisible: false });
         },
     },
-    
+
     beforeDestroy(){
         this.unregister(this.$refs.mainNavBar.$el);
     },
-        
+
     mounted() {
         this.registerObserver(this.$el, 0.1);
     },
@@ -99,9 +99,9 @@ __Usage__
 
 __Props__
 
-| Name | Type | Default | 
-| --- | --- | ---| 
-|`thresholdMin` |Number| 0.1 | 
+| Name | Type | Default |
+| --- | --- | ---|
+|`thresholdMin` |Number| 0.1 |
 |`thresholdMax` |Number| null|
 
 __Events__
@@ -121,7 +121,7 @@ __Example__
 
 ### `scroll-reveal`
 Reveals the component passed by the slot while scrolling upwards and hides it when scrolling down.
-You have to set the `bemRoot` prop. This prop is bem root class. `scroll-reveal` will add interfaces such as 
+You have to set the `bemRoot` prop. This prop is bem root class. `scroll-reveal` will add interfaces such as
 - `&__pinned`
 - `&__unpinned`
 - `&__top`
@@ -138,7 +138,7 @@ Example Usage
         <main-header />
     </scroll-reveal>
 ```
-   
+
 
 Example SCSS
 
@@ -149,11 +149,11 @@ Example SCSS
         height: 80px;
         transition: top 200ms ease-in-out;
     }
-    
+
     &.reduced-nav__top {
         display: none;
     }
-    
+
     &.reduced-nav__not-top {
         display: block;
     }
