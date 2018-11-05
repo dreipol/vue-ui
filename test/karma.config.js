@@ -1,14 +1,22 @@
+const TEST_FILES_PATH = '../src/**/*.spec.js';
+
 module.exports = function(config) {
     config.set({
         basePath: '',
         autoWatch: true,
         frameworks: ['mocha'],
         files: [
+            // Unit test tools
             '../node_modules/chai/chai.js',
             '../node_modules/sinon/pkg/sinon.js',
             '../node_modules/sinon-chai/lib/sinon-chai.js',
-            '../test/runner.js',
-            '../src/**/*.spec.js',
+            // Vue Specific dependencies
+            '../node_modules/vue/dist/vue.js',
+            '../node_modules/vuex/dist/vuex.js',
+            '../node_modules/lodash/lodash.js',
+            '../node_modules/vue-template-compiler/browser.js',
+            '../node_modules/@vue/test-utils/dist/vue-test-utils.umd.js',
+            TEST_FILES_PATH,
         ],
         customLaunchers: {
             ChromeHeadlessNoSandbox: {
@@ -17,24 +25,44 @@ module.exports = function(config) {
             },
         },
         browsers: ['ChromeHeadlessNoSandbox'],
-        reporters: ['progress'],
+        reporters: [
+            'progress',
+            /* the coverage doesn't work 100% yet :( 'coverage' */
+        ],
         preprocessors: {
-            '../test/runner.js': ['rollup'],
-            '../src/**/*.spec.js': ['rollup'],
+            [TEST_FILES_PATH]: ['rollup'],
         },
         rollupPreprocessor: {
+            external: ['vue', 'vuex', '@vue/test-utils', 'lodash', 'chai', 'sinon'],
             plugins: [
                 require('rollup-plugin-node-resolve')({
-                    jsnext: true,
                     browser: true,
+                    next: true,
                 }),
                 require('rollup-plugin-vue').default(),
                 require('rollup-plugin-buble')({
                     objectAssign: 'Object.assign',
                 }),
+                require('rollup-plugin-replace')({
+                    'process.env.NODE_ENV': JSON.stringify('production'),
+                }),
                 require('rollup-plugin-commonjs')(),
+                require('rollup-plugin-istanbul')({
+                    exclude: [
+                        'node_modules/**/*',
+                        TEST_FILES_PATH,
+                    ],
+                }),
             ],
             output: {
+                globals: {
+                    vue: 'Vue',
+                    vuex: 'Vuex',
+                    lodash: 'lodash',
+                    chai: 'chai',
+                    sinon: 'sinon',
+                    '@vue/test-utils': 'VueTestUtils',
+                },
                 format: 'iife',
                 sourcemap: 'inline',
             },
@@ -53,9 +81,10 @@ module.exports = function(config) {
             reporters: [{
                 type: 'lcov',
                 subdir: 'report-lcov',
+            }, {
+                type: 'html',
             }],
         },
-
         singleRun: true,
     });
 };

@@ -9,7 +9,10 @@
   },
   "globals": {
     "Vue": true,
-    "globals": true
+    "globals": true,
+    "chai": true,
+    "sinon": true,
+    "VueTestUtils": true
   },
   "rules": {
     "camelcase": [
@@ -19,11 +22,15 @@
       }
     ]
   },
-  "overrides": [{
-    "files": ["*.spec.js"],
-    "rules": {
-      "no-unused-expressions": "off",
-      "max-nested-callbacks": "off"
+  "overrides": [
+    {
+      "files": [
+        "*.spec.js"
+      ],
+      "rules": {
+        "no-unused-expressions": "off",
+        "max-nested-callbacks": "off"
+      }
     }
-  }]
+  ]
 }

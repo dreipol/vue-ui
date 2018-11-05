@@ -21,7 +21,6 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
     import bemMixin from '../../mixins/bem';
 
     export default {

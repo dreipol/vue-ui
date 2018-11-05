@@ -1,5 +1,5 @@
+import bgImageFilter from './';
 import { expect } from 'chai';
-import bgImageFilter from './index';
 
 describe('bgImage filter', () => {
     it('Create style object', () => {
