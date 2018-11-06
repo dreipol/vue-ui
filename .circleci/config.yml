@@ -30,6 +30,7 @@ jobs:
           mkdir -p reports
           npm run ci-test-lint
 
+# See also https://github.com/gotwarlost/istanbul/issues/602
 #    - run:
 #        name: coverage
 #        environment:

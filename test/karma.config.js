@@ -29,6 +29,7 @@ module.exports = function(config) {
         browsers: ['ChromeHeadlessNoSandbox'],
         reporters: [
             'progress',
+            // https://github.com/gotwarlost/istanbul/issues/602
             /* the coverage doesn't work 100% yet :( 'coverage' */
         ],
         preprocessors: {
