@@ -3,9 +3,9 @@ engines:
     enabled: true
 
 exclude_patterns:
-  - test
-  - dist
+  - "test"
+  - "**/*.spec.js"
 
 ratings:
   paths:
-    - src
+    - "src"
