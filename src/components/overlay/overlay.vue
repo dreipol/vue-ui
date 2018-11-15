@@ -47,8 +47,8 @@
             };
         },
         computed: {
-            ...mapState('overlay', ['overlays']),
-            ...mapGetters('overlay', ['hasScrollLockingOverlays']),
+            ...mapState('vue-ui/overlay', ['overlays']),
+            ...mapGetters('vue-ui/overlay', ['hasScrollLockingOverlays']),
             rootClasses() {
                 const { facets } = this.overlay;
 
@@ -74,8 +74,8 @@
             },
         },
         methods: {
-            ...mapActions('scroll', ['disableScroll']),
-            ...mapActions('overlay', ['closeOverlay', 'unmountOverlay']),
+            ...mapActions('vue-ui/scroll', ['disableScroll']),
+            ...mapActions('vue-ui/overlay', ['closeOverlay', 'unmountOverlay']),
             setAutoClose() {
                 const { autoClose, id } = this.overlay;
 

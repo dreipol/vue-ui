@@ -10,8 +10,8 @@ export default {
         };
     },
     computed: {
-        ...mapGetters('scroll', ['hasScrollLockingOverlays']),
-        ...mapState('scroll', ['scrollbarWidth']),
+        ...mapGetters('vue-ui/scroll', ['hasScrollLockingOverlays']),
+        ...mapState('vue-ui/scroll', ['scrollbarWidth']),
         scrollLockStyles() {
             return {
                 [this.scrollLockHelperStyleProp]: (this.hasScrollLockingOverlays ? `${ this.scrollbarWidth }px` : ''),

@@ -14,19 +14,19 @@ export default {
         };
     },
     computed: {
-        ...mapState('scroll', ['position', 'scrollbarWidth', 'isLocked']),
+        ...mapState('vue-ui/scroll', ['position', 'scrollbarWidth', 'isLocked']),
     },
     methods: {
-        ...mapActions('scroll', ['setScroll']),
+        ...mapActions('vue-ui/scroll', ['setScroll']),
         throttledSetScroll: throttle(() => this.setScroll(), 100),
     },
     mounted() {
         this.setScroll();
         document.documentElement.classList.add(ROOT_CLASS);
-        window.addEventListener('scroll', this.throttledSetScroll);
+        window.addEventListener('vue-ui/scroll', this.throttledSetScroll);
     },
     beforeDestroy() {
-        window.removeEventListener('scroll', this.throttledSetScroll);
+        window.removeEventListener('vue-ui/scroll', this.throttledSetScroll);
     },
     watch: {
         $route: {
