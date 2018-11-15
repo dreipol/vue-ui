@@ -1,4 +1,4 @@
-import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
+import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY, UPDATE_OVERLAY } from '../mutation-types';
 
 /**
  * Trigger close action for an overlay
@@ -24,6 +24,15 @@ export function openOverlay({ commit, state }, payload) {
             resolve();
         });
     });
+}
+
+/**
+ * Trigger update action for an overlay
+ * @param {object} context - A vuex action context
+ * @param {object} payload - A vuex action payload
+ */
+export function updateOverlay({ commit }, { id, props }) {
+    commit(UPDATE_OVERLAY, { id, props });
 }
 
 /**

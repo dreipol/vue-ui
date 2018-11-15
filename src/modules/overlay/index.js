@@ -3,7 +3,7 @@ import isNil from 'lodash.isnil';
 import omitBy from 'lodash.omitby';
 import Vue from 'vue';
 
-import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
+import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY, UPDATE_OVERLAY } from '../mutation-types';
 import * as actions from './actions';
 import * as getters from './getters';
 
@@ -44,6 +44,20 @@ const mutations = {
         };
 
         Vue.set(state.overlays, payload.id, mutation);
+    },
+    [UPDATE_OVERLAY](state, payload) {
+        const overlay = state.overlays[payload.id];
+
+        if (!overlay) {
+            throw Error(`The given overlay "${ payload.id }" was not found!`);
+        }
+
+        Vue.set(overlay, 'props', {
+            ...state.overlays[payload.id].props,
+            ...payload.props,
+        });
+
+        console.log(state.overlays[payload.id].props);
     },
     [PREPARE_CLOSE_OVERLAY](state, payload) {
         const overlay = state.overlays[payload.id];
