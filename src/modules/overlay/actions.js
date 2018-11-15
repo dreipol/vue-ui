@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
 
 /**
@@ -20,9 +19,8 @@ export function openOverlay({ commit, state }, payload) {
             timestamp: Date.now(),
         };
 
-        Vue.nextTick(() => {
+        setTimeout(() => {
             commit(OPEN_OVERLAY, mutation);
-
             resolve();
         });
     });
@@ -48,9 +46,8 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
 
         commit(PREPARE_CLOSE_OVERLAY, { id, transition });
 
-        Vue.nextTick(() => {
+        setTimeout(() => {
             commit(CLOSE_OVERLAY, mutation);
-
             resolve();
         });
     });
