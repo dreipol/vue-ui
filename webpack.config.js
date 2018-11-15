@@ -27,7 +27,6 @@ module.exports = {
                     loader: 'babel-loader',
                 },
             },
-            // ... other rules
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
@@ -35,7 +34,6 @@ module.exports = {
         ],
     },
     plugins: [
-        // make sure to include the plugin!
         new VueLoaderPlugin(),
     ],
 };
