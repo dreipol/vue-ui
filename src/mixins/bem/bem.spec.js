@@ -1,6 +1,6 @@
+import bemMixin from './';
 import { expect } from 'chai';
 import { createLocalVue } from '@vue/test-utils';
-import bemMixin from './';
 
 const localVue = createLocalVue();
 

@@ -7,10 +7,11 @@ import { DISABLE_SCROLL, SET_SCROLL } from '../mutation-types';
  */
 export function setScroll({ commit }) {
     const position = scrollTop();
+    const average = position / (documentHeight() - window.innerHeight);
 
     commit(SET_SCROLL, {
         position,
-        progress: +clamp(position / (documentHeight() - window.innerHeight), 0, 1).toFixed(2),
+        progress: +clamp(isNaN(average) ? 0 : average, 0, 1).toFixed(2),
         scrollbarWidth: scrollbarWidth(),
     });
 }

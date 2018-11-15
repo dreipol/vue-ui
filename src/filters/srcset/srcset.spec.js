@@ -1,5 +1,5 @@
+import srcsetFilter from './';
 import { expect } from 'chai';
-import srcsetFilter from './index';
 
 describe('srcset filter', () => {
     it('srcset with one image', () => {

@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/node:10
+    - image: circleci/node:9.8.0-browsers
 
     working_directory: ~/repo
 
@@ -34,9 +34,7 @@ jobs:
         name: coverage
         environment:
           COVERALLS_REPO_TOKEN: "9tBxvG8hoJroIbSNdMMNY9kNKTFVgVhQd"
-        command: |
-          npm run cov
-          npm run cov-html
+        command: npm run coveralls
 
     - store_test_results:
         path: reports

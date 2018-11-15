@@ -1,7 +1,7 @@
-import { createLocalVue } from '@vue/test-utils';
-import { expect } from 'chai';
 import Vuex from 'vuex';
 import scrollLockHelperMixin from './';
+import { expect } from 'chai';
+import { createLocalVue } from '@vue/test-utils';
 
 const localVue = createLocalVue();
 

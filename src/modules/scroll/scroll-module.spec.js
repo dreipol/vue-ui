@@ -1,8 +1,10 @@
+/* eslint-disable max-lines-per-function */
+import { DISABLE_SCROLL, SET_SCROLL } from '../mutation-types';
+import * as actions from './actions';
+import scrollModule from './';
+
 import { expect } from 'chai';
 import { spy } from 'sinon';
-import * as actions from './actions';
-import { DISABLE_SCROLL, SET_SCROLL } from '../mutation-types';
-import scrollModule from './index';
 
 describe('Scroll spec', () => {
     describe('Scroll default export', () => {
@@ -24,7 +26,11 @@ describe('Scroll spec', () => {
 
                 const [setScrollEventArgs] = commit.args;
 
-                expect(setScrollEventArgs).to.be.deep.equal([SET_SCROLL, { position: 0, progress: 0, scrollbarWidth: 0 }]);
+                expect(setScrollEventArgs).to.be.deep.equal([SET_SCROLL, {
+                    position: 0,
+                    progress: 0,
+                    scrollbarWidth: 15,
+                }]);
             });
         });
 
