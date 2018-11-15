@@ -1,5 +1,5 @@
 <template>
-    <div class="modal" :class="bemFacets">
+    <div class="modal">
         <div class="modal--close-wrap">
             <div class="modal--close">
                 <button class="modal--close-button" @click.prevent="onCloseRequested">
@@ -21,11 +21,8 @@
 </template>
 
 <script>
-    import bemMixin from '../../mixins/bem';
-
     export default {
         mixins: [
-            bemMixin('modal'),
         ],
         methods: {
             onCloseRequested() {

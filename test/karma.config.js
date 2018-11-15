@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 
 const TEST_FILES_PATH = '../src/**/*.spec.js';
+const webpackConfig = require('../webpack.config');
 
 module.exports = function(config) {
     config.set({
@@ -20,57 +21,17 @@ module.exports = function(config) {
             '../node_modules/@vue/test-utils/dist/vue-test-utils.umd.js',
             TEST_FILES_PATH,
         ],
-        customLaunchers: {
-            ChromeHeadlessNoSandbox: {
-                base: 'ChromeHeadless',
-                flags: ['--no-sandbox'],
-            },
-        },
-        browsers: ['ChromeHeadlessNoSandbox'],
+        plugins: [
+            'karma-*',
+        ],
+        browsers: ['ChromeHeadless'],
         reporters: [
             'progress',
-            // https://github.com/gotwarlost/istanbul/issues/602
-            /* the coverage doesn't work 100% yet :( 'coverage' */
+            'coverage',
         ],
         preprocessors: {
-            [TEST_FILES_PATH]: ['rollup'],
+            [TEST_FILES_PATH]: ['webpack'],
         },
-        rollupPreprocessor: {
-            external: ['vue', 'vuex', '@vue/test-utils', 'lodash', 'chai', 'sinon'],
-            plugins: [
-                require('rollup-plugin-node-resolve')({
-                    browser: true,
-                    next: true,
-                }),
-                require('rollup-plugin-vue').default(),
-                require('rollup-plugin-buble')({
-                    objectAssign: 'Object.assign',
-                }),
-                require('rollup-plugin-replace')({
-                    'process.env.NODE_ENV': JSON.stringify('production'),
-                }),
-                require('rollup-plugin-commonjs')(),
-                require('rollup-plugin-istanbul')({
-                    exclude: [
-                        'node_modules/**/*',
-                        TEST_FILES_PATH,
-                    ],
-                }),
-            ],
-            output: {
-                globals: {
-                    vue: 'Vue',
-                    vuex: 'Vuex',
-                    lodash: 'lodash',
-                    chai: 'chai',
-                    sinon: 'sinon',
-                    '@vue/test-utils': 'VueTestUtils',
-                },
-                format: 'iife',
-                sourcemap: 'inline',
-            },
-        },
-
         client: {
             mocha: {
                 timeout: 3000, // saucelab tests can be really really slow
@@ -78,7 +39,16 @@ module.exports = function(config) {
                 reporter: 'html',
             },
         },
-
+        webpack: {
+            ...webpackConfig,
+            entry: null,
+            output: null,
+            mode: 'development',
+            devtool: 'inline-source-map',
+        },
+        webpackMiddleware: {
+            noInfo: true,
+        },
         coverageReporter: {
             dir: '../coverage',
             reporters: [{
