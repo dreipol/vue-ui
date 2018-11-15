@@ -203,5 +203,5 @@ Example
 [npm-url]: https://npmjs.org/package/@dreipol/vue-ui
 [codeclimate-image]: https://api.codeclimate.com/v1/badges/fb8c4a8a6043d9e73f7f/maintainability
 [codeclimate-url]: https://codeclimate.com/github/dreipol/vue-ui/maintainability
-[coveralls-image]: https://coveralls.io/repos/github/dreipol/vue-ui/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/dreipol/vue-ui?branch=master
+[coveralls-image]: https://coveralls.io/repos/github/dreipol/vue-ui/badge.svg?branch=develop
+[coveralls-url]: https://coveralls.io/github/dreipol/vue-ui?branch=develop
