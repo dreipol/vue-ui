@@ -8,6 +8,7 @@
   "scripts": {
     "prepare": "npm run build && npm test",
     "lint": "npx eslint ./src ./test *.config.js",
+    "coveralls": "cat ./coverage/report-lcov/lcov.info | coveralls",
     "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit ./src ./test *.config.js > reports/eslint.xml",
     "build": "npx webpack --config webpack.config.js",
     "prepublish": "npm run build",
