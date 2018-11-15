@@ -1,18 +1,18 @@
 <template>
-    <div class="overlay">
+    <div class="ui-overlay">
         <transition mode="out-in"
                 :name="overlay.transition"
                 @enter="onEnterHook"
                 @after-enter="onAfterEnterHook"
                 @after-leave="onAfterLeaveHook">
-            <div class="overlay--root" v-if="overlay.isOpen" :key="overlay.timestamp">
-                <div class="overlay--backdrop"/>
-                <div class="overlay--display">
-                    <div class="overlay--wrap-outer" :style="overlayScrollLockStyles">
-                        <div class="overlay--wrap-inner">
-                            <div class="overlay--backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
-                            <div class="overlay--container">
-                                <div class="overlay--revealer">
+            <div class="ui-overlay--root" v-if="overlay.isOpen" :key="overlay.timestamp">
+                <div class="ui-overlay--backdrop"/>
+                <div class="ui-overlay--display">
+                    <div class="ui-overlay--wrap-outer" :style="overlayScrollLockStyles">
+                        <div class="ui-overlay--wrap-inner">
+                            <div class="ui-overlay--backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
+                            <div class="ui-overlay--container">
+                                <div class="ui-overlay--revealer">
                                     <component :is="overlay.component"
                                             v-bind="overlayProps"
                                             @modal:close="closeOverlay({ id })"/>

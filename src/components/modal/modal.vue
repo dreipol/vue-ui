@@ -1,20 +1,20 @@
 <template>
-    <div class="modal">
-        <div class="modal--close-wrap">
-            <div class="modal--close">
-                <button class="modal--close-button" @click.prevent="onCloseRequested">
+    <div class="ui-modal">
+        <div class="ui-modal--close-wrap">
+            <div class="ui-modal--close">
+                <button class="ui-modal--close-button" @click.prevent="onCloseRequested">
                     <!-- TODO: handle icons -->
                 </button>
             </div>
         </div>
 
-        <header class="modal--header" v-if="!!$slots.header">
+        <header class="ui-modal--header" v-if="!!$slots.header">
             <slot name="header"/>
         </header>
-        <main class="modal--body" v-if="!!$slots.default">
+        <main class="ui-modal--body" v-if="!!$slots.default">
             <slot/>
         </main>
-        <footer class="modal--footer" v-if="!!$slots.footer">
+        <footer class="ui-modal--footer" v-if="!!$slots.footer">
             <slot name="footer"/>
         </footer>
     </div>
@@ -26,7 +26,7 @@
         ],
         methods: {
             onCloseRequested() {
-                this.$emit('modal:close');
+                this.$emit('close');
             },
         },
     };
