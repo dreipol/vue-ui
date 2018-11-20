@@ -26,14 +26,14 @@
 </template>
 
 <script>
-    import UiActions from 'components/form/actions/actions.vue';
-    import bemMixin from 'mixins/bem';
-    import virtualTagsCount from 'util/virtual-tags-count';
-    import rootClassesMixin from 'mixins/form/root-classes';
-    import floatingLabelPropsMixin from 'mixins/form/floating-label-props';
-    import focusBehaviourMixin from 'mixins/form/focus-behaviour';
-    import currentValueMixin from 'mixins/form/current-value';
-    import hasErrorsPropsMixin from 'mixins/form/has-errors-props';
+    import UiActions from '../actions/actions.vue';
+    import bemMixin from '../../../mixins/bem';
+    import virtualTagsCount from '../../../util/virtual-tags-count';
+    import rootClassesMixin from '../../../mixins/form/root-classes';
+    import floatingLabelPropsMixin from '../../../mixins/form/floating-label-props';
+    import focusBehaviourMixin from '../../../mixins/form/focus-behaviour';
+    import currentValueMixin from '../../../mixins/form/current-value';
+    import hasErrorsPropsMixin from '../../../mixins/form/has-errors-props';
 
     const TEXTAREA_BORDER_WIDTH = 1;
     const TEXTAREA_MAX_HEIGHT = 240;

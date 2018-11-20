@@ -25,11 +25,11 @@
 </template>
 
 <script>
-    import UiIcon from 'components/icon/icon.vue';
-    import bemMixin from 'mixins/bem';
-    import rootClassesMixin from 'mixins/form/root-classes';
-    import isCheckedMixin from 'mixins/form/is-checked';
-    import hasErrorsPropsMixin from 'mixins/form/has-errors-props';
+    import UiIcon from '../../icon/icon.vue';
+    import bemMixin from '../../../mixins/bem';
+    import rootClassesMixin from '../../../mixins/form/root-classes';
+    import isCheckedMixin from '../../../mixins/form/is-checked';
+    import hasErrorsPropsMixin from '../../../mixins/form/has-errors-props';
 
     export default {
         components: {

@@ -25,13 +25,13 @@
 </template>
 
 <script>
-    import UiActions from 'components/form/actions/actions.vue';
-    import UiIcon from 'components/icon/icon.vue';
-    import virtualTagsCount from 'util/virtual-tags-count';
-    import bemMixin from 'mixins/bem';
-    import focusBehaviourMixin from 'mixins/form/focus-behaviour';
-    import rootClassesMixin from 'mixins/form/root-classes';
-    import hasErrorsPropsMixin from 'mixins/form/has-errors-props';
+    import UiActions from '../actions/actions.vue';
+    import UiIcon from '../../icon/icon.vue';
+    import virtualTagsCount from '../../../util/virtual-tags-count';
+    import bemMixin from '../../../mixins/bem';
+    import focusBehaviourMixin from '../../../mixins/form/focus-behaviour';
+    import rootClassesMixin from '../../../mixins/form/root-classes';
+    import hasErrorsPropsMixin from '../../../mixins/form/has-errors-props';
 
     export default {
         components: {

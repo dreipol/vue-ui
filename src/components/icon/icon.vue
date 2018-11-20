@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import bemMixin from 'mixins/bem';
+    import bemMixin from '../../mixins/bem';
 
     const PLACEHOLDER_SYMBOL = 'placeholder';
     const DEFAULT_SYMBOL_SIZE = 'default';
