@@ -1,8 +1,8 @@
 <template>
     <div class="form-field form-field__input form-field__select" :class="rootClasses">
         <label>
-            <div class="form-field--title-label" v-if="label">
-                {{ label }}
+            <div class="form-field--title-label" v-if="$slots.label">
+                <slot name="label"/>
             </div>
             <div class="form-field--input-container" :data-action-count="1">
                 <select class="form-field--input"
@@ -17,49 +17,39 @@
                             :selected="!value">
                         {{ placeholder }}
                     </option>
-                    <slot></slot>
+                    <slot mame="items"/>
                 </select>
-                <div class="form-field--actions">
-                    <span class="form-field--action form-field--action__arrow">
-                        <base-icon v-bind="icon"/>
-                    </span>
-                </div>
+                <actions>
+                    <base-icon v-bind="icon"/>
+                </actions>
             </div>
         </label>
-        <messages :messages="messages"/>
+        <slot name="messages"/>
     </div>
 </template>
 
 <script>
-    import Messages from './components/form/messages/messages.vue';
+    import Actions from './components/form/actions/actions.vue';
     import bemMixin from './mixins/bem';
     import isMounted from './mixins/is-mounted';
-    import inputFieldMessagesPropsMixin from './mixins/form/messages-props';
     import inputFieldFocusBehaviourMixin from './mixins/form/focus-behaviour';
     import inputFieldRootClassesMixin from './mixins/form/root-classes';
 
 
     export default {
         components: {
-            Messages,
+            Actions,
         },
         mixins: [
             bemMixin('form-field'),
             isMounted,
             inputFieldFocusBehaviourMixin,
-            inputFieldMessagesPropsMixin,
             inputFieldRootClassesMixin,
         ],
         props: {
             value: {
                 type: String,
                 required: true,
-            },
-            label: {
-                type: String,
-                default() {
-                    return '';
-                },
             },
             placeholder: {
                 type: String,

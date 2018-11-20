@@ -12,7 +12,8 @@
     "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit ./src ./test *.config.js > reports/eslint.xml",
     "build": "npx webpack --config webpack.config.js",
     "prepublish": "npm run build",
-    "test": "npm run lint && karma start test/karma.config.js"
+    "test": "npm run lint && karma start test/karma.config.js",
+    "debug": "karma start test/karma.config.js --single-run 0 --browsers Chrome"
   },
   "files": [
     "dist/index.js",
@@ -36,6 +37,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@dreipol/eslint-config": "^6.0.2",
+    "@dreipol/interfaces": "^1.1.0",
     "@vue/test-utils": "^1.0.0-beta.25",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",

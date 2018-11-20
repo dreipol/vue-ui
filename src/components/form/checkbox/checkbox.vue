@@ -12,24 +12,20 @@
                     <base-icon class="form-field--box-icon" symbol="checkmark" size="small"/>
                 </span>
                 <div class="form-field--label">
-                    <slot>{{ label }}</slot>
+                    <slot name="label"/>
                 </div>
             </div>
         </label>
-        <messages :messages="messages"/>
+        <slot name="messages"/>
     </div>
 </template>
 
 <script>
-    import Messages from './components/form/messages/messages.vue';
     import bemMixin from './mixins/bem';
     import inputFieldRootClassesMixin from './mixins/form/root-classes';
     import inputFieldMessagesPropsMixin from './mixins/form/messages-props';
 
     export default {
-        components: {
-            Messages,
-        },
         mixins: [
             bemMixin('form-field'),
             inputFieldMessagesPropsMixin,
@@ -39,12 +35,6 @@
             value: {
                 type: [String, Boolean],
                 required: true,
-            },
-            label: {
-                type: String,
-                default() {
-                    return '';
-                },
             },
         },
     };

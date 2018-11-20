@@ -36,7 +36,7 @@ describe('Overlay spec', () => {
     it('It can be properly created without slots', () => {
         const wrapper = shallowMount(Overlay, getDummyOverlayComponentOptions());
 
-        expect(wrapper.find('.overlay').exists()).to.be.ok;
+        expect(wrapper.find('.ui-overlay').exists()).to.be.ok;
     });
 
     it('It has the close method', () => {

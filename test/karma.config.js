@@ -47,7 +47,10 @@ module.exports = function(config) {
             devtool: 'inline-source-map',
         },
         webpackMiddleware: {
-            noInfo: true,
+            logger: {
+                ...console,
+                info: () => null,
+            },
         },
         coverageReporter: {
             dir: '../coverage',
