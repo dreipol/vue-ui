@@ -31,6 +31,7 @@
     import bemMixin from 'mixins/bem';
     import focusBehaviourMixin from 'mixins/form/focus-behaviour';
     import rootClassesMixin from 'mixins/form/root-classes';
+    import hasErrorsPropsMixin from 'mixins/form/has-errors-props';
 
     export default {
         components: {
@@ -44,6 +45,7 @@
             bemMixin('form-field'),
             focusBehaviourMixin,
             rootClassesMixin,
+            hasErrorsPropsMixin,
         ],
         props: {
             icon: {

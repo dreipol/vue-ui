@@ -29,6 +29,7 @@
     import bemMixin from 'mixins/bem';
     import rootClassesMixin from 'mixins/form/root-classes';
     import isCheckedMixin from 'mixins/form/is-checked';
+    import hasErrorsPropsMixin from 'mixins/form/has-errors-props';
 
     export default {
         components: {
@@ -38,6 +39,7 @@
             bemMixin('form-field'),
             rootClassesMixin,
             isCheckedMixin,
+            hasErrorsPropsMixin,
         ],
         props: {
             value: {

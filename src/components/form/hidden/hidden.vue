@@ -12,3 +12,7 @@
         },
     };
 </script>
+
+<template>
+    <radio class="input-field__has-errors"/>
+</template>
