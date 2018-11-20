@@ -4,24 +4,20 @@
             <div class="form-field--title-label" v-if="$slots.label">
                 <slot name="label"/>
             </div>
-            <div class="form-field--input-container" :data-action-count="1">
+            <div class="form-field--input-container" :data-action-count="virtualTagsCount($slots.actions) || 1">
                 <select class="form-field--input"
-                        v-if="isMounted"
                         v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
                         v-on="$listeners"
                 >
-                    <option disabled
-                            v-if="placeholder"
-                            :selected="!value">
-                        {{ placeholder }}
-                    </option>
-                    <slot mame="items"/>
+                    <slot/>
                 </select>
-                <actions>
-                    <base-icon v-bind="icon"/>
-                </actions>
+                <ui-actions>
+                    <slot name="actions">
+                        <ui-icon v-bind="icon"/>
+                    </slot>
+                </ui-actions>
             </div>
         </label>
         <slot name="messages"/>
@@ -29,34 +25,27 @@
 </template>
 
 <script>
-    import Actions from './components/form/actions/actions.vue';
-    import bemMixin from './mixins/bem';
-    import isMounted from './mixins/is-mounted';
-    import inputFieldFocusBehaviourMixin from './mixins/form/focus-behaviour';
-    import inputFieldRootClassesMixin from './mixins/form/root-classes';
-
+    import UiActions from 'components/form/actions/actions.vue';
+    import UiIcon from 'components/icon/icon.vue';
+    import virtualTagsCount from 'util/virtual-tags-count';
+    import bemMixin from 'mixins/bem';
+    import inputFieldFocusBehaviourMixin from 'mixins/form/focus-behaviour';
+    import inputFieldRootClassesMixin from 'mixins/form/root-classes';
 
     export default {
         components: {
-            Actions,
+            UiIcon,
+            UiActions,
+        },
+        methods: {
+            virtualTagsCount,
         },
         mixins: [
             bemMixin('form-field'),
-            isMounted,
             inputFieldFocusBehaviourMixin,
             inputFieldRootClassesMixin,
         ],
         props: {
-            value: {
-                type: String,
-                required: true,
-            },
-            placeholder: {
-                type: String,
-                default() {
-                    return '';
-                },
-            },
             icon: {
                 type: Object,
                 default() {

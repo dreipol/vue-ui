@@ -8,7 +8,7 @@ ac ligula suscipit, ac semper ex fermentum. Aenean consequat mauris vel tincidun
 Donec quis faucibus mi. Vestibulum condimentum id nunc feugiat elementum.`;
 
 describe('Textarea spec', () => {
-    it('The textarea is an object', () => {
+    it('The ui-textarea is an object', () => {
         expect(UiTextarea).to.be.an('object');
         expect(UiTextarea).to.be.not.empty;
     });
@@ -25,6 +25,7 @@ describe('Textarea spec', () => {
 
         expect(wrapper.find('.form-field--action').exists()).to.not.ok;
         expect(wrapper.find('textarea').exists()).to.be.ok;
+        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('0');
     });
 
     it('It increases the height of the textarea properly', (done) => {
@@ -94,7 +95,7 @@ describe('Textarea spec', () => {
             },
         });
 
-        expect(wrapper.find(UiActions)).to.be.ok;
         expect(wrapper.findAll('.form-field--action')).to.to.have.length(2);
+        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('2');
     });
 });

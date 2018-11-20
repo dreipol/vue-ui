@@ -1,6 +1,6 @@
 <template>
     <optgroup :label="label">
-        <slot></slot>
+        <slot/>
     </optgroup>
 </template>
 
