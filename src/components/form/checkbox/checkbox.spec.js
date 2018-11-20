@@ -1,20 +1,22 @@
-import UiRadio from './radio.vue';
+import UiCheckbox from './checkbox.vue';
 import UiActions from '../actions/actions.vue';
+import UiIcon from '../../icon/icon.vue';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
 describe('Radio spec', () => {
-    it('The ui-radio is an object', () => {
-        expect(UiRadio).to.be.an('object');
-        expect(UiRadio).to.be.not.empty;
+    it('The ui-checkbox is an object', () => {
+        expect(UiCheckbox).to.be.an('object');
+        expect(UiCheckbox).to.be.not.empty;
     });
 
     it('It can be properly created', () => {
-        const wrapper = shallowMount(UiRadio, {
+        const wrapper = shallowMount(UiCheckbox, {
             propsData: {
                 value: '',
             },
             stubs: {
+                UiIcon,
                 UiActions,
             },
             slots: {
@@ -28,11 +30,12 @@ describe('Radio spec', () => {
     });
 
     it('It can handle the value property properly', () => {
-        const wrapper = shallowMount(UiRadio, {
+        const wrapper = shallowMount(UiCheckbox, {
             propsData: {
                 value: 'foo',
             },
             stubs: {
+                UiIcon,
                 UiActions,
             },
         });
@@ -45,7 +48,7 @@ describe('Radio spec', () => {
     });
 
     it('It can handle the checked attribute', () => {
-        const wrapper = shallowMount(UiRadio, {
+        const wrapper = shallowMount(UiCheckbox, {
             propsData: {
                 value: 'foo',
             },
@@ -53,6 +56,7 @@ describe('Radio spec', () => {
                 checked: true,
             },
             stubs: {
+                UiIcon,
                 UiActions,
             },
         });
@@ -66,7 +70,7 @@ describe('Radio spec', () => {
     });
 
     it('It can dispatch the onchange events listened from the outside', (done) => {
-        const wrapper = shallowMount(UiRadio, {
+        const wrapper = shallowMount(UiCheckbox, {
             propsData: {
                 value: 'foo',
             },
@@ -77,6 +81,7 @@ describe('Radio spec', () => {
                 change: () => done(),
             },
             stubs: {
+                UiIcon,
                 UiActions,
             },
         });

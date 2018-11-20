@@ -1,6 +1,6 @@
 <template>
     <option :value="value">
-        <slot>{{ label || value }}</slot>
+        <slot/>
     </option>
 </template>
 
@@ -9,12 +9,8 @@
         props: {
             value: {
                 type: String,
-                required: true,
-            },
-            label: {
-                type: String,
                 default() {
-                    return '';
+                    return null;
                 },
             },
         },

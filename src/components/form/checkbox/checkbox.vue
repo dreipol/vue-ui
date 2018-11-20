@@ -1,15 +1,19 @@
 <template>
-    <div class="form-field form-field__bool form-field__checkbox" :class="[...rootClasses, bemIf(value, 'is-checked')]">
+    <div class="form-field form-field__bool form-field__checkbox"
+            :class="[...rootClasses, bemIf(isChecked, 'is-checked')]">
         <label>
             <input type="checkbox"
                     class="form-field--input"
                     :value="value"
-                    v-on="listeners"
                     v-bind="$attrs"
+                    @change="onChange"
+                    v-on="$listeners"
             >
             <div class="form-field--label-wrap">
                 <span class="form-field--box">
-                    <base-icon class="form-field--box-icon" symbol="checkmark" size="small"/>
+                    <slot mame="icon">
+                        <ui-icon class="form-field--box-icon" symbol="checkmark" size="small"/>
+                    </slot>
                 </span>
                 <div class="form-field--label">
                     <slot name="label"/>
@@ -21,19 +25,23 @@
 </template>
 
 <script>
-    import bemMixin from './mixins/bem';
-    import inputFieldRootClassesMixin from './mixins/form/root-classes';
-    import inputFieldMessagesPropsMixin from './mixins/form/messages-props';
+    import UiIcon from 'components/icon/icon.vue';
+    import bemMixin from 'mixins/bem';
+    import rootClassesMixin from 'mixins/form/root-classes';
+    import isCheckedMixin from 'mixins/form/is-checked';
 
     export default {
+        components: {
+            UiIcon,
+        },
         mixins: [
             bemMixin('form-field'),
-            inputFieldMessagesPropsMixin,
-            inputFieldRootClassesMixin,
+            rootClassesMixin,
+            isCheckedMixin,
         ],
         props: {
             value: {
-                type: [String, Boolean],
+                type: String,
                 required: true,
             },
         },
