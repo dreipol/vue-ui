@@ -29,8 +29,8 @@
     import UiIcon from 'components/icon/icon.vue';
     import virtualTagsCount from 'util/virtual-tags-count';
     import bemMixin from 'mixins/bem';
-    import inputFieldFocusBehaviourMixin from 'mixins/form/focus-behaviour';
-    import inputFieldRootClassesMixin from 'mixins/form/root-classes';
+    import focusBehaviourMixin from 'mixins/form/focus-behaviour';
+    import rootClassesMixin from 'mixins/form/root-classes';
 
     export default {
         components: {
@@ -42,8 +42,8 @@
         },
         mixins: [
             bemMixin('form-field'),
-            inputFieldFocusBehaviourMixin,
-            inputFieldRootClassesMixin,
+            focusBehaviourMixin,
+            rootClassesMixin,
         ],
         props: {
             icon: {

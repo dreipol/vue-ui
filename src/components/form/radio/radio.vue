@@ -4,47 +4,45 @@
         <label>
             <input type="radio"
                     class="form-field--input"
+                    :value="value"
                     v-bind="$attrs"
+                    @change="onChange"
                     v-on="$listeners"
             >
             <div class="form-field--label-wrap">
                 <span class="form-field--box">
-                    <base-icon class="form-field--box-icon" symbol="checkmark" size="small"/>
+                    <slot mame="icon">
+                        <ui-icon class="form-field--box-icon" symbol="checkmark" size="small"/>
+                    </slot>
                 </span>
                 <div class="form-field--label">
-                    <slot>{{ label }}</slot>
+                    <slot name="label"/>
                 </div>
             </div>
         </label>
-        <messages :messages="messages"/>
+        <slot name="messages"/>
     </div>
 </template>
 
 <script>
-    import Messages from './components/form/messages/messages.vue';
-    import bemMixin from './mixins/bem';
-    import inputFieldRootClassesMixin from './mixins/form/root-classes';
-    import inputFieldMessagesPropsMixin from './mixins/form/messages-props';
+    import bemMixin from 'mixins/bem';
+    import rootClassesMixin from 'mixins/form/root-classes';
+    import isCheckedMixin from 'mixins/form/is-checked';
+    import UiIcon from 'components/icon/icon.vue';
 
     export default {
         components: {
-            Messages,
+            UiIcon,
         },
         mixins: [
             bemMixin('form-field'),
-            inputFieldMessagesPropsMixin,
-            inputFieldRootClassesMixin,
+            rootClassesMixin,
+            isCheckedMixin,
         ],
         props: {
             value: {
                 type: String,
                 required: true,
-            },
-            label: {
-                type: String,
-                default() {
-                    return '';
-                },
             },
         },
     };
