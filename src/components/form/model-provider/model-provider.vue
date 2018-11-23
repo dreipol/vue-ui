@@ -17,6 +17,9 @@
                     this.model = target.value;
                 }
             },
+            updateValueRaw(value) {
+                this.model = value;
+            },
             updateToggle({ checked, value }) {
                 if (typeof this.value === 'boolean') {
                     this.model = checked;
@@ -58,6 +61,7 @@
             return this.$scopedSlots.default({
                 value: this.value,
                 updateValue: this.updateValue,
+                updateValueRaw: this.updateValueRaw,
                 updateToggle: this.updateToggle,
                 hasItem: this.hasItem,
                 addItem: this.addItem,
