@@ -1,3 +1,5 @@
+/* eslint-disable max-lines-per-function */
+
 import UiCheckbox from './checkbox.vue';
 import UiActions from '../actions/actions.vue';
 import UiIcon from '../../icon/icon.vue';
@@ -87,5 +89,32 @@ describe('Radio spec', () => {
         });
 
         wrapper.find('input').trigger('change');
+    });
+
+    it('It can be used as toggle', (done) => {
+        const wrapper = shallowMount(UiCheckbox, {
+            propsData: {
+                value: false,
+            },
+            listeners: {
+                change: () => done(),
+            },
+            stubs: {
+                UiIcon,
+                UiActions,
+            },
+        });
+
+        const input = wrapper.find('input');
+
+        expect(input.element.value).to.be.equal('false');
+        expect(input.element.checked).to.be.not.ok;
+        expect(wrapper.vm.isChecked).to.be.not.ok;
+
+        input.setChecked(true);
+
+        expect(input.element.value).to.be.equal('true');
+        expect(input.element.checked).to.be.ok;
+        expect(wrapper.vm.isChecked).to.be.ok;
     });
 });

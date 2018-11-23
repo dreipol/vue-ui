@@ -1,6 +1,6 @@
 <script>
     // check whether an input is a of kind toggle
-    const isToggle = target => ['checkbox', 'radio'].includes(target.getAttribute('type'));
+    const isToggle = target => target.getAttribute('type') === 'checkbox';
 
     export default {
         props: {
@@ -21,6 +21,10 @@
                 if (typeof this.value === 'boolean') {
                     this.model = checked;
                 } else if (Array.isArray(this.model)) {
+                    if (!value) {
+                        throw new Error('I was unable to update the model. Please make sure your input has the value attribute set');
+                    }
+
                     this[checked ? 'addItem' : 'removeItem'](value);
                 } else {
                     throw new Error('I was unable to update the model. Only boolean or arrays are supported');

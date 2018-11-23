@@ -4,8 +4,8 @@
         <label>
             <input type="radio"
                     class="form-field--input"
-                    :value="value"
                     v-bind="$attrs"
+                    :value="value"
                     @change="onChange"
                     v-on="$listeners"
             >
