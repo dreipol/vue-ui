@@ -9,6 +9,7 @@
                         v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
+                        v-model="currentValue"
                         v-on="$listeners"
                 >
                     <slot/>
@@ -31,6 +32,7 @@
     import bemMixin from '../../../mixins/bem';
     import focusBehaviourMixin from '../../../mixins/form/focus-behaviour';
     import rootClassesMixin from '../../../mixins/form/root-classes';
+    import currentValueMixin from '../../../mixins/form/current-value';
     import hasErrorsPropsMixin from '../../../mixins/form/has-errors-props';
 
     export default {
@@ -46,6 +48,7 @@
             focusBehaviourMixin,
             rootClassesMixin,
             hasErrorsPropsMixin,
+            currentValueMixin,
         ],
         props: {
             icon: {
@@ -55,6 +58,12 @@
                         symbol: 'chevron-down',
                         size: 'medium',
                     };
+                },
+            },
+            value: {
+                type: [Number, String],
+                default() {
+                    return '';
                 },
             },
         },
