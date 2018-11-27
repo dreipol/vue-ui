@@ -6,13 +6,13 @@
   "jsnext:main": "src/index.js",
   "module": "src/index.js",
   "scripts": {
-    "lint": "npx eslint ./src ./test *.config.js",
+    "lint": "npx eslint ./src *.config.js",
     "coveralls": "cat ./coverage/report-lcov/lcov.info | coveralls",
-    "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit ./src ./test *.config.js > reports/eslint.xml",
+    "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit ./src *.config.js > reports/eslint.xml",
     "build": "npx webpack --config webpack.config.js",
     "prepublishOnly": "npm run build && npm test",
-    "test": "npm run lint && karma start test/karma.config.js",
-    "debug": "karma start test/karma.config.js --single-run 0 --browsers Chrome"
+    "test": "npm run lint && karma start karma.config.js",
+    "debug": "karma start karma.config.js --single-run 0 --browsers Chrome"
   },
   "files": [
     "dist/index.js",
