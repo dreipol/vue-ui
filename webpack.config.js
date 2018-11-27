@@ -2,8 +2,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { join } = require('path');
 const root = process.cwd();
 
-console.log(root);
-
 module.exports = {
     mode: 'production',
     entry: join(root, 'src/index.js'),
