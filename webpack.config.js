@@ -1,5 +1,5 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const { join } = require('path');
+const { join, resolve } = require('path');
 const root = process.cwd();
 
 module.exports = {
@@ -31,6 +31,12 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
             },
+        ],
+    },
+    resolve: {
+        modules: [
+            resolve(__dirname, 'src'),
+            'node_modules',
         ],
     },
     plugins: [
