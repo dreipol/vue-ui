@@ -10,7 +10,7 @@
     "coveralls": "cat ./coverage/report-lcov/lcov.info | coveralls",
     "ci-test-lint": "npx eslint -c .eslintrc --no-eslintrc -f junit ./src ./test *.config.js > reports/eslint.xml",
     "build": "npx webpack --config webpack.config.js",
-    "prepublish": "npm run build && npm test",
+    "prepublishOnly": "npm run build && npm test",
     "test": "npm run lint && karma start test/karma.config.js",
     "debug": "karma start test/karma.config.js --single-run 0 --browsers Chrome"
   },
