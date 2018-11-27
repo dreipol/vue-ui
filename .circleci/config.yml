@@ -31,14 +31,17 @@ jobs:
     - run:
         name: lint
         command: |
-          mkdir -p reports **
+          mkdir -p reports
           npm run ci-test-lint
 
     - run:
         name: coverage
         environment:
           COVERALLS_REPO_TOKEN: "9tBxvG8hoJroIbSNdMMNY9kNKTFVgVhQd"
-        command: npm run coveralls
+        command: |
+          npm run coveralls
+          mkdir -p reports/coverage
+          mv coverage/* reports/coverage
 
     - store_test_results:
         path: reports
