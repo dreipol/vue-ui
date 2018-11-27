@@ -59,6 +59,9 @@ describe('Select spec', () => {
 
     it('It can render optgroup with options', () => {
         const wrapper = shallowMount(UiSelect, {
+            propsData: {
+                value: 'bar3',
+            },
             slots: {
                 default: `
                     <ui-optgroup label="Parent">
@@ -67,7 +70,7 @@ describe('Select spec', () => {
                     </ui-optgroup>
                     <ui-optgroup label="Parent2">
                         <ui-option value="foo2">Foo</ui-option>
-                        <ui-option selected value="bar3">Bar</ui-option>
+                        <ui-option value="bar3">Bar</ui-option>
                     </ui-optgroup>
                 `,
             },
