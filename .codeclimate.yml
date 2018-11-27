@@ -4,6 +4,7 @@ engines:
 
 exclude_patterns:
   - "test"
+  - "dist"
   - "**/*.spec.js"
 
 ratings:
