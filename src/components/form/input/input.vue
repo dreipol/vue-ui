@@ -10,10 +10,10 @@
                 </span>
                 <slot name="input">
                     <input class="form-field--input"
+                            v-model="currentValue"
                             v-bind="$attrs"
                             @focus="onFocus"
                             @blur="onBlur"
-                            v-model="currentValue"
                             v-on="$listeners"
                     >
                 </slot>
@@ -22,7 +22,7 @@
                 </ui-actions>
             </div>
         </label>
-        <slot name="messages"></slot>
+        <slot name="messages"/>
     </div>
 </template>
 
@@ -48,9 +48,6 @@
             currentValueMixin,
             hasErrorsPropsMixin,
         ],
-        methods: {
-            virtualTagsCount,
-        },
         props: {
             value: {
                 type: [Number, String],
@@ -58,6 +55,9 @@
                     return '';
                 },
             },
+        },
+        methods: {
+            virtualTagsCount,
         },
     };
 </script>

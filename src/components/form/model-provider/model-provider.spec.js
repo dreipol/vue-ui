@@ -32,6 +32,7 @@ describe('Model Provider spec', () => {
 
     it('It supports toggles', () => {
         const wrapper = shallowMount(Vue.extend({
+            components: runtimeComponents,
             data() {
                 return {
                     value: false,
@@ -42,7 +43,6 @@ describe('Model Provider spec', () => {
                     <ui-checkbox slot-scope="props" :value="props.value" @change="props.updateValue"/>
                 </ui-model-provider>
             `,
-            components: runtimeComponents,
         }), {
             // checkboxes should have the sync option disabled
             sync: false,
@@ -62,6 +62,7 @@ describe('Model Provider spec', () => {
 
     it('It supports radios', () => {
         const wrapper = shallowMount(Vue.extend({
+            components: runtimeComponents,
             data() {
                 return {
                     value: 'foo',
@@ -75,7 +76,6 @@ describe('Model Provider spec', () => {
                     </div>
                 </ui-model-provider>
             `,
-            components: runtimeComponents,
         }), {
             stubs: runtimeComponents,
         });
@@ -96,6 +96,7 @@ describe('Model Provider spec', () => {
 
     it('It supports input fields', () => {
         const wrapper = shallowMount(Vue.extend({
+            components: runtimeComponents,
             data() {
                 return {
                     value: '',
@@ -106,7 +107,6 @@ describe('Model Provider spec', () => {
                     <ui-input slot-scope="props" :value="props.value" @input="props.updateValue"/>
                 </ui-model-provider>
             `,
-            components: runtimeComponents,
         }), {
             stubs: runtimeComponents,
         });
@@ -124,6 +124,7 @@ describe('Model Provider spec', () => {
 
     it('It supports textarea fields', () => {
         const wrapper = shallowMount(Vue.extend({
+            components: runtimeComponents,
             data() {
                 return {
                     value: '',
@@ -134,7 +135,6 @@ describe('Model Provider spec', () => {
                     <ui-textarea slot-scope="props" :value="props.value" @input="props.updateValue"/>
                 </ui-model-provider>
             `,
-            components: runtimeComponents,
         }), {
             stubs: runtimeComponents,
         });
@@ -152,6 +152,7 @@ describe('Model Provider spec', () => {
 
     it('It supports multiple checkboxes', () => {
         const wrapper = shallowMount(Vue.extend({
+            components: runtimeComponents,
             data() {
                 return {
                     value: [],
@@ -166,7 +167,6 @@ describe('Model Provider spec', () => {
                     </div>
                 </ui-model-provider>
             `,
-            components: runtimeComponents,
         }), {
             // checkboxes should have the sync option disabled
             sync: false,
@@ -202,6 +202,7 @@ describe('Model Provider spec', () => {
 
     it('It supports selects fields', () => {
         const wrapper = shallowMount(Vue.extend({
+            components: runtimeComponents,
             data() {
                 return {
                     value: 'bar',
@@ -215,7 +216,6 @@ describe('Model Provider spec', () => {
                     </ui-select>
                 </ui-model-provider>
             `,
-            components: runtimeComponents,
         }), {
             sync: false,
             stubs: runtimeComponents,

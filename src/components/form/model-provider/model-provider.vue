@@ -9,6 +9,16 @@
                 required: true,
             },
         },
+        computed: {
+            model: {
+                get() {
+                    return this.value;
+                },
+                set(model) {
+                    this.$emit('input', model);
+                },
+            },
+        },
         methods: {
             updateValue({ target }) {
                 if (isToggle(target)) {
@@ -45,16 +55,6 @@
                 if (this.hasItem(item)) {
                     this.model.splice(this.value.indexOf(item), 1);
                 }
-            },
-        },
-        computed: {
-            model: {
-                get() {
-                    return this.value;
-                },
-                set(model) {
-                    this.$emit('input', model);
-                },
             },
         },
         render() {

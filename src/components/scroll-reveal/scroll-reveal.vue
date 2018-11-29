@@ -28,6 +28,24 @@
                     bottom: this.bemAdd('bottom', null, this.elementClass),
                     notBottom: this.bemAdd('not-bottom', null, this.elementClass),
                 },
+                onPin: () => {
+                    this.$emit('onPin');
+                },
+                onUnpin: () => {
+                    this.$emit('onUnpin');
+                },
+                onTop: () => {
+                    this.$emit('onTop');
+                },
+                onNotTop: () => {
+                    this.$emit('onNotTop');
+                },
+                onBottom: () => {
+                    this.$emit('onBottom');
+                },
+                onNotBottom: () => {
+                    this.$emit('onNotBottom');
+                },
             });
             headroom.init();
         },

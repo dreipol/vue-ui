@@ -6,10 +6,10 @@
             </div>
             <div class="form-field--input-container" :data-action-count="virtualTagsCount($slots.actions) || 1">
                 <select class="form-field--input"
+                        v-model="currentValue"
                         v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
-                        v-model="currentValue"
                         v-on="$listeners"
                 >
                     <slot/>
@@ -40,9 +40,6 @@
             UiIcon,
             UiActions,
         },
-        methods: {
-            virtualTagsCount,
-        },
         mixins: [
             bemMixin('form-field'),
             focusBehaviourMixin,
@@ -66,6 +63,9 @@
                     return '';
                 },
             },
+        },
+        methods: {
+            virtualTagsCount,
         },
     };
 </script>

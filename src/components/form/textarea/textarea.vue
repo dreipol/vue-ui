@@ -10,11 +10,11 @@
                 </span>
                 <textarea class="form-field--input"
                         ref="input"
+                        v-model="currentValue"
                         v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
                         v-on="$listeners"
-                        v-model="currentValue"
                 />
                 <ui-actions>
                     <slot name="actions"/>
@@ -70,7 +70,7 @@
 
                 if (isExpanding) {
                     const contentHeight = input.scrollHeight + (TEXTAREA_BORDER_WIDTH * 2);
-                    input.style.height = this.currentValue ? `${Math.min(TEXTAREA_MAX_HEIGHT, contentHeight)}px` : 'auto';
+                    input.style.height = this.currentValue ? `${ Math.min(TEXTAREA_MAX_HEIGHT, contentHeight) }px` : 'auto';
                     input.style.overflow = contentHeight >= TEXTAREA_MAX_HEIGHT ? 'auto' : 'hidden';
                 }
             },
