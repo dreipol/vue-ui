@@ -44,7 +44,9 @@
         props: {
             value: {
                 type: [String, Boolean],
-                required: true,
+                default() {
+                    return false;
+                },
             },
         },
     };

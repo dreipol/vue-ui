@@ -54,7 +54,9 @@
         props: {
             value: {
                 type: [Number, String],
-                required: true,
+                default() {
+                    return '';
+                },
             },
         },
     };
