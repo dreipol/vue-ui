@@ -31,11 +31,11 @@
         },
 
         mounted() {
-            this.registerObserver(this.$el, this.thresholdMin, this.thresholdMax)
+            this.registerObserver(this.$el, this.thresholdMin, this.thresholdMax);
         },
 
         render(createElement) {
             return createElement('div', this.$slots.default);
         },
-    }
+    };
 </script>
