@@ -1,6 +1,6 @@
 import { throttle } from 'lodash';
 import { mapActions, mapState } from 'vuex';
-import bemMixin from '../../mixins/bem';
+import bemMixin from '../bem';
 
 const ROOT_CLASS = 'scroll-root';
 
