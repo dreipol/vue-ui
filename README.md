@@ -17,22 +17,34 @@ really modular way.
 
 ## Installation
 
-1.  Install the module
+This module is simply available on npm
 
-    ```bash
-    npm install -S @dreipol/vue-ui
-    ```
+```bash
+npm install -S @dreipol/vue-ui
+```
 
 ## Usage
 
+You can pick any of our modules just by importing them in your project for example:
 
-## Mixins
+```js
+import { Input as UiInput } from '@dreipol/vue-ui/src/components'
 
-## Components
+export default {
+    components: { UiInput },
+    template: `<div><ui-input/></div>`
+}
+```
 
-## Filters
+## Documentation
 
+Each single module has its own documentation, below you can browse the list of all the available modules:
 
+- [components](/src/components)
+- [mixins](/src/mixins)
+- [filters](/src/filters)
+- [util](/src/util)
+- [vuex](/src/vuex)
 
 [circleci-image]: https://circleci.com/gh/dreipol/vue-ui.svg?style=svg
 [circleci-url]: https://circleci.com/gh/dreipol/vue-ui
