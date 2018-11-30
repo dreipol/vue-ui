@@ -37,7 +37,6 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@dreipol/eslint-config": "^6.0.2",
-    "@dreipol/interfaces": "^1.1.0",
     "@dreipol/eslint-config-vue": "^1.0.0",
     "@vue/test-utils": "^1.0.0-beta.25",
     "babel-eslint": "^10.0.1",
