@@ -8,7 +8,8 @@
 
             return h('div', {
                 class: 'form-field--actions',
-            }, children.map(action => {
+                // skip plain dom nodes without a wrapper tag
+            }, children.filter(action => action.tag).map(action => {
                 return h('span', {
                     class: 'form-field--action',
                 }, [action]);

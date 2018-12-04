@@ -23,6 +23,7 @@ describe('Input spec', () => {
         expect(wrapper.find('input').exists()).to.be.ok;
         expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('0');
         expect(wrapper.find('.form-field__is-filled').exists()).to.be.ok;
+        expect(wrapper.find('.form-field__has-actions').exists()).to.be.not.ok;
     });
 
     it('It can render the the slots properly', () => {
@@ -50,11 +51,12 @@ describe('Input spec', () => {
                 UiActions,
             },
             slots: {
-                actions: ['<p>hello</p>', '<p>there</p>'],
+                actions: ['<p>hello</p>', '<p>there</p>', 'foo', 'bar'],
             },
         });
 
         expect(wrapper.findAll('.form-field--action')).to.to.have.length(2);
         expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('2');
+        expect(wrapper.find('.form-field__has-actions').exists()).to.be.ok;
     });
 });
