@@ -16,7 +16,7 @@
     "debug": "karma start karma.config.js --single-run 0 --browsers Chrome"
   },
   "files": [
-    "dist/index.js",
+    "index.js",
     "src"
   ],
   "repository": {
@@ -24,7 +24,9 @@
     "url": "git+https://github.com/dreipol/vue-ui.git"
   },
   "keywords": [
-    "vue"
+    "vue",
+    "ui components",
+    "vue helpers"
   ],
   "author": "Rouven Bühlmann <rouven.buehlmann@dreipol.ch> (http://dreipol.ch)",
   "license": "MIT",

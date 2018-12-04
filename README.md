@@ -38,7 +38,7 @@ export default {
 
 If you are using webpack or rollup to compile your js bundle, remember to configure
 your all your loaders (vue-loader, babel-loader) in order to compile also the `node_modules/@dreipol/vue-ui` dependencies:
-all the code provided in this repo is written in modern javascript and might be transpiled on older browsers.
+all the code provided in this repo is written in modern javascript and might need to be transpiled to support older browsers.
 
 ## Documentation
 
