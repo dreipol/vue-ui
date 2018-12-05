@@ -1,18 +1,5 @@
 <template>
-    <option :value="value">
+    <option v-bind="$attrs">
         <slot/>
     </option>
 </template>
-
-<script>
-    export default {
-        props: {
-            value: {
-                type: String,
-                default() {
-                    return String(this.$slots && this.$slots.default);
-                },
-            },
-        },
-    };
-</script>
