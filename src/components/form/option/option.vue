@@ -10,7 +10,7 @@
             value: {
                 type: String,
                 default() {
-                    return null;
+                    return String(this.$slots && this.$slots.default);
                 },
             },
         },
