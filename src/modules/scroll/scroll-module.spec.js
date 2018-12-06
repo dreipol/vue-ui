@@ -6,7 +6,7 @@ import scrollModule from './';
 import { expect } from 'chai';
 import { spy } from 'sinon';
 
-describe('Scroll spec', () => {
+describe('Vuex scroll', () => {
     describe('Scroll default export', () => {
         it('The scroll module exports properly all the vuex properties', () => {
             const props = ['namespaced', 'mutations', 'actions', 'state'];
