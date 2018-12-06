@@ -1,5 +1,12 @@
-/* eslint-disable  max-lines-per-function */
-import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
+/* eslint-disable max-lines-per-function */
+import {
+    CLOSE_OVERLAY,
+    MOUNT_OVERLAY,
+    OPEN_OVERLAY,
+    PREPARE_CLOSE_OVERLAY,
+    UNMOUNT_OVERLAY,
+    UPDATE_OVERLAY,
+} from '../mutation-types';
 import * as getters from './getters';
 import * as actions from './actions';
 import overlayModule, { DEFAULT_CLOSING_STATE } from './';
@@ -123,7 +130,7 @@ describe('Overlay spec', () => {
                 expect(mountOverlayEventArgs).to.be.deep.equal([MOUNT_OVERLAY, { id: 'foo' }]);
                 expect(openOverlayEventMutationType).to.be.equal(OPEN_OVERLAY);
 
-                expect(openOverlayEventData.props.title).to.to.not.be.undefined;
+                expect(openOverlayEventData.props.title).to.not.be.undefined;
                 expect(openOverlayEventData.props.title).to.be.equal('bar', 'The payload was properly forwarded');
             });
 
@@ -145,8 +152,32 @@ describe('Overlay spec', () => {
 
                 expect(commit.args).to.have.length(1);
                 expect(openOverlayEventMutationType).to.be.equal(OPEN_OVERLAY);
-                expect(openOverlayEventData.props.title).to.to.not.be.undefined;
+                expect(openOverlayEventData.props.title).to.not.be.undefined;
                 expect(openOverlayEventData.props.title).to.be.equal('baz', 'The payload was properly forwarded');
+            });
+        });
+
+        describe('updateOverlay', () => {
+            it('Updating an existing overlay dispatches all mutations properly', async function() {
+                const commit = spy();
+                const state = {
+                    overlays: {
+                        foo: { props: { title: 'bar' } },
+                    },
+                };
+
+                await actions.updateOverlay({ commit, state }, {
+                    id: 'foo',
+                    component: { render: () => null },
+                    props: { title: 'bar' },
+                });
+
+                const [updateOverlayEventMutationType, updateOverlayEventData] = commit.args[0];
+
+                expect(commit.args).to.have.length(1);
+                expect(updateOverlayEventMutationType).to.be.equal(UPDATE_OVERLAY);
+                expect(updateOverlayEventData.props.title).to.not.be.undefined;
+                expect(updateOverlayEventData.props.title).to.be.equal('bar', 'The payload was properly forwarded');
             });
         });
 
