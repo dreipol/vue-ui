@@ -1,7 +1,7 @@
 import bgImageFilter from './';
 import { expect } from 'chai';
 
-describe('bgImage filter', () => {
+describe('Filter bgImage', () => {
     it('Create style object', () => {
         const url = 'foo';
         const style = bgImageFilter(url);
