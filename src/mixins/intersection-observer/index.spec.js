@@ -1,5 +1,3 @@
-
-
-describe('Mixin intersection-observer', function () {
+describe('Mixin intersection-observer', function() {
 
 });
