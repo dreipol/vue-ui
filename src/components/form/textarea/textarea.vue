@@ -4,7 +4,7 @@
             <span class="form-field--title-label" v-if="!hasFloatingLabel && $slots.label">
                 <slot name="label"/>
             </span>
-            <div class="form-field--input-container" :data-action-count="virtualTagsCount($slots.actions)">
+            <div class="form-field--input-container" :data-action-count="countVirtualTags($slots.actions)">
                 <span class="form-field--floating-label" v-if="hasFloatingLabel && $slots.label">
                     <slot name="label"/>
                 </span>
@@ -28,7 +28,7 @@
 <script>
     import UiActions from '../actions/actions.vue';
     import bemMixin from '../../../mixins/bem';
-    import virtualTagsCount from '../../../util/virtual-tags-count';
+    import countVirtualTags from '../../../util/count-virtual-tags';
     import rootClassesMixin from '../../../mixins/form/root-classes';
     import floatingLabelPropsMixin from '../../../mixins/form/floating-label-props';
     import focusBehaviourMixin from '../../../mixins/form/focus-behaviour';
@@ -53,13 +53,11 @@
         props: {
             value: {
                 type: [Number, String],
-                default() {
-                    return '';
-                },
+                default: '',
             },
         },
         methods: {
-            virtualTagsCount,
+            countVirtualTags,
             updateHeight(isExpanding) {
                 const { input } = this.$refs;
 

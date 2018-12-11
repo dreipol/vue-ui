@@ -8,6 +8,7 @@ export default {
                 this.bemIf(this.$attrs.required, 'is-required', 'is-optional'),
                 this.bemIf(this.$attrs.disabled, 'is-disabled'),
                 this.bemIf(this.hasFocus, 'has-focus'),
+                this.bemIf(this.$slots && this.$slots.actions, 'has-actions'),
                 this.bemIf(this.currentValue, 'is-filled', 'is-empty'),
             ];
 
