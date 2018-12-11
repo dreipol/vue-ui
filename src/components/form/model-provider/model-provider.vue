@@ -35,12 +35,12 @@
                     this.model = checked;
                 } else if (Array.isArray(this.model)) {
                     if (!value) {
-                        throw new Error('I was unable to update the model. Please make sure your input has the value attribute set');
+                        throw new Error('Model could not be updated. There was no value attribute set on the input');
                     }
 
                     this[checked ? 'addItem' : 'removeItem'](value);
                 } else {
-                    throw new Error('I was unable to update the model. Only boolean or arrays are supported');
+                    throw new Error('Model could not be updated. Only boolean or arrays are supported');
                 }
             },
             hasItem(item) {
