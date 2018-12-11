@@ -23,7 +23,7 @@ function getDummyModalComponentOptions(customOptions = {}) {
     };
 }
 
-describe('Modal spec', () => {
+describe('Component modal', () => {
     it('The modal is an object', () => {
         expect(Modal).to.be.an('object');
         expect(Modal).to.be.not.empty;

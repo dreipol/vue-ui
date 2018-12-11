@@ -140,33 +140,50 @@ Example Usage
 ```
 
 
-Example SCSS
+Example  SCSS
 
 ```scss
-    & {
-        position: fixed;
-        top: -80px;
-        height: 80px;
-        transition: top 200ms ease-in-out;
-    }
+    // Vars
 
-    &.reduced-nav__top {
-        display: none;
-    }
+    // Support
 
-    &.reduced-nav__not-top {
-        display: block;
-    }
-
-    &.reduced-nav__pinned {
-        top: 0;
+    @mixin reveal-visible() {
+        transform: translate3d(0, 60px, 0);
         opacity: 1;
     }
 
-    &.reduced-nav__unpinned {
-        top: -80px;
+    @mixin reveal-hidden() {
+        transform: translate3d(0, -80px, 0);
         opacity: 0;
     }
+
+    // Module
+    & {
+        & {
+            z-index: z-index('reveal');
+            position: fixed;
+            transform: translate3d(0, -80px, 0);
+            height: 80px;
+            width: 100%;
+            transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+        }
+
+        &.reveal__top {
+            @include reveal-visible;
+        }
+
+        &.reveal__pinned {
+            @include reveal-visible;
+        }
+
+        &.reveal__unpinned {
+            @include reveal-hidden;
+        }
+    }
+
+    // Facets
+
+    // States
 ```
 
 

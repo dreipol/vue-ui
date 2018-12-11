@@ -27,7 +27,7 @@ function getDummyOverlayComponentOptions(customOptions = {}) {
     };
 }
 
-describe('Overlay spec', () => {
+describe('Component overlay', () => {
     it('The overlay is an object', () => {
         expect(Overlay).to.be.an('object');
         expect(Overlay).to.be.not.empty;
