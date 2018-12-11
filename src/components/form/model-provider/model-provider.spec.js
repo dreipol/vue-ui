@@ -44,7 +44,13 @@ describe('Model Provider spec', () => {
                 </ui-model-provider>
             `,
         }), {
-            // checkboxes should have the sync option disabled
+            /**
+             * Vue.js treats selects and input[type=checkbox] as "magic input fields"
+             * doing nasty internal checkboxes should have the sync internal option hacks to update a model bound to them
+             * vue-test-utils of course in that case has problems synching the internal v-model properties so the sync:false seems to be a practical solution to a common issue.
+             * this workaround was recommended in the thread https://github.com/vuejs/vue-test-utils/issues/532
+             * side issues https://github.com/vuejs/vue-test-utils/issues/676
+             */
             sync: false,
             stubs: runtimeComponents,
         });
@@ -168,7 +174,13 @@ describe('Model Provider spec', () => {
                 </ui-model-provider>
             `,
         }), {
-            // checkboxes should have the sync option disabled
+            /**
+             * Vue.js treats selects and input[type=checkbox] as "magic input fields"
+             * doing nasty internal checkboxes should have the sync internal option hacks to update a model bound to them
+             * vue-test-utils of course in that case has problems synching the internal v-model properties so the sync:false seems to be a practical solution to a common issue.
+             * this workaround was recommended in the thread https://github.com/vuejs/vue-test-utils/issues/532
+             * side issues https://github.com/vuejs/vue-test-utils/issues/676
+             */
             sync: false,
             stubs: runtimeComponents,
         });
@@ -217,6 +229,13 @@ describe('Model Provider spec', () => {
                 </ui-model-provider>
             `,
         }), {
+            /**
+             * Vue.js treats selects and input[type=checkbox] as "magic input fields"
+             * doing internal nasty hacks to update a model bound to them
+             * vueof course in that case has -utils has some problems synching the internal  so the sync:false seems to be a practical solution to a common issue.v-model properties
+             * this workaround was recommended in the thread https://github.com/vuejs/vue-test-utils/issues/532
+             * side issues https://github.com/vuejs/vue-test-utils/issues/676
+             */
             sync: false,
             stubs: runtimeComponents,
         });
