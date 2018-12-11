@@ -212,7 +212,7 @@ describe('Model Provider spec', () => {
         expect(input1.element.checked).to.be.not.ok;
     });
 
-    it('It supports selects fields', () => {
+    it('It supports select fields', () => {
         const wrapper = shallowMount(Vue.extend({
             components: runtimeComponents,
             data() {
