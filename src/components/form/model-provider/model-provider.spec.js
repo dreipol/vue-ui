@@ -25,7 +25,7 @@ describe('Model Provider spec', () => {
         UiTextarea,
     };
 
-    it('The ui-model-provide is an object', () => {
+    it('The ui-model-provider is an object', () => {
         expect(UiModelProvider).to.be.an('object');
         expect(UiModelProvider).to.be.not.empty;
     });
