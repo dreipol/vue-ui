@@ -5,9 +5,7 @@ export default {
     props: {
         focus: {
             type: Boolean,
-            default() {
-                return false;
-            },
+            default: false,
         },
     },
     data() {
