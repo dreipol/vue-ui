@@ -1,4 +1,4 @@
-# Vuex
+# Vuex modules
 
 Our vuex modules can be simply included in your project. You can add singularly each of them to your vuex project modules for example:
 
