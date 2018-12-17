@@ -1,5 +1,5 @@
 <template>
-    <div class="ui-overlay">
+    <div class="ui-overlay" :class="bemFacets">
         <transition mode="out-in"
                 :name="overlay.transition"
                 @enter="onEnterHook"
@@ -28,11 +28,13 @@
 
 <script>
     import { mapActions, mapGetters, mapState } from 'vuex';
+    import bemMixin from '../../mixins/bem';
     import scrollLockHelperMixin from '../../mixins/scroll-lock-helper';
 
     export default {
         mixins: [
             scrollLockHelperMixin,
+            bemMixin('ui-overlay'),
         ],
         props: {
             id: {
