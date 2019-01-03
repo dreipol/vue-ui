@@ -43,8 +43,8 @@ function connect(store) {
     VuexStore.registerModule(['vue-ui', 'scroll'], modules.scroll);
 
     return () => {
+        VuexStore.unregisterModule(['vue-ui', 'overlay']);
+        VuexStore.unregisterModule(['vue-ui', 'scroll']);
         VuexStore.unregisterModule('vue-ui');
-        VuexStore.registerModule(['vue-ui', 'overlay']);
-        VuexStore.registerModule(['vue-ui', 'scroll']);
     };
 }
