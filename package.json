@@ -16,7 +16,6 @@
     "debug": "karma start karma.config.js --single-run 0 --browsers Chrome"
   },
   "files": [
-    "dist/index.js",
     "src"
   ],
   "repository": {
