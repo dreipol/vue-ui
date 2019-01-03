@@ -1,2 +1,2 @@
-export { default as overlayVuexModule } from './modules/overlay';
-export { default as scrollVuexModule } from './modules/scroll';
+export { default as uiOverlayVuexModule } from './modules/overlay';
+export { default as uiScrollVuexModule } from './modules/scroll';
