@@ -18,7 +18,9 @@ export default {
     },
     methods: {
         ...mapActions('vue-ui/scroll', ['setScroll']),
-        throttledSetScroll: throttle(() => this.setScroll(), 100),
+        throttledSetScroll: throttle(function() {
+            this.setScroll();
+        }, 100),
     },
     mounted() {
         this.setScroll();
