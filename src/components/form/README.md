@@ -14,8 +14,8 @@ Let's assume for example that you want to use the checkbox component in your vue
     export default {
         components: {
             UiCheckbox,
-        }
-    }
+        },
+    };
 </script>
 ```
 
@@ -187,8 +187,8 @@ The `ui-select` component requires the `ui-option` and eventually `ui-optgroup` 
             UiSelect,
             UiOption,
             UiOptgroup,
-        }
-    }
+        },
+    };
 </script>
 ```
 
@@ -221,4 +221,107 @@ The select checkmark icon can be defined not only via `actions` slot but also vi
     <ui-option value="two">2</ui-option>
     <ui-option value="three">3</ui-option>
 </ui-select>
+```
+
+## Ui Hidden
+
+There is not really much to say about the `ui-hidden` component, it just renders a `<input type='hidden'/>` dom node.
+
+```vue
+<ui-hidden name="token" value="secret_token"/>
+```
+
+## Model Provider
+
+All the input fields can be connected via double way binding to a vue model. To achieve this behavior you need to use the `ui-model-provider`.
+In a nutshell: all input fields will be only responsible for the user events and the rendering of our data while the `ui-model-provider` will enhance them adding the reactivity to the system.
+
+```vue
+<template>
+    <ui-model-provider v-model="username">
+        <ui-input slot-scope="props" :value="props.value" @input="props.updateValue"/>  
+    </ui-model-provider>
+</template>
+
+<script>
+    import { UiInput, UiModelProvider } from '@dreipol/vue-ui/src/components';
+    export default {
+        components: {
+            UiInput,
+            UiModelProvider
+        },
+        data() {
+            return {
+                username: 'Gian'
+            };
+        },
+    };
+</script>
+```
+
+### Slot scope properties
+
+The model provider exposes the following properties to its slots:
+    - `value`: the current internal model value
+    - `updateValue`: a function that will automatically update the internal model depending on the input that dispatched the event
+    - `updateValueRaw`: a function that will directly update the value of the internal model 
+    - `updateToggle`: a function that toggles the internal model value
+    - `hasItem`: a function that will be used to check if the internal model has contains a specific value, if it's an array
+    - `addItem`: a function to add a value to the internal model, if it's an array
+    - `removeItem`: a function to remove a value from the internal model, if it's an array
+
+### Practical Examples
+
+#### Model provider with toggles
+
+Here you can see an example of a boolean `ui-checkbox` input bound to a model provider. 
+Assuming that the `value` is a boolean and can be either `true` or `false`
+
+```vue
+<ui-model-provider v-model="value">
+    <ui-checkbox slot-scope="props" :value="props.value" @change="props.updateValue"/>
+</ui-model-provider>
+```
+
+#### Model provider with multiple radios
+
+Here you can see an example of `ui-radio` inputs bound to a model provider. 
+Assuming that the `value` can be only a string, one of `['one', 'two']`
+
+```vue
+<ui-model-provider v-model="value">
+    <div slot-scope="props">
+         <ui-radio :checked="props.value === 'one'" value='one' @change="props.updateValue"/>
+         <ui-radio :checked="props.value === 'two'" value='two' @change="props.updateValue"/>
+    </div>
+</ui-model-provider>
+```
+
+#### Model provider with multiple checkboxes
+
+Here you can see an example of `ui-checkbox` inputs bound to a model provider.
+Assuming that the `value` is an array containing none or many items of `['one', 'two', 'three']`
+
+```vue
+<ui-model-provider v-model="value">
+    <div slot-scope="props">   
+        <ui-checkbox :checked="props.hasItem('one')" value='one' @change="props.updateValue"/>
+        <ui-checkbox :checked="props.hasItem('two')" value='two' @change="props.updateValue"/>
+        <ui-checkbox :checked="props.hasItem('three')" value='three' @change="props.updateValue"/>
+    </div>
+</ui-model-provider>
+```
+
+#### Model Provider with select
+
+Here you can see an example of `ui-select` input bound to a model provider. 
+Assuming that the `value` can be only a string, one of `['one', 'two']`
+
+```vue
+ <ui-model-provider v-model="value">
+    <ui-select slot-scope="props" :value="props.value" @change="props.updateValue">
+        <ui-option value="one">One</ui-option>
+        <ui-option value="two">Two</ui-option>
+    </ui-select>
+</ui-model-provider>
 ```
