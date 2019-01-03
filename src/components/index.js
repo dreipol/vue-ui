@@ -7,7 +7,7 @@ export { default as UiIntersectionObserverComponent } from './intersection-obser
 export { default as UiInput } from './form/input/input.vue';
 export { default as UiTextarea } from './form/textarea/textarea.vue';
 export { default as UiCheckbox } from './form/checkbox/checkbox.vue';
-export { default as UiRadio } from './form/radio/Radio.vue';
+export { default as UiRadio } from './form/radio/radio.vue';
 export { default as UiHidden } from './form/hidden/hidden.vue';
 export { default as UiOptgroup } from './form/optgroup/optgroup.vue';
 export { default as UiOption } from './form/option/option.vue';
