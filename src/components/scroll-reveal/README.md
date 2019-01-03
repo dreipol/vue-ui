@@ -4,7 +4,7 @@ You have to set the `bemRoot` prop. This prop is bem root class. `scroll-reveal`
 - `&__pinned`
 - `&__unpinned`
 - `&__top`
-- `&_not-top`
+- `&__not-top`
 - `&__bottom`
 - `&__not-bottom`
 

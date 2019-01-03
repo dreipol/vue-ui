@@ -1,6 +1,6 @@
 {
   "name": "@dreipol/vue-ui",
-  "version": "0.3.8",
+  "version": "0.6.0",
   "description": "",
   "main": "index.js",
   "jsnext:main": "src/index.js",
@@ -16,7 +16,6 @@
     "debug": "karma start karma.config.js --single-run 0 --browsers Chrome"
   },
   "files": [
-    "index.js",
     "src"
   ],
   "repository": {
@@ -24,9 +23,7 @@
     "url": "git+https://github.com/dreipol/vue-ui.git"
   },
   "keywords": [
-    "vue",
-    "ui components",
-    "vue helpers"
+    "vue"
   ],
   "author": "Rouven Bühlmann <rouven.buehlmann@dreipol.ch> (http://dreipol.ch)",
   "license": "MIT",
