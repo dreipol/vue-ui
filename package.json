@@ -1,18 +1,19 @@
 {
   "name": "@dreipol/vue-ui",
-  "version": "0.5.0",
+  "version": "0.3.9",
   "description": "",
   "main": "index.js",
   "jsnext:main": "src/index.js",
   "module": "src/index.js",
   "scripts": {
     "prepare": "npm run build && npm test",
-    "lint": "npx eslint --ext .js,.vue ./src ./test *.config.js",
+    "lint": "npx eslint --ext .js,.vue ./src *.config.js",
     "coveralls": "cat ./coverage/report-lcov/lcov.info | coveralls",
-    "ci-test-lint": "npx eslint --ext .js,.vue -c .eslintrc --no-eslintrc -f junit ./src ./test *.config.js > reports/eslint.xml",
+    "ci-test-lint": "npx eslint --ext .js,.vue -c .eslintrc --no-eslintrc -f junit ./src *.config.js > reports/eslint.xml",
     "build": "npx webpack --config webpack.config.js",
-    "prepublish": "npm run build",
-    "test": "npm run lint && karma start test/karma.config.js"
+    "prepublishOnly": "npm run build && npm test",
+    "test": "npm run lint && karma start karma.config.js",
+    "debug": "karma start karma.config.js --single-run 0 --browsers Chrome"
   },
   "files": [
     "dist/index.js",

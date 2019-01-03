@@ -37,7 +37,7 @@ jspm_packages
 .node_repl_history
 
 # generated files
-index.js
+/index.js
 
 # nyc test coverage
 reports

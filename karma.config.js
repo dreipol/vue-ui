@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 
-const TEST_FILES_PATH = '../src/**/*.spec.js';
-const webpackConfig = require('../webpack.config');
+const TEST_FILES_PATH = './src/**/*.spec.js';
+const webpackConfig = require('./webpack.config');
 
 module.exports = function(config) {
     config.set({
@@ -10,15 +10,15 @@ module.exports = function(config) {
         frameworks: ['mocha'],
         files: [
             // Unit test tools
-            '../node_modules/chai/chai.js',
-            '../node_modules/sinon/pkg/sinon.js',
-            '../node_modules/sinon-chai/lib/sinon-chai.js',
+            './node_modules/chai/chai.js',
+            './node_modules/sinon/pkg/sinon.js',
+            './node_modules/sinon-chai/lib/sinon-chai.js',
             // Vue Specific dependencies
-            '../node_modules/vue/dist/vue.js',
-            '../node_modules/vuex/dist/vuex.js',
-            '../node_modules/lodash/lodash.js',
-            '../node_modules/vue-template-compiler/browser.js',
-            '../node_modules/@vue/test-utils/dist/vue-test-utils.umd.js',
+            './node_modules/vue/dist/vue.js',
+            './node_modules/vuex/dist/vuex.js',
+            './node_modules/lodash/lodash.js',
+            './node_modules/vue-template-compiler/browser.js',
+            './node_modules/@vue/test-utils/dist/vue-test-utils.umd.js',
             TEST_FILES_PATH,
         ],
         plugins: [
@@ -47,10 +47,13 @@ module.exports = function(config) {
             devtool: 'inline-source-map',
         },
         webpackMiddleware: {
-            noInfo: true,
+            logger: {
+                ...console,
+                info: () => null,
+            },
         },
         coverageReporter: {
-            dir: '../coverage',
+            dir: './coverage',
             reporters: [{
                 type: 'lcov',
                 subdir: 'report-lcov',
