@@ -1,4 +1,12 @@
-import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY, UPDATE_OVERLAY } from '../mutation-types';
+import { defer } from '../../util/defer';
+import {
+    CLOSE_OVERLAY,
+    MOUNT_OVERLAY,
+    OPEN_OVERLAY,
+    PREPARE_CLOSE_OVERLAY,
+    UNMOUNT_OVERLAY,
+    UPDATE_OVERLAY,
+} from '../mutation-types';
 
 /**
  * Trigger close action for an overlay
@@ -19,7 +27,7 @@ export function openOverlay({ commit, state }, payload) {
             timestamp: Date.now(),
         };
 
-        setTimeout(() => {
+        defer(() => {
             commit(OPEN_OVERLAY, mutation);
             resolve();
         });
@@ -55,7 +63,7 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
 
         commit(PREPARE_CLOSE_OVERLAY, { id, transition });
 
-        setTimeout(() => {
+        defer(() => {
             commit(CLOSE_OVERLAY, mutation);
             resolve();
         });
