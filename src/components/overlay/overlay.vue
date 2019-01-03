@@ -1,5 +1,5 @@
 <template>
-    <div class="ui-overlay" :class="bemFacets">
+    <div class="ui-overlay" :class="rootClasses">
         <transition mode="out-in"
                 :name="overlay.transition"
                 @enter="onEnterHook"
@@ -33,8 +33,8 @@
 
     export default {
         mixins: [
-            scrollLockHelperMixin,
             bemMixin('ui-overlay'),
+            scrollLockHelperMixin,
         ],
         props: {
             id: {
