@@ -14,7 +14,7 @@ import overlayModule, { DEFAULT_CLOSING_STATE } from './';
 import { expect } from 'chai';
 import { spy } from 'sinon';
 
-describe('Overlay spec', () => {
+describe('Vuex overlay', () => {
     describe('Overlays default export', () => {
         it('The overlay module exports properly all the vuex properties', () => {
             const props = ['namespaced', 'mutations', 'actions', 'getters', 'state'];

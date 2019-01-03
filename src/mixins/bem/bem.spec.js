@@ -10,7 +10,7 @@ function getDummyComponentProps(mixin) {
     };
 }
 
-describe('Bem Mixin', () => {
+describe('Mixin bem', () => {
     describe('Computed properties', () => {
         it('It returns the bemRoot class properly', () => {
             const vm = new localVue(getDummyComponentProps(bemMixin('root')));

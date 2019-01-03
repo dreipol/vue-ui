@@ -1,0 +1,61 @@
+<template>
+    <div class="form-field form-field__input" :class="rootClasses">
+        <label>
+            <span class="form-field--title-label" v-if="!hasFloatingLabel && $slots.label">
+                <slot name="label"/>
+            </span>
+            <div class="form-field--input-container" :data-action-count="countVirtualTags($slots.actions)">
+                <span class="form-field--floating-label" v-if="hasFloatingLabel && $slots.label">
+                    <slot name="label"/>
+                </span>
+                <slot name="input">
+                    <input class="form-field--input"
+                            v-model="currentValue"
+                            v-bind="$attrs"
+                            @focus="onFocus"
+                            @blur="onBlur"
+                            v-on="$listeners"
+                    >
+                </slot>
+                <ui-actions>
+                    <slot name="actions"/>
+                </ui-actions>
+            </div>
+        </label>
+        <slot name="messages"/>
+    </div>
+</template>
+
+<script>
+    import UiActions from '../actions/actions.vue';
+    import countVirtualTags from '../../../util/count-virtual-tags';
+    import bemMixin from '../../../mixins/bem';
+    import rootClassesMixin from '../../../mixins/form/root-classes';
+    import floatingLabelPropsMixin from '../../../mixins/form/floating-label-props';
+    import focusBehaviourMixin from '../../../mixins/form/focus-behaviour';
+    import currentValueMixin from '../../../mixins/form/current-value';
+    import hasErrorsPropsMixin from '../../../mixins/form/has-errors-props';
+
+    export default {
+        components: {
+            UiActions,
+        },
+        mixins: [
+            bemMixin('form-field'),
+            focusBehaviourMixin,
+            rootClassesMixin,
+            floatingLabelPropsMixin,
+            currentValueMixin,
+            hasErrorsPropsMixin,
+        ],
+        props: {
+            value: {
+                type: [Number, String],
+                default: '',
+            },
+        },
+        methods: {
+            countVirtualTags,
+        },
+    };
+</script>

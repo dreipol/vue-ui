@@ -1,7 +1,7 @@
 import srcsetFilter from './';
 import { expect } from 'chai';
 
-describe('srcset filter', () => {
+describe('Filter srcset', () => {
     it('srcset with one image', () => {
         const urls = ['foo'];
         const srcset = srcsetFilter(urls);

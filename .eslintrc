@@ -1,7 +1,13 @@
 {
   "root": true,
-  "parser": "babel-eslint",
-  "extends": "@dreipol/eslint-config",
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "sourceType": "module"
+  },
+  "extends": [
+    "@dreipol/eslint-config",
+    "@dreipol/eslint-config-vue"
+  ],
   "env": {
     "browser": true,
     "node": true,
