@@ -23,10 +23,10 @@ export default {
     mounted() {
         this.setScroll();
         document.documentElement.classList.add(ROOT_CLASS);
-        window.addEventListener('vue-ui/scroll', this.throttledSetScroll);
+        window.addEventListener('scroll', this.throttledSetScroll);
     },
     beforeDestroy() {
-        window.removeEventListener('vue-ui/scroll', this.throttledSetScroll);
+        window.removeEventListener('scroll', this.throttledSetScroll);
     },
     watch: {
         $route: {
