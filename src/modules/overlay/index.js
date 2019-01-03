@@ -56,8 +56,6 @@ const mutations = {
             ...state.overlays[payload.id].props,
             ...payload.props,
         });
-
-        console.log(state.overlays[payload.id].props);
     },
     [PREPARE_CLOSE_OVERLAY](state, payload) {
         const overlay = state.overlays[payload.id];
