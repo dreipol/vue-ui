@@ -1,5 +1,6 @@
 import { mapGetters, mapState } from 'vuex';
 import { isIos } from '../../util/detect/ios-detect';
+import { defer } from '../../util/defer';
 
 const SCROLL_LOCK_IOS_FIX_CLASS = 'u-scroll-lock-ios-fix';
 
@@ -10,8 +11,8 @@ export default {
         };
     },
     computed: {
-        ...mapGetters('scroll', ['hasScrollLockingOverlays']),
-        ...mapState('scroll', ['scrollbarWidth']),
+        ...mapGetters('vue-ui/scroll', ['hasScrollLockingOverlays']),
+        ...mapState('vue-ui/scroll', ['scrollbarWidth']),
         scrollLockStyles() {
             return {
                 [this.scrollLockHelperStyleProp]: (this.hasScrollLockingOverlays ? `${ this.scrollbarWidth }px` : ''),
@@ -27,11 +28,11 @@ export default {
             const top = parseFloat(window.getComputedStyle($element).marginTop) || 0;
             $element.style.marginTop = `${ top - 0.5 }px`;
 
-            setTimeout(() => {
+            defer(() => {
                 this.$nextTick(() => {
                     $element.style.marginTop = null;
                 });
-            }, 0);
+            });
         },
     },
     watch: {

@@ -13,7 +13,12 @@ localVue.use(Vuex);
 function getDummyOverlayComponentOptions(customOptions = {}) {
     const store = new Vuex.Store({
         modules: {
-            overlay: cloneDeep(overalyModule),
+            'vue-ui': {
+                namespaced: 'true',
+                modules: {
+                    overlay: cloneDeep(overalyModule),
+                },
+            },
         },
     });
 

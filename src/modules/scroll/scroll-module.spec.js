@@ -26,11 +26,7 @@ describe('Vuex scroll', () => {
 
                 const [setScrollEventArgs] = commit.args;
 
-                expect(setScrollEventArgs).to.be.deep.equal([SET_SCROLL, {
-                    position: 0,
-                    progress: 0,
-                    scrollbarWidth: 15,
-                }]);
+                expect(setScrollEventArgs).to.be.deep.equal([SET_SCROLL]);
             });
         });
 
@@ -55,14 +51,14 @@ describe('Vuex scroll', () => {
             const state = {
                 position: 1,
                 progress: 0.5,
-                scrollbarWidth: 15,
+                scrollbarWidth: 1000,
             };
 
-            scrollModule.mutations[SET_SCROLL](state, { position: 0, progress: 0, scrollbarWidth: 0 });
+            scrollModule.mutations[SET_SCROLL](state);
 
             expect(state.position).to.be.equal(0);
             expect(state.progress).to.be.equal(0);
-            expect(state.scrollbarWidth).to.be.equal(0);
+            expect(state.scrollbarWidth).to.be.equal(15);
         });
 
         it('Disable scroll', () => {
