@@ -5,8 +5,11 @@ import * as actions from './actions';
 
 const mutations = {
     [SET_SCROLL](state) {
-        state.position = scrollTop();
-        state.progress = +clamp(state.position / (documentHeight() - window.innerHeight), 0, 1).toFixed(2);
+        const position = scrollTop();
+        const average = position / (documentHeight() - window.innerHeight);
+
+        state.position = position;
+        state.progress = +clamp(isNaN(average) ? 0 : average, 0, 1).toFixed(2);
         state.scrollbarWidth = scrollbarWidth();
     },
     [DISABLE_SCROLL](state, { isLocked }) {
