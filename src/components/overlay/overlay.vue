@@ -13,7 +13,8 @@
                             <div class="ui-overlay--backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
                             <div class="ui-overlay--container">
                                 <div class="ui-overlay--revealer">
-                                    <component :is="overlay.component"
+                                    <component class="ui-overlay--component"
+                                            :is="overlay.component"
                                             v-bind="overlayProps"
                                             @modal:close="closeOverlay({ id })"/>
                                 </div>
