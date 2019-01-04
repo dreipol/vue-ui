@@ -14,10 +14,6 @@ export const DEFAULT_OPTIONS = Object.freeze({
 export function mapFacets(blockName, facets, options = DEFAULT_OPTIONS) {
     const { defaultFacet } = options;
 
-    if (!Array.isArray(facets)) {
-        debugger;
-    }
-
     // Apply multiple facets by using an array
     const result = facets.map(modifierName => createBemClass({ blockName, modifierName, ...options })).filter(Boolean);
 
