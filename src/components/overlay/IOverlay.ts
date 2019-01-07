@@ -1,3 +1,8 @@
+interface IAutoClose {
+    delay: number;
+    transition?: string;
+}
+
 export interface IOverlay {
     id: string;
     component: string|object;
@@ -5,6 +10,6 @@ export interface IOverlay {
     isOpen?: boolean;
     facets?: string[];
     disableScroll?: boolean;
-    autoClose?: object;
+    autoClose?: boolean|IAutoClose;
     props?: object;
 }
