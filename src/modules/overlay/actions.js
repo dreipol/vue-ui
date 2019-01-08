@@ -1,4 +1,3 @@
-import { defer } from '../../util/defer';
 import {
     CLOSE_OVERLAY,
     MOUNT_OVERLAY,
@@ -27,7 +26,8 @@ export function openOverlay({ commit, state }, payload) {
             timestamp: Date.now(),
         };
 
-        defer(() => {
+        // NOTE: Using the `defer` helper doesn't work, `requestAnimationFrame` ensures that the DOM was updated
+        window.requestAnimationFrame(() => {
             commit(OPEN_OVERLAY, mutation);
             resolve();
         });
@@ -63,7 +63,8 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
 
         commit(PREPARE_CLOSE_OVERLAY, { id, transition });
 
-        defer(() => {
+        // NOTE: Using the `defer` helper doesn't work, `requestAnimationFrame` ensures that the DOM was updated
+        window.requestAnimationFrame(() => {
             commit(CLOSE_OVERLAY, mutation);
             resolve();
         });
