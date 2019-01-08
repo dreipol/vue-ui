@@ -26,11 +26,11 @@ export function openOverlay({ commit, state }, payload) {
             timestamp: Date.now(),
         };
 
-        // NOTE: Using the `defer` helper doesn't work, `requestAnimationFrame` ensures that the DOM was updated
-        window.requestAnimationFrame(() => {
+        // NOTE: Using the `defer` helper doesn't work, `setTimeout` ensures that the DOM was updated
+        setTimeout(() => {
             commit(OPEN_OVERLAY, mutation);
             resolve();
-        });
+        }, 0);
     });
 }
 
@@ -63,11 +63,11 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
 
         commit(PREPARE_CLOSE_OVERLAY, { id, transition });
 
-        // NOTE: Using the `defer` helper doesn't work, `requestAnimationFrame` ensures that the DOM was updated
-        window.requestAnimationFrame(() => {
+        // NOTE: Using the `defer` helper doesn't work, `setTimeout` ensures that the DOM was updated
+        setTimeout(() => {
             commit(CLOSE_OVERLAY, mutation);
             resolve();
-        });
+        }, 0);
     });
 }
 
