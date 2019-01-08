@@ -1,4 +1,3 @@
-import { defer } from '../../util/defer';
 import {
     CLOSE_OVERLAY,
     MOUNT_OVERLAY,
