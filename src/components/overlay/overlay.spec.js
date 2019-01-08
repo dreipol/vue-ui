@@ -74,4 +74,6 @@ describe('Component overlay', () => {
         expect(wrapper.find('.ui-overlay--component').text()).to.be.equal('baz');
         // TODO: Check classList existence of `foo`
     });
+
+    // TODO: Implement test to check if animation takes place (defer vs. rAF)
 });
