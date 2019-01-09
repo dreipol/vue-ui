@@ -14,11 +14,13 @@ export default {
         };
     },
     computed: {
-        ...mapState('scroll', ['position', 'scrollbarWidth', 'isLocked']),
+        ...mapState('vue-ui/scroll', ['position', 'scrollbarWidth', 'isLocked']),
     },
     methods: {
-        ...mapActions('scroll', ['setScroll']),
-        throttledSetScroll: throttle(() => this.setScroll(), 100),
+        ...mapActions('vue-ui/scroll', ['setScroll']),
+        throttledSetScroll: throttle(function() {
+            this.setScroll();
+        }, 100),
     },
     mounted() {
         this.setScroll();

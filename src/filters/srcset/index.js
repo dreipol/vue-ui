@@ -1,5 +1,5 @@
 /**
- * Converts a list of urls into a string that can be used as a value of a `srcset` attribute
+ * Convert a list of urls into a string that can be used as a value of a `srcset` attribute
  * @param {string[]} list - A list of urls
  * @return {string} The srcset attribute string
  */

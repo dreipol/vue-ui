@@ -1,5 +1,12 @@
-import Vue from 'vue';
-import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY } from '../mutation-types';
+import { defer } from '../../util/defer';
+import {
+    CLOSE_OVERLAY,
+    MOUNT_OVERLAY,
+    OPEN_OVERLAY,
+    PREPARE_CLOSE_OVERLAY,
+    UNMOUNT_OVERLAY,
+    UPDATE_OVERLAY,
+} from '../mutation-types';
 
 /**
  * Trigger close action for an overlay
@@ -20,12 +27,20 @@ export function openOverlay({ commit, state }, payload) {
             timestamp: Date.now(),
         };
 
-        Vue.nextTick(() => {
+        defer(() => {
             commit(OPEN_OVERLAY, mutation);
-
             resolve();
         });
     });
+}
+
+/**
+ * Trigger update action for an overlay
+ * @param {object} context - A vuex action context
+ * @param {object} payload - A vuex action payload
+ */
+export function updateOverlay({ commit }, { id, props }) {
+    commit(UPDATE_OVERLAY, { id, props });
 }
 
 /**
@@ -48,9 +63,8 @@ export function closeOverlay({ commit, state }, { id, transition } = {}) {
 
         commit(PREPARE_CLOSE_OVERLAY, { id, transition });
 
-        Vue.nextTick(() => {
+        defer(() => {
             commit(CLOSE_OVERLAY, mutation);
-
             resolve();
         });
     });
