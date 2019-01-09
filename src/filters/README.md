@@ -1,20 +1,23 @@
 # Filters
-
-Here you can see how to use the vue filters provided by this package.
+The package includes a few basic filters to simplify common tasks.
 
 ## background-image
-Create the `background-image` style string from a given URL
+Create a `background-image` style string from a given URL.
 
 Example:
 ```vue
-    <div class="teaser-card--col teaser-card--right-pane"
-        :style="backgroundRight | backgroundImage" />
+    <!-- Without filter -->
+    <div :style="{ 'background-image': 'url(./image.jpg)' }"/>
+
+    <!-- With filter -->
+    <div :style="'./image.jpg' | backgroundImage"/>
 ```
 
 ## srcset
-Transforms a list of urls into a valid `srcset` property
+Transforms a list of urls into a valid `srcset` property.
 
-Example
+Example:
 ```vue
-<img src="..." :srcset="['http://via.placeholder.com/600x600', 'http://via.placeholder.com/1200x1200'] | srcset"/>
+    <img src="./image@1x.jpg" :srcset="['./image@1x.jpg', './image@2x.jpg'] | srcset"/>
+    <!-- Result: `<img src="./image@1x.jpg" :srcset="'./image@1x.jpg 1x, ./image@2x.jpg 2x'"/>` -->
 ```

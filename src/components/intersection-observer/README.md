@@ -1,24 +1,23 @@
 # IntersectionObserverComponent
-A simple implementation of the [`intersectionObserverMixin`](/src/mixins/intersection-observer). It's a simple component that will emit events
+A simple implementation of the [`intersectionObserverMixin`](/src/mixins/intersection-observer).
 
-__Usage__
+## Usage
 ```js
     import { IntersectionObserverComponent } from '@dreipol/vue-ui';
 ```
 
-__Props__
-
+## Props
 | Name | Type | Default |
 | --- | --- | ---|
 |`thresholdMin` |Number| 0.1 |
 |`thresholdMax` |Number| null|
 
-__Events__
+## Events
 -  `intersect(isIntersecting: boolean, entry: IntersectionObserverEntry )`
 -  `intersect-enter(entry: IntersectionObserverEntry )`
 -  `intersect-leave(entry: IntersectionObserverEntry )`
 
-__Example__
+## Example
 ```vue
     <intersection-observer @intersect-enter="onIntersectEnter">
         <div>

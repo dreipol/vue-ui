@@ -1,19 +1,23 @@
 # Vuex modules
+These vuex modules provide functionality for some components and are necessary for them to work. 
 
-Our vuex modules can be simply included in your project. You can add singularly each of them to your vuex project modules for example:
+## Usage
+These modules can be added to your project store. They are scoped within the `vue-ui` namespace.
 
 ```js
 import { uiScrollVuexModule } from '@dreipol/vue-ui/src/vuex';
 
 const store = new Vuex.Store({
     modules: {
-        scroll: uiScrollVuexModule
+        'vue-ui': {
+            namespaced: true,
+            scroll: uiScrollVuexModule,
+        },
     },
 });
 ```
 
-The current vuex modules provided are:
-
+## Available modules:
 - [scroll](/src/vuex/modules/scroll)
 - [overlay](/src/vuex/modules/overlay)
 

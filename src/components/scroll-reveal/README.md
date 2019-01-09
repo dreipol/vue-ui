@@ -1,6 +1,7 @@
 # scroll-reveal
-Reveals the component passed by the slot while scrolling upwards and hides it when scrolling down.
-You have to set the `bemRoot` prop. This prop is bem root class. `scroll-reveal` will add interfaces such as
+Reveals the component passed in the slot while scrolling upwards and hides it when scrolling down.
+You need to set the `bemRoot` prop. This prop is the bem root class. `scroll-reveal` will add these modifiers:
+
 - `&__pinned`
 - `&__unpinned`
 - `&__top`
@@ -8,19 +9,18 @@ You have to set the `bemRoot` prop. This prop is bem root class. `scroll-reveal`
 - `&__bottom`
 - `&__not-bottom`
 
-You have to style them on your own!
+You need to provide styles for these modifiers.
 
-Example Usage
+
+## Example Usage
 
 ```html
     <scroll-reveal element-class="reduced-nav">
-        <main-header />
+        <main-header/>
     </scroll-reveal>
 ```
 
-
-Example SCSS
-
+### Example SCSS
 ```scss
     & {
         position: fixed;

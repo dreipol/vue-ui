@@ -25,34 +25,35 @@ In case you want to use these components globally, without always importing them
 import { UiInput } from '@dreipol/vue-ui/src/components';
 import Vue from 'vue';
 
-// this component will be now globally available
+// This component will now be globally available
 Vue.component('ui-input', UiInput);
 ```
 
-## Ui Input
 
-The `ui-input` component can be used as any standard DOM `<input>` field. 
+## Ui Input
+The `ui-input` component can be used as any standard DOM `<input>` field.
 
 ```vue
 <ui-input type="tel" required/>
 ```
 
-### Input Slots
+### Slots
+You can provide the following `<slot>`s to customize its rendering:
+- `label`
+- `actions`
+- `messages`
 
-You can provide `<slot>`s (`label`, `actions` and `messages`) to customize its rendering:
-
-#### Custom input label
+#### `label`
 
 ```vue
-<!-- custom label -->
 <ui-input type="text">
     <span slot="label">
-        My Fancy <i>Custom</i><b>Label</b>
+        My Fancy <i>Custom</i> <b>Label</b>
     </span>
 </ui-input>
 ```
 
-#### Custom actions button/s
+#### `actions`
 
 ```vue
 <ui-input type="search" placeholder="Search something...">
@@ -77,50 +78,65 @@ Multiple actions are supported as well
 </ui-input>
 ```
 
-#### Custom input user messages 
-
+#### `messages`
 You can render custom error messages via `messages` slot:
 
 ```vue
-<ui-input type="text">
-    <p slot="messages" class="error-message">Your field is invalid</p>
+<ui-input type="email">
+    <p slot="messages" class="error-message">Please provide a valid email address</p>
 </ui-input>
 ```
 
 ### Attributes
+The `<ui-input>` supports all native `<input>` attributes.
+In addition, the component includes the following custom attributes: 
 
-The `<ui-input>` supports all the `<input>` attributes. 
-It has supports also a custom attributes like `has-errors` in order to enable its error css classes and `has-floating-label` to render its label as material floating text.
+#### `has-errors`
+This attribute signals an invalid input state and adds the corresponding css class.
+
+ ```vue
+ <ui-input type="email" :has-errors="true"/>
+ ```
+ 
+ #### `has-floating-label`
+Renders its label as a floating text label.
 
 ```vue
-<!-- Probably the mail was not correct -->
-<ui-input type="email" :has-errors="true"/>
-
 <ui-input type="text" :has-floating-label="true">
     <template slot="label">
-        Ehy look I am floating
+        Look ma, I'm floating
     </template>
 </ui-input>
-
 ```
 
-## Ui Textarea
 
-The `ui-textaread` supports all the slots and attributes of the `ui-input` above. It has a nice feature that is really useful: depending on the amount of text it will
-grow and shrink in height automatically.
+## Ui Textarea
+The `ui-textarea` supports the same slots and attributes as the `ui-input`.
+In addition, the component provides a feature, allowing it to grow and shrink according to the amount of text entered.
 
 ```vue
 <ui-textarea value="Lorem Ipsum"/>
 ```
 
+### Slots
+- `label`
+- `actions`
+- `messages`
+
+### Custom attributes
+- `has-errors` 
+- `has-floating-label`
+
+
 ## Ui checkbox and radio
+The toggle input fields render a single instance of a checkbox or radio button.
 
-The toggle input fields are a bit simpler than the ones above mentioned. They support only the `has-errors` attribute.
+### Slots
+- `label`
+- `icon`
+- `messages`
 
-### Toggle Slots
-
-#### Toggle labels
-
+#### `label`
 The label can be provided as for the `ui-input` component via `<slot>`:
 
 ```vue
@@ -139,9 +155,8 @@ The label can be provided as for the `ui-input` component via `<slot>`:
 </ui-checkbox>
 ```
 
-#### Toggle icon
-
-In case you want to customize the icon of these input fields you can use the `icon` slot:
+#### `icon`
+You can alter the icon of the input fields by using the `icon` slot:
 
 ```vue
 <ui-checkbox>
@@ -149,7 +164,7 @@ In case you want to customize the icon of these input fields you can use the `ic
 </ui-checkbox>
 ```
 
-#### Custom toggle user messages 
+#### `messages`
 
 ```vue
 <ui-checkbox type="text">
@@ -157,9 +172,13 @@ In case you want to customize the icon of these input fields you can use the `ic
 </ui-checkbox>
 ```
 
-## Ui Select
+### Custom attributes
+- `has-errors` attribute.
 
-The `ui-select` component requires the `ui-option` and eventually `ui-optgroup` components to work properly:
+
+## Ui Select
+The `ui-select` component requires the `ui-option` component to work properly.
+The optional `ui-optgroup` component may be used to render native option groups.
 
 ```vue
 <template>
@@ -192,9 +211,10 @@ The `ui-select` component requires the `ui-option` and eventually `ui-optgroup` 
 </script>
 ```
 
-### Select Slots
-
-Similar to the input fields above it supports the `label`, `messages` and `actions` slots:
+### Slots
+- `label`
+- `actions`
+- `messages`
 
 ```vue
 <ui-select>
@@ -211,8 +231,10 @@ Similar to the input fields above it supports the `label`, `messages` and `actio
 </ui-select>
 ```
 
-### Select attributes
+### Custom attributes
+- `icon`
 
+#### `icon`
 The select checkmark icon can be defined not only via `actions` slot but also via `icon` attribute for example:
 
 ```vue
@@ -223,18 +245,18 @@ The select checkmark icon can be defined not only via `actions` slot but also vi
 </ui-select>
 ```
 
-## Ui Hidden
 
-There is not really much to say about the `ui-hidden` component, it just renders a `<input type='hidden'/>` dom node.
+## Ui hidden
+The `ui-hidden` component renders an invisible `<input type='hidden'/>` dom node.
 
 ```vue
 <ui-hidden name="token" value="secret_token"/>
 ```
 
-## Model Provider
 
-All the input fields can be connected via double way binding to a vue model. To achieve this behavior you need to use the `ui-model-provider`.
-In a nutshell: all input fields will be only responsible for the user events and the rendering of our data while the `ui-model-provider` will enhance them adding the reactivity to the system.
+## Model Provider
+All input fields can be connected via two-way binding to a vue model. To achieve this, you need the `ui-model-provider`.
+In a nutshell: The input fields are responsible for user events and rendering while the `ui-model-provider` enhances them by adding reactivity.
 
 ```vue
 <template>
@@ -260,20 +282,18 @@ In a nutshell: all input fields will be only responsible for the user events and
 ```
 
 ### Slot scope properties
-
 The model provider exposes the following properties to its slots:
-    - `value`: the current internal model value
-    - `updateValue`: a function that will automatically update the internal model depending on the input that dispatched the event
-    - `updateValueRaw`: a function that will directly update the value of the internal model 
-    - `updateToggle`: a function that toggles the internal model value
-    - `hasItem`: a function that will be used to check if the internal model has contains a specific value, if it's an array
-    - `addItem`: a function to add a value to the internal model, if it's an array
-    - `removeItem`: a function to remove a value from the internal model, if it's an array
+    - `value`: The current internal model value
+    - `updateValue`: A function that will automatically update the internal model depending on the input that dispatched the event
+    - `updateValueRaw`: A function that will directly update the value of the internal model 
+    - `updateToggle`: A function that toggles the internal model value
+    - `hasItem`: A function that will be used to check if the internal model contains a specific value, if it's an array
+    - `addItem`: A function to add a value to the internal model, if it's an array
+    - `removeItem`: A function to remove a value from the internal model, if it's an array
 
-### Practical Examples
+### Practical examples
 
 #### Model provider with toggles
-
 Here you can see an example of a boolean `ui-checkbox` input bound to a model provider. 
 Assuming that the `value` is a boolean and can be either `true` or `false`
 
@@ -284,9 +304,8 @@ Assuming that the `value` is a boolean and can be either `true` or `false`
 ```
 
 #### Model provider with multiple radios
-
 Here you can see an example of `ui-radio` inputs bound to a model provider. 
-Assuming that the `value` can be only a string, one of `['one', 'two']`
+Assuming that the `value` must be one of those two strings: `['one', 'two']`
 
 ```vue
 <ui-model-provider v-model="value">
@@ -298,9 +317,8 @@ Assuming that the `value` can be only a string, one of `['one', 'two']`
 ```
 
 #### Model provider with multiple checkboxes
-
-Here you can see an example of `ui-checkbox` inputs bound to a model provider.
-Assuming that the `value` is an array containing none or many items of `['one', 'two', 'three']`
+This is an example of a `ui-checkbox` inputs bound to a model provider.
+Assuming that the `value` is an array containing none or multiple items of `['one', 'two', 'three']`
 
 ```vue
 <ui-model-provider v-model="value">
@@ -313,9 +331,8 @@ Assuming that the `value` is an array containing none or many items of `['one', 
 ```
 
 #### Model Provider with select
-
-Here you can see an example of `ui-select` input bound to a model provider. 
-Assuming that the `value` can be only a string, one of `['one', 'two']`
+This is an example of a `ui-select` input bound to a model provider. 
+Assuming that the `value` must be one of those two strings: `['one', 'two']`
 
 ```vue
  <ui-model-provider v-model="value">

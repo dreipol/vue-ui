@@ -1,6 +1,6 @@
 # vue-ui
 
-Intro
+A flexible system of modern ui components for Vue.
 
 [![Build Status][circleci-image]][circleci-url]
 [![Code quality][codeclimate-image]][codeclimate-url]
@@ -10,22 +10,18 @@ Intro
 [![MIT License][license-image]][license-url]
 
 ## Purpose
-This repo aims to solve all the common ui challenges we have to face in every project.
-Custom input fields, carousels, common vuex modules or mixins... are all good candidates
-for this package because in this way we can test, improve and document each of them in a
-really modular way.
+This repo aims to solve common ui challenges within a common web project.
+The scope of this package includes custom input fields, ui patterns (such as overlays) as well as their helpers and vuex modules. Within this repo these components can be tested, improved and documented in a modular and controlled way.
 
 ## Installation
-
-This module is simply available on npm
+This package is available via `npm`:
 
 ```bash
 npm install -S @dreipol/vue-ui
 ```
 
 ## Usage
-
-You can pick any of our modules just by importing them in your project for example:
+Pick any of the modules by importing them in your project, for example:
 
 ```js
 import { UiInput } from '@dreipol/vue-ui/src/components'
@@ -36,13 +32,12 @@ export default {
 }
 ```
 
-If you are using webpack or rollup to compile your js bundle, remember to configure
-your all your loaders (vue-loader, babel-loader) in order to compile also the `node_modules/@dreipol/vue-ui` dependencies:
-all the code provided in this repo is written in modern javascript and might need to be transpiled to support older browsers.
+The code in this repo is based on ES2017 and must be transpiled to support older browsers.
+If you are using webpack or rollup to compile your js bundle, remember to configure all loaders 
+(vue-loader, babel-loader) to also compile the `node_modules/@dreipol/vue-ui` dependency.
 
 ## Documentation
-
-Each single module has its own documentation, below you can browse the list of all the available modules:
+Each module contains its own documentation, you can browse the list of all the available modules:
 
 - [components](/src/components)
 - [mixins](/src/mixins)
