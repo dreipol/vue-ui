@@ -4,10 +4,25 @@ import cloneDeep from 'lodash.clonedeep';
 import overlayModule from '../../modules/overlay';
 import scrollModule from '../../modules/scroll';
 import { expect } from 'chai';
-import { createLocalVue, shallowMount } from '@vue/test-utils';
+import { createLocalVue, shallowMount, TransitionStub } from '@vue/test-utils';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+
+const ExtendedTransitionStub = {
+    name: 'ExtendedTransitionStub',
+    extends: TransitionStub,
+    mounted() {
+        this.$emit('before-enter');
+        this.$emit('enter');
+        this.$emit('after-enter');
+    },
+    beforeDestroy() {
+        this.$emit('before-leave');
+        this.$emit('leave');
+        this.$emit('after-leave');
+    },
+};
 
 function getDummyOverlayComponentOptions(customOptions = {}, vuexInstanceOptions = {}) {
     const overlay = cloneDeep(overlayModule);
@@ -32,6 +47,9 @@ function getDummyOverlayComponentOptions(customOptions = {}, vuexInstanceOptions
     return {
         store,
         localVue,
+        stubs: {
+            transition: ExtendedTransitionStub,
+        },
         propsData: {
             id: 'foo',
         },
@@ -58,7 +76,7 @@ describe('Component overlay', () => {
         expect(vm.closeOverlay()).to.not.throw;
     });
 
-    it('passes props to the rendered component', () => {
+    it('passes props to the rendered component and sets the facets properly', () => {
         const wrapper = shallowMount(Overlay, getDummyOverlayComponentOptions({}, {
             isOpen: true,
             facets: ['foo'],
@@ -72,7 +90,26 @@ describe('Component overlay', () => {
         }));
 
         expect(wrapper.find('.ui-overlay--component').text()).to.be.equal('baz');
-        // TODO: Check classList existence of `foo`
+        expect(wrapper.find('.ui-overlay__foo').exists()).to.be.ok;
+    });
+
+    it('the overlay will be autoclosed', done => {
+        const wrapper = shallowMount(Overlay, getDummyOverlayComponentOptions({}, {
+            isOpen: true,
+            autoClose: {
+                delay: 100,
+                transition: 'foo',
+            },
+            component: {
+                props: ['bar'],
+                template: '<div>{{ bar }}</div>',
+            },
+            props: {
+                bar: 'baz',
+            },
+        }));
+
+        wrapper.vm.closeOverlay = () => done();
     });
 
     // TODO: Implement test to check if animation takes place (defer vs. rAF)
