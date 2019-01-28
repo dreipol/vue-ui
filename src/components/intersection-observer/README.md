@@ -1,9 +1,9 @@
-# IntersectionObserverComponent
+# UiIntersectionObserver
 A simple implementation of the [`intersectionObserverMixin`](/src/mixins/intersection-observer).
 
 ## Usage
 ```js
-    import { IntersectionObserverComponent } from '@dreipol/vue-ui';
+    import { UiIntersectionObserver } from '@dreipol/vue-ui';
 ```
 
 ## Props
