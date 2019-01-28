@@ -1,7 +1,7 @@
 export { default as UiModal } from './modal/modal.vue';
 export { default as UiOverlay } from './overlay/overlay.vue';
 export { default as UiScrollReveal } from './scroll-reveal/scroll-reveal.vue';
-export { default as UiIntersectionObserverComponent } from './intersection-observer/intersection-observer.vue';
+export { default as UiIntersectionObserver } from './intersection-observer/intersection-observer.vue';
 
 // form components
 export { default as UiInput } from './form/input/input.vue';
