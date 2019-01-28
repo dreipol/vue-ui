@@ -1,6 +1,6 @@
 # vue-ui
 
-Intro
+A flexible system of modern ui components for Vue.
 
 [![Build Status][circleci-image]][circleci-url]
 [![Code quality][codeclimate-image]][codeclimate-url]
@@ -10,207 +10,41 @@ Intro
 [![MIT License][license-image]][license-url]
 
 ## Purpose
-Purpose
+This repo aims to solve common ui challenges within a common web project.
+The scope of this package includes custom input fields, ui patterns (such as overlays) as well as their helpers and vuex modules. Within this repo these components can be tested, improved and documented in a modular and controlled way.
 
-## Quickstart
+## Installation
+This package is available via `npm`:
 
-1.  Install the module
-
-    ```bash
-    npm install -S @dreipol/vue-ui
-    ```
-
-## Mixins
-### `intersectionObserverMixin`
-[IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
-Load via `import { interactionObserverMixin } from '@dreipol/vue-ui';` and add it to the `mixins`.
-
-Now you can start observing an element by
-
-```js
-    this.registerObserver(this.$el, 0.1);
-```
-This methods accepts 4 parameters
-
-```js
-
-    /**
-    * @param {Element} element - Dom element
-    * @param {number} thresholdMin - minimal threshold trigger
-    * @param {number} thresholdMax - maximal threshold trigger
-    * @param {Object} config - Config options
-    */
-    registerObserver(element, thresholdMin, thresholdMax = null, config = {})
+```bash
+npm install -S @dreipol/vue-ui
 ```
 
+## Usage
+Pick any of the modules by importing them in your project, for example:
 
-Now it the element enters or leaves the viewport you can implement 3 methods in your component.
-
-`onIntersect(isIntersecting, entry)`, `onIntersectEnter(entry)` or `onIntersectLeave(entry)`.
-Those are called automatically by the mixin.
-
-To unregister simply call `unregister` with the given element.
-
-
-Example:
 ```js
+import { UiInput } from '@dreipol/vue-ui/src/components'
 
 export default {
-    mixins: [interactionObserverMixin],
-    props: {
-        isMain: {
-            type: Boolean,
-            default: false,
-        },
-    },
-    methods: {
-        ...mapActions('navigation', ['setNavVisibility']),
-
-        onIntersectEnter() {
-            this.setNavVisibility({ isVisible: true });
-        },
-
-        onIntersectLeave() {
-            this.setNavVisibility({ isVisible: false });
-        },
-    },
-
-    beforeDestroy(){
-        this.unregister(this.$refs.mainNavBar.$el);
-    },
-
-    mounted() {
-        this.registerObserver(this.$el, 0.1);
-    },
-};
-
-
+    components: { UiInput },
+    template: `<div><ui-input/></div>`
+}
 ```
 
-## Components
+The code in this repo is based on ES2017 and must be transpiled to support older browsers.
+If you are using webpack or rollup to compile your js bundle, remember to configure all loaders 
+(vue-loader, babel-loader) to also compile the `node_modules/@dreipol/vue-ui` dependency.
 
-### `IntersectionObserverComponent`
-A simple implementation of the `intersectionObserverMixin`. It's a simple component that will emit events
+## Documentation
+Each module contains its own documentation, you can browse the list of all the available modules:
 
-__Usage__
-```js
-    import { IntersectionObserverComponent } from '@dreipol/vue-ui';
-```
+- [components](/src/components)
+- [mixins](/src/mixins)
+- [filters](/src/filters)
+- [util](/src/util)
+- [vuex](/src/vuex)
 
-__Props__
-
-| Name | Type | Default |
-| --- | --- | ---|
-|`thresholdMin` |Number| 0.1 |
-|`thresholdMax` |Number| null|
-
-__Events__
--  `intersect(isIntersecting: boolean, entry: IntersectionObserverEntry )`
--  `intersect-enter(entry: IntersectionObserverEntry )`
--  `intersect-leave(entry: IntersectionObserverEntry )`
-
-__Example__
-```vue
-    <intersection-observer @intersect-enter="onIntersectEnter">
-        <div>
-            Loading
-        </div>
-    </intersection-observer>
-```
-
-
-### `scroll-reveal`
-Reveals the component passed by the slot while scrolling upwards and hides it when scrolling down.
-You have to set the `bemRoot` prop. This prop is bem root class. `scroll-reveal` will add interfaces such as
-- `&__pinned`
-- `&__unpinned`
-- `&__top`
-- `&_not-top`
-- `&__bottom`
-- `&__not-bottom`
-
-You have to style them on your own!
-
-Example Usage
-
-```html
-    <scroll-reveal element-class="reduced-nav">
-        <main-header />
-    </scroll-reveal>
-```
-
-
-Example  SCSS
-
-```scss
-    // Vars
-
-    // Support
-
-    @mixin reveal-visible() {
-        transform: translate3d(0, 60px, 0);
-        opacity: 1;
-    }
-
-    @mixin reveal-hidden() {
-        transform: translate3d(0, -80px, 0);
-        opacity: 0;
-    }
-
-    // Module
-    & {
-        & {
-            z-index: z-index('reveal');
-            position: fixed;
-            transform: translate3d(0, -80px, 0);
-            height: 80px;
-            width: 100%;
-            transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
-        }
-
-        &.reveal__top {
-            @include reveal-visible;
-        }
-
-        &.reveal__pinned {
-            @include reveal-visible;
-        }
-
-        &.reveal__unpinned {
-            @include reveal-hidden;
-        }
-    }
-
-    // Facets
-
-    // States
-```
-
-
-## Filters
-### bgImage
-Create the `background-image` style string from a given URL
-
-Example:
-```vue
-    <div class="teaser-card--col teaser-card--right-pane"
-        :style="backgroundRight | bgImage" />
-```
-
-### srcset
-Transforms a list of urls into a valid `srcset` property
-
-Example
-```vue
-<img src="..." :srcset="['http://via.placeholder.com/600x600', 'http://via.placeholder.com/1200x1200'] | srcset"/>
-```
-
-## Plugin config
-
-<!-- Generated by documentation.js. Update this documentation by updating the source code. -->
-
-
-##
 [circleci-image]: https://circleci.com/gh/dreipol/vue-ui.svg?style=svg
 [circleci-url]: https://circleci.com/gh/dreipol/vue-ui
 [license-image]: http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square
