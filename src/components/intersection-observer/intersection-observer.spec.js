@@ -3,12 +3,12 @@ import { shallowMount } from '@vue/test-utils';
 import IntersectionObserverComponent from './intersection-observer.vue';
 
 describe('Intersection-Observer', function() {
-    it.skip('Component is an object', () => {
+    it('Component is an object', () => {
         expect(IntersectionObserverComponent).to.be.an('object');
         expect(IntersectionObserverComponent).to.be.not.empty;
     });
 
-    it.skip('Component registers an observer', () => {
+    it('Component registers an observer', () => {
         const wrapper = shallowMount(IntersectionObserverComponent, {});
 
         const { observer, observerOptions } = wrapper.find(IntersectionObserverComponent).vm;
@@ -21,7 +21,7 @@ describe('Intersection-Observer', function() {
     });
 
     it('interserct-enter triggers on appearance', done => {
-        shallowMount({
+        const wrapper = shallowMount({
             components: {
                 ioc: IntersectionObserverComponent,
             },
@@ -37,6 +37,7 @@ describe('Intersection-Observer', function() {
             methods: {
                 onVisible() {
                     done();
+                    wrapper.destroy();
                 },
             },
             mounted() {
@@ -54,7 +55,7 @@ describe('Intersection-Observer', function() {
     });
 
     it('interserct-leave triggers on disappearance', done => {
-        shallowMount({
+        const wrapper = shallowMount({
             components: {
                 ioc: IntersectionObserverComponent,
             },
@@ -70,6 +71,7 @@ describe('Intersection-Observer', function() {
             methods: {
                 onLeave() {
                     done();
+                    wrapper.destroy();
                 },
             },
             mounted() {
