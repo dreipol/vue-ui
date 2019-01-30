@@ -2,25 +2,26 @@
     <div class="ui-modal" :class="bemFacets">
         <div class="ui-modal--close-wrap">
             <div class="ui-modal--close">
-                <button class="ui-modal--close-button" @click.prevent="onCloseRequested">
+                <button class="ui-modal--close-button" @click.prevent="$emit('close')">
                     <!-- TODO: handle icons -->
                 </button>
             </div>
         </div>
 
-        <header class="ui-modal--header" v-if="!!$slots.header">
+        <header class="ui-modal--header" v-if="hasSlot('header')">
             <slot name="header"/>
         </header>
-        <main class="ui-modal--body" v-if="!!$slots.default">
-            <slot/>
+        <main class="ui-modal--body" v-if="hasSlot('body')">
+            <slot name="body"/>
         </main>
-        <footer class="ui-modal--footer" v-if="!!$slots.footer">
+        <footer class="ui-modal--footer" v-if="hasSlot('footer')">
             <slot name="footer"/>
         </footer>
     </div>
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import bemMixin from '../../mixins/bem';
 
     export default {
@@ -28,8 +29,9 @@
             bemMixin('ui-modal'),
         ],
         methods: {
-            onCloseRequested() {
-                this.$emit('close');
+            ...mapActions('vue-ui/overlay', ['closeOverlay']),
+            hasSlot(name) {
+                return this.$scopedSlots[name] || this.$slots[name];
             },
         },
     };

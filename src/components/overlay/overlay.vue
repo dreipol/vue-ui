@@ -16,7 +16,7 @@
                                     <component class="ui-overlay--component"
                                             :is="overlay.component"
                                             v-bind="overlay.props"
-                                            @modal:close="closeOverlay({ id })"/>
+                                            @close="closeOverlay({ id })"/>
                                 </div>
                             </div>
                         </div>
