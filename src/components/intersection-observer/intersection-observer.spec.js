@@ -20,8 +20,8 @@ describe('Intersection-Observer', function() {
         expect(observerOptions).to.be.not.empty;
     });
 
-    it('The intersect enter will be triggered', done => {
-        const wrapper = shallowMount({
+    it('interserct-enter triggers on appearance', done => {
+        shallowMount({
             components: {
                 ioc: IntersectionObserverComponent,
             },
@@ -39,13 +39,50 @@ describe('Intersection-Observer', function() {
                     done();
                 },
             },
+            mounted() {
+                setTimeout(() => {
+                    this.isVisible = false;
+                }, 200);
+            },
             template: '<div><div v-if="isVisible" :style="inlineStyle">Goodbye</div><ioc @intersect-enter="onVisible">Hello</ioc></div>',
         }, {
+            stubs: {
+                ioc: IntersectionObserverComponent,
+            },
             attachToDocument: true,
         });
+    });
 
-        setTimeout(() => {
-            wrapper.vm.isVisible = false;
-        }, 1000);
+    it('interserct-leave triggers on disappearance', done => {
+        shallowMount({
+            components: {
+                ioc: IntersectionObserverComponent,
+            },
+            data() {
+                return {
+                    inlineStyle: {
+                        width: `${ window.innerWidth }px`,
+                        height: `${ window.innerHeight * 2 }px`,
+                    },
+                    isVisible: false,
+                };
+            },
+            methods: {
+                onLeave() {
+                    done();
+                },
+            },
+            mounted() {
+                setTimeout(() => {
+                    this.isVisible = true;
+                }, 200);
+            },
+            template: '<div><div v-if="isVisible" :style="inlineStyle">Goodbye</div><ioc @intersect-leave="onLeave">Hello</ioc></div>',
+        }, {
+            stubs: {
+                ioc: IntersectionObserverComponent,
+            },
+            attachToDocument: true,
+        });
     });
 });
