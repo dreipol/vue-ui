@@ -2,7 +2,7 @@ import Overlay from './overlay.vue';
 import Vuex from 'vuex';
 import cloneDeep from 'lodash.clonedeep';
 import overlayModule from '../../vuex/modules/overlay';
-import scrollModule from '../../modules/scroll';
+import scrollModule from '../../vuex/modules/scroll';
 import { expect } from 'chai';
 import { createLocalVue, shallowMount, TransitionStub } from '@vue/test-utils';
 
