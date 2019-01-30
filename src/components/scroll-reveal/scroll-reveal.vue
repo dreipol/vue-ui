@@ -16,6 +16,13 @@
                 required: true,
             },
         },
+
+        data(){
+            return {
+                headroom: null,
+            };
+        },
+
         mounted() {
             const headroom = new Headroom(this.$el, {
                 ...this.$attrs,

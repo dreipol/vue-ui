@@ -2,7 +2,7 @@ import isMounted from './';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
-describe('Is mounted mixin', () => {
+describe('Mixin is-mounted', () => {
     it('The isMounted flag becomes true after the component mounting', (done) => {
         shallowMount({
             mixins: [isMounted],
