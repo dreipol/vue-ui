@@ -1,10 +1,10 @@
-import bgImageFilter from './';
+import backgroundImageFilter from './';
 import { expect } from 'chai';
 
-describe('Filter bgImage', () => {
+describe('Filter backgroundImage', () => {
     it('Create style object', () => {
         const url = 'foo';
-        const style = bgImageFilter(url);
+        const style = backgroundImageFilter(url);
 
         expect(style['background-image']).to.be.equal(`url(foo)`);
     });
