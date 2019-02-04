@@ -1,11 +1,11 @@
 <template>
     <div class="form-field form-field__input form-field__textarea" :class="rootClasses">
         <label>
-            <span class="form-field--title-label" v-if="!hasFloatingLabel && $slots.label">
+            <span class="form-field--title-label" v-if="!hasFloatingLabel && $scopedSlots.label">
                 <slot name="label"/>
             </span>
-            <div class="form-field--input-container" :data-action-count="countVirtualTags($slots.actions)">
-                <span class="form-field--floating-label" v-if="hasFloatingLabel && $slots.label">
+            <div class="form-field--input-container" :data-action-count="countVirtualTags($scopedSlots.actions)">
+                <span class="form-field--floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
                     <slot name="label"/>
                 </span>
                 <textarea class="form-field--input"

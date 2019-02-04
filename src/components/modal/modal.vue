@@ -8,13 +8,13 @@
             </div>
         </div>
 
-        <header class="ui-modal--header" v-if="!!$slots.header">
+        <header class="ui-modal--header" v-if="$scopedSlots.header">
             <slot name="header"/>
         </header>
-        <main class="ui-modal--body" v-if="!!$slots.default">
-            <slot/>
+        <main class="ui-modal--body" v-if="$scopedSlots.body">
+            <slot name="body"/>
         </main>
-        <footer class="ui-modal--footer" v-if="!!$slots.footer">
+        <footer class="ui-modal--footer" v-if="$scopedSlots.footer">
             <slot name="footer"/>
         </footer>
     </div>

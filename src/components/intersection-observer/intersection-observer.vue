@@ -34,7 +34,7 @@
         },
 
         render(createElement) {
-            return createElement('div', this.$slots.default);
+            return createElement('div', this.$scopedSlots.default);
         },
     };
 </script>

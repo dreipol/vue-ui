@@ -1,10 +1,10 @@
 <template>
     <div class="form-field form-field__input form-field__select" :class="rootClasses">
         <label>
-            <div class="form-field--title-label" v-if="$slots.label">
+            <div class="form-field--title-label" v-if="$scopedSlots.label">
                 <slot name="label"/>
             </div>
-            <div class="form-field--input-container" :data-action-count="countVirtualtags($slots.actions) || 1">
+            <div class="form-field--input-container" :data-action-count="countVirtualtags($scopedSlots.actions) || 1">
                 <select class="form-field--input"
                         v-model="currentValue"
                         v-bind="$attrs"
