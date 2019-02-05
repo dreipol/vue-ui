@@ -65,7 +65,7 @@ describe('Radio spec', () => {
         expect(wrapper.find('.form-field__is-checked').exists()).to.be.ok;
     });
 
-    it('It can dispatch the onchange events listened from the outside', (done) => {
+    it('It can dispatch the onchange events listened from the outside', done => {
         const wrapper = shallowMount(UiRadio, {
             propsData: {
                 value: 'foo',

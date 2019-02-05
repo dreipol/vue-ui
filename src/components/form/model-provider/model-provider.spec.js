@@ -66,7 +66,7 @@ describe('Model Provider spec', () => {
         expect(input.element.checked).to.be.ok;
     });
 
-    it('It supports radios', (done) => {
+    it('It supports radios', done => {
         const wrapper = shallowMount(Vue.extend({
             components: runtimeComponents,
             data() {

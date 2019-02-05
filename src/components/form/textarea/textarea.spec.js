@@ -29,7 +29,7 @@ describe('Textarea spec', () => {
         expect(wrapper.find('.form-field__is-filled').exists()).to.be.ok;
     });
 
-    it('It increases the height of the textarea properly', (done) => {
+    it('It increases the height of the textarea properly', done => {
         const wrapper = shallowMount(UiTextarea, {
             propsData: {
                 value: '',
@@ -48,7 +48,7 @@ describe('Textarea spec', () => {
         });
     });
 
-    it('It decreases the height of the textarea properly', (done) => {
+    it('It decreases the height of the textarea properly', done => {
         const wrapper = shallowMount(UiTextarea, {
             propsData: {
                 value: LOREM_IPSUM,
