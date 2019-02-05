@@ -260,8 +260,8 @@ In a nutshell: The input fields are responsible for user events and rendering wh
 
 ```vue
 <template>
-    <ui-model-provider v-model="username">
-        <ui-input slot-scope="props" :value="props.value" @input="props.updateValue"/>  
+    <ui-model-provider v-model="username" v-slot="{ value, updateValue }">
+        <ui-input :value="value" @input="updateValue"/>  
     </ui-model-provider>
 </template>
 
@@ -298,8 +298,8 @@ Here you can see an example of a boolean `ui-checkbox` input bound to a model pr
 Assuming that the `value` is a boolean and can be either `true` or `false`
 
 ```vue
-<ui-model-provider v-model="value">
-    <ui-checkbox slot-scope="props" :value="props.value" @change="props.updateValue"/>
+<ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+    <ui-checkbox :value="value" @change="updateValue"/>
 </ui-model-provider>
 ```
 
@@ -308,10 +308,10 @@ Here you can see an example of `ui-radio` inputs bound to a model provider.
 Assuming that the `value` must be one of those two strings: `['one', 'two']`
 
 ```vue
-<ui-model-provider v-model="value">
-    <div slot-scope="props">
-         <ui-radio :checked="props.value === 'one'" value='one' @change="props.updateValue"/>
-         <ui-radio :checked="props.value === 'two'" value='two' @change="props.updateValue"/>
+<ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+    <div>
+         <ui-radio :checked="value === 'one'" value='one' @change="updateValue"/>
+         <ui-radio :checked="value === 'two'" value='two' @change="updateValue"/>
     </div>
 </ui-model-provider>
 ```
@@ -321,11 +321,11 @@ This is an example of a `ui-checkbox` inputs bound to a model provider.
 Assuming that the `value` is an array containing none or multiple items of `['one', 'two', 'three']`
 
 ```vue
-<ui-model-provider v-model="value">
-    <div slot-scope="props">   
-        <ui-checkbox :checked="props.hasItem('one')" value='one' @change="props.updateValue"/>
-        <ui-checkbox :checked="props.hasItem('two')" value='two' @change="props.updateValue"/>
-        <ui-checkbox :checked="props.hasItem('three')" value='three' @change="props.updateValue"/>
+<ui-model-provider v-model="value" v-slot="{ hasItem, updateValue }">
+    <div>
+        <ui-checkbox :checked="hasItem('one')" value='one' @change="updateValue"/>
+        <ui-checkbox :checked="hasItem('two')" value='two' @change="updateValue"/>
+        <ui-checkbox :checked="hasItem('three')" value='three' @change="updateValue"/>
     </div>
 </ui-model-provider>
 ```
@@ -335,8 +335,8 @@ This is an example of a `ui-select` input bound to a model provider.
 Assuming that the `value` must be one of those two strings: `['one', 'two']`
 
 ```vue
- <ui-model-provider v-model="value">
-    <ui-select slot-scope="props" :value="props.value" @change="props.updateValue">
+ <ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+    <ui-select :value="value" @change="updateValue">
         <ui-option value="one">One</ui-option>
         <ui-option value="two">Two</ui-option>
     </ui-select>
