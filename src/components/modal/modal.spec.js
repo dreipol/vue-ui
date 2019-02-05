@@ -46,9 +46,9 @@ describe('Component modal', () => {
     it('Slots markup rendered if needed', () => {
         const wrapper = shallowMount(Modal, getDummyModalComponentOptions({
             slots: {
-                default: '<div>Default</div>',
-                header: '<div>Header</div>',
-                footer: '<div>Footer</div>',
+                body: '<div>body</div>',
+                header: '<div>header</div>',
+                footer: '<div>footer</div>',
             },
         }));
 
