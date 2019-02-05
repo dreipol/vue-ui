@@ -84,7 +84,6 @@ describe('Model Provider spec', () => {
             `,
         }), {
             stubs: runtimeComponents,
-            attachToDocument: true,
         });
 
         const inputs = wrapper.findAll('input');
