@@ -66,7 +66,7 @@ describe('Model Provider spec', () => {
         expect(input.element.checked).to.be.ok;
     });
 
-    it('It supports radios', () => {
+    it('It supports radios', (done) => {
         const wrapper = shallowMount(Vue.extend({
             components: runtimeComponents,
             data() {
@@ -84,6 +84,7 @@ describe('Model Provider spec', () => {
             `,
         }), {
             stubs: runtimeComponents,
+            attachToDocument: true,
         });
 
         const inputs = wrapper.findAll('input');
@@ -95,9 +96,12 @@ describe('Model Provider spec', () => {
 
         input2.setChecked(true);
 
-        expect(wrapper.vm.value).to.be.equal('bar');
-        // expect(input1.element.checked).to.be.not.ok;
-        // expect(input2.element.checked).to.be.ok;
+        wrapper.vm.$nextTick().then(() => {
+            expect(wrapper.vm.value).to.be.equal('bar');
+            expect(input1.element.checked).to.be.not.ok;
+            expect(input2.element.checked).to.be.ok;
+            done();
+        });
     });
 
     it('It supports input fields', () => {

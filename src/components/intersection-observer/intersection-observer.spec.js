@@ -18,7 +18,7 @@ describe('Intersection-Observer', function() {
         expect(observerOptions).to.be.not.empty;
     });
 
-    it('interserct-enter triggers on appearance', done => {
+    it('intersect-enter triggers on appearance', done => {
         const wrapper = shallowMount({
             components: {
                 ioc: IntersectionObserverComponent,
