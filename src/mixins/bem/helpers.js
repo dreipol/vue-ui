@@ -5,6 +5,44 @@ export const DEFAULT_OPTIONS = Object.freeze({
 });
 
 /**
+ * Return a props config object for a vue component based on the options given
+ * @param bemRoot - The block name
+ * @param useProp - A config flag
+ * @return {object} The vue props config
+ */
+export function getPropsConfig(bemRoot, { useProp }) {
+    if (!useProp) {
+        return {};
+    }
+
+    return {
+        facets: {
+            type: Array,
+            default() {
+                return [];
+            },
+        },
+    };
+}
+
+/**
+ * Return a computed config object for a vue component based on the options given
+ * @param bemRoot - The block name
+ * @return {object} The vue computed config
+ */
+export function getComputedConfig(bemRoot) {
+    if (!bemRoot) {
+        return {};
+    }
+
+    return {
+        bemRoot() {
+            return bemRoot;
+        },
+    };
+}
+
+/**
  * Arraify facets in order to use single or multiple facets in a react component
  * @param {string} blockName - facet root class
  * @param {Array} facets - the facets we want to apply to the component

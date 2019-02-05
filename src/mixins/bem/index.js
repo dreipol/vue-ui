@@ -1,14 +1,4 @@
-import { mapFacets, createBemClass, DEFAULT_OPTIONS } from './helpers';
-
-const PROPS_CONFIG = {
-    facets: {
-        type: Array,
-        default() {
-            return [];
-        },
-    },
-};
-
+import { getComputedConfig, getPropsConfig, mapFacets, createBemClass, DEFAULT_OPTIONS } from './helpers';
 
 export default function bemMixin(bemRoot, config) {
     const options = {
@@ -18,11 +8,11 @@ export default function bemMixin(bemRoot, config) {
     };
 
     return {
-        props: options.useProp ? PROPS_CONFIG : {},
+        props: {
+            ...getPropsConfig(bemRoot, options),
+        },
         computed: {
-            bemRoot() {
-                return bemRoot;
-            },
+            ...getComputedConfig(bemRoot, options),
             bemFacets() {
                 return mapFacets(this.bemRoot, this.facets, options);
             },
