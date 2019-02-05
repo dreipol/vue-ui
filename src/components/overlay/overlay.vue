@@ -14,8 +14,8 @@
                             <div class="ui-overlay--container">
                                 <div class="ui-overlay--revealer">
                                     <component class="ui-overlay--component"
-                                            :is="overlay.component"
                                             v-bind="overlayProps"
+                                            :is="overlay.component"
                                             @modal:close="closeOverlay({ id })"/>
                                 </div>
                             </div>
