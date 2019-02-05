@@ -8,14 +8,13 @@
                 <span class="form-field--floating-label" v-if="hasFloatingLabel && $slots.label">
                     <slot name="label"/>
                 </span>
-                <textarea class="form-field--input"
-                        ref="input"
-                        v-model="currentValue"
+                <textarea v-model="currentValue"
                         v-bind="$attrs"
+                        class="form-field--input"
+                        ref="input"
                         @focus="onFocus"
                         @blur="onBlur"
-                        v-on="$listeners"
-                />
+                        v-on="$listeners"/>
                 <ui-actions>
                     <slot name="actions"/>
                 </ui-actions>

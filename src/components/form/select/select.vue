@@ -5,13 +5,12 @@
                 <slot name="label"/>
             </div>
             <div class="form-field--input-container" :data-action-count="countVirtualtags($slots.actions) || 1">
-                <select class="form-field--input"
-                        v-model="currentValue"
+                <select v-model="currentValue"
+                        class="form-field--input"
                         v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
-                        v-on="$listeners"
-                >
+                        v-on="$listeners">
                     <slot/>
                 </select>
                 <ui-actions>
