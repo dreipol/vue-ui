@@ -14,8 +14,7 @@
                         v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
-                        v-on="$listeners"
-                />
+                        v-on="$listeners"/>
                 <ui-actions>
                     <slot name="actions"/>
                 </ui-actions>
