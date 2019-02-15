@@ -1,5 +1,4 @@
 <script>
-
     import intersectionObserverMixin from '../../mixins/intersection-observer';
 
     export default {
