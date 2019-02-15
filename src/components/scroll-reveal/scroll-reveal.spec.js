@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 import ScrollRevealComponent from './scroll-reveal.vue';
 
-describe('Component scroll-reveal', () => {
+describe('Component scroll-reveal', () => { // eslint-disable-line
     let wrapper = null;
 
     // In order to destroy the wrappers for failed unittests we persist the wrapper object and destroy it after each test
@@ -37,7 +37,7 @@ describe('Component scroll-reveal', () => {
         expect(headroom).to.be.not.empty;
     });
 
-    describe('Events', () => {
+    describe('Events', () => { // eslint-disable-line
         it('fires event onPin', (done) => {
             wrapper = shallowMount(
                 {
@@ -67,7 +67,6 @@ describe('Component scroll-reveal', () => {
 
                         setTimeout(() => {
                             window.scrollTo(0, 100);
-
                         }, 400);
                     },
 
@@ -270,7 +269,7 @@ describe('Component scroll-reveal', () => {
         });
     });
 
-    describe('Classes', () => {
+    describe('Classes', () => { // eslint-disable-line
         it('has class __pinned', (done) => {
             wrapper = shallowMount(
                 {
@@ -303,7 +302,6 @@ describe('Component scroll-reveal', () => {
 
                         setTimeout(() => {
                             window.scrollTo(0, 100);
-
                         }, 400);
                     },
 
