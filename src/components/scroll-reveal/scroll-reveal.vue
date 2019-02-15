@@ -17,7 +17,7 @@
             },
         },
 
-        data(){
+        data() {
             return {
                 headroom: null,
             };
