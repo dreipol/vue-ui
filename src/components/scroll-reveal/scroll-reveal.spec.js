@@ -106,7 +106,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
 
                     mounted() {
                         setTimeout(() => {
-                            window.scrollTo(0, 500);
+                            window.scrollTo(0, window.innerHeight);
                         }, 200);
                     },
 
@@ -172,7 +172,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
 
                     mounted() {
                         setTimeout(() => {
-                            window.scrollTo(0, 500);
+                            window.scrollTo(0, window.innerHeight);
                         }, 200);
                     },
 
@@ -297,7 +297,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
 
                     mounted() {
                         setTimeout(() => {
-                            window.scrollTo(0, 1500);
+                            window.scrollTo(0, window.innerHeight);
                         }, 200);
 
                         setTimeout(() => {
@@ -343,7 +343,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
 
                     mounted() {
                         setTimeout(() => {
-                            window.scrollTo(0, 500);
+                            window.scrollTo(0, window.innerHeight);
                         }, 200);
                     },
 
@@ -413,7 +413,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
 
                     mounted() {
                         setTimeout(() => {
-                            window.scrollTo(0, 500);
+                            window.scrollTo(0, window.innerHeight);
                         }, 200);
                     },
 
