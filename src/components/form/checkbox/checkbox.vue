@@ -7,8 +7,7 @@
                     :value="value"
                     v-bind="$attrs"
                     @change="onChange"
-                    v-on="$listeners"
-            >
+                    v-on="$listeners">
             <div class="form-field--label-wrap">
                 <span class="form-field--box">
                     <slot mame="icon">
