@@ -24,7 +24,7 @@
         },
 
         mounted() {
-            const headroom = new Headroom(this.$el, {
+            this.headroom = new Headroom(this.$el, {
                 ...this.$attrs,
                 classes: {
                     initial: this.elementClass,
@@ -54,7 +54,7 @@
                     this.$emit('onNotBottom');
                 },
             });
-            headroom.init();
+            this.headroom.init();
         },
     };
 </script>
