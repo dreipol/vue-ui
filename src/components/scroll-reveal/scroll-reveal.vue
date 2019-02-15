@@ -36,25 +36,28 @@
                     notBottom: this.bemAdd('not-bottom', null, this.elementClass),
                 },
                 onPin: () => {
-                    this.$emit('onPin');
+                    this.$emit('pin');
                 },
                 onUnpin: () => {
-                    this.$emit('onUnpin');
+                    this.$emit('unpin');
                 },
                 onTop: () => {
-                    this.$emit('onTop');
+                    this.$emit('top');
                 },
                 onNotTop: () => {
-                    this.$emit('onNotTop');
+                    this.$emit('not-top');
                 },
                 onBottom: () => {
-                    this.$emit('onBottom');
+                    this.$emit('bottom');
                 },
                 onNotBottom: () => {
-                    this.$emit('onNotBottom');
+                    this.$emit('not-bottom');
                 },
             });
             this.headroom.init();
+        },
+        beforeDestroy() {
+            this.headroom.destroy();
         },
     };
 </script>

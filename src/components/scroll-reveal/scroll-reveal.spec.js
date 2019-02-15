@@ -70,7 +70,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 400);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal" @onPin="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal" @pin="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -81,7 +81,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
             );
         });
 
-        it('fires event onUnpin', (done) => {
+        it('fires event unpin', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -110,7 +110,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 200);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @onUnpin="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @unpin="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -136,7 +136,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         },
                     },
 
-                    template: '<scroll-reveal elementClass="scroll-reveal" @onTop="onEventFired"><h1/></scroll-reveal>',
+                    template: '<scroll-reveal elementClass="scroll-reveal" @top="onEventFired"><h1/></scroll-reveal>',
                 },
                 {
                     stubs: {
@@ -147,7 +147,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
             );
         });
 
-        it('fires event onNotTop', (done) => {
+        it('fires event not-top', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -176,7 +176,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 200);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @onNotTop="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @not-top="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -187,7 +187,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
             );
         });
 
-        it('fires event onBottom', (done) => {
+        it('fires event bottom', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -216,7 +216,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 200);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @onBottom="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @bottom="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -228,7 +228,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
         });
 
 
-        it('fires event onNotBottom', (done) => {
+        it('fires event not-bottom', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -257,7 +257,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 200);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @onNotBottom="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @not-bottom="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -305,7 +305,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 400);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal" @onPin="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal" @pin="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -347,7 +347,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 200);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal" @onUnpin="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal" @unpin="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -375,7 +375,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         },
                     },
 
-                    template: '<scroll-reveal elementClass="scroll-reveal" @onTop="onEventFired"><h1/></scroll-reveal>',
+                    template: '<scroll-reveal elementClass="scroll-reveal" @top="onEventFired"><h1/></scroll-reveal>',
                 },
                 {
                     stubs: {
@@ -417,7 +417,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 200);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @onNotTop="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @not-top="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -459,7 +459,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 200);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @onBottom="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @bottom="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
@@ -502,7 +502,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         }, 200);
                     },
 
-                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @onNotBottom="onEventFired"><h1/></scroll-reveal></div>',
+                    template: '<div><div :style="inlineStyle"></div><scroll-reveal elementClass="scroll-reveal"  @not-bottom="onEventFired"><h1/></scroll-reveal></div>',
                 },
                 {
                     stubs: {
