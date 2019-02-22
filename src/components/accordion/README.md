@@ -19,22 +19,22 @@ Accordion component that could be used in a SPA or even as simple enhancement fo
 
 ## Example
 ```vue
-    <accordion>
-        <h1 v-slot:head>
-            Click Me
-        </h1>
-        <p v-slot:body>
-            Accordion body
-        </p>
-    </accordion>
+<accordion>
+    <h1 v-slot:head>
+        Click Me
+    </h1>
+    <p v-slot:body>
+        Accordion body
+    </p>
+</accordion>
     
-    <accordion>
-        <h1 v-slot:head>
-            Click Me
-        </h1>
-        <div v-slot:body slot-scope="props">
-            <google-maps v-if="props.isHidden"></google-maps>
-        </div>
-    </accordion>
+<accordion>
+    <h1 v-slot:head>
+        Click Me
+    </h1>
+    <div v-slot:body slot-scope="props">
+        <google-maps v-if="props.isVisible"></google-maps>
+    </div>
+</accordion>
 ```
 
