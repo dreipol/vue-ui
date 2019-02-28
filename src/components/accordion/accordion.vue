@@ -2,8 +2,8 @@
     <div class="ui-accordion" :class="rootClasses">
         <button type="button"
                 class="u-reset ui-accordion--head"
-                v-if="!!$scopedSlots.head"
                 :aria-expanded="state.isOpen ? 'true' : 'false'"
+                v-if="!!$scopedSlots.head"
                 @click.prevent="onRequestChange(!state.isOpen)">
             <slot name="head" :is-open="state.isOpen"/>
         </button>
