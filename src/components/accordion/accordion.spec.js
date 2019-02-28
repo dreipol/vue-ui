@@ -125,11 +125,11 @@ describe('Accordion spec', () => {
             },
             listeners: {
                 changed(isOpen) {
-                    expect(wrapper.vm.state.isOpen).to.be.equal(isOpen);
-
                     if (isOpen) {
+                        expect(wrapper.vm.state.isOpen).to.be.equal(true);
                         wrapper.setProps({ isOpen: false });
                     } else {
+                        expect(wrapper.vm.state.isOpen).to.be.equal(false);
                         // wait the closing animation to consider this test done
                         done();
                     }

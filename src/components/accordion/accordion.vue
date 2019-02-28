@@ -1,5 +1,5 @@
 <template>
-    <div class="ui-accordion" role="heading" :class="rootClasses">
+    <div class="ui-accordion" :class="rootClasses">
         <button type="button"
                 class="u-reset ui-accordion--head"
                 v-if="!!$scopedSlots.head"
@@ -8,7 +8,6 @@
             <slot name="head" :is-open="state.isOpen"/>
         </button>
         <div class="ui-accordion--body"
-                role="presentation"
                 ref="body"
                 @transitionend="onTransitionEnd">
             <slot name="body" :is-open="state.isOpen" :is-visible="isVisible"/>
