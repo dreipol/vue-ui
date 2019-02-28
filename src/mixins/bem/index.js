@@ -1,4 +1,5 @@
 import { getComputedConfig, getPropsConfig, mapFacets, createBemClass, DEFAULT_OPTIONS } from './helpers';
+
 export default function bemMixin(bemRoot, config) {
     const options = {
         ...DEFAULT_OPTIONS,
