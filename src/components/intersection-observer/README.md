@@ -3,7 +3,7 @@ A simple implementation of the [`intersectionObserverMixin`](/src/mixins/interse
 
 ## Usage
 ```js
-    import { UiIntersectionObserver } from '@dreipol/vue-ui';
+    import { UiIntersectionObserver } from '@dreipol/vue-ui/src/components';
 ```
 
 ## Props
