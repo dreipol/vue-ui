@@ -14,9 +14,9 @@
                             <div class="ui-overlay--container">
                                 <div class="ui-overlay--revealer">
                                     <component class="ui-overlay--component"
-                                            v-bind="overlayProps"
+                                            v-bind="overlay.props"
                                             :is="overlay.component"
-                                            @modal:close="closeOverlay({ id })"/>
+                                            @close="closeOverlay({ id })"/>
                                 </div>
                             </div>
                         </div>
@@ -53,24 +53,11 @@
             ...mapState('vue-ui/overlay', ['overlays']),
             ...mapGetters('vue-ui/overlay', ['hasScrollLockingOverlays']),
             rootClasses() {
-                const { facets } = this.overlay;
-
-                if (!facets) {
-                    return [];
-                }
-
+                const facets = this.overlay.facets || [];
                 return facets.map(facet => this.bemAdd(facet));
             },
             overlay() {
                 return this.overlays[this.id] || {};
-            },
-            overlayProps() {
-                const { facets } = this.overlay.props || {};
-
-                return {
-                    ...this.overlay.props,
-                    facets: [...facets, ...this.overlay.facets],
-                };
             },
             overlayScrollLockStyles() {
                 return this.hasDisabledScroll ? {} : this.scrollLockStyles;

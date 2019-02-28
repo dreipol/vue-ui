@@ -2,7 +2,7 @@
     <div class="ui-modal" :class="bemFacets">
         <div class="ui-modal--close-wrap">
             <div class="ui-modal--close">
-                <button class="ui-modal--close-button" @click.prevent="onCloseRequested">
+                <button class="ui-modal--close-button" @click.prevent="$emit('close')">
                     <!-- TODO: handle icons -->
                 </button>
             </div>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import bemMixin from '../../mixins/bem';
 
     export default {
@@ -28,8 +29,9 @@
             bemMixin('ui-modal'),
         ],
         methods: {
-            onCloseRequested() {
-                this.$emit('close');
+            ...mapActions('vue-ui/overlay', ['closeOverlay']),
+            hasSlot(name) {
+                return this.$scopedSlots[name] || this.$slots[name];
             },
         },
     };

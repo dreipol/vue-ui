@@ -9,7 +9,6 @@ const PROPS_CONFIG = {
     },
 };
 
-
 export default function bemMixin(bemRoot, config) {
     const options = {
         ...DEFAULT_OPTIONS,
