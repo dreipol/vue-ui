@@ -47,13 +47,10 @@
         },
         computed: {
             isVisible() {
-                return this.isClosing || this.hasFinishedOpeningAnimation;
-            },
-            hasFinishedOpeningAnimation() {
-                return this.state.isOpen && !this.state.isAnimating;
-            },
-            isClosing() {
-                return !this.state.isOpen && this.state.isAnimating;
+                const wasOpened = this.state.isOpen && !this.state.isAnimating;
+                const isClosing = !this.state.isOpen && this.state.isAnimating;
+
+                return isClosing || wasOpened;
             },
             rootClasses() {
                 return [
