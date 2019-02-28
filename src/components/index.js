@@ -3,6 +3,7 @@ export { default as UiOverlay } from './overlay/overlay.vue';
 export { default as UiScrollReveal } from './scroll-reveal/scroll-reveal.vue';
 export { default as UiIntersectionObserver } from './intersection-observer/intersection-observer.vue';
 export { default as UiIcon } from './icon/icon.vue';
+export { default as UiAccordion } from './accordion/accordion.vue';
 
 // form components
 export { default as UiInput } from './form/input/input.vue';
