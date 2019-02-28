@@ -1,4 +1,4 @@
-import { mapGetters, mapState } from 'vuex';
+import { mapState } from 'vuex';
 import { isIos } from '../../util/detect/ios-detect';
 import { defer } from '../../util/defer';
 
@@ -11,11 +11,10 @@ export default {
         };
     },
     computed: {
-        ...mapGetters('vue-ui/scroll', ['hasScrollLockingOverlays']),
-        ...mapState('vue-ui/scroll', ['scrollbarWidth']),
+        ...mapState('vue-ui/scroll', ['isLocked', 'scrollbarWidth']),
         scrollLockStyles() {
             return {
-                [this.scrollLockHelperStyleProp]: (this.hasScrollLockingOverlays ? `${ this.scrollbarWidth }px` : ''),
+                [this.scrollLockHelperStyleProp]: (this.isLocked ? `${ this.scrollbarWidth }px` : ''),
             };
         },
         scrollLockIosFixClasses() {
