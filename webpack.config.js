@@ -15,7 +15,6 @@ module.exports = {
         lodash: 'lodash',
         chai: 'chai',
         sinon: 'sinon',
-        'headroom.js': 'headroom.js',
         '@vue/test-utils': 'VueTestUtils',
     },
     module: {

@@ -6,7 +6,6 @@ import { expect } from 'chai';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 
 const localVue = createLocalVue();
-
 localVue.use(Vuex);
 
 function getDummyModalComponentOptions(customOptions = {}) {
@@ -24,18 +23,18 @@ function getDummyModalComponentOptions(customOptions = {}) {
 }
 
 describe('Component modal', () => {
-    it('The modal is an object', () => {
+    it('is an object', () => {
         expect(Modal).to.be.an('object');
         expect(Modal).to.be.not.empty;
     });
 
-    it('It can be properly created without slots', () => {
+    it('can be properly created without slots', () => {
         const wrapper = shallowMount(Modal, getDummyModalComponentOptions());
 
         expect(wrapper.find('.ui-modal').exists()).to.be.ok;
     });
 
-    it('Slots markup will not be rendered if not needed', () => {
+    it('does not render slots when not needed', () => {
         const wrapper = shallowMount(Modal, getDummyModalComponentOptions());
 
         expect(wrapper.find('.ui-modal--header').exists()).to.be.not.ok;
@@ -43,7 +42,7 @@ describe('Component modal', () => {
         expect(wrapper.find('.ui-modal--footer').exists()).to.be.not.ok;
     });
 
-    it('Slots markup rendered if needed', () => {
+    it('does render slot markup when necessary', () => {
         const wrapper = shallowMount(Modal, getDummyModalComponentOptions({
             slots: {
                 body: '<div>body</div>',

@@ -10,7 +10,7 @@ import * as getters from './getters';
 export const DEFAULT_OPENING_STATE = {
     isOpen: true,
     facets: ['base'],
-    transition: 'trs-overlay-fade',
+    transition: null,
     disableScroll: true,
     autoClose: null,
     component: null,
@@ -20,7 +20,7 @@ export const DEFAULT_OPENING_STATE = {
 export const DEFAULT_CLOSING_STATE = {
     isOpen: false,
     facets: ['base'],
-    transition: 'trs-overlay-fade',
+    transition: null,
     disableScroll: false,
     autoClose: null,
     component: null,
@@ -64,10 +64,11 @@ const mutations = {
             return;
         }
 
-        const { transition, disableScroll } = Object.assign(
-            cloneDeep(DEFAULT_CLOSING_STATE),
-            omitBy(payload, isNil),
-        );
+        const { transition, disableScroll } = {
+            ...cloneDeep(DEFAULT_CLOSING_STATE),
+            ...omitBy({ transition: overlay.transition }, isNil),
+            ...omitBy(payload, isNil),
+        };
 
         Vue.set(overlay, 'transition', transition);
         Vue.set(overlay, 'disableScroll', disableScroll);
