@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import forceReflow from 'bianco.force-reflow';
+    import { forceReflow } from 'bianco';
     import isMountedMixin from '../../mixins/is-mounted';
     import bemMixin from '../../mixins/bem';
 

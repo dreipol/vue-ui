@@ -54,6 +54,7 @@ describe('Accordion spec', () => {
 
         const button = wrapper.find('button');
         button.trigger('click');
+
         expect(wrapper.vm.state.isOpen).to.be.ok;
     });
 
@@ -69,7 +70,9 @@ describe('Accordion spec', () => {
             },
         });
 
+
         wrapper.setProps({ isOpen: true });
+        console.log(wrapper.vm.state.isOpen);
         expect(wrapper.vm.state.isOpen).to.be.ok;
     });
 
