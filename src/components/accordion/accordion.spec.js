@@ -52,7 +52,7 @@ describe('Accordion spec', () => {
             },
         });
 
-        const button = wrapper.find('button');
+        const button = wrapper.find('.ui-accordion--head');
         button.trigger('click');
 
         expect(wrapper.vm.state.isOpen).to.be.ok;
@@ -88,7 +88,7 @@ describe('Accordion spec', () => {
             },
         });
 
-        const button = wrapper.find('button');
+        const button = wrapper.find('.ui-accordion--head');
         button.trigger('click');
         expect(wrapper.vm.state.isOpen).to.be.not.ok;
     });
