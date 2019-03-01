@@ -6,6 +6,7 @@
                 tabindex="0"
                 v-if="!!$scopedSlots.head"
                 :aria-expanded="state.isOpen ? 'true' : 'false'"
+                @keypress.enter="onRequestChange(!state.isOpen)"
                 @click.prevent="onRequestChange(!state.isOpen)">
             <slot name="head" :is-open="state.isOpen"/>
         </div>
