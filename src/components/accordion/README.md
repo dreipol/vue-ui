@@ -38,3 +38,46 @@ import { UiAccordion } from '@dreipol/vue-ui/src/components';
 </accordion>
 ```
 
+# SCSS
+
+```scss
+.ui-accordion {
+    // Vars
+
+    // Support
+
+    // Module
+    & {
+        .ui-accordion--head {
+            cursor: pointer;
+        }
+
+
+        .ui-accordion--body {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: opacity 300ms ease;
+        }
+    }
+
+    // Facets
+    & {
+        &.ui-accordion__is-open {
+            .ui-accordion--body {
+                opacity: 1;
+            }
+        }
+
+        &.ui-accordion__is-animating {
+            .ui-accordion--body {
+                transition: opacity 300ms ease, max-height 300ms ease;
+            }
+        }
+    }
+
+    // States
+}
+
+```
+
