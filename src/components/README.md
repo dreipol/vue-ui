@@ -6,7 +6,6 @@ The following list contains all vue components that could be directly imported i
 - [icon](/src/components/icon)
 - [intersection-observer](/src/components/intersection-observer)
 - [overlay](/src/components/overlay)
-- [modal](/src/components/modal)
 - [scroll-reveal](/src/components/scroll-reveal)
 - [accordion](/src/components/accordion)
 
