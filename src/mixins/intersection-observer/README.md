@@ -1,6 +1,6 @@
 # intersectionObserverMixin
 [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
-Load via `import { interactionObserverMixin } from '@dreipol/vue-ui';` and add it to the `mixins`.
+Load via `import { interactionObserverMixin } from '@dreipol/vue-ui/src/components';` and add it to the `mixins`.
 
 Now you can start observing an element:
 
