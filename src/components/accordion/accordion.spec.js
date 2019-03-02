@@ -6,7 +6,8 @@ import { shallowMount } from '@vue/test-utils';
 
 
 describe('Accordion spec', () => {
-    const css = `.ui-accordion .ui-accordion--head {
+    const css = `
+.ui-accordion .ui-accordion--head {
   display: block;
   width: 100%;
   text-align: left;
@@ -131,9 +132,10 @@ describe('Accordion spec', () => {
                         expect(wrapper.vm.state.isOpen).to.be.equal(true);
                         wrapper.setProps({ isOpen: false });
                     } else {
-                        expect(wrapper.vm.state.isOpen).to.be.equal(false);
                         // wait the closing animation to consider this test done
+                        expect(wrapper.vm.state.isOpen).to.be.equal(false);
                         done();
+                        wrapper.destroy();
                     }
                 },
             },
@@ -163,6 +165,7 @@ describe('Accordion spec', () => {
                 changed() {
                     expect(wrapper.find('p').html()).to.be.equal('<p>true</p>');
                     done();
+                    wrapper.destroy();
                 },
             },
             attachToDocument: true,

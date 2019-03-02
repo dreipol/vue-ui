@@ -92,11 +92,11 @@ describe('Textarea spec', () => {
                 UiActions,
             },
             slots: {
-                actions: ['<p>hello</p>', '<p>there</p>'],
+                actions: ['foo'],
             },
         });
 
-        expect(wrapper.findAll('.form-field--action')).to.to.have.length(2);
-        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('2');
+        expect(wrapper.findAll('.form-field--action')).to.have.length(1);
+        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('1');
     });
 });

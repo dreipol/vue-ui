@@ -27,7 +27,7 @@
 <script>
     import UiActions from '../actions/actions.vue';
     import UiIcon from '../../icon/icon.vue';
-    import { getVNodeTags } from '../../../util/vnodes';
+    import { getVNodes } from '../../../util/vnodes';
     import bemMixin from '../../../mixins/bem';
     import focusBehaviourMixin from '../../../mixins/form/focus-behaviour';
     import rootClassesMixin from '../../../mixins/form/root-classes';
@@ -63,7 +63,7 @@
         },
         computed: {
             actionCount() {
-                return getVNodeTags(this.$scopedSlots.actions).length;
+                return getVNodes(this.$scopedSlots.actions).length;
             },
         },
     };
