@@ -72,7 +72,6 @@ describe('Accordion spec', () => {
 
 
         wrapper.setProps({ isOpen: true });
-        console.log(wrapper.vm.state.isOpen);
         expect(wrapper.vm.state.isOpen).to.be.ok;
     });
 
