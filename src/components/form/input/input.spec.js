@@ -3,7 +3,7 @@ import UiActions from '../actions/actions.vue';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
-describe('Input spec', () => {
+describe('Component input', () => {
     it('The ui-input is an object', () => {
         expect(UiInput).to.be.an('object');
         expect(UiInput).to.be.not.empty;

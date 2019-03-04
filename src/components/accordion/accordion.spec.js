@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
 
-describe('Accordion spec', () => {
+describe('Component accordion', () => {
     const css = `
 .ui-accordion .ui-accordion--head {
   display: block;

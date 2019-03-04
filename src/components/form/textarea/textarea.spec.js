@@ -7,7 +7,7 @@ const LOREM_IPSUM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ph
 ac ligula suscipit, ac semper ex fermentum. Aenean consequat mauris vel tincidunt porttitor.
 Donec quis faucibus mi. Vestibulum condimentum id nunc feugiat elementum.`;
 
-describe('Textarea spec', () => {
+describe('Component textarea', () => {
     it('The ui-textarea is an object', () => {
         expect(UiTextarea).to.be.an('object');
         expect(UiTextarea).to.be.not.empty;

@@ -2,7 +2,7 @@ import UiActions from '../actions/actions.vue';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
-describe('Actions spec', () => {
+describe('Component actions', () => {
     it('It can handle empty actions', () => {
         const wrapper = shallowMount(UiActions, {});
 

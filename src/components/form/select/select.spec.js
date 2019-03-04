@@ -6,7 +6,7 @@ import UiOptgroup from '../optgroup/optgroup.vue';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
-describe('Select spec', () => {
+describe('Component select', () => {
     it('The ui-select is an object', () => {
         expect(UiSelect).to.be.an('object');
         expect(UiSelect).to.be.not.empty;

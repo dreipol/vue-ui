@@ -3,7 +3,7 @@ import UiActions from '../actions/actions.vue';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
-describe('Radio spec', () => {
+describe('Component radio', () => {
     it('The ui-radio is an object', () => {
         expect(UiRadio).to.be.an('object');
         expect(UiRadio).to.be.not.empty;
