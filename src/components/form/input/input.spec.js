@@ -3,7 +3,7 @@ import UiActions from '../actions/actions.vue';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
-describe('Input spec', () => {
+describe('Component input', () => {
     it('The ui-input is an object', () => {
         expect(UiInput).to.be.an('object');
         expect(UiInput).to.be.not.empty;
@@ -42,6 +42,20 @@ describe('Input spec', () => {
         expect(wrapper.contains('.form-field--action')).to.be.not.ok;
     });
 
+    it('It can handle empty actions', () => {
+        const wrapper = shallowMount(UiInput, {
+            propsData: {
+                value: '',
+            },
+            stubs: {
+                UiActions,
+            },
+        });
+
+        expect(wrapper.findAll('.form-field--actions')).to.have.length(0);
+        expect(wrapper.find('.form-field__has-actions').exists()).to.not.be.ok;
+    });
+
     it('It can handle custom actions', () => {
         const wrapper = shallowMount(UiInput, {
             propsData: {
@@ -51,12 +65,11 @@ describe('Input spec', () => {
                 UiActions,
             },
             slots: {
-                actions: ['<p>hello</p>', '<p>there</p>', 'foo', 'bar'],
+                actions: ['foo', '<template>bar</template>', '<p>baz</p>'],
             },
         });
 
-        expect(wrapper.findAll('.form-field--action')).to.to.have.length(2);
-        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('2');
+        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('3');
         expect(wrapper.find('.form-field__has-actions').exists()).to.be.ok;
     });
 });

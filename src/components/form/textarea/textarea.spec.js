@@ -7,7 +7,7 @@ const LOREM_IPSUM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ph
 ac ligula suscipit, ac semper ex fermentum. Aenean consequat mauris vel tincidunt porttitor.
 Donec quis faucibus mi. Vestibulum condimentum id nunc feugiat elementum.`;
 
-describe('Textarea spec', () => {
+describe('Component textarea', () => {
     it('The ui-textarea is an object', () => {
         expect(UiTextarea).to.be.an('object');
         expect(UiTextarea).to.be.not.empty;
@@ -29,7 +29,7 @@ describe('Textarea spec', () => {
         expect(wrapper.find('.form-field__is-filled').exists()).to.be.ok;
     });
 
-    it('It increases the height of the textarea properly', (done) => {
+    it('It increases the height of the textarea properly', done => {
         const wrapper = shallowMount(UiTextarea, {
             propsData: {
                 value: '',
@@ -48,7 +48,7 @@ describe('Textarea spec', () => {
         });
     });
 
-    it('It decreases the height of the textarea properly', (done) => {
+    it('It decreases the height of the textarea properly', done => {
         const wrapper = shallowMount(UiTextarea, {
             propsData: {
                 value: LOREM_IPSUM,
@@ -92,11 +92,11 @@ describe('Textarea spec', () => {
                 UiActions,
             },
             slots: {
-                actions: ['<p>hello</p>', '<p>there</p>'],
+                actions: ['foo'],
             },
         });
 
-        expect(wrapper.findAll('.form-field--action')).to.to.have.length(2);
-        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('2');
+        expect(wrapper.findAll('.form-field--action')).to.have.length(1);
+        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('1');
     });
 });

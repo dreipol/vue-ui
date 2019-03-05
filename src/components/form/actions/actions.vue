@@ -2,18 +2,15 @@
     export default {
         functional: true,
         render(h, { children }) {
-            if (!children.length) {
+            if (!Array.isArray(children) || !children.length) {
                 return null;
             }
 
-            return h('div', {
-                class: 'form-field--actions',
-                // skip plain dom nodes without a wrapper tag
-            }, children.filter(action => action.tag).map(action => {
-                return h('span', {
-                    class: 'form-field--action',
-                }, [action]);
-            }));
+            const wrappedChildren = children.map(action => {
+                return h('span', { class: 'form-field--action' }, [action]);
+            });
+
+            return h('div', { class: 'form-field--actions' }, wrappedChildren);
         },
     };
 </script>

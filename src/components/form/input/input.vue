@@ -1,11 +1,11 @@
 <template>
     <div class="form-field form-field__input" :class="rootClasses">
         <label>
-            <span class="form-field--title-label" v-if="!hasFloatingLabel && $slots.label">
+            <span class="form-field--title-label" v-if="!hasFloatingLabel && $scopedSlots.label">
                 <slot name="label"/>
             </span>
-            <div class="form-field--input-container" :data-action-count="countVirtualTags($slots.actions)">
-                <span class="form-field--floating-label" v-if="hasFloatingLabel && $slots.label">
+            <div class="form-field--input-container" :data-action-count="actionCount">
+                <span class="form-field--floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
                     <slot name="label"/>
                 </span>
                 <slot name="input">
@@ -27,7 +27,7 @@
 
 <script>
     import UiActions from '../actions/actions.vue';
-    import countVirtualTags from '../../../util/count-virtual-tags';
+    import { getVNodes } from '../../../util/vnodes';
     import bemMixin from '../../../mixins/bem';
     import rootClassesMixin from '../../../mixins/form/root-classes';
     import floatingLabelPropsMixin from '../../../mixins/form/floating-label-props';
@@ -53,8 +53,10 @@
                 default: '',
             },
         },
-        methods: {
-            countVirtualTags,
+        computed: {
+            actionCount() {
+                return getVNodes(this.$scopedSlots.actions).length;
+            },
         },
     };
 </script>

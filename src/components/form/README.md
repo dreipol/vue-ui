@@ -47,9 +47,11 @@ You can provide the following `<slot>`s to customize its rendering:
 
 ```vue
 <ui-input type="text">
-    <span slot="label">
-        My Fancy <i>Custom</i> <b>Label</b>
-    </span>
+    <template v-slot:label>
+        <span>
+            My Fancy <i>Custom</i> <b>Label</b>
+        </span>    
+    </template>
 </ui-input>
 ```
 
@@ -57,7 +59,7 @@ You can provide the following `<slot>`s to customize its rendering:
 
 ```vue
 <ui-input type="search" placeholder="Search something...">
-    <simple-btn slot="actions" @click="search">
+    <simple-btn v-slot:actions @click="search">
         <ui-icon symbol="search" size="large"/>
     </simple-btn>
 </ui-input>
@@ -67,7 +69,7 @@ Multiple actions are supported as well
 
 ```vue
 <ui-input type="search" placeholder="Search something...">
-    <template slot="actions">
+    <template v-slot:actions>
          <simple-btn @click="search">
             <ui-icon symbol="search" size="large"/>
          </simple-btn>
@@ -83,7 +85,9 @@ You can render custom error messages via `messages` slot:
 
 ```vue
 <ui-input type="email">
-    <p slot="messages" class="error-message">Please provide a valid email address</p>
+    <template v-slot:messages>
+        <p class="error-message">Please provide a valid email address</p>
+    </template>
 </ui-input>
 ```
 
@@ -103,7 +107,7 @@ Renders its label as a floating text label.
 
 ```vue
 <ui-input type="text" :has-floating-label="true">
-    <template slot="label">
+    <template v-slot:label>
         Look ma, I'm floating
     </template>
 </ui-input>
@@ -143,15 +147,15 @@ The label can be provided as for the `ui-input` component via `<slot>`:
 <fieldset>
     <p>Choose your car:</p>
     <ui-radio name="cars" value="lamborghini">
-        <template slot="label">Lamborghini</template>
+        <template v-slot:label>Lamborghini</template>
     </ui-radio>
     <ui-radio name="cars" value="ferrari">
-        <template slot="label">Ferrari</template>
+        <template v-slot:label>Ferrari</template>
     </ui-radio>
 </fieldset>
 
 <ui-checkbox name="is_on_sale">
-    <template slot="label">Is on sale</template>
+    <template v-slot:label>Is on sale</template>
 </ui-checkbox>
 ```
 
@@ -160,7 +164,7 @@ You can alter the icon of the input fields by using the `icon` slot:
 
 ```vue
 <ui-checkbox>
-    <ui-icon slot="icon" symbol="checkmark" size="large"/>
+    <ui-icon v-slot:icon symbol="checkmark" size="large"/>
 </ui-checkbox>
 ```
 
@@ -168,7 +172,7 @@ You can alter the icon of the input fields by using the `icon` slot:
 
 ```vue
 <ui-checkbox type="text">
-    <p slot="messages" class="success-message">Congrats you picked the right answer!</p>
+    <p v-slot:messages class="success-message">Congrats you picked the right answer!</p>
 </ui-checkbox>
 ```
 
@@ -218,16 +222,16 @@ The optional `ui-optgroup` component may be used to render native option groups.
 
 ```vue
 <ui-select>
-    <template slot="label">
+    <template v-slot:label>
         Select something
     </template>
     <ui-option value="one">1</ui-option>
     <ui-option value="two">2</ui-option>
     <ui-option value="three">3</ui-option>
-    <p slot="messages" class="warning">
+    <p v-slot:messages class="warning">
        Please choose widely 
     </p>
-    <ui-icon slot="actions" symbol="checkmark" size="small"/>
+    <ui-icon v-slot:actions symbol="checkmark" size="small"/>
 </ui-select>
 ```
 
@@ -260,8 +264,8 @@ In a nutshell: The input fields are responsible for user events and rendering wh
 
 ```vue
 <template>
-    <ui-model-provider v-model="username">
-        <ui-input slot-scope="props" :value="props.value" @input="props.updateValue"/>  
+    <ui-model-provider v-model="username" v-slot="{ value, updateValue }">
+        <ui-input :value="value" @input="updateValue"/>  
     </ui-model-provider>
 </template>
 
@@ -298,8 +302,8 @@ Here you can see an example of a boolean `ui-checkbox` input bound to a model pr
 Assuming that the `value` is a boolean and can be either `true` or `false`
 
 ```vue
-<ui-model-provider v-model="value">
-    <ui-checkbox slot-scope="props" :value="props.value" @change="props.updateValue"/>
+<ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+    <ui-checkbox :value="value" @change="updateValue"/>
 </ui-model-provider>
 ```
 
@@ -308,10 +312,10 @@ Here you can see an example of `ui-radio` inputs bound to a model provider.
 Assuming that the `value` must be one of those two strings: `['one', 'two']`
 
 ```vue
-<ui-model-provider v-model="value">
-    <div slot-scope="props">
-         <ui-radio :checked="props.value === 'one'" value='one' @change="props.updateValue"/>
-         <ui-radio :checked="props.value === 'two'" value='two' @change="props.updateValue"/>
+<ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+    <div>
+         <ui-radio :checked="value === 'one'" value='one' @change="updateValue"/>
+         <ui-radio :checked="value === 'two'" value='two' @change="updateValue"/>
     </div>
 </ui-model-provider>
 ```
@@ -321,11 +325,11 @@ This is an example of a `ui-checkbox` inputs bound to a model provider.
 Assuming that the `value` is an array containing none or multiple items of `['one', 'two', 'three']`
 
 ```vue
-<ui-model-provider v-model="value">
-    <div slot-scope="props">   
-        <ui-checkbox :checked="props.hasItem('one')" value='one' @change="props.updateValue"/>
-        <ui-checkbox :checked="props.hasItem('two')" value='two' @change="props.updateValue"/>
-        <ui-checkbox :checked="props.hasItem('three')" value='three' @change="props.updateValue"/>
+<ui-model-provider v-model="value" v-slot="{ hasItem, updateValue }">
+    <div>
+        <ui-checkbox :checked="hasItem('one')" value='one' @change="updateValue"/>
+        <ui-checkbox :checked="hasItem('two')" value='two' @change="updateValue"/>
+        <ui-checkbox :checked="hasItem('three')" value='three' @change="updateValue"/>
     </div>
 </ui-model-provider>
 ```
@@ -335,8 +339,8 @@ This is an example of a `ui-select` input bound to a model provider.
 Assuming that the `value` must be one of those two strings: `['one', 'two']`
 
 ```vue
- <ui-model-provider v-model="value">
-    <ui-select slot-scope="props" :value="props.value" @change="props.updateValue">
+ <ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+    <ui-select :value="value" @change="updateValue">
         <ui-option value="one">One</ui-option>
         <ui-option value="two">Two</ui-option>
     </ui-select>

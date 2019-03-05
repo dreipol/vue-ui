@@ -1,10 +1,10 @@
 <template>
     <div class="form-field form-field__input form-field__select" :class="rootClasses">
         <label>
-            <div class="form-field--title-label" v-if="$slots.label">
+            <div class="form-field--title-label" v-if="$scopedSlots.label">
                 <slot name="label"/>
             </div>
-            <div class="form-field--input-container" :data-action-count="countVirtualtags($slots.actions) || 1">
+            <div class="form-field--input-container" :data-action-count="actionCount || 1">
                 <select class="form-field--input"
                         v-model="currentValue"
                         v-bind="$attrs"
@@ -27,7 +27,7 @@
 <script>
     import UiActions from '../actions/actions.vue';
     import UiIcon from '../../icon/icon.vue';
-    import countVirtualtags from '../../../util/count-virtual-tags';
+    import { getVNodes } from '../../../util/vnodes';
     import bemMixin from '../../../mixins/bem';
     import focusBehaviourMixin from '../../../mixins/form/focus-behaviour';
     import rootClassesMixin from '../../../mixins/form/root-classes';
@@ -61,8 +61,10 @@
                 default: '',
             },
         },
-        methods: {
-            countVirtualtags,
+        computed: {
+            actionCount() {
+                return getVNodes(this.$scopedSlots.actions).length;
+            },
         },
     };
 </script>

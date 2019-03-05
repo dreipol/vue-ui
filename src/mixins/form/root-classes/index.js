@@ -1,6 +1,8 @@
 export default {
     computed: {
         rootClasses() {
+            const hasActions = this.$scopedSlots && this.$scopedSlots.actions;
+
             const classes = [
                 ...this.bemFacets,
                 this.bemIf(this.hasFloatingLabel, 'floating-label'),
@@ -8,7 +10,7 @@ export default {
                 this.bemIf(this.$attrs.required, 'is-required', 'is-optional'),
                 this.bemIf(this.$attrs.disabled, 'is-disabled'),
                 this.bemIf(this.hasFocus, 'has-focus'),
-                this.bemIf(this.$slots && this.$slots.actions, 'has-actions'),
+                this.bemIf(hasActions, 'has-actions'),
                 this.bemIf(this.currentValue, 'is-filled', 'is-empty'),
             ];
 

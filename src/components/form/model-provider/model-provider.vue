@@ -1,5 +1,5 @@
 <script>
-    // check whether an input is a of kind toggle
+    // Check whether an input is a of kind toggle
     const isToggle = target => target.getAttribute('type') === 'checkbox';
 
     export default {

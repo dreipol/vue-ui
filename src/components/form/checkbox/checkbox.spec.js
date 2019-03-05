@@ -6,7 +6,7 @@ import UiIcon from '../../icon/icon.vue';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
-describe('Radio spec', () => {
+describe('Component checkbox', () => {
     it('The ui-checkbox is an object', () => {
         expect(UiCheckbox).to.be.an('object');
         expect(UiCheckbox).to.be.not.empty;
@@ -71,7 +71,7 @@ describe('Radio spec', () => {
         expect(wrapper.find('.form-field__is-checked').exists()).to.be.ok;
     });
 
-    it('It can dispatch the onchange events listened from the outside', (done) => {
+    it('It can dispatch the onchange events listened from the outside', done => {
         const wrapper = shallowMount(UiCheckbox, {
             propsData: {
                 value: 'foo',
@@ -91,7 +91,7 @@ describe('Radio spec', () => {
         wrapper.find('input').trigger('change');
     });
 
-    it('It can be used as toggle', (done) => {
+    it('It can be used as toggle', done => {
         const wrapper = shallowMount(UiCheckbox, {
             propsData: {
                 value: false,

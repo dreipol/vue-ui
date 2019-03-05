@@ -13,7 +13,7 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 
 const Vue = createLocalVue();
 
-describe('Model Provider spec', () => {
+describe('Component model-provider', () => {
     const runtimeComponents = {
         UiCheckbox,
         UiInput,
@@ -39,8 +39,8 @@ describe('Model Provider spec', () => {
                 };
             },
             template: `
-                <ui-model-provider v-model="value">
-                    <ui-checkbox slot-scope="props" :value="props.value" @change="props.updateValue"/>
+                <ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+                    <ui-checkbox :value="value" @change="updateValue"/>
                 </ui-model-provider>
             `,
         }), {
@@ -66,7 +66,7 @@ describe('Model Provider spec', () => {
         expect(input.element.checked).to.be.ok;
     });
 
-    it('It supports radios', (done) => {
+    it('It supports radios', done => {
         const wrapper = shallowMount(Vue.extend({
             components: runtimeComponents,
             data() {
@@ -75,10 +75,10 @@ describe('Model Provider spec', () => {
                 };
             },
             template: `
-                <ui-model-provider v-model="value">
-                    <div slot-scope="props">
-                         <ui-radio :checked="props.value === 'foo'" value='foo' @change="props.updateValue"/>
-                         <ui-radio :checked="props.value === 'bar'" value='bar' @change="props.updateValue"/>
+                <ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+                    <div>
+                         <ui-radio :checked="value === 'foo'" value='foo' @change="updateValue"/>
+                         <ui-radio :checked="value === 'bar'" value='bar' @change="updateValue"/>
                     </div>
                 </ui-model-provider>
             `,
@@ -112,8 +112,8 @@ describe('Model Provider spec', () => {
                 };
             },
             template: `
-                <ui-model-provider v-model="value">
-                    <ui-input slot-scope="props" :value="props.value" @input="props.updateValue"/>
+                <ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+                    <ui-input :value="value" @input="updateValue"/>
                 </ui-model-provider>
             `,
         }), {
@@ -140,8 +140,8 @@ describe('Model Provider spec', () => {
                 };
             },
             template: `
-                <ui-model-provider v-model="value">
-                    <ui-textarea slot-scope="props" :value="props.value" @input="props.updateValue"/>
+                <ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+                    <ui-textarea :value="value" @input="updateValue"/>
                 </ui-model-provider>
             `,
         }), {
@@ -168,11 +168,11 @@ describe('Model Provider spec', () => {
                 };
             },
             template: `
-                <ui-model-provider v-model="value">
-                    <div slot-scope="props">   
-                        <ui-checkbox :checked="props.hasItem('foo')" value='foo' @change="props.updateValue"/>
-                        <ui-checkbox :checked="props.hasItem('bar')" value='bar' @change="props.updateValue"/>
-                        <ui-checkbox :checked="props.hasItem('baz')" value='baz' @change="props.updateValue"/>
+                <ui-model-provider v-model="value" v-slot="{ hasItem, updateValue }">
+                    <div>
+                        <ui-checkbox :checked="hasItem('foo')" value='foo' @change="updateValue"/>
+                        <ui-checkbox :checked="hasItem('bar')" value='bar' @change="updateValue"/>
+                        <ui-checkbox :checked="hasItem('baz')" value='baz' @change="updateValue"/>
                     </div>
                 </ui-model-provider>
             `,
@@ -224,8 +224,8 @@ describe('Model Provider spec', () => {
                 };
             },
             template: `
-                <ui-model-provider v-model="value">
-                    <ui-select slot-scope="props" :value="props.value" @change="props.updateValue">
+                <ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+                    <ui-select :value="value" @change="updateValue">
                         <ui-option value="foo">Foo</ui-option>
                         <ui-option value="bar">bar</ui-option>
                     </ui-select>
