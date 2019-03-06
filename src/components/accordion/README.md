@@ -9,8 +9,8 @@ import { UiAccordion } from '@dreipol/vue-ui/src/components';
 ## Props
 | Name | Type | Default | Description
 | --- | --- | ---| ---|
-|`isOpen` |Boolean| false | It will work only when also the `isPassive` property is enabled. It triggers the accordion animation
-|`isPassive` |Boolean| false | It allows you to control the accordion from the outside
+|`isOpen` | boolean | false | It will work only when also the `isPassive` property is enabled. It triggers the accordion animation
+|`isPassive` | boolean | false | It allows you to control the accordion from the outside
 
 ## Events
 -  `change(isOpen: boolean)` callback called when the accordion starts the animation
@@ -19,23 +19,25 @@ import { UiAccordion } from '@dreipol/vue-ui/src/components';
 
 ## Example
 ```vue
-<accordion>
+<!-- basic usage -->
+<ui-accordion>
     <h1 v-slot:head>
         Click Me
     </h1>
     <p v-slot:body>
         Accordion body
     </p>
-</accordion>
-    
-<accordion>
+</ui-accordion>
+
+<!-- using forwarded props -->
+<ui-accordion>
     <h1 v-slot:head>
         Click Me
     </h1>
     <div v-slot:body slot-scope="props">
         <google-maps v-if="props.isVisible"></google-maps>
     </div>
-</accordion>
+</ui-accordion>
 ```
 
 # SCSS

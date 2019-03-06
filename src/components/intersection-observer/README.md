@@ -9,8 +9,8 @@ A simple implementation of the [`intersectionObserverMixin`](/src/mixins/interse
 ## Props
 | Name | Type | Default |
 | --- | --- | ---|
-|`thresholdMin` |Number| 0.1 |
-|`thresholdMax` |Number| null|
+|`thresholdMin` | Number | 0.1 |
+|`thresholdMax` | Number | null |
 
 ## Events
 -  `intersect(isIntersecting: boolean, entry: IntersectionObserverEntry )`
