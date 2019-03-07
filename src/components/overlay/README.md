@@ -70,7 +70,7 @@ You can use them in your components or even in other vuex actions.
 ```
 
 
-## Props
+## Options
 
 ### IOverlay
 
@@ -81,7 +81,7 @@ You can use them in your components or even in other vuex actions.
 | `transition` | string | null | `openOverlay` `closeOverlay` | The transition name to be used when opening / closing the overlay
 |  `disableScroll` | boolean | true | `openOverlay` | Decide whether the overlay should disable the browser scroll bar
 | `autoClose` | boolean / IOverlayAutoClose | null | `openOverlay` `closeOverlay` | The overlay closes itself with the properties given in this option, see below for details 
-| `facets` | string[] | ['base'] | `openOverlay` `closeOverlay` | A list of facet classes that is given to the overlay component for easier styling  
+| `facets` | string[] | ['base'] | `openOverlay` `closeOverlay` | A list of facet classes that is given to the overlay component for easier styling (see [bem mixin](/src/mixins/bem))
 | `props` | any | {} | `openOverlay` | These properties will be given to the mounting component via `v-bind`
 
 ### IOverlayAutoClose
@@ -100,14 +100,18 @@ You can use them in your components or even in other vuex actions.
             log in
         </button>
         
+        <!-- only one overlay -->
         <ui-overlay id="LOGIN_OVERLAY"/>
+        
+        <!-- add all overlays -->
+        <ui-overlay v-for="(overlay, overlayId) in overlays" :id="overlayId" :key="overlayId"/>
     </div>
 </template>
 
 <script>
     export default {
         computed: {
-            ...mapState('vue-ui/overlay', ['overlays']),
+            ...mapState('vue-ui/overlay', ['overlays']), // only necessary for adding all overlays
         },
         methods: {
             ...mapActions('vue-ui/overlay', ['openOverlay', 'closeOverlay']),
