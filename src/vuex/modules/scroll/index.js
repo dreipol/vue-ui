@@ -1,4 +1,4 @@
-import { documentHeight, scrollbarWidth, scrollTop } from 'bianco.viewport';
+import { documentHeight, scrollbarWidth, scrollTop } from 'bianco';
 import clamp from 'lodash.clamp';
 import { DISABLE_SCROLL, SET_SCROLL } from '../mutation-types';
 import * as actions from './actions';

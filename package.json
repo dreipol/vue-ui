@@ -1,6 +1,6 @@
 {
   "name": "@dreipol/vue-ui",
-  "version": "1.0.1",
+  "version": "2.0.0-alpha.2",
   "description": "",
   "main": "index.js",
   "jsnext:main": "src/index.js",
@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.1.0",
     "@dreipol/eslint-config": "^6.0.2",
     "@dreipol/eslint-config-vue": "^2.0.2",
-    "@vue/test-utils": "^1.0.0-beta.29",
+    "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-istanbul": "^5.1.0",
@@ -54,19 +54,22 @@
     "postcss": "^7.0.5",
     "sinon": "^7.1.1",
     "sinon-chai": "^3.2.0",
-    "vue": "^2.6.2",
+    "vue": "^2.6.8",
     "vue-loader": "^15.4.2",
-    "vue-template-compiler": "^2.6.2",
+    "vue-template-compiler": "^2.6.8",
     "vuex": "^3.0.1",
     "webpack": "^4.29.1",
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
-    "bianco.viewport": "^1.0.0",
+    "bianco": "^1.1.0",
     "headroom.js": "^0.9.4",
     "lodash.clamp": "^4.0.3",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isnil": "^4.0.0",
     "lodash.omitby": "^4.6.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.0"
   }
 }

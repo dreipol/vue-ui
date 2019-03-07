@@ -6,7 +6,7 @@ import UiIcon from '../../icon/icon.vue';
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 
-describe('Radio spec', () => {
+describe('Component checkbox', () => {
     it('The ui-checkbox is an object', () => {
         expect(UiCheckbox).to.be.an('object');
         expect(UiCheckbox).to.be.not.empty;

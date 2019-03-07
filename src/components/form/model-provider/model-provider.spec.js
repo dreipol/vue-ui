@@ -13,7 +13,7 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 
 const Vue = createLocalVue();
 
-describe('Model Provider spec', () => {
+describe('Component model-provider', () => {
     const runtimeComponents = {
         UiCheckbox,
         UiInput,

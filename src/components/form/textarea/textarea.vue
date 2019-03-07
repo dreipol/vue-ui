@@ -8,10 +8,10 @@
                 <span class="form-field--floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
                     <slot name="label"/>
                 </span>
-                <textarea v-model="currentValue"
-                        v-bind="$attrs"
-                        class="form-field--input"
+                <textarea class="form-field--input"
                         ref="input"
+                        v-model="currentValue"
+                        v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
                         v-on="$listeners"/>
@@ -27,7 +27,7 @@
 <script>
     import UiActions from '../actions/actions.vue';
     import bemMixin from '../../../mixins/bem';
-    import { getVNodeTags } from '../../../util/vnodes';
+    import { getVNodes } from '../../../util/vnodes';
     import rootClassesMixin from '../../../mixins/form/root-classes';
     import floatingLabelPropsMixin from '../../../mixins/form/floating-label-props';
     import focusBehaviourMixin from '../../../mixins/form/focus-behaviour';
@@ -57,7 +57,7 @@
         },
         computed: {
             actionCount() {
-                return getVNodeTags(this.$scopedSlots.actions).length;
+                return getVNodes(this.$scopedSlots.actions).length;
             },
         },
         methods: {

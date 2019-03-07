@@ -9,8 +9,8 @@
                     <slot name="label"/>
                 </span>
                 <slot name="input">
-                    <input v-model="currentValue"
-                            class="form-field--input"
+                    <input class="form-field--input"
+                            v-model="currentValue"
                             v-bind="$attrs"
                             @focus="onFocus"
                             @blur="onBlur"
@@ -27,7 +27,7 @@
 
 <script>
     import UiActions from '../actions/actions.vue';
-    import { getVNodeTags } from '../../../util/vnodes';
+    import { getVNodes } from '../../../util/vnodes';
     import bemMixin from '../../../mixins/bem';
     import rootClassesMixin from '../../../mixins/form/root-classes';
     import floatingLabelPropsMixin from '../../../mixins/form/floating-label-props';
@@ -55,7 +55,7 @@
         },
         computed: {
             actionCount() {
-                return getVNodeTags(this.$scopedSlots.actions).length;
+                return getVNodes(this.$scopedSlots.actions).length;
             },
         },
     };
