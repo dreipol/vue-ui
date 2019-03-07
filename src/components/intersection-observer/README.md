@@ -9,8 +9,8 @@ A simple implementation of the [`intersectionObserverMixin`](/src/mixins/interse
 ## Props
 | Name | Type | Default |
 | --- | --- | ---|
-|`thresholdMin` |Number| 0.1 |
-|`thresholdMax` |Number| null|
+|`thresholdMin` | number | 0.1 |
+|`thresholdMax` | number | null |
 
 ## Events
 -  `intersect(isIntersecting: boolean, entry: IntersectionObserverEntry )`
@@ -19,10 +19,10 @@ A simple implementation of the [`intersectionObserverMixin`](/src/mixins/interse
 
 ## Example
 ```vue
-    <intersection-observer @intersect-enter="onIntersectEnter">
+    <ui-intersection-observer @intersect-enter="onIntersectEnter">
         <div>
             Loading
         </div>
-    </intersection-observer>
+    </ui-intersection-observer>
 ```
 
