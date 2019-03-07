@@ -19,10 +19,10 @@ A simple implementation of the [`intersectionObserverMixin`](/src/mixins/interse
 
 ## Example
 ```vue
-    <intersection-observer @intersect-enter="onIntersectEnter">
+    <ui-intersection-observer @intersect-enter="onIntersectEnter">
         <div>
             Loading
         </div>
-    </intersection-observer>
+    </ui-intersection-observer>
 ```
 

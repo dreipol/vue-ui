@@ -15,9 +15,9 @@ You need to provide styles for these modifiers.
 ## Example Usage
 
 ```html
-    <scroll-reveal element-class="reduced-nav">
+    <ui-scroll-reveal element-class="reduced-nav">
         <main-header/>
-    </scroll-reveal>
+    </ui-scroll-reveal>
 ```
 
 ### Example SCSS
