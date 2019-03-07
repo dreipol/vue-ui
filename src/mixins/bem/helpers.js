@@ -6,8 +6,8 @@ export const DEFAULT_OPTIONS = Object.freeze({
 
 /**
  * Return a props config object for a vue component based on the options given
- * @param bemRoot - The block name
- * @param useProp - A config flag
+ * @param {string} bemRoot - The block name
+ * @param {boolean} useProp - A config flag
  * @return {object} The vue props config
  */
 export function getPropsConfig(bemRoot, { useProp }) {
@@ -27,7 +27,7 @@ export function getPropsConfig(bemRoot, { useProp }) {
 
 /**
  * Return a computed config object for a vue component based on the options given
- * @param bemRoot - The block name
+ * @param {string} bemRoot - The block name
  * @return {object} The vue computed config
  */
 export function getComputedConfig(bemRoot) {

@@ -9,8 +9,8 @@
                     <slot name="label"/>
                 </span>
                 <slot name="input">
-                    <input class="form-field--input"
-                            v-model="currentValue"
+                    <input v-model="currentValue"
+                            class="form-field--input"
                             v-bind="$attrs"
                             @focus="onFocus"
                             @blur="onBlur"
