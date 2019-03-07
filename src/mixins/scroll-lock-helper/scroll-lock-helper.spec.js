@@ -8,7 +8,6 @@ const localVue = createLocalVue();
 function getDummyComponentProps(customOptions = {}) { // eslint-disable-line
     const store = new Vuex.Store({
         modules: {
-            /* TODO: hook the scroll vuex module */
             scroll: {
                 namespaced: true,
                 mutations: {},

@@ -37,7 +37,6 @@ const mutations = {
     [UNMOUNT_OVERLAY](state, { id }) {
         Vue.delete(state.overlays, id);
     },
-    // TODO: Only use the part of the payload that is being requested
     [OPEN_OVERLAY](state, payload) {
         const mutation = {
             ...cloneDeep(DEFAULT_OPENING_STATE),
@@ -46,7 +45,6 @@ const mutations = {
 
         Vue.set(state.overlays, payload.id, mutation);
     },
-    // TODO: Only use the part of the payload that is being requested
     [UPDATE_OVERLAY](state, payload) {
         const overlay = state.overlays[payload.id];
 
@@ -59,7 +57,6 @@ const mutations = {
             ...payload.props,
         });
     },
-    // TODO: Only use the part of the payload that is being requested
     [PREPARE_CLOSE_OVERLAY](state, payload) {
         const overlay = state.overlays[payload.id];
 
@@ -76,7 +73,6 @@ const mutations = {
         Vue.set(overlay, 'transition', transition);
         Vue.set(overlay, 'disableScroll', disableScroll);
     },
-    // TODO: Only use the part of the payload that is being requested
     [CLOSE_OVERLAY](state, payload) {
         const { facets } = state.overlays[payload.id];
         const mutation = {
