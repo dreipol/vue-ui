@@ -50,11 +50,11 @@ export default {
                 } else {
                     // NOTE: Force a vuex update for all registered components
                     if (document.body.scrollTop === this.scrollLockPosition) {
-                        window.scrollTo(null, this.scrollLockPosition + 1);
+                        window.scrollTo(0, this.scrollLockPosition + 1);
                         this.setScroll();
                     }
 
-                    window.scrollTo(null, this.scrollLockPosition);
+                    window.scrollTo(0, this.scrollLockPosition);
                     this.setScroll();
                 }
             },
