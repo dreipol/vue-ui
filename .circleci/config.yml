@@ -11,17 +11,17 @@ jobs:
 
     - restore_cache:
         keys:
-        - node-deps-{{ checksum "package.json" }}
+        - node-deps-{{ checksum "package-lock.json" }}
 
     - run:
         name: install frontend packages
         command: |
-          npm i
+          npm ci
 
     - save_cache:
         paths:
         - ./node_modules
-        key: node-deps-{{ checksum "package.json" }}
+        key: node-deps-{{ checksum "package-lock.json" }}
 
     - run:
         name: test
