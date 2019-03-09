@@ -6,7 +6,23 @@ import scrollModule from './';
 import { expect } from 'chai';
 import { spy } from 'sinon';
 
-describe('Vuex scroll', () => {
+/**
+ * Depending on the headless chrome used, the scrollbar might have different sizes
+ * @return {number} The scrollbar width
+ */
+function getScrollbarWidth() {
+    let result;
+    const scrollDiv = document.createElement('div');
+    scrollDiv.style = 'width:100px;height:100px;overflow:scroll;position:absolute';
+
+    document.body.appendChild(scrollDiv);
+    result = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+
+    return result;
+}
+
+describe('Vuex scroll module', () => {
     describe('Scroll default export', () => {
         it('The scroll module exports properly all the vuex properties', () => {
             const props = ['namespaced', 'mutations', 'actions', 'state'];
@@ -58,7 +74,7 @@ describe('Vuex scroll', () => {
 
             expect(state.position).to.be.equal(0);
             expect(state.progress).to.be.equal(0);
-            expect(state.scrollbarWidth).to.be.equal(15);
+            expect(state.scrollbarWidth).to.be.equal(getScrollbarWidth());
         });
 
         it('Disable scroll', () => {
