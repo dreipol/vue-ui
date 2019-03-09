@@ -8,10 +8,10 @@
                 <span class="form-field--floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
                     <slot name="label"/>
                 </span>
-                <textarea v-model="currentValue"
-                        v-bind="$attrs"
-                        class="form-field--input"
+                <textarea class="form-field--input"
                         ref="input"
+                        v-model="currentValue"
+                        v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
                         v-on="$listeners"/>
