@@ -74,10 +74,15 @@ const mutations = {
         Vue.set(overlay, 'disableScroll', disableScroll);
     },
     [CLOSE_OVERLAY](state, payload) {
-        const { facets } = state.overlays[payload.id];
+        const overlay = state.overlays[payload.id];
+
+        if (!overlay) {
+            return;
+        }
+
         const mutation = {
             ...cloneDeep(DEFAULT_CLOSING_STATE),
-            ...{ facets },
+            ...{ facets: overlay.facets },
             ...omitBy(payload, isNil),
         };
 
