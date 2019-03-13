@@ -1,5 +1,11 @@
 import { getComputedConfig, getPropsConfig, mapFacets, createBemClass, DEFAULT_OPTIONS } from './helpers';
 
+/**
+ * Add BEM related helpers to a component
+ * @param {string} bemRoot - The block name
+ * @param {IBemMixinOptions} config - The mixin config
+ * @return {object} The vue mixin
+ */
 export default function bemMixin(bemRoot, config) {
     const options = {
         ...DEFAULT_OPTIONS,

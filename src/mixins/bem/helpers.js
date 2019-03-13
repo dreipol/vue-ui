@@ -1,3 +1,4 @@
+/** @type {IBemFacetOptions} */
 export const DEFAULT_OPTIONS = Object.freeze({
     bemModifierMarker: '__',
     defaultFacet: 'base',
@@ -43,35 +44,36 @@ export function getComputedConfig(bemRoot) {
 }
 
 /**
- * Arraify facets in order to use single or multiple facets in a react component
- * @param {string} blockName - facet root class
- * @param {Array} facets - the facets we want to apply to the component
- * @param {object} options - see the DEFAULT_OPTIONS above
- * @return {Array} array of the facets to apply to the react node
+ * Compile a list of class strings from a list of facets
+ * @param {string} blockName - Facet root class
+ * @param {string[]} facets - The facets to be applied the component
+ * @param {IBemFacetOptions} options - A config object
+ * @return {string[]} An array of compiled facets
  */
 export function mapFacets(blockName, facets, options = DEFAULT_OPTIONS) {
-    const { defaultFacet } = options;
+    const { defaultFacet, ...rest } = options;
 
     // Apply multiple facets by using an array
-    const result = facets.map(modifierName => createBemClass({ blockName, modifierName, ...options })).filter(Boolean);
+    const result = facets
+        .map(modifierName => createBemClass({ blockName, modifierName, ...rest }))
+        .filter(Boolean);
 
     // As `facet` can still be an empty string, we'll provide a base facet as a fallback
     if (!result.length) {
-        return [createBemClass({ blockName, modifierName: defaultFacet, ...options })];
+        return [createBemClass({ blockName, modifierName: defaultFacet, ...rest })];
     }
 
     return result;
 }
 
 /**
- * Create a BEM css class out of the a root class and a modifier (AKA facet)
- * @param {string} blockName - root class name
- * @param {string} modifierName - facet or modifier property
- * @param {string} elementName - optional child bem selector
- * @param {object} options - see the DEFAULT_OPTIONS above
- * @return {string} a valid BEM class
+ * Create a valid CSS class out a config object of parts
+ * @param {IBemClassParts} bemClassParts - All parts of a valid BEM class
+ * @return {string} The resulting CSS class
  */
-export function createBemClass({ blockName, modifierName, elementName, bemModifierMarker, bemElementMarker }) {
+export function createBemClass(bemClassParts) {
+    const { blockName, modifierName = '', elementName = '', bemModifierMarker, bemElementMarker } = bemClassParts;
+
     const elementPart = elementName ? `${ bemElementMarker }${ elementName }` : '';
     const modifierPart = modifierName ? `${ bemModifierMarker }${ modifierName }` : '';
     return modifierPart ? `${ blockName }${ elementPart }${ modifierPart }` : '';
