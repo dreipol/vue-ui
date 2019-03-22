@@ -16,21 +16,24 @@ export default {
          * @param {boolean} isIntersecting - intersection identifier
          * @param {IntersectionObserverEntry} entry - Intersection element
          */
-        onIntersect(isIntersecting, entry) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        onIntersect(isIntersecting, entry) {
         },
 
         /**
          * Handle when element enters viewport
          * @param {IntersectionObserverEntry} entry - intersection entry
          */
-        onIntersectEnter(entry) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        onIntersectEnter(entry) {
         },
 
         /**
          * Handle when element leaves viewport
          * @param {IntersectionObserverEntry} entry - intersection entry
          */
-        onIntersectLeave(entry) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        onIntersectLeave(entry) {
         },
 
         /**
