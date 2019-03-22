@@ -1,7 +1,6 @@
 <template>
     <div class="ui-accordion" :class="rootClasses">
-        <div
-                class="u-reset ui-accordion--head"
+        <div class="u-reset ui-accordion--head"
                 role="heading"
                 tabindex="0"
                 :aria-expanded="state.isOpen ? 'true' : 'false'"
