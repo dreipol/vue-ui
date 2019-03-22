@@ -55,8 +55,8 @@ export function mapFacets(blockName, facets, options = DEFAULT_OPTIONS) {
 
     // Apply multiple facets by using an array
     const result = facets
-        .map(modifierName => createBemClass({ blockName, modifierName, ...rest }))
-        .filter(Boolean);
+        .filter(Boolean)
+        .map(modifierName => createBemClass({ blockName, modifierName, ...rest }));
 
     // As `facet` can still be an empty string, we'll provide a base facet as a fallback
     if (!result.length) {
@@ -76,7 +76,7 @@ export function createBemClass(bemClassParts) {
 
     const elementPart = elementName ? `${ bemElementMarker }${ elementName }` : '';
     const modifierPart = modifierName ? `${ bemModifierMarker }${ modifierName }` : '';
-    return modifierPart ? `${ blockName }${ elementPart }${ modifierPart }` : '';
+    return `${ blockName }${ elementPart }${ modifierPart }`;
 }
 
 
