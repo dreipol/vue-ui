@@ -1,19 +1,9 @@
 <script>
     import { createBemClass, DEFAULT_OPTIONS } from '../../../mixins/bem/helpers';
 
-    const ROOT_CLASS = 'ui-form-field';
-    const wrappedChildClass = createBemClass({
-        blockName: ROOT_CLASS,
-        modifierName: '',
-        elementName: 'action',
-        ...DEFAULT_OPTIONS,
-    });
-    const componentClass = createBemClass({
-        blockName: ROOT_CLASS,
-        modifierName: '',
-        elementName: 'actions',
-        ...DEFAULT_OPTIONS,
-    });
+    const CLASS_CONFIG = { blockName: 'ui-form-field', modifierName: '', ...DEFAULT_OPTIONS };
+    const wrappedChildClass = createBemClass({ elementName: 'action', ...CLASS_CONFIG });
+    const componentClass = createBemClass({ elementName: 'actions', ...CLASS_CONFIG });
 
     export default {
         functional: true,
