@@ -1,14 +1,11 @@
-import { mapFacets, createBemClass, DEFAULT_OPTIONS } from './helpers';
+import { getComputedConfig, getPropsConfig, mapFacets, createBemClass, DEFAULT_OPTIONS } from './helpers';
 
-const PROPS_CONFIG = {
-    facets: {
-        type: Array,
-        default() {
-            return [];
-        },
-    },
-};
-
+/**
+ * Add BEM related helpers to a component
+ * @param {string} bemRoot - The block name
+ * @param {IBemMixinOptions} [config] - The mixin config
+ * @return {object} The vue mixin
+ */
 export default function bemMixin(bemRoot, config) {
     const options = {
         ...DEFAULT_OPTIONS,
@@ -17,11 +14,11 @@ export default function bemMixin(bemRoot, config) {
     };
 
     return {
-        props: options.useProp ? PROPS_CONFIG : {},
+        props: {
+            ...getPropsConfig(bemRoot, options),
+        },
         computed: {
-            bemRoot() {
-                return bemRoot;
-            },
+            ...getComputedConfig(bemRoot, options),
             bemFacets() {
                 return mapFacets(this.bemRoot, this.facets, options);
             },

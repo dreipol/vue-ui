@@ -4,13 +4,38 @@ import { createLocalVue } from '@vue/test-utils';
 
 const localVue = createLocalVue();
 
-function getDummyComponentProps(mixin) {
+function getDummyComponentProps(mixin, customOptions = {}) {
     return {
         mixins: [mixin],
+        ...customOptions,
     };
 }
 
 describe('Mixin bem', () => {
+    describe('Props', () => {
+        it('It behaves the same when `useProp` is false', () => {
+            const mixin = bemMixin('root', { useProp: false });
+            const vm = new localVue(getDummyComponentProps(mixin, {
+                data() {
+                    return { facets: [] };
+                },
+            }));
+
+            expect(vm.bemFacets).to.be.an('array');
+            expect(vm.bemFacets).to.include('root__base');
+        });
+        it('It uses an internal data property when `useProp` is false', () => {
+            const mixin = bemMixin('root', { useProp: false });
+            const vm = new localVue(getDummyComponentProps(mixin, {
+                data() {
+                    return { facets: ['foo'] };
+                },
+            }));
+
+            expect(vm.bemFacets).to.be.an('array');
+            expect(vm.bemFacets).to.include('root__foo');
+        });
+    });
     describe('Computed properties', () => {
         it('It returns the bemRoot class properly', () => {
             const vm = new localVue(getDummyComponentProps(bemMixin('root')));
