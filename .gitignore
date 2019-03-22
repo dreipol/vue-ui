@@ -53,3 +53,4 @@ Icon^M^M
 
 # nyc test coverage
 /reports/
+.nyc_output
