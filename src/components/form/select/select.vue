@@ -1,12 +1,12 @@
 <template>
-    <div class="form-field form-field__input form-field__select" :class="rootClasses">
+    <div class="ui-form-field ui-form-field__input ui-form-field__select" :class="rootClasses">
         <label>
-            <div class="form-field--title-label" v-if="$scopedSlots.label">
+            <div class="ui-form-field--title-label" v-if="$scopedSlots.label">
                 <slot name="label"/>
             </div>
-            <div class="form-field--input-container" :data-action-count="actionCount || 1">
+            <div class="ui-form-field--input-container" :data-action-count="actionCount || 1">
                 <select v-model="currentValue"
-                        class="form-field--input"
+                        class="ui-form-field--input"
                         v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
@@ -40,7 +40,7 @@
             UiActions,
         },
         mixins: [
-            bemMixin('form-field'),
+            bemMixin('ui-form-field'),
             focusBehaviourMixin,
             rootClassesMixin,
             hasErrorsPropsMixin,

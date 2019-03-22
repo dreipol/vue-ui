@@ -23,10 +23,10 @@ describe('Component textarea', () => {
             },
         });
 
-        expect(wrapper.find('.form-field--action').exists()).to.not.ok;
+        expect(wrapper.find('.ui-form-field--action').exists()).to.not.ok;
         expect(wrapper.find('textarea').exists()).to.be.ok;
-        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('0');
-        expect(wrapper.find('.form-field__is-filled').exists()).to.be.ok;
+        expect(wrapper.find('.ui-form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('0');
+        expect(wrapper.find('.ui-form-field__is-filled').exists()).to.be.ok;
     });
 
     it('It increases the height of the textarea properly', done => {
@@ -80,7 +80,7 @@ describe('Component textarea', () => {
 
         expect(wrapper.contains('.custom-label')).to.be.ok;
         expect(wrapper.contains('.messages')).to.be.ok;
-        expect(wrapper.contains('.form-field--action')).to.be.not.ok;
+        expect(wrapper.contains('.ui-form-field--action')).to.be.not.ok;
     });
 
     it('It can handle custom actions', () => {
@@ -96,7 +96,7 @@ describe('Component textarea', () => {
             },
         });
 
-        expect(wrapper.findAll('.form-field--action')).to.have.length(1);
-        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('1');
+        expect(wrapper.findAll('.ui-form-field--action')).to.have.length(1);
+        expect(wrapper.find('.ui-form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('1');
     });
 });

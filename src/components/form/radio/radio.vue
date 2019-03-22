@@ -1,22 +1,22 @@
 <template>
-    <div class="form-field form-field__bool form-field__radio"
+    <div class="ui-form-field ui-form-field__bool ui-form-field__radio"
             :class="[...rootClasses, bemIf(isChecked, 'is-checked')]">
         <label>
             <input type="radio"
-                    class="form-field--input"
+                    class="ui-form-field--input"
                     v-bind="$attrs"
                     :value="value"
                     @change="onChange"
                     v-on="$listeners">
-            <div class="form-field--label-wrap">
-                <span class="form-field--box">
+            <div class="ui-form-field--label-wrap">
+                <span class="ui-form-field--box">
                     <slot mame="icon">
-                        <span class="form-field--box">
-                            <span class="form-field--box-icon"/>
+                        <span class="ui-form-field--box">
+                            <span class="ui-form-field--box-icon"/>
                         </span>
                     </slot>
                 </span>
-                <div class="form-field--label">
+                <div class="ui-form-field--label">
                     <slot name="label"/>
                 </div>
             </div>
@@ -33,7 +33,7 @@
 
     export default {
         mixins: [
-            bemMixin('form-field'),
+            bemMixin('ui-form-field'),
             rootClassesMixin,
             isCheckedMixin,
             hasErrorsPropsMixin,

@@ -6,8 +6,8 @@ describe('Component actions', () => {
     it('It can handle empty actions', () => {
         const wrapper = shallowMount(UiActions, {});
 
-        expect(wrapper.findAll('.form-field--actions')).to.have.length(0);
-        expect(wrapper.find('.form-field__has-actions').exists()).to.not.be.ok;
+        expect(wrapper.findAll('.ui-form-field--actions')).to.have.length(0);
+        expect(wrapper.find('.ui-form-field__has-actions').exists()).to.not.be.ok;
     });
 
     it('It can handle custom actions', () => {
@@ -17,6 +17,6 @@ describe('Component actions', () => {
             },
         });
 
-        expect(wrapper.findAll('.form-field--action')).to.have.length(3);
+        expect(wrapper.findAll('.ui-form-field--action')).to.have.length(3);
     });
 });

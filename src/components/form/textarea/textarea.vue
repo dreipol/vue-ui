@@ -1,16 +1,16 @@
 <template>
-    <div class="form-field form-field__input form-field__textarea" :class="rootClasses">
+    <div class="ui-form-field ui-form-field__input ui-form-field__textarea" :class="rootClasses">
         <label>
-            <span class="form-field--title-label" v-if="!hasFloatingLabel && $scopedSlots.label">
+            <span class="ui-form-field--title-label" v-if="!hasFloatingLabel && $scopedSlots.label">
                 <slot name="label"/>
             </span>
-            <div class="form-field--input-container" :data-action-count="actionCount">
-                <span class="form-field--floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
+            <div class="ui-form-field--input-container" :data-action-count="actionCount">
+                <span class="ui-form-field--floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
                     <slot name="label"/>
                 </span>
                 <textarea v-model="currentValue"
                         v-bind="$attrs"
-                        class="form-field--input"
+                        class="ui-form-field--input"
                         ref="input"
                         @focus="onFocus"
                         @blur="onBlur"
@@ -42,7 +42,7 @@
             UiActions,
         },
         mixins: [
-            bemMixin('form-field'),
+            bemMixin('ui-form-field'),
             rootClassesMixin,
             currentValueMixin,
             floatingLabelPropsMixin,
