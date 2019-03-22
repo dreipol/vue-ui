@@ -2,13 +2,13 @@
     import { createBemClass, DEFAULT_OPTIONS } from '../../../mixins/bem/helpers';
 
     const ROOT_CLASS = 'ui-form-field';
-    const wrappedChildClass = createBemClass({ // eslint-disable-line no-unused-vars
+    const wrappedChildClass = createBemClass({
         blockName: ROOT_CLASS,
         modifierName: '',
         elementName: 'action',
         ...DEFAULT_OPTIONS,
     });
-    const componentClass = createBemClass({ // eslint-disable-line no-unused-vars
+    const componentClass = createBemClass({
         blockName: ROOT_CLASS,
         modifierName: '',
         elementName: 'actions',
