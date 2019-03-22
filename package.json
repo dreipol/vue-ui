@@ -7,9 +7,9 @@
   "module": "src/index.js",
   "scripts": {
     "prepare": "npm run build && npm test",
-    "lint": "npx eslint --ext .js,.vue ./src *.config.js",
+    "lint": "npx eslint --ext .js,.vue --max-warnings 0 ./src *.config.js",
     "coveralls": "cat ./coverage/report-lcov/lcov.info | coveralls",
-    "ci-test-lint": "npx eslint --ext .js,.vue -c .eslintrc --no-eslintrc -f junit ./src *.config.js > reports/eslint.xml",
+    "ci-test-lint": "npx eslint --ext .js,.vue -f junit --max-warnings 0 ./src *.config.js > reports/eslint.xml",
     "build": "npx webpack --config webpack.config.js",
     "prepublishOnly": "npm run build && npm test",
     "test": "npm run lint && karma start karma.config.js",
