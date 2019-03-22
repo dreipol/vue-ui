@@ -13,7 +13,7 @@ function getDummyComponentProps(mixin, customOptions = {}) {
 
 describe('Mixin bem', () => {
     describe('Props', () => {
-        it('behaves the same when `useProp` is false', () => {
+        it('It behaves the same when `useProp` is false', () => {
             const mixin = bemMixin('root', { useProp: false });
             const vm = new localVue(getDummyComponentProps(mixin, {
                 data() {
@@ -24,7 +24,7 @@ describe('Mixin bem', () => {
             expect(vm.bemFacets).to.be.an('array');
             expect(vm.bemFacets).to.include('root__base');
         });
-        it('uses an internal data property when `useProp` is false', () => {
+        it('It uses an internal data property when `useProp` is false', () => {
             const mixin = bemMixin('root', { useProp: false });
             const vm = new localVue(getDummyComponentProps(mixin, {
                 data() {
@@ -37,20 +37,20 @@ describe('Mixin bem', () => {
         });
     });
     describe('Computed properties', () => {
-        it('returns the bemRoot class properly', () => {
+        it('It returns the bemRoot class properly', () => {
             const vm = new localVue(getDummyComponentProps(bemMixin('root')));
 
             expect(vm.bemRoot).to.be.equal('root');
         });
 
-        it('returns the bem facets properly', () => {
+        it('It returns the bem facets properly', () => {
             const vm = new localVue(getDummyComponentProps(bemMixin('root')));
 
             expect(vm.bemFacets).to.be.an('array');
             expect(vm.bemFacets).to.include('root__base');
         });
 
-        it('takes into consideration custom bem mixin options when constructing css classes', () => {
+        it('Custom bem mixin options have also an impact on the computed pros', () => {
             const customOptions = {
                 bemModifierMarker: '$$',
                 defaultFacet: 'foo',
