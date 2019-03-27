@@ -9,7 +9,9 @@
     import bemMixin from '../../mixins/bem';
 
     export default {
-        mixins: [bemMixin('')],
+        mixins: [
+            bemMixin(''),
+        ],
         props: {
             elementClass: {
                 type: String,

@@ -1,5 +1,5 @@
 <template>
-    <svg class="icon"
+    <svg class="ui-icon"
             tabindex="-1"
             focusable="false"
             :class="[rootClasses]">
@@ -16,7 +16,7 @@
 
     export default {
         mixins: [
-            bemMixin('icon'),
+            bemMixin('ui-icon'),
         ],
         props: {
             symbol: {

@@ -26,10 +26,10 @@ describe('Component select', () => {
             },
         });
 
-        expect(wrapper.find('.form-field--action').exists()).to.ok;
+        expect(wrapper.find('.ui-form-field--action').exists()).to.ok;
         expect(wrapper.find('select').exists()).to.be.ok;
         expect(wrapper.find('.label').exists()).to.be.ok;
-        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('1');
+        expect(wrapper.find('.ui-form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('1');
     });
 
     it('It can render all the options provided', () => {

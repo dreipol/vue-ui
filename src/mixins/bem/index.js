@@ -25,6 +25,8 @@ export default function bemMixin(bemRoot, config) {
         },
         methods: {
             bemAdd(modifierName, elementName, rootName) {
+                if (!modifierName) { return ''; }
+
                 const blockName = rootName || this.bemRoot;
                 return createBemClass({ blockName, modifierName, elementName, ...options });
             },

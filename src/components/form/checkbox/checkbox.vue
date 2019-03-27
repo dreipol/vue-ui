@@ -1,20 +1,20 @@
 <template>
-    <div class="form-field form-field__bool form-field__checkbox"
+    <div class="ui-form-field ui-form-field__bool ui-form-field__checkbox"
             :class="[...rootClasses, bemIf(isChecked, 'is-checked')]">
         <label>
             <input type="checkbox"
-                    class="form-field--input"
+                    class="ui-form-field--input"
                     :value="value"
                     v-bind="$attrs"
                     @change="onChange"
                     v-on="$listeners">
-            <div class="form-field--label-wrap">
-                <span class="form-field--box">
+            <div class="ui-form-field--label-wrap">
+                <span class="ui-form-field--box">
                     <slot mame="icon">
-                        <ui-icon class="form-field--box-icon" symbol="checkmark" size="small"/>
+                        <ui-icon class="ui-form-field--box-icon" symbol="checkmark" size="small"/>
                     </slot>
                 </span>
-                <div class="form-field--label">
+                <div class="ui-form-field--label">
                     <slot name="label"/>
                 </div>
             </div>
@@ -35,7 +35,7 @@
             UiIcon,
         },
         mixins: [
-            bemMixin('form-field'),
+            bemMixin('ui-form-field'),
             rootClassesMixin,
             isCheckedMixin,
             hasErrorsPropsMixin,

@@ -19,11 +19,11 @@ describe('Component input', () => {
             },
         });
 
-        expect(wrapper.find('.form-field--action').exists()).to.not.ok;
+        expect(wrapper.find('.ui-form-field--action').exists()).to.not.ok;
         expect(wrapper.find('input').exists()).to.be.ok;
-        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('0');
-        expect(wrapper.find('.form-field__is-filled').exists()).to.be.ok;
-        expect(wrapper.find('.form-field__has-actions').exists()).to.be.not.ok;
+        expect(wrapper.find('.ui-form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('0');
+        expect(wrapper.find('.ui-form-field__is-filled').exists()).to.be.ok;
+        expect(wrapper.find('.ui-form-field__has-actions').exists()).to.be.not.ok;
     });
 
     it('It can render the the slots properly', () => {
@@ -39,7 +39,7 @@ describe('Component input', () => {
 
         expect(wrapper.contains('.custom-label')).to.be.ok;
         expect(wrapper.contains('.messages')).to.be.ok;
-        expect(wrapper.contains('.form-field--action')).to.be.not.ok;
+        expect(wrapper.contains('.ui-form-field--action')).to.be.not.ok;
     });
 
     it('It can handle empty actions', () => {
@@ -52,8 +52,8 @@ describe('Component input', () => {
             },
         });
 
-        expect(wrapper.findAll('.form-field--actions')).to.have.length(0);
-        expect(wrapper.find('.form-field__has-actions').exists()).to.not.be.ok;
+        expect(wrapper.findAll('.ui-form-field--actions')).to.have.length(0);
+        expect(wrapper.find('.ui-form-field__has-actions').exists()).to.not.be.ok;
     });
 
     it('It can handle custom actions', () => {
@@ -69,7 +69,7 @@ describe('Component input', () => {
             },
         });
 
-        expect(wrapper.find('.form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('3');
-        expect(wrapper.find('.form-field__has-actions').exists()).to.be.ok;
+        expect(wrapper.find('.ui-form-field--input-container').element.getAttribute('data-action-count')).to.be.equal('3');
+        expect(wrapper.find('.ui-form-field__has-actions').exists()).to.be.ok;
     });
 });
