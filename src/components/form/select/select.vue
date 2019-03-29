@@ -26,6 +26,7 @@
 
 <script>
     import UiActions from '../actions/actions.vue';
+    import settings, { SELECT_ICON } from '../../../settings';
     import UiIcon from '../../icon/icon.vue';
     import { getVNodes } from '../../../util/vnodes';
     import bemMixin from '../../../mixins/bem';
@@ -50,10 +51,7 @@
             icon: {
                 type: Object,
                 default() {
-                    return {
-                        symbol: 'chevron-down',
-                        size: 'medium',
-                    };
+                    return settings.get(SELECT_ICON);
                 },
             },
             value: {

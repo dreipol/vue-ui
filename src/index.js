@@ -3,6 +3,7 @@ import * as mixins from './mixins';
 import * as filters from './filters';
 import * as util from './util';
 import * as vuex from './vuex';
+import * as settings from './settings';
 
 export default {
     components,
@@ -10,4 +11,5 @@ export default {
     filters,
     util,
     vuex,
+    settings,
 };
