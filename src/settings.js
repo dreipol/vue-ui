@@ -1,8 +1,9 @@
-export const SELECT_ICON = 'selectIcon';
+export const SELECT_ICON = 'DREIPOL_VUE_UI__SELECT_ICON';
+export const settings = new Map();
 
-export default new Map(Object.entries({
-    [SELECT_ICON]: {
-        symbol: 'chevron-down',
-        size: 'medium',
-    },
-}));
+settings.set(SELECT_ICON, {
+    symbol: 'select-icon',
+    size: 'medium',
+});
+
+export default settings;
