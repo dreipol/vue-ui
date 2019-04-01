@@ -11,9 +11,7 @@
             <div class="ui-form-field--label-wrap">
                 <span class="ui-form-field--box">
                     <slot mame="icon">
-                        <span class="ui-form-field--box">
-                            <span class="ui-form-field--box-icon"/>
-                        </span>
+                        <span class="ui-form-field--box-icon"/>
                     </slot>
                 </span>
                 <div class="ui-form-field--label">
