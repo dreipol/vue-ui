@@ -23,6 +23,7 @@ describe('Component radio', () => {
         });
 
         expect(wrapper.find('.ui-form-field--action').exists()).to.not.ok;
+        expect(wrapper.findAll('.ui-form-field--box')).to.have.length(1);
         expect(wrapper.find('input').exists()).to.be.ok;
         expect(wrapper.find('.label').exists()).to.be.ok;
     });
