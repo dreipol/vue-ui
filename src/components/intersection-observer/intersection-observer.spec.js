@@ -85,4 +85,30 @@ describe('Intersection-Observer', function() {
             attachToDocument: true,
         });
     });
+
+
+    it('slots are visible', () => {
+        const wrapper = shallowMount({
+            components: {
+                ioc: IntersectionObserverComponent,
+            },
+            data() {
+                return {
+                    inlineStyle: {
+                        width: `${ window.innerWidth }px`,
+                        height: `${ window.innerHeight * 2 }px`,
+                    },
+                    isVisible: false,
+                };
+            },
+            template: '<div><div v-if="isVisible" :style="inlineStyle">Goodbye</div><ioc><div class="ioc-content">Hello</div></ioc></div>',
+        }, {
+            stubs: {
+                ioc: IntersectionObserverComponent,
+            },
+            attachToDocument: true,
+        });
+
+        expect(wrapper.find('.ioc-content').element).to.be.not.empty;
+    });
 });
