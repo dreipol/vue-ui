@@ -8,7 +8,7 @@ describe('Intersection-Observer', function() {
         expect(IntersectionObserverComponent).to.be.not.empty;
     });
 
-    it('Component registers an observer', () => {
+    it.skip('Component registers an observer', () => {
         const wrapper = shallowMount(IntersectionObserverComponent, {});
 
         const { observer, observerOptions } = wrapper.find(IntersectionObserverComponent).vm;
