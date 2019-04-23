@@ -1,18 +1,10 @@
-import * as components from './components';
-import * as mixins from './mixins';
-import * as filters from './filters';
-import * as util from './util';
-import * as vuex from './vuex';
-import * as settings from './settings';
-
-export default {
-    components,
-    mixins,
-    filters,
-    util,
-    vuex,
-    settings,
-};
+// global exports
+export * as components from './components';
+export * as mixins from './mixins';
+export * as filters from './filters';
+export * as util from './util';
+export * as vuex from './vuex';
+export * as settings from './settings';
 
 // vuex modules
 export { default as uiOverlayVuexModule } from './vuex/modules/overlay';

@@ -3,8 +3,6 @@
   "version": "2.0.2",
   "description": "",
   "main": "index.js",
-  "jsnext:main": "src/index.js",
-  "module": "src/index.js",
   "scripts": {
     "prepare": "npm run build && npm test",
     "lint": "npx eslint --ext .js,.vue --max-warnings 0 ./src *.config.js",
@@ -12,8 +10,8 @@
     "ci-test-lint": "npx eslint --ext .js,.vue -f junit --max-warnings 0 ./src *.config.js > reports/eslint.xml",
     "build": "npx webpack --config webpack.config.js",
     "prepublishOnly": "npm run build && npm test",
-    "test": "npm run lint && karma start karma.config.js",
-    "debug": "karma start karma.config.js --single-run 0 --browsers Chrome"
+    "test": "npm run lint && BABEL_ENV=test karma start karma.config.js",
+    "debug": "BABEL_ENV=test karma start karma.config.js --single-run 0 --browsers Chrome"
   },
   "files": [
     "src"
@@ -33,6 +31,7 @@
   "homepage": "https://github.com/dreipol/vue-ui#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
     "@babel/preset-env": "^7.1.0",
     "@dreipol/eslint-config": "^6.0.4",

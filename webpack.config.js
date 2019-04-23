@@ -8,6 +8,9 @@ module.exports = {
     output: {
         path: root,
         filename: 'index.js',
+        library: 'VueUI',
+        // the "module" option will be soon available also for webpack https://github.com/webpack/webpack/issues/2933
+        libraryTarget: 'umd',
     },
     externals: {
         vue: 'Vue',
