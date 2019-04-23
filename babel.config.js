@@ -1,15 +1,21 @@
 module.exports = {
     plugins: [
         '@babel/plugin-proposal-object-rest-spread',
-        [
-            'istanbul',
-            {
-                exclude: [
-                    '**/*.spec.js',
-                ],
-            },
-        ],
+        '@babel/plugin-proposal-export-namespace-from',
+
     ],
+    env: {
+        test: {
+            plugins: [[
+                'istanbul',
+                {
+                    exclude: [
+                        '**/*.spec.js',
+                    ],
+                },
+            ]],
+        },
+    },
     presets: [
         [
             '@babel/preset-env',

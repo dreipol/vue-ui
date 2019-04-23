@@ -252,9 +252,9 @@ The select checkmark icon can be defined not only via `actions` slot but also vi
 You can also override the default select icon once and for all via `@dreipol/vue-ui`:
 
 ```js
-import VueUI from '@dreipol/vue-ui';
+import { settings } from '@dreipol/vue-ui';
 
-VueUI.settings.set(VueUI.SELECT_ICON, {
+settings.set(settings.SELECT_ICON, {
     symbol: 'arrow-down',
     size: 'medium'
 });
