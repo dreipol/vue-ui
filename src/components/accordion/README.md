@@ -3,7 +3,7 @@ Accordion component that could be used in a SPA or even as simple enhancement fo
 
 ## Usage
 ```js
-import { UiAccordion } from '@dreipol/vue-ui/src/components';
+import { UiAccordion } from '@dreipol/vue-ui';
 ```
 
 ## Props

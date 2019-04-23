@@ -9,7 +9,7 @@ You can also choose to add multiple instances of this component in different loc
 ```vue
 <script>
     import { mapState } from 'vuex';
-    import { UiOverlay } from '@dreipol/vue-ui/src/components';
+    import { UiOverlay } from '@dreipol/vue-ui';
     
     export default {
         components: {
@@ -32,13 +32,13 @@ You can also choose to add multiple instances of this component in different loc
 
 ```js
 import Vuex from 'vuex';
-import overlay from '@dreipol/vue-ui/src/vuex/modules/overlay';
+import { uiOverlayVuexModule } from '@dreipol/vue-ui';
 
 const store = new Vuex.Store({
     modules: {
         'vue-ui': {
             namespaced: true,
-            modules: { overlay },
+            modules: { overlay: uiOverlayVuexModule },
         },
     },
 });

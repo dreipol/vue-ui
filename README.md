@@ -24,7 +24,7 @@ npm install -S @dreipol/vue-ui
 Pick any of the modules by importing them in your project, for example:
 
 ```js
-import { UiInput } from '@dreipol/vue-ui/src/components'
+import { UiInput } from '@dreipol/vue-ui'
 
 export default {
     components: { UiInput },

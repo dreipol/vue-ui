@@ -10,7 +10,7 @@ Let's assume for example that you want to use the checkbox component in your vue
 </template>
 
 <script>
-    import { UiCheckbox } from '@dreipol/vue-ui/src/components';
+    import { UiCheckbox } from '@dreipol/vue-ui';
     export default {
         components: {
             UiCheckbox,
@@ -22,7 +22,7 @@ Let's assume for example that you want to use the checkbox component in your vue
 In case you want to use these components globally, without always importing them in any of your forms, you will need to register them via Vue:
 
 ```js
-import { UiInput } from '@dreipol/vue-ui/src/components';
+import { UiInput } from '@dreipol/vue-ui';
 import Vue from 'vue';
 
 // This component will now be globally available
@@ -204,7 +204,7 @@ The optional `ui-optgroup` component may be used to render native option groups.
 </template>
 
 <script>
-    import { UiSelect, UiOption, UiOptgroup } from '@dreipol/vue-ui/src/components';
+    import { UiSelect, UiOption, UiOptgroup } from '@dreipol/vue-ui';
     export default {
         components: {
             UiSelect,
@@ -249,12 +249,12 @@ The select checkmark icon can be defined not only via `actions` slot but also vi
 </ui-select>
 ```
 
-You can also override the default select icon once and for all via `@dreipol/vue-ui/src/settings`:
+You can also override the default select icon once and for all via `@dreipol/vue-ui`:
 
 ```js
-import settings, { SELECT_ICON } from '@dreipol/vue-ui/src/settings';
+import VueUI from '@dreipol/vue-ui';
 
-settings.set(SELECT_ICON, {
+VueUI.settings.set(VueUI.SELECT_ICON, {
     symbol: 'arrow-down',
     size: 'medium'
 });
@@ -280,7 +280,7 @@ In a nutshell: The input fields are responsible for user events and rendering wh
 </template>
 
 <script>
-    import { UiInput, UiModelProvider } from '@dreipol/vue-ui/src/components';
+    import { UiInput, UiModelProvider } from '@dreipol/vue-ui';
     export default {
         components: {
             UiInput,

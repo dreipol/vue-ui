@@ -5,7 +5,7 @@ These vuex modules provide functionality for some components and are necessary f
 These modules can be added to your project store. They are scoped within the `vue-ui` namespace.
 
 ```js
-import { uiScrollVuexModule } from '@dreipol/vue-ui/src/vuex';
+import { uiScrollVuexModule } from '@dreipol/vue-ui';
 
 const store = new Vuex.Store({
     modules: {
