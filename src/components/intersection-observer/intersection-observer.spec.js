@@ -1,8 +1,9 @@
+/* eslint-disable max-lines-per-function */
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 import IntersectionObserverComponent from './intersection-observer.vue';
 
-describe('Intersection-Observer', function() {
+describe('Intersection-Observer', () => {
     it('Component is an object', () => {
         expect(IntersectionObserverComponent).to.be.a('object');
         expect(IntersectionObserverComponent).to.be.not.empty;
