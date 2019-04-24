@@ -1,6 +1,6 @@
 import Overlay from './overlay.vue';
 import Vuex from 'vuex';
-import cloneDeep from 'lodash.clonedeep';
+import cloneDeep from 'lodash/cloneDeep';
 import overlayModule from '../../vuex/modules/overlay';
 import scrollModule from '../../vuex/modules/scroll';
 import { expect } from 'chai';
