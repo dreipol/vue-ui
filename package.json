@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "npm run build && npm test",
     "lint": "npx eslint --ext .js,.vue --max-warnings 0 ./src *.config.js",
     "coveralls": "cat ./coverage/report-lcov/lcov.info | coveralls",
     "ci-test-lint": "npx eslint --ext .js,.vue -f junit --max-warnings 0 ./src *.config.js > reports/eslint.xml",
