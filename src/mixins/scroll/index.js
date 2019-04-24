@@ -1,4 +1,4 @@
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle';
 import { mapActions, mapState } from 'vuex';
 import bemMixin from '../bem';
 

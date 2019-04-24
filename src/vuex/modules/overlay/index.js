@@ -1,9 +1,16 @@
-import cloneDeep from 'lodash.clonedeep';
-import isNil from 'lodash.isnil';
-import omitBy from 'lodash.omitby';
+import cloneDeep from 'lodash/cloneDeep';
+import isNil from 'lodash/isNil';
+import omitBy from 'lodash/omitBy';
 import Vue from 'vue';
 
-import { CLOSE_OVERLAY, MOUNT_OVERLAY, OPEN_OVERLAY, PREPARE_CLOSE_OVERLAY, UNMOUNT_OVERLAY, UPDATE_OVERLAY } from '../mutation-types';
+import {
+    CLOSE_OVERLAY,
+    MOUNT_OVERLAY,
+    OPEN_OVERLAY,
+    PREPARE_CLOSE_OVERLAY,
+    UNMOUNT_OVERLAY,
+    UPDATE_OVERLAY,
+} from '../mutation-types';
 import * as actions from './actions';
 import * as getters from './getters';
 

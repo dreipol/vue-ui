@@ -15,8 +15,8 @@ module.exports = {
     externals: {
         vue: 'Vue',
         vuex: 'Vuex',
-        lodash: 'lodash',
         chai: 'chai',
+        lodash: 'lodash',
         sinon: 'sinon',
         '@vue/test-utils': 'VueTestUtils',
     },
@@ -24,7 +24,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: /node_modules\/(?!bianco)/,
                 use: {
                     loader: 'babel-loader',
                 },

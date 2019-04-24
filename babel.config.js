@@ -2,7 +2,6 @@ module.exports = {
     plugins: [
         '@babel/plugin-proposal-object-rest-spread',
         '@babel/plugin-proposal-export-namespace-from',
-
     ],
     env: {
         test: {
