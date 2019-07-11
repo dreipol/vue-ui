@@ -3,13 +3,14 @@
             tabindex="-1"
             focusable="false"
             :class="[rootClasses]">
-        <title v-text="symbol"/>
+        <title v-if="hasTitle" v-text="symbol"/>
         <use v-bind="{ 'xlink:href': symbolName }"/>
     </svg>
 </template>
 
 <script>
     import bemMixin from '../../mixins/bem';
+    import settings, { USE_ICON_TITLES } from '../../settings';
 
     const PLACEHOLDER_SYMBOL = 'placeholder';
     const DEFAULT_SYMBOL_SIZE = 'default';
@@ -31,6 +32,11 @@
                 type: Boolean,
                 default: false,
             },
+        },
+        data() {
+            return {
+                hasTitle: settings.get(USE_ICON_TITLES),
+            };
         },
         computed: {
             rootClasses() {
