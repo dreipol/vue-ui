@@ -39,6 +39,10 @@
                 type: Boolean,
                 default: false,
             },
+            targetHeight: {
+                type: Number,
+                default: 0,
+            },
         },
         data() {
             return {
@@ -78,7 +82,7 @@
                 // NOTE: Make the accordion animations smooth on any browser
                 if (!this.state.isOpen) {
                     forceReflow(body);
-                    body.style.maxHeight = '0px';
+                    body.style.maxHeight = `${ this.targetHeight }px`;
                 }
 
                 this.$emit('change', this.state.isOpen);
