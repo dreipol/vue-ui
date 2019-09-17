@@ -238,8 +238,7 @@ You can use them in your components or even in other vuex actions.
         .ui-overlay--display,
         .ui-overlay--wrap-outer,
         .ui-overlay--wrap-inner,
-        .ui-overlay--container,
-        .ui-overlay--revealer {
+        .ui-overlay--container {
             display: flex;
             flex-flow: row nowrap;
             align-items: stretch;
@@ -250,8 +249,7 @@ You can use them in your components or even in other vuex actions.
     ///
     @mixin ui-overlay--full-width() {
         .ui-overlay--wrap-inner,
-        .ui-overlay--container,
-        .ui-overlay--revealer {
+        .ui-overlay--container {
             flex: 0 1 100%;
             max-width: 100%;
         }
@@ -308,29 +306,18 @@ You can use them in your components or even in other vuex actions.
             position: relative;
             width: 100%;
         }
-
-        .ui-overlay--revealer {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: center;
-            text-align: left;
-        }
     }
 
     // Facets
     & {
-        // Mobile nav
+        // Example Overlay
         &.ui-overlay__base {
             @include ui-overlay--hide-backdrop;
             @include ui-overlay--full-height;
             @include ui-overlay--full-width;
             @include ui-overlay--restrict-scrolling-to-element;
             @include ui-overlay--restrict-pointerevents-to-element($allow-backdrop-click-area: false);
-            @include ui-overlay--set-layer-hierarchy($layer: 'navigation-overlay');
-
-            .ui-overlay--revealer {
-                justify-content: flex-end;
-            }
+            @include ui-overlay--set-layer-hierarchy($layer: 'example-overlay');
         }
     }
 
