@@ -11,7 +11,7 @@
             <div class="ui-form-field--label-wrap">
                 <span class="ui-form-field--box">
                     <slot mame="icon">
-                        <ui-icon class="ui-form-field--box-icon" symbol="checkmark" size="small"/>
+                        <ui-icon class="ui-form-field--box-icon" v-bind="icon"/>
                     </slot>
                 </span>
                 <div class="ui-form-field--label">
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+    import settings, { CHECKBOX_ICON } from '../../../settings';
     import UiIcon from '../../icon/icon.vue';
     import bemMixin from '../../../mixins/bem';
     import rootClassesMixin from '../../../mixins/form/root-classes';
@@ -44,6 +45,12 @@
             value: {
                 type: [String, Boolean],
                 default: false,
+            },
+            icon: {
+                type: Object,
+                default() {
+                    return settings.get(CHECKBOX_ICON);
+                },
             },
         },
     };
