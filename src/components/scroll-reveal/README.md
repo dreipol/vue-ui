@@ -1,5 +1,7 @@
 # scroll-reveal
-Reveals the component passed in the slot while scrolling upwards and hides it when scrolling down.
+Reveals the component passed in the slot while scrolling upwards and hides it when scrolling down. Internally,
+this is based on an implementation of [headroom.js](https://github.com/WickyNilliams/headroom.js). Additional params
+can be given to the library by passing more attributes to the `scroll-reveal` component.
 You need to set the `bemRoot` prop. This prop is the bem root class. `scroll-reveal` will add these modifiers:
 
 - `&__pinned`
