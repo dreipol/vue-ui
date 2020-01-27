@@ -1,7 +1,7 @@
 <template>
     <div class="ui-form-field ui-form-field__input ui-form-field__select" :class="rootClasses">
         <label>
-            <div class="ui-form-field--title-label" v-if="$scopedSlots.label">
+            <div class="ui-form-field--title-label" v-if="!hasFloatingLabel && $scopedSlots.label">
                 <slot name="label"/>
             </div>
             <div class="ui-form-field--input-container" :data-action-count="actionCount || 1">
