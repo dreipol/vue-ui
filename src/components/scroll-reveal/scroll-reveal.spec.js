@@ -77,7 +77,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -117,7 +117,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -143,7 +143,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -183,7 +183,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -223,7 +223,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -264,7 +264,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
     });
@@ -312,7 +312,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -354,7 +354,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -382,7 +382,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -424,7 +424,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -466,7 +466,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
 
@@ -509,7 +509,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                         'scroll-reveal': ScrollRevealComponent,
                     },
                     attachToDocument: true,
-                }
+                },
             );
         });
     });

@@ -87,4 +87,32 @@ describe('Component select', () => {
         expect(select.value).to.be.equal('bar3');
         expect(select.selectedIndex).to.be.equal(3);
     });
+
+    it('It supports placeholders', () => {
+        const wrapper = shallowMount(UiSelect, {
+            propsData: {
+                value: '',
+            },
+            attrs: {
+                placeholder: 'nope',
+            },
+            slots: {
+                default: `
+                    <ui-option value="foo">Foo</ui-option>
+                    <ui-option value="bar">Bar</ui-option>
+                `,
+            },
+            stubs: {
+                UiIcon,
+                UiActions,
+                UiOption,
+                UiOptgroup,
+            },
+        });
+
+        const select = wrapper.find('select').element;
+        expect(wrapper.findAll('option')).to.have.length(3);
+        expect(select.value).to.be.equal('');
+        expect(select.selectedIndex).to.be.equal(0);
+    });
 });

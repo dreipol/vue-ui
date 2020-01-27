@@ -29,35 +29,35 @@
   },
   "homepage": "https://github.com/dreipol/vue-ui#readme",
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-export-namespace-from": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "@dreipol/eslint-config": "^6.0.4",
     "@dreipol/eslint-config-vue": "^2.0.2",
-    "@vue/test-utils": "1.0.0-beta.28",
+    "@vue/test-utils": "^1.0.0-beta.28",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "babel-plugin-istanbul": "^5.2.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
-    "coveralls": "^3.0.6",
-    "eslint": "^6.3.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "karma": "^4.3.0",
+    "coveralls": "^3.0.9",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.1.2",
+    "karma": "^4.4.1",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.0.1",
     "karma-mocha": "^1.3.0",
     "karma-webpack": "^4.0.2",
-    "mocha": "^6.2.0",
-    "postcss": "^7.0.18",
-    "sinon": "^7.4.2",
-    "sinon-chai": "^3.3.0",
-    "vue": "^2.6.10",
-    "vue-loader": "^15.7.1",
-    "vue-template-compiler": "^2.6.10",
-    "vuex": "^3.1.1",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8"
+    "mocha": "^7.0.1",
+    "postcss": "^7.0.26",
+    "sinon": "^8.1.1",
+    "sinon-chai": "^3.4.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.8.3",
+    "vue-template-compiler": "^2.6.11",
+    "vuex": "^3.1.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {
     "bianco": "^1.1.0",
@@ -65,6 +65,6 @@
     "lodash": "^4.17.15"
   },
   "peerDependencies": {
-    "vue": "^2.6.10"
+    "vue": "^2.6.11"
   }
 }
