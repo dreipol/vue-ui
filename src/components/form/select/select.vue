@@ -5,12 +5,21 @@
                 <slot name="label"/>
             </div>
             <div class="ui-form-field--input-container" :data-action-count="actionCount || 1">
+                <span class="ui-form-field--floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
+                    <slot name="label"/>
+                </span>
                 <select v-model="currentValue"
                         class="ui-form-field--input"
                         v-bind="$attrs"
                         @focus="onFocus"
                         @blur="onBlur"
                         v-on="$listeners">
+                    <ui-option value=""
+                            disabled
+                            selected
+                            v-if="$attrs.placeholder">
+                        {{ $attrs.placeholder }}
+                    </ui-option>
                     <slot/>
                 </select>
                 <ui-actions>
@@ -26,6 +35,7 @@
 
 <script>
     import UiActions from '../actions/actions.vue';
+    import UiOption from '../option/option.vue';
     import settings, { SELECT_ICON } from '../../../settings';
     import UiIcon from '../../icon/icon.vue';
     import { getVNodes } from '../../../util/vnodes';
@@ -34,11 +44,13 @@
     import rootClassesMixin from '../../../mixins/form/root-classes';
     import currentValueMixin from '../../../mixins/form/current-value';
     import hasErrorsPropsMixin from '../../../mixins/form/has-errors-props';
+    import floatingLabelPropsMixin from '../../../mixins/form/floating-label-props';
 
     export default {
         components: {
             UiIcon,
             UiActions,
+            UiOption,
         },
         mixins: [
             bemMixin('ui-form-field'),
@@ -46,6 +58,7 @@
             rootClassesMixin,
             hasErrorsPropsMixin,
             currentValueMixin,
+            floatingLabelPropsMixin,
         ],
         props: {
             icon: {
