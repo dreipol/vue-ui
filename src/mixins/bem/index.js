@@ -25,13 +25,11 @@ export default function bemMixin(bemRoot, config) {
         },
         methods: {
             bemAdd(modifierName, elementName, rootName) {
-                if (!modifierName) { return ''; }
-
                 const blockName = rootName || this.bemRoot;
                 return createBemClass({ blockName, modifierName, elementName, ...options });
             },
-            bemIf(condition, trueModifier, falseModifier) {
-                return this.bemAdd(condition ? trueModifier : falseModifier);
+            bemIf(condition, trueModifier, falseModifier, elementName = '') {
+                return this.bemAdd(condition ? trueModifier : falseModifier, elementName);
             },
         },
     };
