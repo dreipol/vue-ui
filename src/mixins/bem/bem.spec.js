@@ -70,6 +70,13 @@ describe('Mixin bem', () => {
             expect(vm.bemAdd(customFacet)).to.be.equal('root__foo');
         });
 
+        it('Element can be easily added', () => {
+            const vm = new localVue(getDummyComponentProps(bemMixin('root')));
+            const elementName = 'foo';
+
+            expect(vm.bemAdd('', elementName)).to.be.equal('root--foo');
+        });
+
         it('Complex custom facets can be easily added', () => {
             const vm = new localVue(getDummyComponentProps(bemMixin('root')));
             const rootName = 'I';
@@ -86,6 +93,15 @@ describe('Mixin bem', () => {
 
             expect(vm.bemIf(true, trueModifier, falseModifier)).to.be.equal('root__jep');
             expect(vm.bemIf(false, trueModifier, falseModifier)).to.be.equal('root__nope');
+        });
+
+        it('Bem classes can be properly switched conditionally on an element', () => {
+            const vm = new localVue(getDummyComponentProps(bemMixin('root')));
+            const trueModifier = 'jep';
+            const falseModifier = 'nope';
+            const elementName = 'elem';
+
+            expect(vm.bemIf(true, trueModifier, falseModifier, elementName)).to.be.equal('root--elem__jep');
         });
     });
 });
