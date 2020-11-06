@@ -1,21 +1,21 @@
 <template>
     <div class="ui-tabs">
-        <ul class="ui-tabs--wrapper">
-            <li class="ui-tabs--list" v-for="(tab, index) in tabs" :key="index">
+        <ul class="ui-tabs--list">
+            <li class="ui-tabs--list-item" v-for="(tab, index) in tabs" :key="index">
                 <a :class="tabClasses(tab)"
                         :href="tab.href"
-                        class="ui-tabs--tab"
+                        class="ui-tabs--link"
                         tabindex="0"
                         ref="tabRefs"
-                        @click.prevent="(e) => activeTab(e, tab)"
-                        @keypress.enter="(e) => activeTab(e, tab)"
+                        @click.prevent="(e) => activateTab(e, tab)"
+                        @keypress.enter="(e) => activateTab(e, tab)"
                         @transitionend="onTransitionEnd"
                         @transitionstart="onTransitionStart">
                     <render-label :label="tab.$slots['tab-label']" v-if="tab.$slots['tab-label']"/>
                 </a>
             </li>
         </ul>
-        <div class="ui-tabs--content" ref="content">
+        <div class="ui-tabs--body" ref="content">
             <slot/>
         </div>
     </div>
@@ -75,6 +75,8 @@
                     tab.renderAlways = this.renderContentAlways;
                     tab.setHasAnimation = this.hasAnimation;
                 });
+                
+                this.setContentHeight();
                 return this.initTabs;
             },
             getActiveItem() {
@@ -99,7 +101,7 @@
                     content.style.height = `${ this.calcHeight }px`;
                 });
             },
-            activeTab(e, show) {
+            activateTab(e, show) {
                 const hide = this.tabs.find(tab => tab.isActive);
                 
                 if (hide === show) {
@@ -126,9 +128,9 @@
                 const isActive = tab.isActive;
                 
                 return [
-                    this.bemAdd(isEntering && 'is-entering', 'tab'),
-                    this.bemAdd(isLeaving && 'is-leaving', 'tab'),
-                    this.bemAdd(isActive && 'is-active', 'tab'),
+                    this.bemAdd(isEntering && 'is-entering', 'link'),
+                    this.bemAdd(isLeaving && 'is-leaving', 'link'),
+                    this.bemAdd(isActive && 'is-active', 'link'),
                 ];
             },
             onTransitionStart() {
@@ -155,8 +157,6 @@
             });
             
             this.initTabs = this.$children;
-            
-            this.setContentHeight();
         },
     };
 </script>

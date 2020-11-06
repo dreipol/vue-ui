@@ -1,13 +1,13 @@
 <template>
     <div :class="rootClasses"
-            class="ui-tab"
+            class="ui-tabs--content-wrapper"
             ref="body"
             @transitionend="onTransitionEnd">
-        <div class="ui-tab--body" v-if="renderAlways" v-show="changed">
-            <slot name="tab-body"/>
+        <div class="ui-tabs--content" v-if="renderAlways" v-show="changed">
+            <slot name="tab-content"/>
         </div>
-        <div class="ui-tab--body" v-else-if="changed">
-            <slot name="tab-body"/>
+        <div class="ui-tabs--content" v-else-if="changed">
+            <slot name="tab-content"/>
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@
     
     export default {
         mixins: [
-            bemMixin('ui-tab'),
+            bemMixin('ui-tabs--content-wrapper'),
         ],
         props: {
             tabId: {
@@ -54,6 +54,7 @@
                 if (!this.isActive && this.isAnimating && this.hasTransition) {
                     return !this.isActive && this.isAnimating;
                 }
+                console.log(this.isActive);
                 return this.isActive;
             },
             rootClasses() {
@@ -64,10 +65,6 @@
                     this.bemIf(this.isActive && !this.isAnimating, 'is-active'),
                 ];
             },
-            calcHeight() {
-                return this.$refs.body.offsetHeight;
-            },
-            
         },
         methods: {
             onTransitionEnd() {
