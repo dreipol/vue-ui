@@ -54,7 +54,6 @@
                 if (!this.isActive && this.isAnimating && this.hasTransition) {
                     return !this.isActive && this.isAnimating;
                 }
-                console.log(this.isActive);
                 return this.isActive;
             },
             rootClasses() {
