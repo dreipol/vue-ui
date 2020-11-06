@@ -80,7 +80,7 @@ describe('Component Tabs', () => {
         const wrapper = mount(UiTabs, {
         });
         wrapper.setData({ initTabs: [TabMock(), TabMock(), TabMock()] });
-        wrapper.findAll('.ui-tabs--tab').wrappers[1].element.click();
+        wrapper.findAll('.ui-tabs--link').wrappers[1].element.click();
         expect(wrapper.vm.tabs[1].isActive).to.be.equal(true);
     });
     it('sets state.entering.tab by clicking on tab', () => {
@@ -104,10 +104,10 @@ describe('Component Tabs', () => {
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
-        const clickElement = wrapper.findAll('.ui-tabs--tab').wrappers[2];
+        const clickElement = wrapper.findAll('.ui-tabs--link').wrappers[2];
         
         clickElement.element.click();
-        expect(clickElement.element.classList.contains('ui-tabs--tab__is-entering')).to.be.equal(true);
+        expect(clickElement.element.classList.contains('ui-tabs--link__is-entering')).to.be.equal(true);
         //expect(clickElement.element.classList)
     });
     it('has no "is-entering" class if animation is done', () => {
@@ -117,11 +117,11 @@ describe('Component Tabs', () => {
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
-        const clickElement = wrapper.findAll('.ui-tabs--tab').wrappers[2];
+        const clickElement = wrapper.findAll('.ui-tabs--link').wrappers[2];
     
         wrapper.vm.onTransitionEnd(clickElement.element);
     
-        expect(clickElement.element.classList.contains('ui-tabs--tab__is-entering')).to.be.equal(false);
+        expect(clickElement.element.classList.contains('ui-tabs--link__is-entering')).to.be.equal(false);
     });
     it('has "is-leaving" class if is animating in', () => {
         const wrapper = mount(UiTabs, {
@@ -130,11 +130,11 @@ describe('Component Tabs', () => {
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
-        const lastActiveElement = wrapper.findAll('.ui-tabs--tab').wrappers[0];
-        const clickElement = wrapper.findAll('.ui-tabs--tab').wrappers[2];
+        const lastActiveElement = wrapper.findAll('.ui-tabs--link').wrappers[0];
+        const clickElement = wrapper.findAll('.ui-tabs--link').wrappers[2];
         
         clickElement.element.click();
-        expect(lastActiveElement.element.classList.contains('ui-tabs--tab__is-leaving')).to.be.equal(true);
+        expect(lastActiveElement.element.classList.contains('ui-tabs--link__is-leaving')).to.be.equal(true);
         //expect(clickElement.element.classList)
     });
     it('has no "is-leaving" class if animation is done', () => {
@@ -144,14 +144,14 @@ describe('Component Tabs', () => {
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
-        const lastActiveElement = wrapper.findAll('.ui-tabs--tab').wrappers[0];
-        const clickElement = wrapper.findAll('.ui-tabs--tab').wrappers[2];
+        const lastActiveElement = wrapper.findAll('.ui-tabs--link').wrappers[0];
+        const clickElement = wrapper.findAll('.ui-tabs--link').wrappers[2];
     
         clickElement.element.click();
     
         wrapper.vm.onTransitionEnd(lastActiveElement.element);
 
-        expect(lastActiveElement.element.classList.contains('ui-tabs--tab__is-leaving')).to.be.equal(false);
+        expect(lastActiveElement.element.classList.contains('ui-tabs--link__is-leaving')).to.be.equal(false);
     });
     it('has "is-active" class when tab is active', () => {
         const wrapper = mount(UiTabs, {
@@ -161,6 +161,6 @@ describe('Component Tabs', () => {
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
 
-        expect(wrapper.findAll('.ui-tabs--tab').wrappers[0].element.classList.contains('ui-tabs--tab__is-active')).to.be.equal(true);
+        expect(wrapper.findAll('.ui-tabs--link').wrappers[0].element.classList.contains('ui-tabs--link__is-active')).to.be.equal(true);
     });
 });
