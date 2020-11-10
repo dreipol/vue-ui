@@ -53,7 +53,7 @@ import { UiTab } from '@dreipol/vue-ui';
 # Classes
 | Element | Name | Description
 | --- | --- | --- |
-Wrapper | ui-tabs |
+Wrapper | ui-tabs | the wrapper class of the whole Tab component
 Tabs Wrapper `ul` |ui-tabs--list | the tab wrapper class 
 Tabs Item `li` |ui-tabs--list-item | the tab item class
 Tabs Item Link `a` or `div` |ui-tabs--link | the tab class
