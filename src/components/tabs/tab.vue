@@ -2,10 +2,10 @@
     <div :class="rootClasses"
             class="ui-tabs--content-wrapper"
             @transitionend="onTransitionEnd">
-        <div class="ui-tabs--content" v-if="renderAlways" v-show="changed">
+        <div class="ui-tabs--content" v-if="shouldAlwaysRender" v-show="hasChanged">
             <slot name="tab-content"/>
         </div>
-        <div class="ui-tabs--content" v-else-if="changed">
+        <div class="ui-tabs--content" v-else-if="hasChanged">
             <slot name="tab-content"/>
         </div>
     </div>
@@ -33,13 +33,21 @@
                 type: Boolean || null,
                 default: null,
             },
+            target: {
+                type: String,
+                default: '_self',
+            },
+            rel: {
+                type: String,
+                default: 'noreferrer noopener',
+            },
         },
         data() {
             return {
                 isActive: false,
                 isAnimating: false,
                 setHasAnimation: null,
-                renderAlways: false,
+                shouldAlwaysRender: false,
             };
         },
         computed: {
@@ -49,7 +57,7 @@
             hasTransition() {
                 return this.hasAnimation === null ? this.setHasAnimation : this.hasAnimation;
             },
-            changed() {
+            hasChanged() {
                 //Check if we can override Tab Props
                 if (!this.isActive && !this.isAnimationDone) {
                     return !this.isActive;
