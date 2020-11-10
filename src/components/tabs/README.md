@@ -24,7 +24,7 @@ import { UiTab } from '@dreipol/vue-ui';
 |`rel` | string | empty | Will Render if `href` is not empty
 
 
-##Template Slots
+## Template Slots
 | Name | Description
 | --- | --- |
 |tab-label | Will render the Tab 
@@ -50,7 +50,7 @@ import { UiTab } from '@dreipol/vue-ui';
 </ui-tabs>
 ```
 
-# Classes
+## Classes
 | Element | Name | Description
 | --- | --- | --- |
 Wrapper | ui-tabs | the wrapper class of the whole Tab component
@@ -66,7 +66,7 @@ Tab Content Wrapper | ui-tabs--content-wrapper | the content wrapper
 | | ui-tabs--content-wrapper__is-active | the active content wrapper.
 Tab Content Body | ui-tabs--body | the Body class. This is where the content goes to.
 
-# SCSS
+## SCSS
 
 ```scss
 .ui-tabs {
