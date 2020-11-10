@@ -86,7 +86,7 @@ describe('Component Tabs', () => {
     it('sets state.entering.tab by clicking on tab', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
@@ -100,7 +100,7 @@ describe('Component Tabs', () => {
     it('has "is-entering" class on click event', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
@@ -113,7 +113,7 @@ describe('Component Tabs', () => {
     it('has no "is-entering" class on onTransitionEnd event', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
@@ -126,7 +126,7 @@ describe('Component Tabs', () => {
     it('has "is-leaving" class on click event', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
@@ -139,7 +139,7 @@ describe('Component Tabs', () => {
     it('has no "is-leaving" class on onTransitionEnd event', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
@@ -155,7 +155,7 @@ describe('Component Tabs', () => {
     it('has "is-active" class when tab is active', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
             },
         });
         wrapper.setData({ initTabs: [TabMock({ tabId: 1 }), TabMock(), TabMock()] });
@@ -165,7 +165,7 @@ describe('Component Tabs', () => {
     it('has not "is-active" class when tab is clicked and hasAnimation is true', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
                 hasAnimation: true,
             },
         });
@@ -181,7 +181,7 @@ describe('Component Tabs', () => {
     it('has "is-active" class when tab is clicked and hasAnimation is false', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
                 hasAnimation: false,
             },
         });
@@ -197,7 +197,7 @@ describe('Component Tabs', () => {
     it('will not override hasTransition if hasAnimation is set on tab component', () => {
         const wrapper = mount(UiTabs, {
             propsData: {
-                selectedTab: 1,
+                selectedTabId: 1,
                 hasAnimation: true,
             },
         });
