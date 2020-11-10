@@ -19,16 +19,22 @@ import { UiTab } from '@dreipol/vue-ui';
 | --- | --- | ---| ---|
 |`tabId` | Number or null | null | If set, it will match with selectedTab from Tabs and initially set the tab active
 |`hasAnimation` | boolean | null | Does the tab have transitions or not
-|`href` | string | empty | Setting href for the link 
+|`href` | string | empty | Will Render a Link if `href` is not empty otherwise it will render a div. If set, selecting the tab will redirect to the value of href. Any contents associated with this tab will never get rendered.
+|`target` | string | empty | Will render if `href` is not empty
+|`rel` | string | empty | Will Render if `href` is not empty
 
 
-## Events
--  `activateTab(e: Eventlistener, show: Array Item)` Callback called on clicking at item
+
+## Tabs Methods
+-  `activateTab(e: Eventlistener, show: Array Item)` Method called on clicking at item
 -  `setContentHeight()` Calculates the tab content height 
 -  `tabClasses(tab: Array Item)` Sets classes to array Item
 -  `onTransitionStart` callback on transition start
 -  `onTransitionEnd(e: Eventlistener )` callback on transition end
 
+
+## Tab Methods
+-  `onTransitionEnd(e: Eventlistener )` callback on transition end
 
 ## Example
 ```vue

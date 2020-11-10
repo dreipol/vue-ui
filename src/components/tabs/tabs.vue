@@ -6,6 +6,9 @@
                         :href="tab.href"
                         class="ui-tabs--link"
                         tabindex="0"
+                        :target="tab.target"
+                        :rel="tab.rel"
+                        v-if="tab.href !== ''"
                         ref="tabRefs"
                         @click.prevent="(e) => activateTab(e, tab)"
                         @keypress.enter="(e) => activateTab(e, tab)"
@@ -13,6 +16,18 @@
                         @transitionstart="onTransitionStart">
                     <render-label :label="tab.$slots['tab-label']" v-if="tab.$slots['tab-label']"/>
                 </a>
+                <div :class="tabClasses(tab)"
+                        :href="tab.href"
+                        class="ui-tabs--link"
+                        tabindex="0"
+                        v-else
+                        ref="tabRefs"
+                        @click.prevent="(e) => activateTab(e, tab)"
+                        @keypress.enter="(e) => activateTab(e, tab)"
+                        @transitionend="onTransitionEnd"
+                        @transitionstart="onTransitionStart">
+                    <render-label :label="tab.$slots['tab-label']" v-if="tab.$slots['tab-label']"/>
+                </div>
             </li>
         </ul>
         <div class="ui-tabs--body" ref="content">
@@ -36,7 +51,7 @@
             bemMixin('ui-tabs'),
         ],
         props: {
-            selectedTab: {
+            selectedTabId: {
                 type: Number || null,
                 default: null,
             },
@@ -44,7 +59,7 @@
                 type: Boolean,
                 default: true,
             },
-            renderContentAlways: {
+            shouldAlwaysRenderContent: {
                 type: Boolean,
                 default: false,
             },
@@ -72,10 +87,10 @@
                     return this.tabs;
                 }
                 this.initTabs.forEach(tab => {
-                    if (tab.tabId === this.selectedTab && this.selectedTab) {
+                    if (tab.tabId === this.selectedTabId && this.selectedTabId) {
                         tab.isActive = true;
                     }
-                    tab.renderAlways = this.renderContentAlways;
+                    tab.shouldAlwaysRender = this.shouldAlwaysRenderContent;
                     if (tab.hasAnimation === null) {
                         tab.setHasAnimation = this.hasAnimation;
                     }
@@ -106,25 +121,24 @@
                     content.style.height = `${ this.calcHeight }px`;
                 });
             },
-            activateTab(e, show) {
-                const hide = this.tabs.find(tab => tab.isActive);
+            activateTab(e, nextVisibleTab) {
+                const currentlyVisibleTab = this.tabs.find(tab => tab.isActive);
                 
-                if (hide === show) {
+                if (currentlyVisibleTab === nextVisibleTab) {
                     return;
                 }
                 
+                nextVisibleTab.isActive = true;
+                nextVisibleTab.isAnimating = true;
                 
-                show.isActive = true;
-                show.isAnimating = true;
-                
-                if (hide) {
-                    hide.isAnimating = true;
-                    hide.isActive = false;
+                if (currentlyVisibleTab) {
+                    currentlyVisibleTab.isAnimating = true;
+                    currentlyVisibleTab.isActive = false;
                 }
                 
-                this.state.isEntering.tab = show;
+                this.state.isEntering.tab = nextVisibleTab;
                 this.state.isEntering.el = e.target;
-                this.state.isLeaving.tab = hide;
+                this.state.isLeaving.tab = currentlyVisibleTab;
                 this.setContentHeight();
             },
             tabClasses(tab) {
