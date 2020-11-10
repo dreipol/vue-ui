@@ -66,7 +66,6 @@ Tab Content Wrapper | ui-tabs--content-wrapper | the content wrapper
 | | ui-tabs--content-wrapper__is-active | the active content wrapper.
 Tab Content Body | ui-tabs--body | the Body class. This is where the content goes to.
 
-
 # SCSS
 
 ```scss
