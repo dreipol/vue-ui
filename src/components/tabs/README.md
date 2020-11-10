@@ -24,17 +24,12 @@ import { UiTab } from '@dreipol/vue-ui';
 |`rel` | string | empty | Will Render if `href` is not empty
 
 
+##Template Slots
+| Name | Description
+| --- | --- |
+|tab-label | Will render the Tab 
+|tab-body | Will render the Tab Body Content
 
-## Tabs Methods
--  `activateTab(e: Eventlistener, show: Array Item)` Method called on clicking at item
--  `setContentHeight()` Calculates the tab content height 
--  `tabClasses(tab: Array Item)` Sets classes to array Item
--  `onTransitionStart` callback on transition start
--  `onTransitionEnd(e: Eventlistener )` callback on transition end
-
-
-## Tab Methods
--  `onTransitionEnd(e: Eventlistener )` callback on transition end
 
 ## Example
 ```vue
@@ -42,7 +37,7 @@ import { UiTab } from '@dreipol/vue-ui';
 <ui-tabs>
     <ui-tab>
     <template slot="tab-label">
-        <h1 v-slot:head>
+        <h1>
             Click Me
         </h1>
     </template>
@@ -54,6 +49,23 @@ import { UiTab } from '@dreipol/vue-ui';
     </ui-tab>
 </ui-tabs>
 ```
+
+# Classes
+| Element | Name | Description
+| --- | --- | --- |
+Wrapper | ui-tabs |
+Tabs Wrapper `ul` |ui-tabs--list | the tab wrapper class 
+Tabs Item `li` |ui-tabs--list-item | the tab item class
+Tabs Item Link `a` or `div` |ui-tabs--link | the tab class
+| |ui-tabs--link__is-active | the active tab class
+| |ui-tabs--link__is-entering | the animation tab class to become active
+| |ui-tabs--link__is-leaving | the animation tab class to become inactive
+Tab Content Wrapper | ui-tabs--content-wrapper | the content wrapper
+| | ui-tabs--content-wrapper__is-opening | the animation content wrapper class to become active.
+| | ui-tabs--content-wrapper__is-closing | the animation content wrapper class to become inactive.
+| | ui-tabs--content-wrapper__is-active | the active content wrapper.
+Tab Content Body | ui-tabs--body | the Body class. This is where the content goes to.
+
 
 # SCSS
 
@@ -73,29 +85,37 @@ import { UiTab } from '@dreipol/vue-ui';
         }
         .ui-tabs--link {
             cursor: pointer;
+            color: rgba(0, 0, 0, 0.5)
         
             &.ui-tabs--link__is-active {
-                opacity: 1;
+                color: rgba(0, 0, 0, 1);
             }
             &.ui-tabs--link__is-entering {
-                transition: opacity 300ms ease;
+                color: rgba(0, 0, 0, 1);
+                transition: color 300ms ease;
             }
             &.ui-tabs--link__is-leaving {
-                transition: opacity 300ms ease;
+                color: rgba(0, 0, 0, 0.5);
+                transition: color 300ms ease;
             }
         }
         .ui-tabs--body {
             overflow: hidden;
-            height: 0;
             opacity: 0;
             transition: height 300ms ease;
         }
         .ui-tabs--content-wrapper {
 
-            &.ui-tabs--content-wrapper__is-entering {
+            &.ui-tabs--content-wrapper__is-opening {
+                opacity: 1;
                 transition: opacity 300ms ease;
             }
             &.ui-tabs--content-wrapper__is-closing {
+                opacity: 0;
+                transition: opacity 300ms ease;
+            }
+            &.ui-tabs--content-wrapper__is-active {
+                opacity: 1;
                 transition: opacity 300ms ease;
             }
         }
