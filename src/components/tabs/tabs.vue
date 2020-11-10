@@ -26,6 +26,7 @@
     
     export default {
         components: {
+            //If we want to render not just strings we need to render The label as a Vue Component
             RenderLabel: {
                 functional: true,
                 render: (h, ctx) => ctx.props.label,
@@ -53,6 +54,8 @@
                 initTabs: [],
                 tabs: [],
                 state: {
+                    // We need the corresponding tab from tabs to set the Body active
+                    // We need the element to set to identify the active tab
                     isEntering: {
                         tab: null,
                         el: null,
@@ -73,7 +76,9 @@
                         tab.isActive = true;
                     }
                     tab.renderAlways = this.renderContentAlways;
-                    tab.setHasAnimation = this.hasAnimation;
+                    if (tab.hasAnimation === null) {
+                        tab.setHasAnimation = this.hasAnimation;
+                    }
                 });
                 
                 this.setContentHeight();
@@ -123,9 +128,9 @@
                 this.setContentHeight();
             },
             tabClasses(tab) {
-                const isEntering = this.hasAnimation && this.state.isEntering.tab === tab && tab.isAnimating;
-                const isLeaving = this.hasAnimation && this.state.isLeaving.tab === tab;
-                const isActive = tab.isActive;
+                const isEntering = this.hasAnimation && this.state.isEntering.tab === tab && tab.isAnimating && tab.hasTransition;
+                const isLeaving = this.hasAnimation && this.state.isLeaving.tab === tab && this.hasAnimation && tab.hasTransition;
+                const isActive = tab.isActive && !isEntering;
                 
                 return [
                     this.bemAdd(isEntering && 'is-entering', 'link'),
@@ -134,6 +139,7 @@
                 ];
             },
             onTransitionStart() {
+                //Calculate height so we can set the bodies position to absolute
                 const { content } = this.$refs;
                 content.style.height = `${ this.contentHeight }px`;
             },
@@ -148,10 +154,12 @@
             },
         },
         mounted() {
+            // Watch the tabs and find the active tab
             this.$watch('getActiveItem', () => {
                 this.state.isEntering.tab = this.getActiveItem;
             });
             
+            //If we want to set Tabs after mounting we need to watch the tabs and set the active tab correctly
             this.$watch('setTabs', () => {
                 this.tabs = this.setTabs;
             });
