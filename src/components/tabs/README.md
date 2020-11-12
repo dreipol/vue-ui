@@ -9,7 +9,7 @@ import { UiTabs } from '@dreipol/vue-ui';
 ## Tabs Props
 | Name | Type | Default | Description
 | --- | --- | ---| ---|
-|`initActiveId` | Number or null | null | Initially sets active tab. If not set it will set first the first tab active.
+|`initialActiveId` | Number or null | null | Initially sets active tab. If not set it will set first the first tab active.
 |`isLazy` | Boolean | true | Set isLazy to false will render all tabs content at once.
 
 ## Template Slots
