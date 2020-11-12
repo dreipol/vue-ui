@@ -8,18 +8,18 @@
         </div>
         <!-- If we need pagination -->
         <slot name="pagination">
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination"/>
         </slot>
 
         <!-- If we need navigation buttons -->
         <slot name="navigation">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"/>
+            <div class="swiper-button-next"/>
         </slot>
 
         <!-- If we need scrollbar -->
         <slot name="scrollbar">
-            <div class="swiper-scrollbar"></div>
+            <div class="swiper-scrollbar"/>
         </slot>
     </div>
 </template>
@@ -39,17 +39,17 @@
             type: 'bullets',
             clickable: true,
         },
-    }
+    };
 
     export default {
         mounted() {
             this.swiper = new Swiper(this.$el, {
                 ...DEFAULT_OPTIONS,
-                ...this.$attrs
+                ...this.$attrs,
             });
         },
         beforeDestroy() {
             this.swiper.destroy();
-        }
+        },
     };
 </script>
