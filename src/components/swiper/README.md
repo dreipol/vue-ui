@@ -46,7 +46,7 @@ module via npm so that the css variables of Swiper are supported
 
 ```html
 <div class="project-slider"
-    <ui-swiper v-if="isSwiperEnabled" v-bind="{
+    <ui-swiper v-bind="{
         pagination: {
             clickable: false,
         }">
