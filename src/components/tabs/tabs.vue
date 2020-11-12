@@ -4,8 +4,10 @@
             <li :class="tabClasses(tab)"
                     class="ui-tabs--list-item"
                     role="tab"
-                    :tabindex="index === activeId ? 0 : -1"
+                    :tabindex="0"
+                    :aria-selected="index === activeId"
                     v-for="(tab, index) in tabs"
+                    :id="tab.uuid"
                     :key="index"
                     @click.prevent="activeTab(tab)"
                     @keypress.enter="activeTab(tab)">
@@ -19,6 +21,7 @@
 <script>
     import { bemMixin } from '../../mixins';
     import UiTab from './tab.vue';
+    import uuidGenerator from '../../util/misc/uuid';
     
     export default {
         components: {
@@ -28,7 +31,7 @@
             bemMixin('ui-tabs'),
         ],
         props: {
-            initActiveId: {
+            initialActiveId: {
                 type: Number,
                 default: 0,
             },
@@ -39,12 +42,15 @@
         },
         data() {
             return {
-                activeId: this.initActiveId,
+                activeId: this.initialActiveId,
             };
         },
         computed: {
             tabs() {
-                return this.$scopedSlots.content();
+                return this.$scopedSlots.content().map(tab => {
+                    tab.uuid = `tab_id_${ uuidGenerator() }`;
+                    return tab;
+                });
             },
         },
         methods: {
