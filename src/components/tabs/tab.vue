@@ -1,82 +1,87 @@
-<template>
-    <div :class="rootClasses"
-            class="ui-tabs--content-wrapper"
-            @transitionend="onTransitionEnd">
-        <div class="ui-tabs--content" v-if="shouldAlwaysRender" v-show="hasChanged">
-            <slot name="tab-content"/>
-        </div>
-        <div class="ui-tabs--content" v-else-if="hasChanged">
-            <slot name="tab-content"/>
-        </div>
-    </div>
-</template>
-
-
 <script>
-    import { bemMixin } from '../../mixins';
-    
-    
     export default {
-        mixins: [
-            bemMixin('ui-tabs--content-wrapper'),
-        ],
         props: {
-            tabId: {
-                type: Number || null,
-                default: null,
+            isLazy: {
+                type: Boolean,
+                default: false,
             },
-            href: {
-                type: String,
-                default: '',
+            tabs: {
+                type: Array,
+                required: true,
             },
-            hasAnimation: {
-                type: Boolean || null,
-                default: null,
-            },
-            target: {
-                type: String,
-                default: '_self',
-            },
-            rel: {
-                type: String,
-                default: 'noreferrer noopener',
+            activeId: {
+                type: Number,
+                default: 0,
             },
         },
         data() {
             return {
-                isActive: false,
-                isAnimating: false,
-                setHasAnimation: null,
-                shouldAlwaysRender: false,
+                panelListHeight: 0,
             };
         },
         computed: {
-            isAnimationDone() {
-                return this.hasTransition ? !this.isAnimating : true;
-            },
-            hasTransition() {
-                return this.hasAnimation === null ? this.setHasAnimation : this.hasAnimation;
-            },
-            hasChanged() {
-                //Check if we can override Tab Props
-                if (!this.isActive && !this.isAnimationDone) {
-                    return !this.isActive;
-                }
-                return this.isActive;
-            },
-            rootClasses() {
-                return [
-                    this.bemFacets,
-                    this.bemIf(!this.isActive && !this.isAnimationDone, 'is-closing'),
-                    this.bemIf(this.isActive && !this.isAnimationDone, 'is-opening'),
-                    this.bemIf(this.isActive && this.isAnimationDone, 'is-active'),
-                ];
+            wrapperStyles() {
+                return { height: this.panelListHeight ? `${ this.panelListHeight }px` : null };
             },
         },
         methods: {
-            onTransitionEnd() {
-                this.isAnimating = false;
+            calcCurrentPanelHeight() {
+                const activeIndex = this.isLazy ? 0 : this.activeId;
+                const activePanel = this.$refs.panelList ? this.$refs.panelList[activeIndex] : null;
+                
+                this.panelListHeight = activePanel ? activePanel.offsetHeight : 0;
             },
+            renderPanelGroup() {
+                return (
+                    <transition-group
+                        mode="out-in"
+                        onEnter={this.calcCurrentPanelHeight}
+                        tag="div"
+                        name="ui-tabs--panel"
+                        class="ui-tabs--panel-wrapper"
+                        style={this.wrapperStyles}>
+                        {
+                            this.tabs.map((item, index) => {
+                                return (
+                                    <div
+                                        key={ index }
+                                        className="ui-tabs--panel"
+                                        v-show={ index === this.activeId }
+                                        ref="panelList"
+                                        refInFor={ true }>
+                                        {item.children}
+                                    </div>
+                                );
+                            })
+                        }
+                    </transition-group>
+                );
+            },
+            renderSinglePanel() {
+                return (
+                    <transition-group
+                        onEnter={ this.calcCurrentPanelHeight }
+                        tag="div"
+                        name="ui-tabs--panel"
+                        class="ui-tabs--panel-wrapper"
+                        style={ this.wrapperStyles }>
+                        <div
+                            key={this.activeId}
+                            ref="panelList"
+                            className="ui-tabs--panel"
+                            refInFor={ true }>
+                            { this.tabs[this.activeId].children }
+                        </div>
+                    </transition-group>
+                );
+            },
+        },
+        mounted() {
+            //We need to calculate height, because otherwise we can not animate it.
+            this.calcCurrentPanelHeight();
+        },
+        render() {
+            return this.isLazy ? this.renderSinglePanel() : this.renderPanelGroup();
         },
     };
 </script>

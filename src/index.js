@@ -34,7 +34,6 @@ export { default as UiIntersectionObserver } from './components/intersection-obs
 export { default as UiIcon } from './components/icon/icon.vue';
 export { default as UiAccordion } from './components/accordion/accordion.vue';
 export { default as UITabs } from './components/tabs/tabs.vue';
-export { default as UITab } from 'src/components/tabs/tab.vue';
 // form components
 export { default as UiInput } from './components/form/input/input.vue';
 export { default as UiTextarea } from './components/form/textarea/textarea.vue';
