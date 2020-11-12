@@ -78,7 +78,7 @@ describe('Component Tabs', () => {
         expect(wrapper.find('.ui-tabs--panel-wrapper').element.childNodes.length).to.be.equal(4);
     });
     it('sets initial active tab', () => {
-        const wrapper = mountWrapper({ initActiveId: 2 });
+        const wrapper = mountWrapper({ initialActiveId: 2 });
     
         const tabs = wrapper.findAll('.ui-tabs--list-item').wrappers;
         
