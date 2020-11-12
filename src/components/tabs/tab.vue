@@ -44,6 +44,8 @@
                             this.tabs.map((item, index) => {
                                 return (
                                     <div
+                                        role="tabpanel"
+                                        aria-labelledby={item.uuid}
                                         key={ index }
                                         className="ui-tabs--panel"
                                         v-show={ index === this.activeId }
@@ -58,6 +60,7 @@
                 );
             },
             renderSinglePanel() {
+                console.log(this.tabs[this.activeId]);
                 return (
                     <transition-group
                         onEnter={ this.calcCurrentPanelHeight }
@@ -66,6 +69,8 @@
                         class="ui-tabs--panel-wrapper"
                         style={ this.wrapperStyles }>
                         <div
+                            role="tabpanel"
+                            aria-labelledby={this.tabs[this.activeId].uuid}
                             key={this.activeId}
                             ref="panelList"
                             className="ui-tabs--panel"
