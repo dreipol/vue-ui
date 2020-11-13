@@ -60,7 +60,6 @@
                 );
             },
             renderSinglePanel() {
-                console.log(this.tabs[this.activeId]);
                 return (
                     <transition-group
                         onEnter={ this.calcCurrentPanelHeight }
