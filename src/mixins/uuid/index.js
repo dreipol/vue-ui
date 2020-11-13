@@ -1,8 +1,7 @@
-let uuid = 0;
+import uuidGenerator from '../../util/misc/uuid';
 
 export default {
     beforeCreate() {
-        this.uuid = uuid.toString();
-        uuid += 1;
+        this.uuid = uuidGenerator();
     },
 };
