@@ -1,4 +1,4 @@
-import uuidGenerator from "src/util/misc/uuid";
+import uuidGenerator from '../../util/misc/uuid';
 
 export default {
     beforeCreate() {
