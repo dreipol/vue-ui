@@ -22,7 +22,7 @@ import { UiTabs } from '@dreipol/vue-ui';
 ## Example
 ```vue
 <!-- basic usage -->
-<ui-tabs :active-id="2"> <!-- the index of the tab content that should be displayed -->
+<ui-tabs :initial-active-id="2"> <!-- the index of the tab content that should be displayed -->
 
     <!-- The tabs buttons will be dynamically rendered depending on the tabs attributes below -->
     <template slot-scope="props" slot="tab">
