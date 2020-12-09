@@ -105,3 +105,7 @@ import { UiTabs } from '@dreipol/vue-ui';
 
 ```
 
+## Note
+
+In order import from the `src` folder and transpile this component you will need to install [`@vue/babel-plugin-transform-vue-jsx`](https://www.npmjs.com/package/@vue/babel-plugin-transform-vue-jsx) in your babel setup
+
