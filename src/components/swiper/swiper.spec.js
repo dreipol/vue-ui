@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import Swiper from './swiper.vue';
+import SwiperSlides from './swiper-slides.vue'
 import { mount } from '@vue/test-utils';
 
 describe('Component swiper', () => {
