@@ -55,6 +55,5 @@ module via npm so that the css variables of Swiper are supported
                 <div class="swiper-slide">Slide 2</div>
                 <div class="swiper-slide">Slide 3</div>
         </template>
-<tem
     </ui-swiper>
 ```

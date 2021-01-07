@@ -2,10 +2,12 @@
     <!-- Slider main container -->
     <div class="swiper-container">
         <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
+        <ul class="swiper-wrapper">
             <!-- Slides -->
-            <slot name="slides"/>
-        </div>
+            <swiper-slides :has-lazy-loading="options && options.lazy">
+                <slot/>
+            </swiper-slides>
+        </ul>
         <!-- If we need pagination -->
         <slot name="pagination">
             <div class="swiper-pagination"/>
@@ -25,7 +27,10 @@
 </template>
 
 <script>
-    import Swiper from 'swiper';
+    import Swiper, { Pagination, Lazy } from 'swiper'
+    import SwiperSlides from './swiper-slides'
+
+    Swiper.use([Pagination, Lazy]);
 
     const DEFAULT_OPTIONS = {
         simulateTouch: false,
@@ -42,6 +47,18 @@
     };
 
     export default {
+        components: { SwiperSlides },
+        props: {
+            slides: {
+                type: Array,
+                default: () => []
+            },
+            options: {
+                type: Object,
+                default: () => {
+                }
+            }
+        },
         mounted() {
             this.swiper = new Swiper(this.$el, {
                 ...DEFAULT_OPTIONS,

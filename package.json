@@ -69,7 +69,7 @@
     "bianco": "^1.1.0",
     "headroom.js": "^0.9.4",
     "lodash": "^4.17.15",
-    "swiper": "^5.4.5"
+    "swiper": "^6.3.5"
   },
   "peerDependencies": {
     "vue": "^2.6.11"
