@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import Swiper from './swiper.vue';
-import SwiperSlides from './swiper-slides.vue'
 import { mount } from '@vue/test-utils';
 
 describe('Component swiper', () => {
@@ -16,8 +15,12 @@ describe('Component swiper', () => {
                     clickable: false,
                 },
             },
+            slots: {
+                default: '<p>Hello 1</p><p>Hello 2</p>',
+            },
         });
         expect(wrapper.find('.swiper-pagination-bullet')).to.be.ok;
+        expect(wrapper.findAll('.swiper--slide')).to.have.length(2);
         expect(wrapper.vm.$attrs.pagination.clickable).to.be.equal(false);
     });
 });

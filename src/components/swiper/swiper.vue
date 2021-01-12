@@ -27,8 +27,8 @@
 </template>
 
 <script>
-    import Swiper, { Pagination, Lazy } from 'swiper'
-    import SwiperSlides from './swiper-slides'
+    import Swiper, { Pagination, Lazy } from 'swiper';
+    import SwiperSlides from './swiper-slides.vue';
 
     Swiper.use([Pagination, Lazy]);
 
@@ -51,13 +51,13 @@
         props: {
             slides: {
                 type: Array,
-                default: () => []
+                default: () => [],
             },
             options: {
                 type: Object,
                 default: () => {
-                }
-            }
+                },
+            },
         },
         mounted() {
             this.swiper = new Swiper(this.$el, {
