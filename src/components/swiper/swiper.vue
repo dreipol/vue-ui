@@ -29,6 +29,7 @@
 <script>
     import Swiper, { Pagination, Lazy } from 'swiper';
     import SwiperSlides from './swiper-slides.vue';
+    import { SWIPER_EVENTS } from './swiper-events'
 
     Swiper.use([Pagination, Lazy]);
 
@@ -64,9 +65,15 @@
                 ...DEFAULT_OPTIONS,
                 ...this.$attrs,
             });
+
+            // bind all the swiper events
+            SWIPER_EVENTS.forEach(event => {
+                    this.swiper.on(event, (...args) => this.$emit(event, ...args))
+            });
         },
         beforeDestroy() {
             this.swiper.destroy();
+            this.swiper = null;
         },
     };
 </script>
