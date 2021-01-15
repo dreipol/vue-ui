@@ -8,7 +8,7 @@ describe('Component swiper', () => {
         expect(Swiper).to.be.not.empty;
     });
 
-    it('passes attrs props to swiper config', () => {
+    it('passes attrs props and slot to swiper config', () => {
         const wrapper = mount(Swiper, {
             propsData: {
                 pagination: {
@@ -22,5 +22,15 @@ describe('Component swiper', () => {
         expect(wrapper.find('.swiper-pagination-bullet')).to.be.ok;
         expect(wrapper.findAll('.swiper--slide')).to.have.length(2);
         expect(wrapper.vm.$attrs.pagination.clickable).to.be.equal(false);
+    });
+
+
+    it('adds pictures to slide', () => {
+        const wrapper = mount(Swiper, {
+            slots: {
+                default: '<img src="placeholder.png" alt="Image"/><img src="placeholder.png" alt="Image"/>',
+            },
+        });
+        expect(wrapper.findAll('.swiper--slide')).to.have.length(2);
     });
 });
