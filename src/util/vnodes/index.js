@@ -5,8 +5,8 @@
  * @return {VNode} The result
  */
 export function getVNodes(scopedSlot) {
-    const vnodes = scopedSlot ? scopedSlot() : null;
-    return Array.isArray(vnodes) ? vnodes : [];
+  const vnodes = scopedSlot ? scopedSlot() : null
+  return Array.isArray(vnodes) ? vnodes : []
 }
 
 /**
@@ -15,5 +15,5 @@ export function getVNodes(scopedSlot) {
  * @return {VNode} The result
  */
 export function getVNodeTags(scopedSlot) {
-    return getVNodes(scopedSlot).filter(({ tag }) => !!tag);
+  return getVNodes(scopedSlot).filter(({ tag }) => !!tag)
 }

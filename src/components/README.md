@@ -9,5 +9,3 @@ The following list contains all vue components that could be directly imported i
 - [overlay](/src/components/overlay)
 - [scroll-reveal](/src/components/scroll-reveal)
 - [accordion](/src/components/accordion)
-
-

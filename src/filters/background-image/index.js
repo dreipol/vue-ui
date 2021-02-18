@@ -4,5 +4,5 @@
  * @return {object} An object that can be used within a vue template's `:style` attribute
  */
 export default function backgroundImageFilter(url) {
-    return { 'background-image': `url(${ url })` };
+  return { 'background-image': `url(${url})` }
 }

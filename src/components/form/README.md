@@ -1,44 +1,47 @@
 # Form fields
-The input fields contained in this folder can be rendered in any `<form>` element to enhance the behaviour of the default ones. 
+
+The input fields contained in this folder can be rendered in any `<form>` element to enhance the behaviour of the default ones.
 Let's assume for example that you want to use the checkbox component in your vue form:
 
 ```vue
 <template>
-    <form>
-        <ui-checkbox name="is_cool"/>    
-    </form>
+  <form>
+    <ui-checkbox name="is_cool" />
+  </form>
 </template>
 
 <script>
-    import { UiCheckbox } from '@dreipol/vue-ui';
-    export default {
-        components: {
-            UiCheckbox,
-        },
-    };
+  import { UiCheckbox } from '@dreipol/vue-ui'
+  export default {
+    components: {
+      UiCheckbox,
+    },
+  }
 </script>
 ```
 
 In case you want to use these components globally, without always importing them in any of your forms, you will need to register them via Vue:
 
 ```js
-import { UiInput } from '@dreipol/vue-ui';
-import Vue from 'vue';
+import { UiInput } from '@dreipol/vue-ui'
+import Vue from 'vue'
 
 // This component will now be globally available
-Vue.component('ui-input', UiInput);
+Vue.component('ui-input', UiInput)
 ```
 
-
 ## Ui Input
+
 The `ui-input` component can be used as any standard DOM `<input>` field.
 
 ```vue
-<ui-input type="tel" required/>
+<ui-input type="tel" required />
 ```
 
 ### Slots
+
 You can provide the following `<slot>`s to customize its rendering:
+
 - `label`
 - `actions`
 - `messages`
@@ -81,6 +84,7 @@ Multiple actions are supported as well
 ```
 
 #### `messages`
+
 You can render custom error messages via `messages` slot:
 
 ```vue
@@ -92,17 +96,20 @@ You can render custom error messages via `messages` slot:
 ```
 
 ### Attributes
+
 The `<ui-input>` supports all native `<input>` attributes.
-In addition, the component includes the following custom attributes: 
+In addition, the component includes the following custom attributes:
 
 #### `has-errors`
+
 This attribute signals an invalid input state and adds the corresponding css class.
 
- ```vue
- <ui-input type="email" :has-errors="true"/>
- ```
- 
- #### `has-floating-label`
+```vue
+<ui-input type="email" :has-errors="true" />
+```
+
+#### `has-floating-label`
+
 Renders its label as a floating text label.
 
 ```vue
@@ -113,34 +120,38 @@ Renders its label as a floating text label.
 </ui-input>
 ```
 
-
 ## Ui Textarea
+
 The `ui-textarea` supports the same slots and attributes as the `ui-input`.
 In addition, the component provides a feature, allowing it to grow and shrink according to the amount of text entered.
 
 ```vue
-<ui-textarea value="Lorem Ipsum"/>
+<ui-textarea value="Lorem Ipsum" />
 ```
 
 ### Slots
+
 - `label`
 - `actions`
 - `messages`
 
 ### Custom attributes
-- `has-errors` 
+
+- `has-errors`
 - `has-floating-label`
 
-
 ## Ui checkbox and radio
+
 The toggle input fields render a single instance of a checkbox or radio button.
 
 ### Slots
+
 - `label`
 - `icon`
 - `messages`
 
 #### `label`
+
 The label can be provided as for the `ui-input` component via `<slot>`:
 
 ```vue
@@ -160,6 +171,7 @@ The label can be provided as for the `ui-input` component via `<slot>`:
 ```
 
 #### `icon`
+
 You can alter the icon of the input fields by using the `icon` slot:
 
 ```vue
@@ -177,45 +189,47 @@ You can alter the icon of the input fields by using the `icon` slot:
 ```
 
 ### Custom attributes
+
 - `has-errors` attribute.
 
-
 ## Ui Select
+
 The `ui-select` component requires the `ui-option` component to work properly.
 The optional `ui-optgroup` component may be used to render native option groups.
 
 ```vue
 <template>
-    <form>
-        <ui-select name="teams">
-            <ui-option value="" disabled>Choose a team</ui-option>
-            <ui-optgroup label="Europe">
-                <ui-option value="it">Italy</ui-option>
-                <ui-option value="de">Germany</ui-option>
-                <ui-option value="ch">Switzerland</ui-option>
-            </ui-optgroup>
-            <ui-optgroup label="South America">
-                <ui-option value="it">Brazil</ui-option>
-                <ui-option value="de">Argentina</ui-option>
-                <ui-option value="ch">Cile</ui-option>
-            </ui-optgroup>
-        </ui-select>    
-    </form>
+  <form>
+    <ui-select name="teams">
+      <ui-option value="" disabled>Choose a team</ui-option>
+      <ui-optgroup label="Europe">
+        <ui-option value="it">Italy</ui-option>
+        <ui-option value="de">Germany</ui-option>
+        <ui-option value="ch">Switzerland</ui-option>
+      </ui-optgroup>
+      <ui-optgroup label="South America">
+        <ui-option value="it">Brazil</ui-option>
+        <ui-option value="de">Argentina</ui-option>
+        <ui-option value="ch">Cile</ui-option>
+      </ui-optgroup>
+    </ui-select>
+  </form>
 </template>
 
 <script>
-    import { UiSelect, UiOption, UiOptgroup } from '@dreipol/vue-ui';
-    export default {
-        components: {
-            UiSelect,
-            UiOption,
-            UiOptgroup,
-        },
-    };
+  import { UiSelect, UiOption, UiOptgroup } from '@dreipol/vue-ui'
+  export default {
+    components: {
+      UiSelect,
+      UiOption,
+      UiOptgroup,
+    },
+  }
 </script>
 ```
 
 ### Slots
+
 - `label`
 - `actions`
 - `messages`
@@ -236,9 +250,11 @@ The optional `ui-optgroup` component may be used to render native option groups.
 ```
 
 ### Custom attributes
+
 - `icon`
 
 #### `icon`
+
 The select checkmark icon can be defined not only via `actions` slot but also via `icon` attribute for example:
 
 ```vue
@@ -252,63 +268,59 @@ The select checkmark icon can be defined not only via `actions` slot but also vi
 You can also override the default select icon once and for all via `@dreipol/vue-ui`:
 
 ```js
-import { settings } from '@dreipol/vue-ui';
+import { settings } from '@dreipol/vue-ui'
 
 settings.set(settings.SELECT_ICON, {
-    symbol: 'arrow-down',
-    size: 'medium'
-});
+  symbol: 'arrow-down',
+  size: 'medium',
+})
 ```
 
 ## Ui hidden
+
 The `ui-hidden` component renders an invisible `<input type='hidden'/>` dom node.
 
 ```vue
-<ui-hidden name="token" value="secret_token"/>
+<ui-hidden name="token" value="secret_token" />
 ```
 
-
 ## Model Provider
+
 All input fields can be connected via two-way binding to a vue model. To achieve this, you need the `ui-model-provider`.
 In a nutshell: The input fields are responsible for user events and rendering while the `ui-model-provider` enhances them by adding reactivity.
 
 ```vue
 <template>
-    <ui-model-provider v-model="username" v-slot="{ value, updateValue }">
-        <ui-input :value="value" @input="updateValue"/>  
-    </ui-model-provider>
+  <ui-model-provider v-model="username" v-slot="{ value, updateValue }">
+    <ui-input :value="value" @input="updateValue" />
+  </ui-model-provider>
 </template>
 
 <script>
-    import { UiInput, UiModelProvider } from '@dreipol/vue-ui';
-    export default {
-        components: {
-            UiInput,
-            UiModelProvider
-        },
-        data() {
-            return {
-                username: 'Gian'
-            };
-        },
-    };
+  import { UiInput, UiModelProvider } from '@dreipol/vue-ui'
+  export default {
+    components: {
+      UiInput,
+      UiModelProvider,
+    },
+    data() {
+      return {
+        username: 'Gian',
+      }
+    },
+  }
 </script>
 ```
 
 ### Slot scope properties
-The model provider exposes the following properties to its slots:
-    - `value`: The current internal model value
-    - `updateValue`: A function that will automatically update the internal model depending on the input that dispatched the event
-    - `updateValueRaw`: A function that will directly update the value of the internal model 
-    - `updateToggle`: A function that toggles the internal model value
-    - `hasItem`: A function that will be used to check if the internal model contains a specific value, if it's an array
-    - `addItem`: A function to add a value to the internal model, if it's an array
-    - `removeItem`: A function to remove a value from the internal model, if it's an array
+
+The model provider exposes the following properties to its slots: - `value`: The current internal model value - `updateValue`: A function that will automatically update the internal model depending on the input that dispatched the event - `updateValueRaw`: A function that will directly update the value of the internal model - `updateToggle`: A function that toggles the internal model value - `hasItem`: A function that will be used to check if the internal model contains a specific value, if it's an array - `addItem`: A function to add a value to the internal model, if it's an array - `removeItem`: A function to remove a value from the internal model, if it's an array
 
 ### Practical examples
 
 #### Model provider with toggles
-Here you can see an example of a boolean `ui-checkbox` input bound to a model provider. 
+
+Here you can see an example of a boolean `ui-checkbox` input bound to a model provider.
 Assuming that the `value` is a boolean and can be either `true` or `false`
 
 ```vue
@@ -318,7 +330,8 @@ Assuming that the `value` is a boolean and can be either `true` or `false`
 ```
 
 #### Model provider with multiple radios
-Here you can see an example of `ui-radio` inputs bound to a model provider. 
+
+Here you can see an example of `ui-radio` inputs bound to a model provider.
 Assuming that the `value` must be one of those two strings: `['one', 'two']`
 
 ```vue
@@ -331,6 +344,7 @@ Assuming that the `value` must be one of those two strings: `['one', 'two']`
 ```
 
 #### Model provider with multiple checkboxes
+
 This is an example of a `ui-checkbox` inputs bound to a model provider.
 Assuming that the `value` is an array containing none or multiple items of `['one', 'two', 'three']`
 
@@ -345,11 +359,12 @@ Assuming that the `value` is an array containing none or multiple items of `['on
 ```
 
 #### Model Provider with select
-This is an example of a `ui-select` input bound to a model provider. 
+
+This is an example of a `ui-select` input bound to a model provider.
 Assuming that the `value` must be one of those two strings: `['one', 'two']`
 
 ```vue
- <ui-model-provider v-model="value" v-slot="{ value, updateValue }">
+<ui-model-provider v-model="value" v-slot="{ value, updateValue }">
     <ui-select :value="value" @change="updateValue">
         <ui-option value="one">One</ui-option>
         <ui-option value="two">Two</ui-option>

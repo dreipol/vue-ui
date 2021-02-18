@@ -4,9 +4,9 @@
  * @return {string} The srcset attribute string
  */
 export default function srcsetFilter(list) {
-    if (list.length <= 1) {
-        return '';
-    }
+  if (list.length <= 1) {
+    return ''
+  }
 
-    return list.map((url, i) => `${ url } ${ i + 1 }x`).join(', ');
+  return list.map((url, i) => `${url} ${i + 1}x`).join(', ')
 }

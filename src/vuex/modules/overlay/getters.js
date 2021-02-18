@@ -5,8 +5,8 @@
  * @return {boolean} The resulting flag
  */
 function some(overlays, fn) {
-    const values = Object.keys(overlays).map(key => overlays[key]);
-    return !!values.find(fn);
+  const values = Object.keys(overlays).map((key) => overlays[key])
+  return !!values.find(fn)
 }
 
 /**
@@ -14,17 +14,17 @@ function some(overlays, fn) {
  * @param {object} state - The vuex state object
  * @return {boolean} The resulting flag
  */
-export const hasOpenOverlays = state => {
-    const fn = ({ isOpen }) => isOpen;
-    return some(state.overlays, fn);
-};
+export const hasOpenOverlays = (state) => {
+  const fn = ({ isOpen }) => isOpen
+  return some(state.overlays, fn)
+}
 
 /**
  * Check whether there are any overlays that lock global scrolling
  * @param {object} state - The vuex state object
  * @return {boolean} The resulting flag
  */
-export const hasScrollLockingOverlays = state => {
-    const fn = ({ disableScroll }) => disableScroll;
-    return some(state.overlays, fn);
-};
+export const hasScrollLockingOverlays = (state) => {
+  const fn = ({ disableScroll }) => disableScroll
+  return some(state.overlays, fn)
+}

@@ -8,5 +8,3 @@ The following list contains all vue mixins that could be directly imported into 
 - [scroll](/src/mixins/scroll)
 - [scroll lock helper](/src/mixins/scroll-lock-helper)
 - [uuid](/src/mixins/uuid)
-
-
