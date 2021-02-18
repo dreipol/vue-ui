@@ -1,4 +1,4 @@
 export interface IRegistrationOptions {
-    rootMargin: string;
-    threshold: number | number[];
+  rootMargin: string
+  threshold: number | number[]
 }

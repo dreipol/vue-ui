@@ -1,14 +1,14 @@
 <template>
-    <input type="hidden" :value="value" v-bind="$attrs">
+  <input type="hidden" :value="value" v-bind="$attrs" />
 </template>
 
 <script>
-    export default {
-        props: {
-            value: {
-                type: String,
-                required: true,
-            },
-        },
-    };
+  export default {
+    props: {
+      value: {
+        type: String,
+        required: true,
+      },
+    },
+  }
 </script>

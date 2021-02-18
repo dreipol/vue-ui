@@ -1,8 +1,8 @@
-import UiTabs from './tabs.vue';
-import { expect } from 'chai';
-import Vue from 'vue';
-import { mockData } from './mock-data';
-import { mount } from '@vue/test-utils';
+import { expect } from 'chai'
+import Vue from 'vue'
+import { mount } from '@vue/test-utils'
+import mockData from './mock-data'
+import UiTabs from './tabs.vue'
 
 const css = `
 .ui-tabs__list {
@@ -25,77 +25,84 @@ const css = `
     transition: all 1s;
     position: absolute;
 }
-`;
+`
 
-const mountWrapper = (props = {}) => mount(UiTabs, {
+const mountWrapper = (props = {}) =>
+  mount(UiTabs, {
     propsData: { ...props },
     scopedSlots: {
-        tab: '<div slot-scope="props">{{ props.title }}</div>',
-        content() {
-            return [
-                mockData.map((data, index) => {
-                    return (
-                        <div title={data.tab.title} key={index}>
-                            <h1>{data.content.title}</h1>
-                            <p>{data.content.description}</p>
-                        </div>
-                    );
-                }),
-            ];
-        },
+      tab: '<div slot-scope="props">{{ props.title }}</div>',
+      content() {
+        return [
+          mockData.map((data, index) => {
+            return (
+              <div title={data.tab.title} key={index}>
+                <h1>{data.content.title}</h1>
+                <p>{data.content.description}</p>
+              </div>
+            )
+          }),
+        ]
+      },
     },
-});
+  })
 
 describe('Component Tabs', () => {
-    const styleNode = document.createElement('style');
+  const styleNode = document.createElement('style')
 
-    before(() => {
-        styleNode.innerHTML = css;
-        document.head.appendChild(styleNode);
-    });
+  before(() => {
+    styleNode.innerHTML = css
+    document.head.appendChild(styleNode)
+  })
 
-    after(() => {
-        document.head.removeChild(styleNode);
-    });
+  after(() => {
+    document.head.removeChild(styleNode)
+  })
 
+  it('is an object', () => {
+    expect(UiTabs).to.be.an('object')
+    expect(UiTabs).to.be.not.empty
+  })
+  it('renders Tabs', () => {
+    const wrapper = mountWrapper()
 
-    it('is an object', () => {
-        expect(UiTabs).to.be.an('object');
-        expect(UiTabs).to.be.not.empty;
-    });
-    it('renders Tabs', () => {
-        const wrapper = mountWrapper();
+    expect(wrapper.find('.ui-tabs__list-item').element).to.exist
+  })
+  it('renders only one panel if isLazy is set to true', () => {
+    const wrapper = mountWrapper()
 
-        expect(wrapper.find('.ui-tabs__list-item').element).to.exist;
-    });
-    it('renders only one panel if isLazy is set to true', () => {
-        const wrapper = mountWrapper();
+    expect(
+      wrapper.findAll('.ui-tabs__panel-wrapper').wrappers.length,
+    ).to.be.equal(1)
+  })
+  it('renders all panels to dome if isLazy is set to false', () => {
+    const wrapper = mountWrapper({ isLazy: false })
 
-        expect(wrapper.findAll('.ui-tabs__panel-wrapper').wrappers.length).to.be.equal(1);
-    });
-    it('renders all panels to dome if isLazy is set to false', () => {
-        const wrapper = mountWrapper({ isLazy: false });
+    expect(
+      wrapper.find('.ui-tabs__panel-wrapper').element.childNodes.length,
+    ).to.be.equal(4)
+  })
+  it('sets initial active tab', () => {
+    const wrapper = mountWrapper({ initialActiveId: 2 })
 
-        expect(wrapper.find('.ui-tabs__panel-wrapper').element.childNodes.length).to.be.equal(4);
-    });
-    it('sets initial active tab', () => {
-        const wrapper = mountWrapper({ initialActiveId: 2 });
+    const tabs = wrapper.findAll('.ui-tabs__list-item').wrappers
 
-        const tabs = wrapper.findAll('.ui-tabs__list-item').wrappers;
+    const activeIndex = tabs.findIndex((tab) =>
+      tab.element.classList.contains('ui-tabs__list-item--is-active'),
+    )
 
-        const activeIndex = tabs.findIndex(tab => tab.element.classList.contains('ui-tabs__list-item--is-active'));
+    expect(activeIndex).to.be.equal(2)
+  })
+  it('sets active tab on tab click', async () => {
+    const wrapper = mountWrapper()
 
-        expect(activeIndex).to.be.equal(2);
-    });
-    it('sets active tab on tab click', async () => {
-        const wrapper = mountWrapper();
+    const clickTab = wrapper.findAll('.ui-tabs__list-item').wrappers[3].element
 
-        const clickTab = wrapper.findAll('.ui-tabs__list-item').wrappers[3].element;
+    clickTab.click()
 
-        clickTab.click();
+    await Vue.nextTick()
 
-        await Vue.nextTick();
-
-        expect(clickTab.classList.contains('ui-tabs__list-item--is-active')).to.be.true;
-    });
-});
+    expect(clickTab.classList.contains('ui-tabs__list-item--is-active')).to.be
+      .true
+  })
+})
