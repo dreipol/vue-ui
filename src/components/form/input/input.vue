@@ -1,16 +1,16 @@
 <template>
-    <div class="ui-form-field ui-form-field__input" :class="rootClasses">
+    <div class="ui-form-field ui-form-field--input" :class="rootClasses">
         <label>
-            <span class="ui-form-field--title-label" v-if="!hasFloatingLabel && $scopedSlots.label">
+            <span class="ui-form-field__title-label" v-if="!hasFloatingLabel && $scopedSlots.label">
                 <slot name="label"/>
             </span>
-            <div class="ui-form-field--input-container" :data-action-count="actionCount">
-                <span class="ui-form-field--floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
+            <div class="ui-form-field__input-container" :data-action-count="actionCount">
+                <span class="ui-form-field__floating-label" v-if="hasFloatingLabel && $scopedSlots.label">
                     <slot name="label"/>
                 </span>
                 <slot name="input">
                     <input v-model="currentValue"
-                            class="ui-form-field--input"
+                            class="ui-form-field__input"
                             v-bind="$attrs"
                             @focus="onFocus"
                             @blur="onBlur"

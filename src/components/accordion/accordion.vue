@@ -1,6 +1,6 @@
 <template>
     <div class="ui-accordion" :class="rootClasses">
-        <div class="u-reset ui-accordion--head"
+        <div class="u-reset ui-accordion__head"
                 role="heading"
                 tabindex="0"
                 :aria-expanded="state.isOpen ? 'true' : 'false'"
@@ -9,7 +9,7 @@
                 @click.prevent="onRequestChange(!state.isOpen)">
             <slot name="head" :is-open="state.isOpen"/>
         </div>
-        <div class="ui-accordion--body"
+        <div class="ui-accordion__body"
                 role="presentation"
                 ref="body"
                 @transitionend="onTransitionEnd">

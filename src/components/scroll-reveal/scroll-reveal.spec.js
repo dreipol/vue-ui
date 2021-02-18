@@ -270,7 +270,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
     });
 
     describe('Classes', () => { // eslint-disable-line
-        it('has class __pinned', (done) => {
+        it('has class --pinned', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -289,7 +289,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     methods: {
                         onEventFired() {
                             const { $el } = wrapper.find(ScrollRevealComponent).vm;
-                            expect($el.classList.contains('scroll-reveal__pinned')).to.be.ok;
+                            expect($el.classList.contains('scroll-reveal--pinned')).to.be.ok;
                             done();
                             wrapper.destroy();
                         },
@@ -316,7 +316,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
             );
         });
 
-        it('has class __unpinned', (done) => {
+        it('has class --unpinned', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -335,7 +335,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     methods: {
                         onEventFired() {
                             const { $el } = wrapper.find(ScrollRevealComponent).vm;
-                            expect($el.classList.contains('scroll-reveal__unpinned')).to.be.ok;
+                            expect($el.classList.contains('scroll-reveal--unpinned')).to.be.ok;
                             done();
                             wrapper.destroy();
                         },
@@ -358,7 +358,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
             );
         });
 
-        it('has class __top', (done) => {
+        it('has class --top', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -369,7 +369,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     methods: {
                         onEventFired() {
                             const { $el } = wrapper.find(ScrollRevealComponent).vm;
-                            expect($el.classList.contains('scroll-reveal__top')).to.be.ok;
+                            expect($el.classList.contains('scroll-reveal--top')).to.be.ok;
                             done();
                             wrapper.destroy();
                         },
@@ -386,7 +386,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
             );
         });
 
-        it('has class __not-top', (done) => {
+        it('has class --not-top', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -405,7 +405,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     methods: {
                         onEventFired() {
                             const { $el } = wrapper.find(ScrollRevealComponent).vm;
-                            expect($el.classList.contains('scroll-reveal__not-top')).to.be.ok;
+                            expect($el.classList.contains('scroll-reveal--not-top')).to.be.ok;
                             done();
                             wrapper.destroy();
                         },
@@ -428,7 +428,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
             );
         });
 
-        it('has class __bottom', (done) => {
+        it('has class --bottom', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -447,7 +447,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     methods: {
                         onEventFired() {
                             const { $el } = wrapper.find(ScrollRevealComponent).vm;
-                            expect($el.classList.contains('scroll-reveal__bottom')).to.be.ok;
+                            expect($el.classList.contains('scroll-reveal--bottom')).to.be.ok;
                             done();
                             wrapper.destroy();
                         },
@@ -471,7 +471,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
         });
 
 
-        it('has class __not-bottom', (done) => {
+        it('has class --not-bottom', (done) => {
             wrapper = shallowMount(
                 {
                     components: {
@@ -490,7 +490,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     methods: {
                         onEventFired() {
                             const { $el } = wrapper.find(ScrollRevealComponent).vm;
-                            expect($el.classList.contains('scroll-reveal__not-bottom')).to.be.ok;
+                            expect($el.classList.contains('scroll-reveal--not-bottom')).to.be.ok;
                             done();
                             wrapper.destroy();
                         },

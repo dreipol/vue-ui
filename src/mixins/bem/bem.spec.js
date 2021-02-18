@@ -22,7 +22,7 @@ describe('Mixin bem', () => {
             }));
 
             expect(vm.bemFacets).to.be.an('array');
-            expect(vm.bemFacets).to.include('root__base');
+            expect(vm.bemFacets).to.include('root--base');
         });
         it('It uses an internal data property when `useProp` is false', () => {
             const mixin = bemMixin('root', { useProp: false });
@@ -33,7 +33,7 @@ describe('Mixin bem', () => {
             }));
 
             expect(vm.bemFacets).to.be.an('array');
-            expect(vm.bemFacets).to.include('root__foo');
+            expect(vm.bemFacets).to.include('root--foo');
         });
     });
     describe('Computed properties', () => {
@@ -47,7 +47,7 @@ describe('Mixin bem', () => {
             const vm = new localVue(getDummyComponentProps(bemMixin('root')));
 
             expect(vm.bemFacets).to.be.an('array');
-            expect(vm.bemFacets).to.include('root__base');
+            expect(vm.bemFacets).to.include('root--base');
         });
 
         it('Custom bem mixin options have also an impact on the computed pros', () => {
@@ -67,14 +67,14 @@ describe('Mixin bem', () => {
             const vm = new localVue(getDummyComponentProps(bemMixin('root')));
             const customFacet = 'foo';
 
-            expect(vm.bemAdd(customFacet)).to.be.equal('root__foo');
+            expect(vm.bemAdd(customFacet)).to.be.equal('root--foo');
         });
 
         it('Element can be easily added', () => {
             const vm = new localVue(getDummyComponentProps(bemMixin('root')));
             const elementName = 'foo';
 
-            expect(vm.bemAdd('', elementName)).to.be.equal('root--foo');
+            expect(vm.bemAdd('', elementName)).to.be.equal('root__foo');
         });
 
         it('Complex custom facets can be easily added', () => {
@@ -83,7 +83,7 @@ describe('Mixin bem', () => {
             const elementName = 'like';
             const customFacet = 'pizzas';
 
-            expect(vm.bemAdd(customFacet, elementName, rootName)).to.be.equal('I--like__pizzas');
+            expect(vm.bemAdd(customFacet, elementName, rootName)).to.be.equal('I__like--pizzas');
         });
 
         it('Bem classes can be properly switched conditionally', () => {
@@ -91,8 +91,8 @@ describe('Mixin bem', () => {
             const trueModifier = 'jep';
             const falseModifier = 'nope';
 
-            expect(vm.bemIf(true, trueModifier, falseModifier)).to.be.equal('root__jep');
-            expect(vm.bemIf(false, trueModifier, falseModifier)).to.be.equal('root__nope');
+            expect(vm.bemIf(true, trueModifier, falseModifier)).to.be.equal('root--jep');
+            expect(vm.bemIf(false, trueModifier, falseModifier)).to.be.equal('root--nope');
         });
 
         it('Bem classes can be properly switched conditionally on an element', () => {
@@ -101,7 +101,7 @@ describe('Mixin bem', () => {
             const falseModifier = 'nope';
             const elementName = 'elem';
 
-            expect(vm.bemIf(true, trueModifier, falseModifier, elementName)).to.be.equal('root--elem__jep');
+            expect(vm.bemIf(true, trueModifier, falseModifier, elementName)).to.be.equal('root__elem--jep');
         });
     });
 });

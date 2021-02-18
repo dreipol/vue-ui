@@ -1,20 +1,20 @@
 <template>
-    <div class="ui-form-field ui-form-field__bool ui-form-field__radio"
+    <div class="ui-form-field ui-form-field--bool ui-form-field--radio"
             :class="[...rootClasses, bemIf(isChecked, 'is-checked')]">
         <label>
             <input type="radio"
-                    class="ui-form-field--input"
+                    class="ui-form-field__input"
                     v-bind="$attrs"
                     :value="value"
                     @change="onChange"
                     v-on="$listeners">
-            <div class="ui-form-field--label-wrap">
-                <span class="ui-form-field--box">
+            <div class="ui-form-field__label-wrap">
+                <span class="ui-form-field__box">
                     <slot mame="icon">
-                        <span class="ui-form-field--box-icon"/>
+                        <span class="ui-form-field__box-icon"/>
                     </slot>
                 </span>
-                <div class="ui-form-field--label">
+                <div class="ui-form-field__label">
                     <slot name="label"/>
                 </div>
             </div>

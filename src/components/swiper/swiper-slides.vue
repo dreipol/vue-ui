@@ -10,8 +10,8 @@
                 .filter(({ tag }) => tag)
                 .map((slot, i) => {
                     return (
-                        <li class="swiper-slide swiper--slide" key={ i }>
-                            <div class="swiper--item">
+                        <li class="swiper-slide swiper__slide" key={ i }>
+                            <div class="swiper__item">
                                 { h(slot.tag, slot.data, slot.children) }
                             </div>
                         </li>

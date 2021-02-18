@@ -8,25 +8,25 @@ import { shallowMount } from '@vue/test-utils';
 
 describe('Component accordion', () => {
     const css = `
-.ui-accordion .ui-accordion--head {
+.ui-accordion .ui-accordion__head {
   display: block;
   width: 100%;
   text-align: left;
   cursor: pointer;
 }
 
-.ui-accordion .ui-accordion--body {
+.ui-accordion .ui-accordion__body {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
   transition: opacity 300ms ease;
 }
 
-.ui-accordion.ui-accordion__is-open .ui-accordion--body {
+.ui-accordion.ui-accordion--is-open .ui-accordion__body {
   opacity: 1;
 }
 
-.ui-accordion.ui-accordion__is-animating .ui-accordion--body {
+.ui-accordion.ui-accordion--is-animating .ui-accordion__body {
   transition: opacity 300ms ease, max-height 300ms ease;
 }
 `;
@@ -54,7 +54,7 @@ describe('Component accordion', () => {
             },
         });
 
-        const button = wrapper.find('.ui-accordion--head');
+        const button = wrapper.find('.ui-accordion__head');
         button.trigger('click');
 
         expect(wrapper.vm.state.isOpen).to.be.ok;
@@ -91,7 +91,7 @@ describe('Component accordion', () => {
             },
         });
 
-        const button = wrapper.find('.ui-accordion--head');
+        const button = wrapper.find('.ui-accordion__head');
         button.trigger('click');
         expect(wrapper.vm.state.isOpen).to.be.not.ok;
     });
