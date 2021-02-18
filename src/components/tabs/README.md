@@ -52,15 +52,15 @@ import { UiTabs } from '@dreipol/vue-ui';
 | Name | Description
 | --- | --- |
 | ui-tabs | Base class
-| ui-tabs--list | Wrapper class of tab list
-| ui-tabs--list-item | list item class
-| ui-tabs--list-item__is-active | active list item class
-| ui-tabs--panel-wrapper | Panel wrapper and transition class
-| ui-tabs--panel | 
-| ui-tabs--panel-enter | Panel on enter class
-| ui-tabs--panel-enter-active | Panel active enter animation class
-| ui-tabs--panel-leave-to | Panel on leave-to class
-| ui-tabs--panel-leave-active | Panel active leave animation class
+| ui-tabs__list | Wrapper class of tab list
+| ui-tabs__list-item | list item class
+| ui-tabs__list-item--is-active | active list item class
+| ui-tabs__panel-wrapper | Panel wrapper and transition class
+| ui-tabs__panel | 
+| ui-tabs__panel-enter | Panel on enter class
+| ui-tabs__panel-enter-active | Panel active enter animation class
+| ui-tabs__panel-leave-to | Panel on leave-to class
+| ui-tabs__panel-leave-active | Panel active leave animation class
 
 ## SCSS
 
@@ -72,35 +72,35 @@ import { UiTabs } from '@dreipol/vue-ui';
 
     // Module
     & {
-        .ui-tabs--list {
+        .ui-tabs__list {
             display: flex;
 
-            .ui-tabs--list-item {
+            .ui-tabs__list-item {
                 padding: 20px;
                 color: rgba(0, 0, 0, 0.5);
                 
-                &.ui-tabs--list-item__is-active {
+                &.ui-tabs__list-item--is-active {
                     color: rgba(0, 0, 0, 1);
                 }
             }
         }
 
-        .ui-tabs--panel-wrapper {
-            .ui-tabs--panel {
-                &.ui-tabs--panel-enter {
+        .ui-tabs__panel-wrapper {
+            .ui-tabs__panel {
+                &.ui-tabs__panel-enter {
                     opacity: 0;
                     transform: translateY(30px);
                 }
     
-                &.ui-tabs--panel-enter-active {
+                &.ui-tabs__panel-enter-active {
                     transition: all 1s;
                 }
     
-                &.ui-tabs--panel-leave-active {
+                &.ui-tabs__panel-leave-active {
                     transition: all 1s;
                 }
     
-                &.ui-tabs--panel-leave-to {
+                &.ui-tabs__panel-leave-to {
                     opacity: 0;
                     transform: translateY(30px);
                 }

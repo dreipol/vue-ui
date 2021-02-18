@@ -129,16 +129,16 @@ You can use them in your components or even in other vuex actions.
 # Example Close Overlay
 ```vue
 <template>
-    <div class="navigation-overlay grid grid__base">
-        <div class="grid--container">
-            <button class="navigation-overlay--btn" @click="onClose">
+    <div class="navigation-overlay grid grid--base">
+        <div class="grid__container">
+            <button class="navigation-overlay__btn" @click="onClose">
                 <ui-icon size="medium"
                         symbol="close"/>
             </button>
-            <div class="grid--row">
-                <div class="navigation-overlay--col grid--col">
-                    <desktop-map class="navigation-overlay--map navigation-overlay--map__desktop"/>
-                    <mobile-map class="navigation-overlay--map navigation-overlay--map__mobile"/>
+            <div class="grid__row">
+                <div class="navigation-overlay__col grid__col">
+                    <desktop-map class="navigation-overlay__map navigation-overlay__map--desktop"/>
+                    <mobile-map class="navigation-overlay__map navigation-overlay__map--mobile"/>
                 </div>
             </div>
         </div>
@@ -179,12 +179,12 @@ You can use them in your components or even in other vuex actions.
     /// @param {boolean} $allow-native-scrolling - Use native scrolling on the component or leave it be as is
     ///
     @mixin ui-overlay--restrict-scrolling-to-element($allow-native-scrolling: true) {
-        .ui-overlay--display {
+        .ui-overlay__display {
             overflow: hidden;
         }
 
         @if ($allow-native-scrolling) {
-            .ui-overlay--component {
+            .ui-overlay__component {
                 @include ios-native-scrolling;
             }
         }
@@ -197,18 +197,18 @@ You can use them in your components or even in other vuex actions.
     @mixin ui-overlay--restrict-pointerevents-to-element($allow-backdrop: false, $allow-backdrop-click-area: false) {
         pointer-events: none;
 
-        .ui-overlay--component {
+        .ui-overlay__component {
             pointer-events: auto;
         }
 
         @if ($allow-backdrop) {
-            .ui-overlay--backdrop {
+            .ui-overlay__backdrop {
                 pointer-events: auto;
             }
         }
 
         @if ($allow-backdrop-click-area) {
-            .ui-overlay--backdrop-click-area {
+            .ui-overlay__backdrop-click-area {
                 pointer-events: auto;
             }
         }
@@ -219,7 +219,7 @@ You can use them in your components or even in other vuex actions.
     /// @param {number} $z-index - Directly use a `z-index`
     ///
     @mixin ui-overlay--set-layer-hierarchy($layer: null, $z-index: 0) {
-        .ui-overlay--root {
+        .ui-overlay__root {
             z-index: if($layer, z-index($layer), $z-index);
         }
     }
@@ -227,7 +227,7 @@ You can use them in your components or even in other vuex actions.
     /// Remove the overlay's (visual) backdrop
     ///
     @mixin ui-overlay--hide-backdrop() {
-        .ui-overlay--backdrop {
+        .ui-overlay__backdrop {
             display: none;
         }
     }
@@ -235,10 +235,10 @@ You can use them in your components or even in other vuex actions.
     /// Allow the overlay to be full height
     ///
     @mixin ui-overlay--full-height() {
-        .ui-overlay--display,
-        .ui-overlay--wrap-outer,
-        .ui-overlay--wrap-inner,
-        .ui-overlay--container {
+        .ui-overlay__display,
+        .ui-overlay__wrap-outer,
+        .ui-overlay__wrap-inner,
+        .ui-overlay__container {
             display: flex;
             flex-flow: row nowrap;
             align-items: stretch;
@@ -248,8 +248,8 @@ You can use them in your components or even in other vuex actions.
     /// Allow the overlay to be full width
     ///
     @mixin ui-overlay--full-width() {
-        .ui-overlay--wrap-inner,
-        .ui-overlay--container {
+        .ui-overlay__wrap-inner,
+        .ui-overlay__container {
             flex: 0 1 100%;
             max-width: 100%;
         }
@@ -257,7 +257,7 @@ You can use them in your components or even in other vuex actions.
 
     // Module
     & {
-        .ui-overlay--root {
+        .ui-overlay__root {
             position: fixed;
             top: 0;
             right: 0;
@@ -265,7 +265,7 @@ You can use them in your components or even in other vuex actions.
             left: 0;
         }
 
-        .ui-overlay--backdrop {
+        .ui-overlay__backdrop {
             position: fixed;
             top: 0;
             right: 0;
@@ -274,19 +274,19 @@ You can use them in your components or even in other vuex actions.
             background-color: rgba($c--monochrome-black, 0.2);
         }
 
-        .ui-overlay--display {
+        .ui-overlay__display {
             @include ios-native-scrolling;
             position: relative;
             width: 100%;
             height: 100%;
         }
 
-        .ui-overlay--backdrop-click-area {
+        .ui-overlay__backdrop-click-area {
             @include overlay;
             z-index: 1;
         }
 
-        .ui-overlay--wrap-outer {
+        .ui-overlay__wrap-outer {
             @include is-selectable(true);
             display: table;
             width: 100%;
@@ -294,14 +294,14 @@ You can use them in your components or even in other vuex actions.
             table-layout: fixed;
         }
 
-        .ui-overlay--wrap-inner {
+        .ui-overlay__wrap-inner {
             position: relative;
             display: table-cell;
             vertical-align: middle;
             text-align: center;
         }
 
-        .ui-overlay--container {
+        .ui-overlay__container {
             z-index: 2;
             position: relative;
             width: 100%;
@@ -311,7 +311,7 @@ You can use them in your components or even in other vuex actions.
     // Facets
     & {
         // Example Overlay
-        &.ui-overlay__base {
+        &.ui-overlay--base {
             @include ui-overlay--hide-backdrop;
             @include ui-overlay--full-height;
             @include ui-overlay--full-width;
