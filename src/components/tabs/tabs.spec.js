@@ -1,5 +1,6 @@
 import UiTabs from './tabs.vue';
 import { expect } from 'chai';
+import Vue from 'vue';
 import { mockData } from './mock-data';
 import { mount } from '@vue/test-utils';
 
@@ -47,17 +48,17 @@ const mountWrapper = (props = {}) => mount(UiTabs, {
 
 describe('Component Tabs', () => {
     const styleNode = document.createElement('style');
-    
+
     before(() => {
         styleNode.innerHTML = css;
         document.head.appendChild(styleNode);
     });
-    
+
     after(() => {
         document.head.removeChild(styleNode);
     });
-    
-    
+
+
     it('is an object', () => {
         expect(UiTabs).to.be.an('object');
         expect(UiTabs).to.be.not.empty;
@@ -69,30 +70,32 @@ describe('Component Tabs', () => {
     });
     it('renders only one panel if isLazy is set to true', () => {
         const wrapper = mountWrapper();
-    
+
         expect(wrapper.findAll('.ui-tabs--panel-wrapper').wrappers.length).to.be.equal(1);
     });
     it('renders all panels to dome if isLazy is set to false', () => {
         const wrapper = mountWrapper({ isLazy: false });
-    
+
         expect(wrapper.find('.ui-tabs--panel-wrapper').element.childNodes.length).to.be.equal(4);
     });
     it('sets initial active tab', () => {
         const wrapper = mountWrapper({ initialActiveId: 2 });
-    
+
         const tabs = wrapper.findAll('.ui-tabs--list-item').wrappers;
-        
+
         const activeIndex = tabs.findIndex(tab => tab.element.classList.contains('ui-tabs--list-item__is-active'));
-        
+
         expect(activeIndex).to.be.equal(2);
     });
-    it('sets active tab on tab click', () => {
+    it('sets active tab on tab click', async () => {
         const wrapper = mountWrapper();
-        
+
         const clickTab = wrapper.findAll('.ui-tabs--list-item').wrappers[3].element;
-        
+
         clickTab.click();
-        
+
+        await Vue.nextTick();
+
         expect(clickTab.classList.contains('ui-tabs--list-item__is-active')).to.be.true;
     });
 });

@@ -49,7 +49,7 @@ describe('Intersection-Observer', () => {
             stubs: {
                 ioc: IntersectionObserverComponent,
             },
-            attachToDocument: true,
+            attachTo: document.body,
         });
     });
 
@@ -83,7 +83,7 @@ describe('Intersection-Observer', () => {
             stubs: {
                 ioc: IntersectionObserverComponent,
             },
-            attachToDocument: true,
+            attachTo: document.body,
         });
     });
 
@@ -107,7 +107,7 @@ describe('Intersection-Observer', () => {
             stubs: {
                 ioc: IntersectionObserverComponent,
             },
-            attachToDocument: true,
+            attachTo: document.body,
         });
 
         expect(wrapper.find('.ioc-content').element).to.be.not.empty;

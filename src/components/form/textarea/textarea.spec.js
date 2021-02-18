@@ -78,9 +78,9 @@ describe('Component textarea', () => {
             },
         });
 
-        expect(wrapper.contains('.custom-label')).to.be.ok;
-        expect(wrapper.contains('.messages')).to.be.ok;
-        expect(wrapper.contains('.ui-form-field--action')).to.be.not.ok;
+        expect(wrapper.find('.custom-label').exists()).to.be.ok;
+        expect(wrapper.find('.messages').exists()).to.be.ok;
+        expect(wrapper.find('.ui-form-field--action').exists()).to.be.not.ok;
     });
 
     it('It can handle custom actions', () => {

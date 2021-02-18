@@ -2,6 +2,7 @@
 
 import UiAccordion from './accordion.vue';
 import { expect } from 'chai';
+import Vue from 'vue';
 import { shallowMount } from '@vue/test-utils';
 
 
@@ -59,7 +60,7 @@ describe('Component accordion', () => {
         expect(wrapper.vm.state.isOpen).to.be.ok;
     });
 
-    it('It can be properly opened when the isPassive mode is enabled', () => {
+    it('It can be properly opened when the isPassive mode is enabled', async () => {
         const wrapper = shallowMount(UiAccordion, {
             propsData: {
                 isPassive: true,
@@ -71,8 +72,10 @@ describe('Component accordion', () => {
             },
         });
 
-
         wrapper.setProps({ isOpen: true });
+
+        await Vue.nextTick();
+
         expect(wrapper.vm.state.isOpen).to.be.ok;
     });
 
@@ -139,7 +142,7 @@ describe('Component accordion', () => {
                     }
                 },
             },
-            attachToDocument: true,
+            attachTo: document.body,
         });
 
         wrapper.vm.$nextTick(() => {
@@ -163,12 +166,14 @@ describe('Component accordion', () => {
                     expect(wrapper.find('p').html()).to.be.equal('<p>false</p>');
                 },
                 changed() {
-                    expect(wrapper.find('p').html()).to.be.equal('<p>true</p>');
-                    done();
-                    wrapper.destroy();
+                    wrapper.vm.$nextTick(() => {
+                        expect(wrapper.find('p').html()).to.be.equal('<p>true</p>');
+                        done();
+                        wrapper.destroy();
+                    });
                 },
             },
-            attachToDocument: true,
+            attachTo: document.body,
         });
 
         wrapper.vm.$nextTick(() => {

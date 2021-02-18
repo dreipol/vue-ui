@@ -9,14 +9,13 @@
                 // use only slots having a root tag
                 .filter(({ tag }) => tag)
                 .map((slot, i) => {
-                    return h('li', {
-                        class: 'swiper-slide swiper--slide',
-                        key: i,
-                    }, [
-                        h('div', {
-                            class: 'swiper--item',
-                        }, [h(slot.tag, slot.data, slot.children)]),
-                    ]);
+                    return (
+                        <li class="swiper-slide swiper--slide" key={ i }>
+                            <div class="swiper--item">
+                                { h(slot.tag, slot.data, slot.children) }
+                            </div>
+                        </li>
+                    );
                 });
         },
     };

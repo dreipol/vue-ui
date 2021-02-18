@@ -1,8 +1,4 @@
-import { TransitionStub } from '@vue/test-utils';
-
 export default {
-    name: 'ExtendedTransitionStub',
-    extends: TransitionStub,
     data() {
         return {
             isMounted: false,
@@ -37,5 +33,8 @@ export default {
         afterDestroy() {
             this.$emit('after-leave');
         },
+    },
+    render: function() {
+        return this.$options._renderChildren;
     },
 };

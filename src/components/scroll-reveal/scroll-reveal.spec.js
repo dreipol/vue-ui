@@ -76,7 +76,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -116,7 +116,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -142,7 +142,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -182,7 +182,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -222,7 +222,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -263,7 +263,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -311,7 +311,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -353,7 +353,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -381,7 +381,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -423,7 +423,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -465,7 +465,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
@@ -508,7 +508,7 @@ describe('Component scroll-reveal', () => { // eslint-disable-line
                     stubs: {
                         'scroll-reveal': ScrollRevealComponent,
                     },
-                    attachToDocument: true,
+                    attachTo: document.body,
                 },
             );
         });
