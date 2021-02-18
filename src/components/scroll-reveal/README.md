@@ -31,20 +31,20 @@ You need to provide styles for these modifiers.
         transition: top 200ms ease-in-out;
     }
 
-    &.reduced-nav__top {
+    &.reduced-nav--top {
         display: none;
     }
 
-    &.reduced-nav__not-top {
+    &.reduced-nav--not-top {
         display: block;
     }
 
-    &.reduced-nav__pinned {
+    &.reduced-nav--pinned {
         top: 0;
         opacity: 1;
     }
 
-    &.reduced-nav__unpinned {
+    &.reduced-nav--unpinned {
         top: -80px;
         opacity: 0;
     }

@@ -50,12 +50,12 @@ import { UiAccordion } from '@dreipol/vue-ui';
 
     // Module
     & {
-        .ui-accordion--head {
+        .ui-accordion__head {
             cursor: pointer;
         }
 
 
-        .ui-accordion--body {
+        .ui-accordion__body {
             overflow: hidden;
             max-height: 0;
             opacity: 0;
@@ -65,14 +65,14 @@ import { UiAccordion } from '@dreipol/vue-ui';
 
     // Facets
     & {
-        &.ui-accordion__is-open {
-            .ui-accordion--body {
+        &.ui-accordion--is-open {
+            .ui-accordion__body {
                 opacity: 1;
             }
         }
 
         &.ui-accordion__is-animating {
-            .ui-accordion--body {
+            .ui-accordion__body {
                 transition: opacity 300ms ease, max-height 300ms ease;
             }
         }
