@@ -65,7 +65,7 @@ import { UiAccordion } from '@dreipol/vue-ui';
 
     // Facets
     & {
-        &.ui-accordion--is-open {
+        &.ui-accordion__is-open {
             .ui-accordion__body {
                 opacity: 1;
             }
