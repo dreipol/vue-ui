@@ -1,8 +1,8 @@
 /** @type {IBemFacetOptions} */
 export const DEFAULT_OPTIONS = Object.freeze({
-    bemModifierMarker: '__',
+    bemModifierMarker: '--',
     defaultFacet: 'base',
-    bemElementMarker: '--',
+    bemElementMarker: '__',
 });
 
 /**

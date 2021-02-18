@@ -20,7 +20,7 @@ describe('Component swiper', () => {
             },
         });
         expect(wrapper.find('.swiper-pagination-bullet')).to.be.ok;
-        expect(wrapper.findAll('.swiper--slide')).to.have.length(2);
+        expect(wrapper.findAll('.swiper__slide')).to.have.length(2);
         expect(wrapper.vm.$attrs.pagination.clickable).to.be.equal(false);
     });
 
@@ -31,6 +31,6 @@ describe('Component swiper', () => {
                 default: '<img src="placeholder.png" alt="Image"/><img src="placeholder.png" alt="Image"/>',
             },
         });
-        expect(wrapper.findAll('.swiper--slide')).to.have.length(2);
+        expect(wrapper.findAll('.swiper__slide')).to.have.length(2);
     });
 });
