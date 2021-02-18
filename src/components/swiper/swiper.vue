@@ -29,7 +29,7 @@
 <script>
     import Swiper, { Pagination, Lazy } from 'swiper';
     import SwiperSlides from './swiper-slides.vue';
-    import { SWIPER_EVENTS } from './swiper-events'
+    import { SWIPER_EVENTS } from './swiper-events';
 
     Swiper.use([Pagination, Lazy]);
 
@@ -68,7 +68,7 @@
 
             // bind all the swiper events
             SWIPER_EVENTS.forEach(event => {
-                    this.swiper.on(event, (...args) => this.$emit(event, ...args))
+                this.swiper.on(event, (...args) => this.$emit(event, ...args));
             });
         },
         beforeDestroy() {
