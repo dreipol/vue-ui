@@ -51,9 +51,9 @@ module via npm so that the css variables of Swiper are supported
             clickable: false,
         }">
         <template slot="slides">
-                <div class="swiper-slide">Slide 1</div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
+            <div>Slide 1</div>
+            <div>Slide 2</div>
+            <div>Slide 3</div>
         </template>
     </ui-swiper>
 ```
