@@ -5,15 +5,15 @@
                 @enter="onEnterHook"
                 @after-enter="onAfterEnterHook"
                 @after-leave="onAfterLeaveHook">
-            <div class="ui-overlay--root" v-if="overlay.isOpen" :key="overlay.timestamp">
-                <div class="ui-overlay--backdrop"/>
-                <div class="ui-overlay--display">
-                    <div class="ui-overlay--wrap-outer" :style="overlayScrollLockStyles">
-                        <div class="ui-overlay--wrap-inner">
-                            <div class="ui-overlay--backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
-                            <div class="ui-overlay--container">
-                                <div class="ui-overlay--revealer">
-                                    <component class="ui-overlay--component"
+            <div class="ui-overlay__root" v-if="overlay.isOpen" :key="overlay.timestamp">
+                <div class="ui-overlay__backdrop"/>
+                <div class="ui-overlay__display">
+                    <div class="ui-overlay__wrap-outer" :style="overlayScrollLockStyles">
+                        <div class="ui-overlay__wrap-inner">
+                            <div class="ui-overlay__backdrop-click-area" @click.prevent="closeOverlay({ id })"/>
+                            <div class="ui-overlay__container">
+                                <div class="ui-overlay__revealer">
+                                    <component class="ui-overlay__component"
                                             v-bind="overlay.props"
                                             :is="overlay.component"
                                             @close="closeOverlay({ id })"/>

@@ -1,8 +1,8 @@
 <template>
     <div class="ui-tabs">
-        <ul class="ui-tabs--list" role="tablist">
+        <ul class="ui-tabs__list" role="tablist">
             <li :class="tabClasses(tab)"
-                    class="ui-tabs--list-item"
+                    class="ui-tabs__list-item"
                     role="tab"
                     :tabindex="0"
                     :aria-selected="index === activeId"
@@ -22,7 +22,7 @@
     import { bemMixin } from '../../mixins';
     import UiTab from './tab.vue';
     import uuidGenerator from '../../util/misc/uuid';
-    
+
     export default {
         components: {
             UiTab,

@@ -77,8 +77,8 @@ describe('Component overlay', () => {
             },
         }));
 
-        expect(wrapper.find('.ui-overlay--component').text()).to.be.equal('baz');
-        expect(wrapper.find('.ui-overlay__foo-facet').exists()).to.be.ok;
+        expect(wrapper.find('.ui-overlay__component').text()).to.be.equal('baz');
+        expect(wrapper.find('.ui-overlay--foo-facet').exists()).to.be.ok;
     });
 
     it('can be autoclosed', done => {
@@ -107,7 +107,7 @@ describe('Component overlay', () => {
             expect(wrapper.vm.closeOverlay).to.be.called;
 
             setTimeout(() => {
-                expect(wrapper.find('.ui-overlay--root').exists()).to.not.be.ok;
+                expect(wrapper.find('.ui-overlay__root').exists()).to.not.be.ok;
                 done();
             }, 0);
         });

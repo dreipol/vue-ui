@@ -26,7 +26,7 @@ describe('Component checkbox', () => {
             },
         });
 
-        expect(wrapper.find('.ui-form-field--action').exists()).to.not.ok;
+        expect(wrapper.find('.ui-form-field__action').exists()).to.not.ok;
         expect(wrapper.find('input').exists()).to.be.ok;
         expect(wrapper.find('.label').exists()).to.be.ok;
     });
@@ -68,7 +68,7 @@ describe('Component checkbox', () => {
         expect(input.value).to.be.equal('foo');
         expect(input.checked).to.be.ok;
         expect(wrapper.vm.isChecked).to.be.ok;
-        expect(wrapper.find('.ui-form-field__is-checked').exists()).to.be.ok;
+        expect(wrapper.find('.ui-form-field--is-checked').exists()).to.be.ok;
     });
 
     it('It can dispatch the onchange events listened from the outside', done => {

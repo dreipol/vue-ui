@@ -28,7 +28,7 @@
             calcCurrentPanelHeight() {
                 const activeIndex = this.isLazy ? 0 : this.activeId;
                 const activePanel = this.$refs.panelList ? this.$refs.panelList[activeIndex] : null;
-                
+
                 this.panelListHeight = activePanel ? activePanel.offsetHeight : 0;
             },
             renderPanelGroup() {
@@ -37,8 +37,8 @@
                         mode="out-in"
                         onEnter={this.calcCurrentPanelHeight}
                         tag="div"
-                        name="ui-tabs--panel"
-                        class="ui-tabs--panel-wrapper"
+                        name="ui-tabs__panel"
+                        class="ui-tabs__panel-wrapper"
                         style={this.wrapperStyles}>
                         {
                             this.tabs.map((item, index) => {
@@ -47,7 +47,7 @@
                                         role="tabpanel"
                                         aria-labelledby={item.uuid}
                                         key={ index }
-                                        className="ui-tabs--panel"
+                                        className="ui-tabs__panel"
                                         v-show={ index === this.activeId }
                                         ref="panelList"
                                         refInFor={ true }>
@@ -64,15 +64,15 @@
                     <transition-group
                         onEnter={ this.calcCurrentPanelHeight }
                         tag="div"
-                        name="ui-tabs--panel"
-                        class="ui-tabs--panel-wrapper"
+                        name="ui-tabs__panel"
+                        class="ui-tabs__panel-wrapper"
                         style={ this.wrapperStyles }>
                         <div
                             role="tabpanel"
                             aria-labelledby={this.tabs[this.activeId].uuid}
                             key={this.activeId}
                             ref="panelList"
-                            className="ui-tabs--panel"
+                            className="ui-tabs__panel"
                             refInFor={ true }>
                             { this.tabs[this.activeId].children }
                         </div>
