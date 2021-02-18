@@ -1,10 +1,10 @@
 export default {
-    data() {
-        return {
-            isMounted: false,
-        };
-    },
-    mounted() {
-        this.isMounted = true;
-    },
-};
+  data() {
+    return {
+      isMounted: false,
+    }
+  },
+  mounted() {
+    this.isMounted = true
+  },
+}

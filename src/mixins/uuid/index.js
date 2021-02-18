@@ -1,7 +1,7 @@
-import uuidGenerator from '../../util/misc/uuid';
+import uuidGenerator from '../../util/misc/uuid'
 
 export default {
-    beforeCreate() {
-        this.uuid = uuidGenerator();
-    },
-};
+  beforeCreate() {
+    this.uuid = uuidGenerator()
+  },
+}

@@ -4,4 +4,6 @@
  * @link https://github.com/developit/preact/blob/master/src/util.js#L30
  * @type {(callback: function) => void}
  */
-export const defer = typeof Promise === 'function' ? Promise.resolve().then.bind(Promise.resolve()) : setTimeout;
+export default typeof Promise === 'function'
+  ? Promise.resolve().then.bind(Promise.resolve())
+  : setTimeout

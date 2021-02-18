@@ -1,5 +1,5 @@
 <template>
-    <option v-bind="$attrs">
-        <slot/>
-    </option>
+  <option v-bind="$attrs">
+    <slot />
+  </option>
 </template>

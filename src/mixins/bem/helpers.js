@@ -1,9 +1,9 @@
 /** @type {IBemFacetOptions} */
 export const DEFAULT_OPTIONS = Object.freeze({
-    bemModifierMarker: '--',
-    defaultFacet: 'base',
-    bemElementMarker: '__',
-});
+  bemModifierMarker: '--',
+  defaultFacet: 'base',
+  bemElementMarker: '__',
+})
 
 /**
  * Return a props config object for a vue component based on the options given
@@ -12,18 +12,18 @@ export const DEFAULT_OPTIONS = Object.freeze({
  * @return {object} The vue props config
  */
 export function getPropsConfig(bemRoot, { useProp }) {
-    if (!useProp) {
-        return {};
-    }
+  if (!useProp) {
+    return {}
+  }
 
-    return {
-        facets: {
-            type: Array,
-            default() {
-                return [];
-            },
-        },
-    };
+  return {
+    facets: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+  }
 }
 
 /**
@@ -32,15 +32,34 @@ export function getPropsConfig(bemRoot, { useProp }) {
  * @return {object} The vue computed config
  */
 export function getComputedConfig(bemRoot) {
-    if (!bemRoot) {
-        return {};
-    }
+  if (!bemRoot) {
+    return {}
+  }
 
-    return {
-        bemRoot() {
-            return bemRoot;
-        },
-    };
+  return {
+    bemRoot() {
+      return bemRoot
+    },
+  }
+}
+
+/**
+ * Create a valid CSS class out a config object of parts
+ * @param {IBemClassParts} bemClassParts - All parts of a valid BEM class
+ * @return {string} The resulting CSS class
+ */
+export function createBemClass(bemClassParts) {
+  const {
+    blockName,
+    modifierName = '',
+    elementName = '',
+    bemModifierMarker,
+    bemElementMarker,
+  } = bemClassParts
+
+  const elementPart = elementName ? `${bemElementMarker}${elementName}` : ''
+  const modifierPart = modifierName ? `${bemModifierMarker}${modifierName}` : ''
+  return `${blockName}${elementPart}${modifierPart}`
 }
 
 /**
@@ -51,33 +70,17 @@ export function getComputedConfig(bemRoot) {
  * @return {string[]} An array of compiled facets
  */
 export function mapFacets(blockName, facets, options = DEFAULT_OPTIONS) {
-    const { defaultFacet, ...rest } = options;
+  const { defaultFacet, ...rest } = options
 
-    // Apply multiple facets by using an array
-    const result = facets
-        .filter(Boolean)
-        .map(modifierName => createBemClass({ blockName, modifierName, ...rest }));
+  // Apply multiple facets by using an array
+  const result = facets
+    .filter(Boolean)
+    .map((modifierName) => createBemClass({ blockName, modifierName, ...rest }))
 
-    // As `facet` can still be an empty string, we'll provide a base facet as a fallback
-    if (!result.length) {
-        return [createBemClass({ blockName, modifierName: defaultFacet, ...rest })];
-    }
+  // As `facet` can still be an empty string, we'll provide a base facet as a fallback
+  if (!result.length) {
+    return [createBemClass({ blockName, modifierName: defaultFacet, ...rest })]
+  }
 
-    return result;
+  return result
 }
-
-/**
- * Create a valid CSS class out a config object of parts
- * @param {IBemClassParts} bemClassParts - All parts of a valid BEM class
- * @return {string} The resulting CSS class
- */
-export function createBemClass(bemClassParts) {
-    const { blockName, modifierName = '', elementName = '', bemModifierMarker, bemElementMarker } = bemClassParts;
-
-    const elementPart = elementName ? `${ bemElementMarker }${ elementName }` : '';
-    const modifierPart = modifierName ? `${ bemModifierMarker }${ modifierName }` : '';
-    return `${ blockName }${ elementPart }${ modifierPart }`;
-}
-
-
-

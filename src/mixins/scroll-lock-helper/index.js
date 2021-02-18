@@ -1,50 +1,53 @@
-import { mapState } from 'vuex';
-import { isIos } from '../../util/detect/ios-detect';
-import { defer } from '../../util/defer';
+import { mapState } from 'vuex'
+import isIos from '../../util/detect/ios-detect'
+import defer from '../../util/defer'
 
-const SCROLL_LOCK_IOS_FIX_CLASS = 'u-scroll-lock-ios-fix';
+const SCROLL_LOCK_IOS_FIX_CLASS = 'u-scroll-lock-ios-fix'
 
 export default {
-    data() {
-        return {
-            scrollLockHelperStyleProp: 'paddingRight',
-        };
+  data() {
+    return {
+      scrollLockHelperStyleProp: 'paddingRight',
+    }
+  },
+  computed: {
+    ...mapState('vue-ui/scroll', ['isLocked', 'scrollbarWidth']),
+    scrollLockStyles() {
+      return {
+        [this.scrollLockHelperStyleProp]: this.isLocked
+          ? `${this.scrollbarWidth}px`
+          : '',
+      }
     },
-    computed: {
-        ...mapState('vue-ui/scroll', ['isLocked', 'scrollbarWidth']),
-        scrollLockStyles() {
-            return {
-                [this.scrollLockHelperStyleProp]: (this.isLocked ? `${ this.scrollbarWidth }px` : ''),
-            };
-        },
-        scrollLockIosFixClasses() {
-            return [SCROLL_LOCK_IOS_FIX_CLASS];
-        },
+    scrollLockIosFixClasses() {
+      return [SCROLL_LOCK_IOS_FIX_CLASS]
     },
-    methods: {
-        scrollLockIosFixForceUpdate($element) {
-            // NOTE: The property that is being updated must change the position somehow to force an update
-            const top = parseFloat(window.getComputedStyle($element).marginTop) || 0;
-            $element.style.marginTop = `${ top - 0.5 }px`;
+  },
+  methods: {
+    scrollLockIosFixForceUpdate($element) {
+      // NOTE: The property that is being updated must change the position somehow to force an update
+      const top = parseFloat(window.getComputedStyle($element).marginTop) || 0
+      $element.style.marginTop = `${top - 0.5}px`
 
-            defer(() => {
-                this.$nextTick(() => {
-                    $element.style.marginTop = null;
-                });
-            });
-        },
+      defer(() => {
+        this.$nextTick(() => {
+          $element.style.marginTop = null
+        })
+      })
     },
-    watch: {
-        isLocked: {
-            handler() {
-                // NOTE: After a scroll-lock, fixed elements must be forced to the right position on iOS
-                if (!isIos || !this.$el) {
-                    return;
-                }
+  },
+  watch: {
+    isLocked: {
+      handler() {
+        // NOTE: After a scroll-lock, fixed elements must be forced to the right position on iOS
+        if (!isIos || !this.$el) {
+          return
+        }
 
-                Array.from(this.$el.querySelectorAll(`.${ SCROLL_LOCK_IOS_FIX_CLASS }`))
-                    .forEach(this.scrollLockIosFixForceUpdate);
-            },
-        },
+        Array.from(
+          this.$el.querySelectorAll(`.${SCROLL_LOCK_IOS_FIX_CLASS}`),
+        ).forEach(this.scrollLockIosFixForceUpdate)
+      },
     },
-};
+  },
+}

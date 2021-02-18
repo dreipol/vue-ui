@@ -1,4 +1,10 @@
-import { getComputedConfig, getPropsConfig, mapFacets, createBemClass, DEFAULT_OPTIONS } from './helpers';
+import {
+  getComputedConfig,
+  getPropsConfig,
+  mapFacets,
+  createBemClass,
+  DEFAULT_OPTIONS,
+} from './helpers'
 
 /**
  * Add BEM related helpers to a component
@@ -7,30 +13,38 @@ import { getComputedConfig, getPropsConfig, mapFacets, createBemClass, DEFAULT_O
  * @return {object} The vue mixin
  */
 export default function bemMixin(bemRoot, config) {
-    const options = {
-        ...DEFAULT_OPTIONS,
-        useProp: true,
-        ...config,
-    };
+  const options = {
+    ...DEFAULT_OPTIONS,
+    useProp: true,
+    ...config,
+  }
 
-    return {
-        props: {
-            ...getPropsConfig(bemRoot, options),
-        },
-        computed: {
-            ...getComputedConfig(bemRoot, options),
-            bemFacets() {
-                return mapFacets(this.bemRoot, this.facets, options);
-            },
-        },
-        methods: {
-            bemAdd(modifierName, elementName, rootName) {
-                const blockName = rootName || this.bemRoot;
-                return createBemClass({ blockName, modifierName, elementName, ...options });
-            },
-            bemIf(condition, trueModifier, falseModifier, elementName = '') {
-                return this.bemAdd(condition ? trueModifier : falseModifier, elementName);
-            },
-        },
-    };
-};
+  return {
+    props: {
+      ...getPropsConfig(bemRoot, options),
+    },
+    computed: {
+      ...getComputedConfig(bemRoot, options),
+      bemFacets() {
+        return mapFacets(this.bemRoot, this.facets, options)
+      },
+    },
+    methods: {
+      bemAdd(modifierName, elementName, rootName) {
+        const blockName = rootName || this.bemRoot
+        return createBemClass({
+          blockName,
+          modifierName,
+          elementName,
+          ...options,
+        })
+      },
+      bemIf(condition, trueModifier, falseModifier, elementName = '') {
+        return this.bemAdd(
+          condition ? trueModifier : falseModifier,
+          elementName,
+        )
+      },
+    },
+  }
+}
