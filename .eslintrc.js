@@ -1,12 +1,11 @@
+const { eslint } = require('@dreipol/pandora')
+
 module.exports = {
   parserOptions: {
     ecmaVersion: 2021,
     parser: 'babel-eslint',
   },
-  extends: [
-    require.resolve('@dreipol/pandora/.eslintrc'),
-    require.resolve('@dreipol/pandora/vue/.eslintrc'),
-  ],
+  extends: [eslint.base, eslint.vue],
   env: {
     browser: true,
   },

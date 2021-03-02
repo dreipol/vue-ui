@@ -33,7 +33,7 @@
     "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
     "@babel/preset-env": "^7.12.16",
-    "@dreipol/pandora": "^0.3.3",
+    "@dreipol/pandora": "^0.4.0",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "@vue/babel-plugin-transform-vue-jsx": "^1.2.1",
     "@vue/test-utils": "^1.1.3",
