@@ -67,6 +67,10 @@
         type: [Number, String],
         default: '',
       },
+      hasAutoHeight: {
+        type: Boolean,
+        default: true,
+      },
       borderWidth: {
         type: Number,
         default: 1,
@@ -79,6 +83,10 @@
     },
     methods: {
       updateHeight(isExpanding) {
+        if (!this.hasAutoHeight) {
+          return
+        }
+
         const { input } = this.$refs
 
         if (input.offsetHeight > TEXTAREA_MAX_HEIGHT) {

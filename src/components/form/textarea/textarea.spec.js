@@ -52,6 +52,26 @@ describe('Component textarea', () => {
     })
   })
 
+  it('It does not increase the height of the textarea if hasAutoHeight is set to false', (done) => {
+    const wrapper = shallowMount(UiTextarea, {
+      propsData: {
+        value: '',
+        hasAutoHeight: false,
+      },
+    })
+    const { vm } = wrapper
+    const textarea = wrapper.find('textarea')
+    const elementHeight = textarea.element.style.height
+
+    textarea.setValue(LOREM_IPSUM)
+
+    vm.$nextTick(() => {
+      expect(vm.currentValue).to.be.equal(LOREM_IPSUM)
+      expect(textarea.element.style.height).to.be.equal(elementHeight)
+      done()
+    })
+  })
+
   it('It decreases the height of the textarea properly', (done) => {
     const wrapper = shallowMount(UiTextarea, {
       propsData: {
