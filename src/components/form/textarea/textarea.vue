@@ -48,7 +48,6 @@
   import currentValueMixin from '../../../mixins/form/current-value'
   import hasErrorsPropsMixin from '../../../mixins/form/has-errors-props'
 
-  const TEXTAREA_BORDER_WIDTH = 1
   const TEXTAREA_MAX_HEIGHT = 240
 
   export default {
@@ -68,6 +67,10 @@
         type: [Number, String],
         default: '',
       },
+      borderWidth: {
+        type: Number,
+        default: 1,
+      },
     },
     computed: {
       actionCount() {
@@ -84,7 +87,7 @@
         }
 
         if (isExpanding) {
-          const contentHeight = input.scrollHeight + TEXTAREA_BORDER_WIDTH * 2
+          const contentHeight = input.scrollHeight + this.borderWidth * 2
           input.style.height = this.currentValue
             ? `${Math.min(TEXTAREA_MAX_HEIGHT, contentHeight)}px`
             : 'auto'
